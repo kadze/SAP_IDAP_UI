@@ -21,7 +21,7 @@ static NSUInteger const kSAPInitialUsersCount = 100;
 
 static NSString * const kSAPObjectsKey      = @"objects";
 static NSString * const kSAPPlistName       = @"users.plist";
-static NSString * const kSAPAppStateDirectoryName = @"appState";
+
 
 @interface SAPUsers ()
 @property (nonatomic, assign) NSString *path;
@@ -29,7 +29,6 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
 - (void)cleanupAfterProcessing;
-- (NSString *)appStatePath;
 
 @end
 
@@ -51,14 +50,14 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 #pragma mark Accessors
 
 - (NSString *)path {
-    return [[self appStatePath] stringByAppendingPathComponent:kSAPPlistName];
+    return [[NSFileManager appStatePath] stringByAppendingPathComponent:kSAPPlistName];
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)save {
-    [[NSFileManager defaultManager] createDirectoryAtPath:[self appStatePath]
+    [[NSFileManager defaultManager] createDirectoryAtPath:[NSFileManager appStatePath]
                               withIntermediateDirectories:YES
                                                attributes:nil
                                                     error:nil];
@@ -102,10 +101,6 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
     @synchronized(self) {
         self.state = kSAPModelStateDidFinishLoading;
     }
-}
-
-- (NSString *)appStatePath {
-    return [SAPlibraryPath() stringByAppendingPathComponent:kSAPAppStateDirectoryName];
 }
 
 @end
