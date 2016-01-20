@@ -10,15 +10,10 @@
 
 @interface NSFileManager (SAPExtensions)
 
++ (NSString *)searchPathForDirectory:(NSSearchPathDirectory)directory;
++ (NSString *)libraryPath;
++ (NSString *)documentsPath;
++ (NSString *)appStatePath;
+
 @end
-extern
-NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory);
 
-extern
-NSString *SAPlibraryPath(void);
-
-extern
-NSString *SAPDocumentsPath(void);
-
-extern
-void SAPProvidePathExistence(NSString *path);
