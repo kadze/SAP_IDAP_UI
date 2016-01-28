@@ -7,10 +7,10 @@
 //
 
 #import "SAPSquareViewController.h"
+#import "SAPSquareView.h"
+#import "SAPMacro.h"
 
-@interface SAPSquareViewController ()
-
-@end
+SAPViewControllerBaseViewProperty(SAPSquareViewController, squareView, SAPSquareView)
 
 @implementation SAPSquareViewController
 
