@@ -31,7 +31,7 @@ SAPViewControllerBaseViewProperty(SAPSquareViewController, squareView, SAPSquare
 #pragma mark Interface Handling
 
 - (IBAction)onSquareMove:(id)sender {
-    
+    [self.squareView moveSquare];
 }
 
 @end
