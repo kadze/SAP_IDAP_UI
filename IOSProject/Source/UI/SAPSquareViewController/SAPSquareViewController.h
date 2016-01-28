@@ -10,4 +10,6 @@
 
 @interface SAPSquareViewController : UIViewController
 
+- (IBAction)onSquareMove:(id)sender;
+
 @end

@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SAPSquareView : UIView
+@property (nonatomic, strong) IBOutlet UILabel *square;
+@property (nonatomic, strong) IBOutlet UIButton *moveButton;
+
+- (void)moveSquare;
 
 @end
