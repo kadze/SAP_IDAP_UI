@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CAC421891C5A1AA2004E4F1E /* IOSProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421881C5A1AA2004E4F1E /* IOSProjectTests.m */; };
 		CAC421941C5A1AA2004E4F1E /* IOSProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421931C5A1AA2004E4F1E /* IOSProjectUITests.m */; };
-		CAC421AF1C5A2364004E4F1E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAC421A21C5A2364004E4F1E /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 		CAC421B01C5A2364004E4F1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421A31C5A2364004E4F1E /* main.m */; settings = {ASSET_TAGS = (); }; };
 		CAC421B11C5A2364004E4F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC421A51C5A2364004E4F1E /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		CAC421B21C5A2364004E4F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC421A61C5A2364004E4F1E /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -279,7 +278,6 @@
 			files = (
 				CAC421B21C5A2364004E4F1E /* LaunchScreen.storyboard in Resources */,
 				CAC421B11C5A2364004E4F1E /* Assets.xcassets in Resources */,
-				CAC421AF1C5A2364004E4F1E /* Info.plist in Resources */,
 				CAC421B31C5A2364004E4F1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
