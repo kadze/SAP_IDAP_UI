@@ -13,8 +13,7 @@
 		CAC421B11C5A2364004E4F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC421A51C5A2364004E4F1E /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		CAC421B21C5A2364004E4F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC421A61C5A2364004E4F1E /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		CAC421B31C5A2364004E4F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC421A81C5A2364004E4F1E /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		CAC421BE1C5A24F7004E4F1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421B81C5A24F7004E4F1E /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		CAC421BF1C5A24F7004E4F1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421BD1C5A24F7004E4F1E /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CAC421BE1C5A24F7004E4F1E /* SAPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421B81C5A24F7004E4F1E /* SAPAppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,10 +46,8 @@
 		CAC421A51C5A2364004E4F1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAC421A71C5A2364004E4F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAC421A91C5A2364004E4F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CAC421B71C5A24F7004E4F1E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CAC421B81C5A24F7004E4F1E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CAC421BC1C5A24F7004E4F1E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CAC421BD1C5A24F7004E4F1E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CAC421B71C5A24F7004E4F1E /* SAPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPAppDelegate.h; sourceTree = "<group>"; };
+		CAC421B81C5A24F7004E4F1E /* SAPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +140,8 @@
 				CAC421B91C5A24F7004E4F1E /* Library */,
 				CAC421BA1C5A24F7004E4F1E /* Models */,
 				CAC421BB1C5A24F7004E4F1E /* UI */,
-				CAC421B71C5A24F7004E4F1E /* AppDelegate.h */,
-				CAC421B81C5A24F7004E4F1E /* AppDelegate.m */,
+				CAC421B71C5A24F7004E4F1E /* SAPAppDelegate.h */,
+				CAC421B81C5A24F7004E4F1E /* SAPAppDelegate.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -166,8 +163,6 @@
 		CAC421BB1C5A24F7004E4F1E /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CAC421BC1C5A24F7004E4F1E /* ViewController.h */,
-				CAC421BD1C5A24F7004E4F1E /* ViewController.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -303,8 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAC421BF1C5A24F7004E4F1E /* ViewController.m in Sources */,
-				CAC421BE1C5A24F7004E4F1E /* AppDelegate.m in Sources */,
+				CAC421BE1C5A24F7004E4F1E /* SAPAppDelegate.m in Sources */,
 				CAC421B01C5A2364004E4F1E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
