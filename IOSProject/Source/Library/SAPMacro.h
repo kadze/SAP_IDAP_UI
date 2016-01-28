@@ -18,7 +18,7 @@
         return nil; \
     }
 
-#define SAPViewControllerBaseViewProperty(viewControllerClass, propertyName, baseViewClass) \
+#define SAPViewControllerBaseViewProperty(viewControllerClass, propertyName, baseViewClass, categoryName) \
     @interface viewControllerClass (__SAPPrivateBaseView) \
     SAPDefineBaseViewProperty(propertyName, baseViewClass) \
     \

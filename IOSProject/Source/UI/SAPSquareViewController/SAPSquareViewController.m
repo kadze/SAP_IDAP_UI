@@ -10,7 +10,7 @@
 #import "SAPSquareView.h"
 #import "SAPMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPSquareViewController, squareView, SAPSquareView)
+SAPViewControllerBaseViewProperty(SAPSquareViewController, squareView, SAPSquareView, SAPPrivateViewGetterCategory)
 
 @implementation SAPSquareViewController
 
