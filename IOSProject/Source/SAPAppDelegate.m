@@ -7,6 +7,7 @@
 //
 
 #import "SAPAppDelegate.h"
+#import "SAPSquareViewController.h"
 
 @interface SAPAppDelegate ()
 
@@ -14,9 +15,17 @@
 
 @implementation SAPAppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)              application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = window;
+    
+    SAPSquareViewController *controller = [SAPSquareViewController new];
+    window.rootViewController = controller;
+    
+    [window makeKeyAndVisible];
+    
     return YES;
 }
 
