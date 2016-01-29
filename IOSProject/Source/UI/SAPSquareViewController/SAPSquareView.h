@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
+    kSAPTopLeft,
+    kSAPTopRight,
+    kSAPBottomLeft,
+    kSAPBottomRight
+};
+
+
 @interface SAPSquareView : UIView
 @property (nonatomic, strong) IBOutlet UILabel *square;
 @property (nonatomic, strong) IBOutlet UIButton *moveButton;
