@@ -9,6 +9,7 @@
 #import "SAPAppDelegate.h"
 
 #import "SAPSquareViewController.h"
+#import "UIWindow+SAPExtentions.h"
 
 @interface SAPAppDelegate ()
 
@@ -20,7 +21,7 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIWindow *window = [UIWindow initWithMainScreen];
     self.window = window;
     
     SAPSquareViewController *controller = [SAPSquareViewController new];
