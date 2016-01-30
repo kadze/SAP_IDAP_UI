@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
-    kSAPTopLeft,
+    kSAPTopLeft = 1,
     kSAPTopRight,
     kSAPBottomLeft,
     kSAPBottomRight
@@ -17,9 +17,17 @@ typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
 
 
 @interface SAPSquareView : UIView
-@property (nonatomic, strong) IBOutlet UILabel *square;
+@property (nonatomic, assign) SAPSquarePosition SquarePosition;
+@property (nonatomic, strong) IBOutlet UILabel  *square;
 @property (nonatomic, strong) IBOutlet UIButton *moveButton;
 
 - (void)moveSquare;
+
+- (void)setSquarePosition:(SAPSquarePosition)SquarePosition
+                 animated:(BOOL)animated;
+
+- (void)setSquarePosition:(SAPSquarePosition)SquarePosition
+                 animated:(BOOL)animated
+        completionHandler:(void(^)(bool))handler;
 
 @end
