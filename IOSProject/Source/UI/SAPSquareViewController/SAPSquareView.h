@@ -19,7 +19,8 @@ typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
 @interface SAPSquareView : UIView
 @property (nonatomic, assign) SAPSquarePosition SquarePosition;
 @property (nonatomic, strong) IBOutlet UILabel  *square;
-@property (nonatomic, strong) IBOutlet UIButton *moveButton;
+@property (nonatomic, strong) IBOutlet UIButton *move;
+@property (nonatomic, strong) IBOutlet UIButton *startStop;
 
 - (void)moveSquare;
 
@@ -29,5 +30,8 @@ typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
 - (void)setSquarePosition:(SAPSquarePosition)SquarePosition
                  animated:(BOOL)animated
         completionHandler:(void(^)(bool))handler;
+
+- (void)changeButtonAppearanceForStop;
+- (void)changeButtonAppearanceForStart;
 
 @end

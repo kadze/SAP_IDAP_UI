@@ -102,9 +102,19 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
                          completion:handler];
     } else {
         animations();
-    }
-    
-    
-    
+    }    
 }
+
+- (void)changeButtonAppearanceForStop {
+    UIButton *startStopButton = self.startStop;
+    [startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+    startStopButton.backgroundColor = [UIColor redColor];
+}
+
+- (void)changeButtonAppearanceForStart {
+    UIButton *startStopButton = self.startStop;
+    [startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+    startStopButton.backgroundColor = [UIColor greenColor];
+}
+
 @end
