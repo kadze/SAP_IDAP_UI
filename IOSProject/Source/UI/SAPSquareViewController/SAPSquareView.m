@@ -97,9 +97,11 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
     };
     
     if (animated) {
-        [UIView animateWithDuration:kSAPAnimationDuration
-                         animations:animations
-                         completion:handler];
+        [UIView animateKeyframesWithDuration:kSAPAnimationDuration
+                                       delay:0
+                                     options:UIViewKeyframeAnimationOptionBeginFromCurrentState
+                                  animations:animations
+                                  completion:handler];
     } else {
         animations();
     }    

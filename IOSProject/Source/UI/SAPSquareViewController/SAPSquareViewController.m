@@ -11,7 +11,7 @@
 #import "SAPSquareView.h"
 #import "SAPMacro.h"
 
-static NSTimeInterval kSAPTimerInterval = 1.5;
+static NSTimeInterval kSAPTimerInterval = 0.3;
 
 SAPViewControllerBaseViewProperty(SAPSquareViewController, squareView, SAPSquareView, SAPPrivateViewGetterCategory)
 
