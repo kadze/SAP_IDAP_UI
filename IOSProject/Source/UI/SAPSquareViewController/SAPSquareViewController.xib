@@ -47,9 +47,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="move" destination="RFx-Cy-jHF" id="t0o-rw-Voh"/>
-                <outlet property="square" destination="1LK-BE-ez4" id="4hf-rW-g9S"/>
-                <outlet property="startStop" destination="kmn-zY-0qZ" id="rgd-BK-LqY"/>
+                <outlet property="moveButton" destination="RFx-Cy-jHF" id="nwz-78-d86"/>
+                <outlet property="squareLabel" destination="1LK-BE-ez4" id="nTf-i4-8bl"/>
+                <outlet property="startStopButton" destination="kmn-zY-0qZ" id="sfU-aJ-fSx"/>
             </connections>
             <point key="canvasLocation" x="282" y="307"/>
         </view>

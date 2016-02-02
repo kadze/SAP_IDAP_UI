@@ -67,7 +67,7 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
                                    delay:0
                                  options:UIViewKeyframeAnimationOptionBeginFromCurrentState
                               animations: ^{
-                                  self.square.frame = [self squareFrameWithSquarePosition:squarePosition];
+                                  self.squareLabel.frame = [self squareFrameWithSquarePosition:squarePosition];
                               }
                               completion:^(BOOL finished) {
                                   if (finished) {
@@ -81,13 +81,13 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
 }
 
 - (void)changeButtonAppearanceForStop {
-    UIButton *startStopButton = self.startStop;
+    UIButton *startStopButton = self.startStopButton;
     [startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
     startStopButton.backgroundColor = [UIColor redColor];
 }
 
 - (void)changeButtonAppearanceForStart {
-    UIButton *startStopButton = self.startStop;
+    UIButton *startStopButton = self.startStopButton;
     [startStopButton setTitle:@"Start" forState:UIControlStateNormal];
     startStopButton.backgroundColor = [UIColor greenColor];
 }
@@ -97,7 +97,7 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition{
     CGRect selfFrame = self.frame;
-    CGRect squareFrame = self.square.frame;
+    CGRect squareFrame = self.squareLabel.frame;
     CGFloat rightOriginX = CGRectGetWidth(selfFrame) - CGRectGetWidth(squareFrame);
     CGFloat bottomOriginY = CGRectGetHeight(selfFrame) - CGRectGetHeight(squareFrame);
     CGPoint resultOrigin = CGPointZero;
