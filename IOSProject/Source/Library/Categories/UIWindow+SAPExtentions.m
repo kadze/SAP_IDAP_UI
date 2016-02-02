@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)initWithMainScreen {
++ (instancetype)window {
     return [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 }
 

@@ -10,6 +10,6 @@
 
 @interface UIWindow (SAPExtentions)
 
-+ (instancetype)initWithMainScreen;
++ (instancetype)window;
 
 @end

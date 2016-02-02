@@ -21,7 +21,7 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    UIWindow *window = [UIWindow initWithMainScreen];
+    UIWindow *window = [UIWindow window];
     self.window = window;
     
     SAPSquareViewController *controller = [SAPSquareViewController new];
