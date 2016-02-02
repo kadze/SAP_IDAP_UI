@@ -8,12 +8,18 @@
 
 #import "SAPSquareView.h"
 
-static NSTimeInterval kSAPAnimationDuration = 1.0;
+static NSTimeInterval const kSAPTimerInterval     = 0.3;
+static NSTimeInterval const kSAPAnimationDuration = 1.0;
 
 @interface SAPSquareView ()
+@property (nonatomic, strong) NSTimer *timer;
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
+
+- (void)changeStartStopButtonColor:(UIColor *)color title:(NSString *)title;
+- (void)changeButtonAppearanceForStop;
+- (void)changeButtonAppearanceForStart;
 
 @end
 
@@ -26,12 +32,42 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
     [self setSquarePosition:squarePosition animated:NO];
 }
 
+- (void)setMoving:(BOOL)moving {
+    if (_moving != moving) {
+        _moving = moving;
+        if (moving) {
+            [self changeButtonAppearanceForStart];
+            
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:kSAPTimerInterval
+                                                          target:self
+                                                        selector:@selector(moveSquare)
+                                                        userInfo:nil
+                                                         repeats:YES];
+        } else {
+            [self changeButtonAppearanceForStop];
+            
+            self.timer = nil;
+        }
+    }
+}
+
+- (void)setTimer:(NSTimer *)timer {
+    if (_timer != timer) {
+        [_timer invalidate];
+        _timer = timer;
+    }
+}
+
 #pragma mark -
 #pragma mark Public
 
 - (void)moveSquare {
     [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
                    animated:YES];
+}
+
+- (void)startStopMoving {
+    self.moving = !(self.isMoving);
 }
 
 - (void)setSquarePosition:(SAPSquarePosition)squarePosition animated:(BOOL)animated {
@@ -57,18 +93,6 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
                                       handler();
                                   }
                               }];
-}
-
-- (void)changeButtonAppearanceForStop {
-    UIButton *startStopButton = self.startStopButton;
-    [startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
-    startStopButton.backgroundColor = [UIColor redColor];
-}
-
-- (void)changeButtonAppearanceForStart {
-    UIButton *startStopButton = self.startStopButton;
-    [startStopButton setTitle:@"Start" forState:UIControlStateNormal];
-    startStopButton.backgroundColor = [UIColor greenColor];
 }
 
 #pragma mark -
@@ -116,8 +140,21 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
             
         default:
             return kSAPSquarePositionTopLeft;
-            
     }
+}
+
+- (void)changeStartStopButtonColor:(UIColor *)color title:(NSString *)title {
+    UIButton *startStopButton = self.startStopButton;
+    startStopButton.backgroundColor = color;
+    [startStopButton setTitle:title forState:UIControlStateNormal];
+}
+
+- (void)changeButtonAppearanceForStop {
+    [self changeStartStopButtonColor:[UIColor redColor] title:@"Stop"];
+}
+
+- (void)changeButtonAppearanceForStart {
+    [self changeStartStopButtonColor:[UIColor greenColor] title:@"Start"];
 }
 
 @end

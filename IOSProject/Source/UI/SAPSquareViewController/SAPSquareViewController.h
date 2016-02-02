@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SAPSquareViewController : UIViewController
-@property (nonatomic, assign, getter=isSquareMoving) BOOL squareMoving;
 
 - (IBAction)onMove:(id)sender;
 - (IBAction)onStartStop:(id)sender;
