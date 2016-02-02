@@ -13,6 +13,7 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
 @interface SAPSquareView ()
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
+- (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
 
 @end
 
@@ -29,30 +30,8 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
 #pragma mark Public
 
 - (void)moveSquare {
-    SAPSquarePosition newPosition = kSAPSquarePositionTopLeft;
-    
-    switch (self.squarePosition) {
-        case kSAPSquarePositionTopLeft:
-            newPosition = kSAPSquarePositionTopRight;
-            
-            break;
-            
-        case kSAPSquarePositionTopRight:
-            newPosition = kSAPSquarePositionBottomRight;
-            
-            break;
-        case kSAPSquarePositionBottomRight:
-            newPosition = kSAPSquarePositionBottomLeft;
-            
-            break;
-            
-        default:
-            newPosition = kSAPSquarePositionTopLeft;
-            
-            break;
-    }
-    
-    [self setSquarePosition:newPosition animated:YES];
+    [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
+                   animated:YES];
 }
 
 - (void)setSquarePosition:(SAPSquarePosition)squarePosition animated:(BOOL)animated {
@@ -124,5 +103,21 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
     return squareFrame;
 }
 
+- (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition {
+    switch (squarePosition) {
+        case kSAPSquarePositionTopLeft:
+            return kSAPSquarePositionTopRight;
+            
+        case kSAPSquarePositionTopRight:
+            return kSAPSquarePositionBottomRight;
+            
+        case kSAPSquarePositionBottomRight:
+            return kSAPSquarePositionBottomLeft;
+            
+        default:
+            return kSAPSquarePositionTopLeft;
+            
+    }
+}
 
 @end
