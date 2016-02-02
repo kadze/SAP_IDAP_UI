@@ -8,13 +8,11 @@
 
 #import "SAPSquareView.h"
 
-static NSTimeInterval const kSAPTimerInterval     = 0.3;
 static NSTimeInterval const kSAPAnimationDuration = 1.0;
 
 @interface SAPSquareView ()
-@property (nonatomic, strong) NSTimer *timer;
 
-- (void)timerFires:(NSTimer *)timer;
+@property (nonatomic, assign, getter=isMoving) BOOL               moving;
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
@@ -38,26 +36,30 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
     if (_moving != moving) {
         _moving = moving;
         if (moving) {
+            [self changeButtonAppearanceForStop];
+            [self cycledMoving];
+            
+        } else {
             [self changeButtonAppearanceForStart];
             
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:kSAPTimerInterval
-                                                          target:self
-                                                        selector:@selector(timerFires:)
-                                                        userInfo:nil
-                                                         repeats:YES];
-        } else {
-            [self changeButtonAppearanceForStop];
-            
-            self.timer = nil;
         }
     }
 }
 
-- (void)setTimer:(NSTimer *)timer {
-    if (_timer != timer) {
-        [_timer invalidate];
-        _timer = timer;
-    }
+- (void)cycledMoving {
+    __weak typeof(self) weakSelf = self;
+    
+    [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
+                   animated:YES
+          completionHandler:^{
+              __strong typeof(self) self = weakSelf;
+              if (!self) {
+                  return;
+              }
+              
+              [self cycledMoving];
+          }
+     ];
 }
 
 #pragma mark -
@@ -99,10 +101,6 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 
 #pragma mark -
 #pragma mark Private
-
-- (void)timerFires:(NSTimer *)timer {
-    [self moveSquare];
-}
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition{
     CGRect selfFrame = self.frame;
