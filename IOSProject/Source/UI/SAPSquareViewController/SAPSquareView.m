@@ -10,38 +10,44 @@
 
 static NSTimeInterval kSAPAnimationDuration = 1.0;
 
+@interface SAPSquareView ()
+
+- (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
+
+@end
+
 @implementation SAPSquareView
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setSquarePosition:(SAPSquarePosition)SquarePosition {
-    [self setSquarePosition:SquarePosition animated:NO];
+- (void)setSquarePosition:(SAPSquarePosition)squarePosition {
+    [self setSquarePosition:squarePosition animated:NO];
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)moveSquare {
-    SAPSquarePosition newPosition = kSAPTopLeft;
+    SAPSquarePosition newPosition = kSAPSquarePositionTopLeft;
     
-    switch (self.SquarePosition) {
-        case kSAPTopLeft:
-            newPosition = kSAPTopRight;
+    switch (self.squarePosition) {
+        case kSAPSquarePositionTopLeft:
+            newPosition = kSAPSquarePositionTopRight;
             
             break;
             
-        case kSAPTopRight:
-            newPosition = kSAPBottomRight;
+        case kSAPSquarePositionTopRight:
+            newPosition = kSAPSquarePositionBottomRight;
             
             break;
-        case kSAPBottomRight:
-            newPosition = kSAPBottomLeft;
+        case kSAPSquarePositionBottomRight:
+            newPosition = kSAPSquarePositionBottomLeft;
             
             break;
             
         default:
-            newPosition = kSAPTopLeft;
+            newPosition = kSAPSquarePositionTopLeft;
             
             break;
     }
@@ -49,62 +55,24 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
     [self setSquarePosition:newPosition animated:YES];
 }
 
-- (void)setSquarePosition:(SAPSquarePosition)SquarePosition animated:(BOOL)animated {
-    [self setSquarePosition:SquarePosition animated:animated completionHandler:nil];
+- (void)setSquarePosition:(SAPSquarePosition)squarePosition animated:(BOOL)animated {
+    [self setSquarePosition:squarePosition animated:animated completionHandler:nil];
 }
 
-- (void)setSquarePosition:(SAPSquarePosition)SquarePosition
+- (void)setSquarePosition:(SAPSquarePosition)squarePosition
                  animated:(BOOL)animated
         completionHandler:(void(^)(bool))handler
 {
    void (^animations)(void) = ^{
-        CGRect squareFrame = self.square.frame;
-        CGRect selfFrame = self.frame;
-        CGFloat rightOriginX = CGRectGetWidth(selfFrame) - CGRectGetWidth(squareFrame);
-        CGFloat bottomOriginY = CGRectGetHeight(selfFrame) - CGRectGetHeight(squareFrame);
-        switch (SquarePosition) {
-            case kSAPTopLeft:
-                squareFrame.origin.x = 0;
-                squareFrame.origin.y = 0;
-                
-                break;
-                
-            case kSAPTopRight:
-                squareFrame.origin.x = rightOriginX;
-                squareFrame.origin.y = 0;
-                
-                break;
-                
-            case kSAPBottomLeft:
-                squareFrame.origin.x = 0;
-                squareFrame.origin.y = bottomOriginY;
-                
-                break;
-                
-            case kSAPBottomRight:
-                squareFrame.origin.x = rightOriginX;
-                squareFrame.origin.y = bottomOriginY;
-                
-                break;
-                
-            default:
-                break;
-        }
-        
-        self.square.frame = squareFrame;
-        
-        _SquarePosition = SquarePosition;
+        self.square.frame = [self squareFrameWithSquarePosition:squarePosition];
+        _squarePosition = squarePosition;
     };
-    
-    if (animated) {
-        [UIView animateKeyframesWithDuration:kSAPAnimationDuration
-                                       delay:0
-                                     options:UIViewKeyframeAnimationOptionBeginFromCurrentState
-                                  animations:animations
-                                  completion:handler];
-    } else {
-        animations();
-    }    
+
+    [UIView animateKeyframesWithDuration:animated ? kSAPAnimationDuration : 0.0
+                                   delay:0
+                                 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
+                              animations:animations
+                              completion:handler];
 }
 
 - (void)changeButtonAppearanceForStop {
@@ -118,5 +86,38 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
     [startStopButton setTitle:@"Start" forState:UIControlStateNormal];
     startStopButton.backgroundColor = [UIColor greenColor];
 }
+
+#pragma mark -
+#pragma mark Private
+
+- (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition{
+    CGRect selfFrame = self.frame;
+    CGRect squareFrame = self.square.frame;
+    CGFloat rightOriginX = CGRectGetWidth(selfFrame) - CGRectGetWidth(squareFrame);
+    CGFloat bottomOriginY = CGRectGetHeight(selfFrame) - CGRectGetHeight(squareFrame);
+    CGPoint resultOrigin = CGPointZero;
+    switch (squarePosition) {
+        case kSAPSquarePositionTopRight:
+            resultOrigin.x = rightOriginX;
+            break;
+            
+        case kSAPSquarePositionBottomLeft:
+            resultOrigin.y = bottomOriginY;
+            break;
+            
+        case kSAPSquarePositionBottomRight:
+            resultOrigin.x = rightOriginX;
+            resultOrigin.y = bottomOriginY;
+            break;
+            
+        default:
+            break;
+    }
+    
+    squareFrame.origin = resultOrigin;
+    
+    return squareFrame;
+}
+
 
 @end
