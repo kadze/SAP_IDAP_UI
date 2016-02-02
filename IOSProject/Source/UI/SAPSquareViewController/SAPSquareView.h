@@ -15,6 +15,7 @@ typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
     kSAPSquarePositionBottomRight
 };
 
+typedef void(^SAPVoidBlock)(void);
 
 @interface SAPSquareView : UIView
 @property (nonatomic, assign) SAPSquarePosition squarePosition;
@@ -29,7 +30,7 @@ typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
 
 - (void)setSquarePosition:(SAPSquarePosition)squarePosition
                  animated:(BOOL)animated
-        completionHandler:(void(^)(bool))handler;
+        completionHandler:(SAPVoidBlock)handler;
 
 - (void)changeButtonAppearanceForStop;
 - (void)changeButtonAppearanceForStart;

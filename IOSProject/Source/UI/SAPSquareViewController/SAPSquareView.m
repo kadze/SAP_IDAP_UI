@@ -61,18 +61,23 @@ static NSTimeInterval kSAPAnimationDuration = 1.0;
 
 - (void)setSquarePosition:(SAPSquarePosition)squarePosition
                  animated:(BOOL)animated
-        completionHandler:(void(^)(bool))handler
+        completionHandler:(SAPVoidBlock)handler
 {
-   void (^animations)(void) = ^{
-        self.square.frame = [self squareFrameWithSquarePosition:squarePosition];
-        _squarePosition = squarePosition;
-    };
-
     [UIView animateKeyframesWithDuration:animated ? kSAPAnimationDuration : 0.0
                                    delay:0
                                  options:UIViewKeyframeAnimationOptionBeginFromCurrentState
-                              animations:animations
-                              completion:handler];
+                              animations: ^{
+                                  self.square.frame = [self squareFrameWithSquarePosition:squarePosition];
+                              }
+                              completion:^(BOOL finished) {
+                                  if (finished) {
+                                      _squarePosition = squarePosition;
+                                  }
+                                  
+                                  if (handler) {
+                                      handler();
+                                  }
+                              }];
 }
 
 - (void)changeButtonAppearanceForStop {
