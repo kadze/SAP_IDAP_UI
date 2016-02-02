@@ -14,6 +14,8 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 @interface SAPSquareView ()
 @property (nonatomic, strong) NSTimer *timer;
 
+- (void)timerFires:(NSTimer *)timer;
+
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
 
@@ -40,7 +42,7 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
             
             self.timer = [NSTimer scheduledTimerWithTimeInterval:kSAPTimerInterval
                                                           target:self
-                                                        selector:@selector(moveSquare)
+                                                        selector:@selector(timerFires:)
                                                         userInfo:nil
                                                          repeats:YES];
         } else {
@@ -97,6 +99,10 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 
 #pragma mark -
 #pragma mark Private
+
+- (void)timerFires:(NSTimer *)timer {
+    [self moveSquare];
+}
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition{
     CGRect selfFrame = self.frame;
