@@ -7,6 +7,7 @@
 //
 
 #import "SAPSquareView.h"
+#import "SAPWeakifyStongifyMacro.h"
 
 static NSTimeInterval const kSAPAnimationDuration = 1.0;
 
@@ -21,6 +22,8 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 - (void)changeStartStopButtonColor:(UIColor *)color title:(NSString *)title;
 - (void)changeButtonAppearanceForStop;
 - (void)changeButtonAppearanceForStart;
+
+- (void)loopMove;
 
 @end
 
@@ -46,25 +49,6 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
             self.proceedLoop = NO;
         }
     }
-}
-
-- (void)loopMove {
-    __weak typeof(self) weakSelf = self;
-    
-    [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
-                   animated:YES
-          completionHandler:^{
-              __strong typeof(self) self = weakSelf;
-              if (!self) {
-                  return;
-              }
-              
-              if (self.proceedLoop) {
-                  [self loopMove];
-              }
-              
-          }
-     ];
 }
 
 #pragma mark -
@@ -164,6 +148,23 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 
 - (void)changeButtonAppearanceForStart {
     [self changeStartStopButtonColor:[UIColor greenColor] title:@"Start"];
+}
+
+- (void)loopMove {
+    weakify(self);
+    [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
+                   animated:YES
+          completionHandler:^{
+              strongify(self);
+              if (!self) {
+                  return;
+              }
+              
+              if (self.proceedLoop) {
+                  [self loopMove];
+              }
+          }
+     ];
 }
 
 @end

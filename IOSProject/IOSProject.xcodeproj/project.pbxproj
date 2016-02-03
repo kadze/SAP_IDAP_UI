@@ -41,6 +41,7 @@
 		BECC6AD01C5A907500F96AC9 /* SAPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPAppDelegate.m; sourceTree = "<group>"; };
 		CA4AA8951C5BC71400B1CBEC /* UIWindow+SAPExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtentions.h"; sourceTree = "<group>"; };
 		CA4AA8961C5BC71400B1CBEC /* UIWindow+SAPExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SAPExtentions.m"; sourceTree = "<group>"; };
+		CA4AA8981C61DEC900B1CBEC /* SAPWeakifyStongifyMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPWeakifyStongifyMacro.h; sourceTree = "<group>"; };
 		CAC4216B1C5A1AA1004E4F1E /* IOSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC421841C5A1AA2004E4F1E /* IOSProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC421881C5A1AA2004E4F1E /* IOSProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSProjectTests.m; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 			children = (
 				CA4AA8941C5BC6E100B1CBEC /* Categories */,
 				CAC421D01C5A65D1004E4F1E /* SAPMacro.h */,
+				CA4AA8981C61DEC900B1CBEC /* SAPWeakifyStongifyMacro.h */,
 			);
 			path = Library;
 			sourceTree = "<group>";
