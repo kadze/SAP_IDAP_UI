@@ -6,9 +6,9 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#define weakify(variable) \
+#define SAPWeakify(variable) \
 __weak typeof(variable) weak##variable = variable
 
-#define strongify(variable) \
+#define SAPStrongify(variable) \
 __strong typeof(variable) variable = weak##variable
 

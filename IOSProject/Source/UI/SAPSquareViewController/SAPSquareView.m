@@ -151,11 +151,11 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 }
 
 - (void)loopMove {
-    weakify(self);
+    SAPWeakify(self);
     [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
                    animated:YES
           completionHandler:^{
-              strongify(self);
+              SAPStrongify(self);
               if (!self) {
                   return;
               }
