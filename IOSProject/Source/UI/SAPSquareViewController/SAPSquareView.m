@@ -155,11 +155,7 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
     [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
                    animated:YES
           completionHandler:^{
-              SAPStrongify(self);
-              if (!self) {
-                  return;
-              }
-              
+              SAPStrongify(self,);
               if (self.proceedLoop) {
                   [self loopMove];
               }

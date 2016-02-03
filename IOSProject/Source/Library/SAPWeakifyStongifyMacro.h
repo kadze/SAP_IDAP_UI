@@ -7,8 +7,11 @@
 //
 
 #define SAPWeakify(variable) \
-__weak typeof(variable) weak##variable = variable
+    __weak typeof(variable) weak##variable = variable
 
-#define SAPStrongify(variable) \
-__strong typeof(variable) variable = weak##variable
+#define SAPStrongify(variable, returnValue) \
+    __strong typeof(variable) variable = weak##variable; \
+    if (!variable) { \
+        return returnValue; \
+    }
 
