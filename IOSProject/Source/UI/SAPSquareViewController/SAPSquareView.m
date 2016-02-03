@@ -12,7 +12,8 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 
 @interface SAPSquareView ()
 
-@property (nonatomic, assign, getter=isMoving) BOOL               moving;
+@property (nonatomic, assign, getter=isMoving)      BOOL    moving;
+@property (nonatomic, assign)                       BOOL    proceedLoop;
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
@@ -37,16 +38,17 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
         _moving = moving;
         if (moving) {
             [self changeButtonAppearanceForStop];
-            [self cycledMoving];
+            self.proceedLoop = YES;
+            [self loopMove];
             
         } else {
             [self changeButtonAppearanceForStart];
-            
+            self.proceedLoop = NO;
         }
     }
 }
 
-- (void)cycledMoving {
+- (void)loopMove {
     __weak typeof(self) weakSelf = self;
     
     [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
@@ -57,7 +59,10 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
                   return;
               }
               
-              [self cycledMoving];
+              if (self.proceedLoop) {
+                  [self loopMove];
+              }
+              
           }
      ];
 }
