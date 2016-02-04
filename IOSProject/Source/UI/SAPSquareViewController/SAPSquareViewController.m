@@ -9,7 +9,7 @@
 #import "SAPSquareViewController.h"
 
 #import "SAPSquareView.h"
-#import "SAPMacro.h"
+#import "SAPViewPropertyMacro.h"
 
 SAPCategoryForViewProperty(SAPSquareViewController, SAPSquareView, squareView);
 

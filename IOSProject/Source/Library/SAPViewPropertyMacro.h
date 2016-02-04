@@ -30,4 +30,4 @@
     \
     SAPViewGetterSynthesize(viewClass, propertyName) \
     \
-    @end \
+    @end

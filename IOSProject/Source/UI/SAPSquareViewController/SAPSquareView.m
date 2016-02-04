@@ -7,7 +7,10 @@
 //
 
 #import "SAPSquareView.h"
+
+#import "SAPEmptyMacro.h"
 #import "SAPOwnershipMacro.h"
+#import "SAPClangMacro.h"
 
 static NSTimeInterval const kSAPAnimationDuration  = 1.0;
 static NSString * const kSAPButtonTitleStop    = @"Stop";
@@ -142,7 +145,7 @@ CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend) {
     [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
                    animated:YES
           completionHandler:^{
-              SAPStrongify(self,);
+              SAPStrongifyAndReturnIfNil(self)
               if (self.loopedMoving) {
                   [self loopMove];
               }
