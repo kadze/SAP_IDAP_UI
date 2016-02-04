@@ -16,6 +16,9 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 @property (nonatomic, assign, getter=isMoving)      BOOL    moving;
 @property (nonatomic, assign)                       BOOL    proceedLoop;
 
+static inline
+CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);
+
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
 
@@ -91,24 +94,27 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 #pragma mark -
 #pragma mark Private
 
+static inline
+CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend) {
+    return CGPointMake(CGRectGetMaxX(minuend) - CGRectGetWidth(subtrahend),
+                       CGRectGetMaxY(minuend) - CGRectGetHeight(subtrahend));
+}
+
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition{
-    CGRect selfFrame = self.frame;
     CGRect squareFrame = self.squareLabel.frame;
-    CGFloat rightOriginX = CGRectGetWidth(selfFrame) - CGRectGetWidth(squareFrame);
-    CGFloat bottomOriginY = CGRectGetHeight(selfFrame) - CGRectGetHeight(squareFrame);
+    CGPoint visibleOrigin = CGPointBySubstractingRects(self.bounds, squareFrame);
     CGPoint resultOrigin = CGPointZero;
     switch (squarePosition) {
         case kSAPSquarePositionTopRight:
-            resultOrigin.x = rightOriginX;
+            resultOrigin.x = visibleOrigin.x;
             break;
             
         case kSAPSquarePositionBottomLeft:
-            resultOrigin.y = bottomOriginY;
+            resultOrigin.y = visibleOrigin.y;
             break;
             
         case kSAPSquarePositionBottomRight:
-            resultOrigin.x = rightOriginX;
-            resultOrigin.y = bottomOriginY;
+            resultOrigin = visibleOrigin;
             break;
             
         default:
