@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-static inline
+extern
 CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);

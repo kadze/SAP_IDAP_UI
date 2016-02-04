@@ -8,7 +8,6 @@
 
 #import "CGGeometry+SAPExtentions.h"
 
-static inline
 CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend) {
     return CGPointMake(CGRectGetMaxX(minuend) - CGRectGetWidth(subtrahend),
                        CGRectGetMaxY(minuend) - CGRectGetHeight(subtrahend));
