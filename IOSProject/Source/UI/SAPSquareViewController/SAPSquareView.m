@@ -121,19 +121,9 @@ static NSTimeInterval const kSAPAnimationDuration = 1.0;
 }
 
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition {
-    switch (squarePosition) {
-        case kSAPSquarePositionTopLeft:
-            return kSAPSquarePositionTopRight;
-            
-        case kSAPSquarePositionTopRight:
-            return kSAPSquarePositionBottomRight;
-            
-        case kSAPSquarePositionBottomRight:
-            return kSAPSquarePositionBottomLeft;
-            
-        default:
-            return kSAPSquarePositionTopLeft;
-    }
+    NSUInteger nextPositionSummand = kSAPSquarePositionBottomLeft == squarePosition ? 2 : 1;
+    
+    return (squarePosition + nextPositionSummand) % kSAPSquarePositionsCount;
 }
 
 - (void)changeStartStopButtonColor:(UIColor *)color title:(NSString *)title {

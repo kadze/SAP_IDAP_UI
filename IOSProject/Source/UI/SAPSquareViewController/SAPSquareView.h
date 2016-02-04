@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
-    kSAPSquarePositionTopLeft = 1,
+    kSAPSquarePositionUndefined,
+    kSAPSquarePositionTopLeft,
     kSAPSquarePositionTopRight,
+    kSAPSquarePositionBottomRight,
     kSAPSquarePositionBottomLeft,
-    kSAPSquarePositionBottomRight
+    kSAPSquarePositionsCount
 };
 
 typedef void(^SAPVoidBlock)(void);
