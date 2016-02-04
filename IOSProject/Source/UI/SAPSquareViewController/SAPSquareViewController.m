@@ -34,7 +34,7 @@ SAPCategoryForViewProperty(SAPSquareViewController, SAPPrivateViewCategory, squa
 }
 
 - (IBAction)onStartStop:(id)sender {
-    [self.squareView startStopMoving];
+    self.squareView.moving = !self.squareView.moving;
 }
 
 

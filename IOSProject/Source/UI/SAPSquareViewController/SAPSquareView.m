@@ -7,14 +7,14 @@
 //
 
 #import "SAPSquareView.h"
-#import "SAPWeakifyStongifyMacro.h"
+#import "SAPOwnershipMacro.h"
 
-static NSTimeInterval const kSAPAnimationDuration = 1.0;
+static NSTimeInterval const kSAPAnimationDuration  = 1.0;
+static NSString * const kSAPButtonTitleStop    = @"Stop";
+static NSString * const kSAPButtonTitleStart   = @"Start";
 
 @interface SAPSquareView ()
-
-@property (nonatomic, assign, getter=isMoving)      BOOL    moving;
-@property (nonatomic, assign)                       BOOL    proceedLoop;
+@property (nonatomic, assign)                       BOOL    loopedMoving;
 
 static inline
 CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);
@@ -23,8 +23,7 @@ CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
 
 - (void)changeStartStopButtonColor:(UIColor *)color title:(NSString *)title;
-- (void)changeButtonAppearanceForStop;
-- (void)changeButtonAppearanceForStart;
+- (void)updateStartStopButtonAppearanceIfMoving:(BOOL)moving;
 
 - (void)loopMove;
 
@@ -42,14 +41,11 @@ CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);
 - (void)setMoving:(BOOL)moving {
     if (_moving != moving) {
         _moving = moving;
+        
+        self.loopedMoving = moving;
+        [self updateStartStopButtonAppearanceIfMoving:moving];
         if (moving) {
-            [self changeButtonAppearanceForStop];
-            self.proceedLoop = YES;
             [self loopMove];
-            
-        } else {
-            [self changeButtonAppearanceForStart];
-            self.proceedLoop = NO;
         }
     }
 }
@@ -60,10 +56,6 @@ CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);
 - (void)moveSquare {
     [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
                    animated:YES];
-}
-
-- (void)startStopMoving {
-    self.moving = !(self.isMoving);
 }
 
 - (void)setSquarePosition:(SAPSquarePosition)squarePosition animated:(BOOL)animated {
@@ -138,12 +130,11 @@ CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend) {
     [startStopButton setTitle:title forState:UIControlStateNormal];
 }
 
-- (void)changeButtonAppearanceForStop {
-    [self changeStartStopButtonColor:[UIColor redColor] title:@"Stop"];
-}
-
-- (void)changeButtonAppearanceForStart {
-    [self changeStartStopButtonColor:[UIColor greenColor] title:@"Start"];
+- (void)updateStartStopButtonAppearanceIfMoving:(BOOL)moving {
+    UIColor *color = moving ? [UIColor redColor] : [UIColor greenColor];
+    NSString *title = moving ? kSAPButtonTitleStop : kSAPButtonTitleStart;
+    
+    [self changeStartStopButtonColor:color title:title];
 }
 
 - (void)loopMove {
@@ -152,7 +143,7 @@ CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend) {
                    animated:YES
           completionHandler:^{
               SAPStrongify(self,);
-              if (self.proceedLoop) {
+              if (self.loopedMoving) {
                   [self loopMove];
               }
           }
