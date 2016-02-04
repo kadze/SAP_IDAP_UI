@@ -17,14 +17,14 @@
         return nil; \
     }
 
-#define SAPCategoryForViewProperty(controllerName, categoryName, propertyName, viewClass) \
+#define SAPCategoryForViewProperty(controllerName, viewClass, propertyName) \
     \
-    @interface controllerName (categoryName) \
+    @interface controllerName (__SAPViewControllerProperty__##controllerName##__##viewClass##__##propertyName) \
     SAPViewPropertySynthesize(viewClass, propertyName) \
     \
     @end \
     \
-    @implementation controllerName (categoryName)  \
+    @implementation controllerName (__SAPViewControllerProperty__##controllerName##__##viewClass##__##propertyName)  \
     \
     @dynamic propertyName; \
     \

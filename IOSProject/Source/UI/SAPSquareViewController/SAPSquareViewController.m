@@ -11,7 +11,7 @@
 #import "SAPSquareView.h"
 #import "SAPMacro.h"
 
-SAPCategoryForViewProperty(SAPSquareViewController, SAPPrivateViewCategory, squareView, SAPSquareView);
+SAPCategoryForViewProperty(SAPSquareViewController, SAPSquareView, squareView);
 
 @implementation SAPSquareViewController
 
