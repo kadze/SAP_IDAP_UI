@@ -14,11 +14,11 @@
 #import "SAPClangMacro.h"
 
 static NSTimeInterval const kSAPAnimationDuration  = 1.0;
-static NSString * const kSAPButtonTitleStop    = @"Stop";
-static NSString * const kSAPButtonTitleStart   = @"Start";
+static NSString *     const kSAPButtonTitleStop    = @"Stop";
+static NSString *     const kSAPButtonTitleStart   = @"Start";
 
 @interface SAPSquareView ()
-@property (nonatomic, assign)                       BOOL    loopedMoving;
+@property (nonatomic, assign) BOOL loopedMoving;
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
