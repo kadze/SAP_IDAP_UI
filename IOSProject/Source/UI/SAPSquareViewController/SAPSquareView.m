@@ -8,6 +8,8 @@
 
 #import "SAPSquareView.h"
 
+#import "CGGeometry+SAPExtentions.h"
+
 #import "SAPOwnershipMacro.h"
 #import "SAPClangMacro.h"
 
@@ -17,9 +19,6 @@ static NSString * const kSAPButtonTitleStart   = @"Start";
 
 @interface SAPSquareView ()
 @property (nonatomic, assign)                       BOOL    loopedMoving;
-
-static inline
-CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
@@ -87,12 +86,6 @@ CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend);
 
 #pragma mark -
 #pragma mark Private
-
-static inline
-CGPoint CGPointBySubstractingRects(CGRect minuend, CGRect subtrahend) {
-    return CGPointMake(CGRectGetMaxX(minuend) - CGRectGetWidth(subtrahend),
-                       CGRectGetMaxY(minuend) - CGRectGetHeight(subtrahend));
-}
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition{
     CGRect squareFrame = self.squareLabel.frame;
