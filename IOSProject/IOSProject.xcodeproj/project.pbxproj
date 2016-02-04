@@ -58,8 +58,7 @@
 		CAC421CA1C5A4905004E4F1E /* SAPSquareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPSquareViewController.xib; sourceTree = "<group>"; };
 		CAC421CD1C5A55A2004E4F1E /* SAPSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPSquareView.h; sourceTree = "<group>"; };
 		CAC421CE1C5A55A2004E4F1E /* SAPSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPSquareView.m; sourceTree = "<group>"; };
-		CAC421D01C5A65D1004E4F1E /* SAPViewPropertyMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPViewPropertyMacro.h; sourceTree = "<group>"; };
-		CAE85BE61C6377B0004F2190 /* SAPEmptyMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAPEmptyMacro.h; sourceTree = "<group>"; };
+		CAC421D01C5A65D1004E4F1E /* SAPViewControllerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPViewControllerMacro.h; sourceTree = "<group>"; };
 		CAF27AAE1C6387A500FA357D /* SAPClangMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPClangMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,9 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				CA4AA8941C5BC6E100B1CBEC /* Categories */,
-				CAC421D01C5A65D1004E4F1E /* SAPViewPropertyMacro.h */,
+				CAC421D01C5A65D1004E4F1E /* SAPViewControllerMacro.h */,
 				CA4AA8981C61DEC900B1CBEC /* SAPOwnershipMacro.h */,
-				CAE85BE61C6377B0004F2190 /* SAPEmptyMacro.h */,
 				CAF27AAE1C6387A500FA357D /* SAPClangMacro.h */,
 			);
 			path = Library;

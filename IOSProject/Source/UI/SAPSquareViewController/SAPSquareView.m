@@ -8,7 +8,6 @@
 
 #import "SAPSquareView.h"
 
-#import "SAPEmptyMacro.h"
 #import "SAPOwnershipMacro.h"
 #import "SAPClangMacro.h"
 

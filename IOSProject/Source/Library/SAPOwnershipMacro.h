@@ -6,6 +6,8 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
+#define SAPEmpty
+
 #define SAPWeakify(obj) \
     __weak typeof(obj) __weak_##obj = obj
 
