@@ -33,7 +33,7 @@ SAPCategoryForViewProperty(SAPSquareViewController, SAPSquareView, squareView);
     [self.squareView moveToNextPosition];
 }
 
-- (IBAction)onStartStop:(id)sender {
+- (IBAction)onAnimate:(id)sender {
     SAPSquareView *squareView = self.squareView;
     squareView.loopedMoving = !squareView.loopedMoving;
 }

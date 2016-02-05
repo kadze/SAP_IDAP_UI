@@ -11,6 +11,6 @@
 @interface SAPSquareViewController : UIViewController
 
 - (IBAction)onMove:(id)sender;
-- (IBAction)onStartStop:(id)sender;
+- (IBAction)onAnimate:(id)sender;
 
 @end

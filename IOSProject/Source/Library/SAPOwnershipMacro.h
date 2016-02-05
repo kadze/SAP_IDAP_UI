@@ -27,4 +27,3 @@
 
 #define SAPStrongifyAndReturnIfNil(obj) \
     SAPStrongifyAndReturnValueIfNil(obj, SAPEmpty)
-

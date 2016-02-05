@@ -14,8 +14,3 @@
     _Pragma(option)
 
 #define SAPClangDiagnosticPopOption SAPClangDiagnosticPop
-
-
-
-
-
