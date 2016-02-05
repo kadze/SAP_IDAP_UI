@@ -12,9 +12,9 @@
     __weak typeof(obj) __weak_##obj = obj
 
 #define SAPStrongify(obj) \
-    SAPClangDiagnosticPushIgnored("-Wshadow") \
+    SAPClangDiagnosticPushOption("clang diagnostic ignored \"-Wshadow\"") \
     __strong typeof(obj) obj = __weak_##obj \
-    SAPClangDiagnosticPop
+    SAPClangDiagnosticPopOption
 
 #define SAPStrongifyAndReturnValueIfNil(obj, returnValue) \
     SAPStrongify(obj); \

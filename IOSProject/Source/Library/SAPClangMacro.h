@@ -8,12 +8,12 @@
 
 #define SAPClangDiagnosticPush _Pragma("clang diagnostic push")
 #define SAPClangDiagnosticPop _Pragma("clang diagnostic pop")
-#define SAPClangDiagnosticIgnodred(option) _Pragma("clang diagnostic ignored \"##option##\"")
 
-#define SAPClangDiagnosticPushIgnored(option) \
+#define SAPClangDiagnosticPushOption(option) \
     SAPClangDiagnosticPush \
-    SAPClangDiagnosticIgnodred(option)
+    _Pragma(option)
 
+#define SAPClangDiagnosticPopOption SAPClangDiagnosticPop
 
 
 
