@@ -114,9 +114,7 @@ static NSString *     const kSAPButtonTitleStart   = @"Start";
 }
 
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition {
-    NSUInteger nextPositionSummand = kSAPSquarePositionBottomLeft == squarePosition ? 2 : 1;
-    
-    return (squarePosition + nextPositionSummand) % kSAPSquarePositionsCount;
+    return (squarePosition + 1) % kSAPSquarePositionsCount;
 }
 
 - (void)changeStartStopButtonColor:(UIColor *)color title:(NSString *)title {
