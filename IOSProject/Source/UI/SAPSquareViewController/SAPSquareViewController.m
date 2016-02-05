@@ -30,12 +30,12 @@ SAPCategoryForViewProperty(SAPSquareViewController, SAPSquareView, squareView);
 #pragma mark Interface Handling
 
 - (IBAction)onMove:(id)sender {
-    [self.squareView moveSquare];
+    [self.squareView moveToNextPosition];
 }
 
 - (IBAction)onStartStop:(id)sender {
     SAPSquareView *squareView = self.squareView;
-    squareView.moving = !squareView.moving;
+    squareView.loopedMoving = !squareView.loopedMoving;
 }
 
 

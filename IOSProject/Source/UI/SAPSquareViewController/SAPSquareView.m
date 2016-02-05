@@ -18,15 +18,13 @@ static NSString *     const kSAPButtonTitleStop    = @"Stop";
 static NSString *     const kSAPButtonTitleStart   = @"Start";
 
 @interface SAPSquareView ()
-@property (nonatomic, assign) BOOL loopedMoving;
+@property (nonatomic, assign) BOOL animating;
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
 
 - (void)changeStartStopButtonColor:(UIColor *)color title:(NSString *)title;
-- (void)updateStartStopButtonAppearanceIfMoving:(BOOL)moving;
-
-- (void)loopMove;
+- (void)updateStartStopButtonAppearanceIfLoopedMoving:(BOOL)loopedMoving;
 
 @end
 
@@ -39,14 +37,13 @@ static NSString *     const kSAPButtonTitleStart   = @"Start";
     [self setSquarePosition:squarePosition animated:NO];
 }
 
-- (void)setMoving:(BOOL)moving {
-    if (_moving != moving) {
-        _moving = moving;
+- (void)setLoopedMoving:(BOOL)loopedMoving {
+    if (_loopedMoving != loopedMoving) {
+        _loopedMoving = loopedMoving;
         
-        self.loopedMoving = moving;
-        [self updateStartStopButtonAppearanceIfMoving:moving];
-        if (moving) {
-            [self loopMove];
+        [self updateStartStopButtonAppearanceIfLoopedMoving:loopedMoving];
+        if (loopedMoving) {
+            [self moveToNextPosition];
         }
     }
 }
@@ -54,9 +51,17 @@ static NSString *     const kSAPButtonTitleStart   = @"Start";
 #pragma mark -
 #pragma mark Public
 
-- (void)moveSquare {
+- (void)moveToNextPosition {
+    SAPWeakify(self);
     [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
-                   animated:YES];
+                   animated:YES
+          completionHandler:^{
+              SAPStrongifyAndReturnIfNil(self)
+              if (self.loopedMoving) {
+                  [self moveToNextPosition];
+              }
+          }
+     ];
 }
 
 - (void)setSquarePosition:(SAPSquarePosition)squarePosition animated:(BOOL)animated {
@@ -67,15 +72,20 @@ static NSString *     const kSAPButtonTitleStart   = @"Start";
                  animated:(BOOL)animated
         completionHandler:(SAPVoidBlock)handler
 {
-    [UIView animateKeyframesWithDuration:animated ? kSAPAnimationDuration : 0.0
-                                   delay:0
-                                 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
+    if (self.animating) {
+        return;
+    } else {
+        self.animating = YES;
+    }
+    
+    [UIView animateWithDuration:animated ? kSAPAnimationDuration : 0.0
                               animations: ^{
                                   self.squareLabel.frame = [self squareFrameWithSquarePosition:squarePosition];
                               }
                               completion:^(BOOL finished) {
                                   if (finished) {
                                       _squarePosition = squarePosition;
+                                      self.animating = NO;
                                   }
                                   
                                   if (handler) {
@@ -123,24 +133,11 @@ static NSString *     const kSAPButtonTitleStart   = @"Start";
     [startStopButton setTitle:title forState:UIControlStateNormal];
 }
 
-- (void)updateStartStopButtonAppearanceIfMoving:(BOOL)moving {
-    UIColor *color = moving ? [UIColor redColor] : [UIColor greenColor];
-    NSString *title = moving ? kSAPButtonTitleStop : kSAPButtonTitleStart;
+- (void)updateStartStopButtonAppearanceIfLoopedMoving:(BOOL)loopedMoving {
+    UIColor *color = loopedMoving ? [UIColor redColor] : [UIColor greenColor];
+    NSString *title = loopedMoving ? kSAPButtonTitleStop : kSAPButtonTitleStart;
     
     [self changeStartStopButtonColor:color title:title];
-}
-
-- (void)loopMove {
-    SAPWeakify(self);
-    [self setSquarePosition:[self nextPositionWithSquarePosition:self.squarePosition]
-                   animated:YES
-          completionHandler:^{
-              SAPStrongifyAndReturnIfNil(self)
-              if (self.loopedMoving) {
-                  [self loopMove];
-              }
-          }
-     ];
 }
 
 @end
