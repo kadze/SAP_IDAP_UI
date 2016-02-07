@@ -8,7 +8,7 @@
 
 #import "SAPAppDelegate.h"
 
-#import "SAPSquareViewController.h"
+#import "SAPTableViewController.h"
 
 #import "UIWindow+SAPExtentions.h"
 
@@ -24,7 +24,12 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    SAPSquareViewController *controller = [SAPSquareViewController new];
+    SAPTableViewController *controller = [SAPTableViewController new];
+
+    SAPData *data = [SAPData new];
+    [data fillWithRandomStrings];
+    controller.data = data;
+    
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];
