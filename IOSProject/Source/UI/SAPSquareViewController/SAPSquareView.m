@@ -24,8 +24,8 @@ static NSString * const kSAPButtonTitleStart = @"Start";
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
 
-- (void)setStartStopButtonColor:(UIColor *)color title:(NSString *)title;
-- (void)updateStartStopButtonAppearanceIfLoopedMoving:(BOOL)loopedMoving;
+- (void)setAnimateButtonColor:(UIColor *)color title:(NSString *)title;
+- (void)updateAnimateButtonAppearanceIfLoopedMoving:(BOOL)loopedMoving;
 
 @end
 
@@ -71,14 +71,14 @@ static NSString * const kSAPButtonTitleStart = @"Start";
     if (_loopedMoving != loopedMoving) {
         _loopedMoving = loopedMoving;
         
-        [self updateStartStopButtonAppearanceIfLoopedMoving:loopedMoving];
+        [self updateAnimateButtonAppearanceIfLoopedMoving:loopedMoving];
         if (loopedMoving) {
             [self moveToNextPosition];
         }
     }
 }
 
-- (void)setStartStopButtonColor:(UIColor *)color title:(NSString *)title {
+- (void)setAnimateButtonColor:(UIColor *)color title:(NSString *)title {
     UIButton *animateButton = self.animateButton;
     animateButton.backgroundColor = color;
     [animateButton setTitle:title forState:UIControlStateNormal];
@@ -133,11 +133,11 @@ static NSString * const kSAPButtonTitleStart = @"Start";
     return (squarePosition + 1) % kSAPSquarePositionsCount;
 }
 
-- (void)updateStartStopButtonAppearanceIfLoopedMoving:(BOOL)loopedMoving {
+- (void)updateAnimateButtonAppearanceIfLoopedMoving:(BOOL)loopedMoving {
     UIColor *color = loopedMoving ? [UIColor redColor] : [UIColor greenColor];
     NSString *title = loopedMoving ? kSAPButtonTitleStop : kSAPButtonTitleStart;
     
-    [self setStartStopButtonColor:color title:title];
+    [self setAnimateButtonColor:color title:title];
 }
 
 @end
