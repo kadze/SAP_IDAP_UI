@@ -31,8 +31,6 @@ SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-   // self.data = self.data;
     
     [self.tableView.tableViewControl reloadData];
 }
@@ -58,7 +56,7 @@ SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
         cell = [cells firstObject];
     }
     
-    [cell fillWithModel:self.dataArray[indexPath.row]];
+    cell.data = self.dataArray[indexPath.row];
     
     return cell;
 }

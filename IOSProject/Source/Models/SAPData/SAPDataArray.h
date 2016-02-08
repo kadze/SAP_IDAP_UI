@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SAPObservableObject.h"
+
 static NSUInteger const kSAPArraySize = 100;
 
 @class SAPDataElement;
 
-@interface SAPDataArray : NSObject
+@interface SAPDataArray : SAPObservableObject
 @property (nonatomic, strong, readonly) NSArray     *dataElements;
 @property (nonatomic, readonly)         NSUInteger  count;
 

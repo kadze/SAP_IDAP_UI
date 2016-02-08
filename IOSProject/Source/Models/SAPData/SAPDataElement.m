@@ -11,6 +11,9 @@
 
 static NSUInteger const kSAPRandomWordSize  = 10;
 
+static NSString * const kSAPImageName = @"smile";
+static NSString * const kSAPImageType = @"jpeg";
+
 @implementation SAPDataElement
 
 #pragma mark -
@@ -24,6 +27,15 @@ static NSUInteger const kSAPRandomWordSize  = 10;
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (UIImage *)image {
+    NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
+    
+    return [UIImage imageWithContentsOfFile:path];
 }
 
 #pragma mark -

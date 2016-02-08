@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface SAPDataElement : NSObject
+#import "SAPObservableObject.h"
+
+@interface SAPDataElement : SAPObservableObject
 @property (nonatomic, copy)     NSString  *randomString;
 @property (nonatomic, strong)   UIImage   *image;
 

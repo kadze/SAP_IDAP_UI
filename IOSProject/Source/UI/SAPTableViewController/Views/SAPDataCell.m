@@ -27,6 +27,6 @@
 
 - (void)fillWithModel:(SAPDataElement *)data {
     self.dataStringLabel.text = data.randomString;
-//    self.dataImageView.image =
+    self.dataImageView.image = data.image;
 }
 @end
