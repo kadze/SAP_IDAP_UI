@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SAPData.h"
+#import "SAPDataArray.h"
 
 @interface SAPTableView : UIView
 @property (nonatomic, strong) IBOutlet UITableView *tableViewControl;

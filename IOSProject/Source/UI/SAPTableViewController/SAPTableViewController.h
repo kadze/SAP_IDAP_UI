@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SAPData.h"
+@class SAPDataArray;
 
 @interface SAPTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) SAPData *data;
+@property (nonatomic, strong) SAPDataArray *dataArray;
 
 @end

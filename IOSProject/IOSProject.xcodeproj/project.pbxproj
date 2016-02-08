@@ -13,11 +13,12 @@
 		CA634BC71C67B45B00DAED4E /* SAPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BC51C67B45B00DAED4E /* SAPTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BC81C67B45B00DAED4E /* SAPTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA634BC61C67B45B00DAED4E /* SAPTableViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		CA634BCB1C67B6D800DAED4E /* SAPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BCA1C67B6D800DAED4E /* SAPTableView.m */; settings = {ASSET_TAGS = (); }; };
-		CA634BCF1C67BEB900DAED4E /* SAPData.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BCE1C67BEB900DAED4E /* SAPData.m */; settings = {ASSET_TAGS = (); }; };
+		CA634BCF1C67BEB900DAED4E /* SAPDataArray.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BCE1C67BEB900DAED4E /* SAPDataArray.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BD71C67C0EA00DAED4E /* NSString+SAPStringExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BD51C67C0EA00DAED4E /* NSString+SAPStringExtentions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BDB1C67D4BF00DAED4E /* SAPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BDA1C67D4BF00DAED4E /* SAPTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BDF1C67D7E800DAED4E /* SAPDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BDE1C67D7E800DAED4E /* SAPDataCell.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BE11C67D81800DAED4E /* SAPDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA634BE01C67D81800DAED4E /* SAPDataCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CA634BE41C68819700DAED4E /* SAPDataElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BE31C68819700DAED4E /* SAPDataElement.m */; settings = {ASSET_TAGS = (); }; };
 		CAC421891C5A1AA2004E4F1E /* IOSProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421881C5A1AA2004E4F1E /* IOSProjectTests.m */; };
 		CAC421941C5A1AA2004E4F1E /* IOSProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421931C5A1AA2004E4F1E /* IOSProjectUITests.m */; };
 		CAC421B01C5A2364004E4F1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421A31C5A2364004E4F1E /* main.m */; };
@@ -58,8 +59,8 @@
 		CA634BC61C67B45B00DAED4E /* SAPTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPTableViewController.xib; sourceTree = "<group>"; };
 		CA634BC91C67B6D800DAED4E /* SAPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPTableView.h; sourceTree = "<group>"; };
 		CA634BCA1C67B6D800DAED4E /* SAPTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPTableView.m; sourceTree = "<group>"; };
-		CA634BCD1C67BEB900DAED4E /* SAPData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPData.h; sourceTree = "<group>"; };
-		CA634BCE1C67BEB900DAED4E /* SAPData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPData.m; sourceTree = "<group>"; };
+		CA634BCD1C67BEB900DAED4E /* SAPDataArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPDataArray.h; sourceTree = "<group>"; };
+		CA634BCE1C67BEB900DAED4E /* SAPDataArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPDataArray.m; sourceTree = "<group>"; };
 		CA634BD41C67C0EA00DAED4E /* NSString+SAPStringExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SAPStringExtentions.h"; sourceTree = "<group>"; };
 		CA634BD51C67C0EA00DAED4E /* NSString+SAPStringExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPStringExtentions.m"; sourceTree = "<group>"; };
 		CA634BD91C67D4BF00DAED4E /* SAPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPTableViewCell.h; sourceTree = "<group>"; };
@@ -67,6 +68,8 @@
 		CA634BDD1C67D7E800DAED4E /* SAPDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPDataCell.h; sourceTree = "<group>"; };
 		CA634BDE1C67D7E800DAED4E /* SAPDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPDataCell.m; sourceTree = "<group>"; };
 		CA634BE01C67D81800DAED4E /* SAPDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPDataCell.xib; sourceTree = "<group>"; };
+		CA634BE21C68819700DAED4E /* SAPDataElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPDataElement.h; sourceTree = "<group>"; };
+		CA634BE31C68819700DAED4E /* SAPDataElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPDataElement.m; sourceTree = "<group>"; };
 		CAC4216B1C5A1AA1004E4F1E /* IOSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC421841C5A1AA2004E4F1E /* IOSProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC421881C5A1AA2004E4F1E /* IOSProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSProjectTests.m; sourceTree = "<group>"; };
@@ -157,8 +160,10 @@
 		CA634BCC1C67BE0000DAED4E /* SAPData */ = {
 			isa = PBXGroup;
 			children = (
-				CA634BCD1C67BEB900DAED4E /* SAPData.h */,
-				CA634BCE1C67BEB900DAED4E /* SAPData.m */,
+				CA634BCD1C67BEB900DAED4E /* SAPDataArray.h */,
+				CA634BCE1C67BEB900DAED4E /* SAPDataArray.m */,
+				CA634BE21C68819700DAED4E /* SAPDataElement.h */,
+				CA634BE31C68819700DAED4E /* SAPDataElement.m */,
 			);
 			path = SAPData;
 			sourceTree = "<group>";
@@ -445,9 +450,10 @@
 			files = (
 				CA634BCB1C67B6D800DAED4E /* SAPTableView.m in Sources */,
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
+				CA634BE41C68819700DAED4E /* SAPDataElement.m in Sources */,
 				CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtentions.m in Sources */,
 				CAC421CF1C5A55A2004E4F1E /* SAPSquareView.m in Sources */,
-				CA634BCF1C67BEB900DAED4E /* SAPData.m in Sources */,
+				CA634BCF1C67BEB900DAED4E /* SAPDataArray.m in Sources */,
 				CA634BDB1C67D4BF00DAED4E /* SAPTableViewCell.m in Sources */,
 				CAC421B01C5A2364004E4F1E /* main.m in Sources */,
 				BECC6AD11C5A907500F96AC9 /* SAPAppDelegate.m in Sources */,

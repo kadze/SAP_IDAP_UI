@@ -8,10 +8,10 @@
 
 #import "SAPTableViewController.h"
 #import "SAPTableView.h"
+#import "SAPDataCell.h"
+#import "SAPDataArray.h"
 
 #import "SAPViewControllerMacro.h"
-
-static NSUInteger const kSAPNumberOfRowsInSection = 100;
 
 SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
 
@@ -20,12 +20,10 @@ SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setData:(SAPData *)data {
-    if (_data != data) {
-        _data = data;
+- (void)setDataArray:(SAPDataArray *)dataArray {
+    if (_dataArray != dataArray) {
+        _dataArray = dataArray;
     }
-    
-    //fill view
 }
 
 #pragma mark-
@@ -34,7 +32,7 @@ SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.data = self.data;
+   // self.data = self.data;
     
     [self.tableView.tableViewControl reloadData];
 }
@@ -48,11 +46,21 @@ SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return kSAPNumberOfRowsInSection;
+    return self.dataArray.count;
 }
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellClass = NSStringFromClass([SAPDataCell class]);
+    SAPDataCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClass];
+    if (!cell) {
+        UINib *nib = [UINib nibWithNibName:cellClass bundle:nil];
+        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
+        cell = [cells firstObject];
+    }
+    
+    [cell fillWithModel:self.dataArray[indexPath.row]];
+    
+    return cell;
+}
 
 @end

@@ -9,6 +9,7 @@
 #import "SAPAppDelegate.h"
 
 #import "SAPTableViewController.h"
+#import "SAPDataArray.h"
 
 #import "UIWindow+SAPExtentions.h"
 
@@ -26,9 +27,9 @@
     
     SAPTableViewController *controller = [SAPTableViewController new];
 
-    SAPData *data = [SAPData new];
-    [data fillWithRandomStrings];
-    controller.data = data;
+    SAPDataArray *dataArray = [SAPDataArray new];
+    [dataArray fillWithDataElements];
+    controller.dataArray = dataArray;
     
     window.rootViewController = controller;
     

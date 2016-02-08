@@ -8,14 +8,14 @@
 
 #import "SAPTableViewCell.h"
 
-@class SAPData;
+@class SAPDataElement;
 
 @interface SAPDataCell : SAPTableViewCell
 @property (nonatomic, strong) IBOutlet UILabel      *dataStringLabel;
 @property (nonatomic, strong) IBOutlet UIImageView  *dataImageView;
 
-@property (nonatomic, strong) SAPData  *data;
+@property (nonatomic, strong) SAPDataElement  *data;
 
-- (void)fillWithModel:(SAPData *)data;
+- (void)fillWithModel:(SAPDataElement *)data;
 
 @end

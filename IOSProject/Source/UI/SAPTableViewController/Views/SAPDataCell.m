@@ -7,13 +7,14 @@
 //
 
 #import "SAPDataCell.h"
+#import "SAPDataElement.h"
 
 @implementation SAPDataCell
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setData:(SAPData *)data {
+- (void)setData:(SAPDataElement *)data {
     if (_data != data) {
         _data = data;
         
@@ -24,8 +25,8 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)fillWithModel:(SAPData *)data {
-//    self.dataStringLabel.text =
+- (void)fillWithModel:(SAPDataElement *)data {
+    self.dataStringLabel.text = data.randomString;
 //    self.dataImageView.image =
 }
 @end
