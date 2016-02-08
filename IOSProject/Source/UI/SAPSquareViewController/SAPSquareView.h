@@ -22,6 +22,7 @@ typedef void(^SAPVoidBlock)(void);
 @property (nonatomic, strong) IBOutlet UILabel  *squareLabel;
 @property (nonatomic, strong) IBOutlet UIButton *moveButton;
 @property (nonatomic, strong) IBOutlet UIButton *animateButton;
+
 @property (nonatomic, assign)           BOOL    loopedMoving;
 @property (nonatomic, assign, readonly) BOOL    animating;
 @property (nonatomic, assign) SAPSquarePosition squarePosition;

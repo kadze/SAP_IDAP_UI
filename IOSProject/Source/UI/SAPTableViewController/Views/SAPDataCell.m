@@ -7,6 +7,7 @@
 //
 
 #import "SAPDataCell.h"
+
 #import "SAPDataElement.h"
 
 @implementation SAPDataCell
@@ -29,4 +30,5 @@
     self.dataStringLabel.text = data.randomString;
     self.dataImageView.image = data.image;
 }
+
 @end

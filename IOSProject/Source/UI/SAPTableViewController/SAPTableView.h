@@ -13,5 +13,4 @@
 @interface SAPTableView : UIView
 @property (nonatomic, strong) IBOutlet UITableView *tableViewControl;
 
-
 @end

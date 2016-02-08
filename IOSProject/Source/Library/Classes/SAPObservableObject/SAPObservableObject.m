@@ -7,6 +7,7 @@
 //
 
 #import "SAPObservableObject.h"
+
 #import "SAPAssignReference.h"
 
 @interface SAPObservableObject ()

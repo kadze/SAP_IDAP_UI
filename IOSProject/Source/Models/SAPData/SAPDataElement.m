@@ -7,6 +7,7 @@
 //
 
 #import "SAPDataElement.h"
+
 #import "NSString+SAPStringExtentions.h"
 
 static NSUInteger const kSAPRandomWordSize  = 10;
