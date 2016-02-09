@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SAPUsers.h"
-
 @interface SAPUsersView : UIView
 @property (nonatomic, strong) IBOutlet UITableView *usersView;
 

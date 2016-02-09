@@ -10,8 +10,6 @@
 
 #import "SAPObservableObject.h"
 
-static NSUInteger const kSAPArraySize = 100;
-
 @class SAPUser;
 
 @interface SAPUsers : SAPObservableObject

@@ -10,6 +10,8 @@
 
 #import "SAPUser.h"
 
+static NSUInteger const kSAPArraySize = 100;
+
 @interface SAPUsers ()
 @property (nonatomic, strong) NSMutableArray *mutableElements;
 
