@@ -6,8 +6,8 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPTableView.h"
+#import "SAPUsersView.h"
 
-@implementation SAPTableView
+@implementation SAPUsersView
 
 @end

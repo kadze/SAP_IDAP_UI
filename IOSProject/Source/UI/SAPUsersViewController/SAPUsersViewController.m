@@ -6,24 +6,24 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPTableViewController.h"
+#import "SAPUsersViewController.h"
 
-#import "SAPTableView.h"
-#import "SAPDataCell.h"
-#import "SAPDataArray.h"
+#import "SAPUsersView.h"
+#import "SAPUserCell.h"
+#import "SAPUsers.h"
 
 #import "SAPViewControllerMacro.h"
 
-SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
+SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 
-@implementation SAPTableViewController
+@implementation SAPUsersViewController
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setDataArray:(SAPDataArray *)dataArray {
-    if (_dataArray != dataArray) {
-        _dataArray = dataArray;
+- (void)setUsers:(SAPUsers *)users {
+    if (_users != users) {
+        _users = users;
     }
 }
 
@@ -33,7 +33,7 @@ SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView.tableViewControl reloadData];
+    [self.tableView.usersView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,19 +45,19 @@ SAPCategoryForViewProperty(SAPTableViewController, SAPTableView, tableView);
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    return self.users.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellClass = NSStringFromClass([SAPDataCell class]);
-    SAPDataCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClass];
+    NSString *cellClass = NSStringFromClass([SAPUserCell class]);
+    SAPUserCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClass];
     if (!cell) {
         UINib *nib = [UINib nibWithNibName:cellClass bundle:nil];
         NSArray *cells = [nib instantiateWithOwner:nil options:nil];
         cell = [cells firstObject];
     }
     
-    cell.data = self.dataArray[indexPath.row];
+    cell.user = self.users[indexPath.row];
     
     return cell;
 }

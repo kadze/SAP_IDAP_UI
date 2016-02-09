@@ -8,8 +8,8 @@
 
 #import "SAPAppDelegate.h"
 
-#import "SAPTableViewController.h"
-#import "SAPDataArray.h"
+#import "SAPUsersViewController.h"
+#import "SAPUsers.h"
 
 #import "UIWindow+SAPExtentions.h"
 
@@ -25,11 +25,11 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    SAPTableViewController *controller = [SAPTableViewController new];
+    SAPUsersViewController *controller = [SAPUsersViewController new];
 
-    SAPDataArray *dataArray = [SAPDataArray new];
-    [dataArray fillWithDataElements];
-    controller.dataArray = dataArray;
+    SAPUsers *users = [SAPUsers new];
+    [users fillWithDataElements];
+    controller.users = users;
     
     window.rootViewController = controller;
     

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SAPDataArray.h"
+#import "SAPUsers.h"
 
-@interface SAPTableView : UIView
-@property (nonatomic, strong) IBOutlet UITableView *tableViewControl;
+@interface SAPUsersView : UIView
+@property (nonatomic, strong) IBOutlet UITableView *usersView;
 
 @end

@@ -6,27 +6,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FoA-xr-q4U" customClass="SAPDataCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FoA-xr-q4U" userLabel="User Cell" customClass="SAPUserCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FoA-xr-q4U" id="45W-Dh-bn0">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3Y-E7-zd0">
-                        <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D62-zE-qtc">
-                        <rect key="frame" x="61" y="0.0" width="259" height="43"/>
+                        <rect key="frame" x="51" y="0.0" width="269" height="43"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3Y-E7-zd0">
+                        <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="dataImageView" destination="X3Y-E7-zd0" id="j0e-kO-ysh"/>
-                <outlet property="dataStringLabel" destination="D62-zE-qtc" id="9OA-7s-JYX"/>
+                <outlet property="userImageView" destination="X3Y-E7-zd0" id="H1g-Ol-m1b"/>
+                <outlet property="userLabel" destination="D62-zE-qtc" id="B7a-D2-OCQ"/>
             </connections>
         </tableViewCell>
     </objects>

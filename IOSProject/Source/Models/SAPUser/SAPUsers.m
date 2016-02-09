@@ -6,16 +6,16 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPDataArray.h"
+#import "SAPUsers.h"
 
-#import "SAPDataElement.h"
+#import "SAPUser.h"
 
-@interface SAPDataArray ()
+@interface SAPUsers ()
 @property (nonatomic, strong) NSMutableArray *mutableElements;
 
 @end
 
-@implementation SAPDataArray
+@implementation SAPUsers
 
 #pragma mark - 
 #pragma mark Initializations and Deallocations
@@ -47,15 +47,15 @@
 - (void)fillWithDataElements {
     NSMutableArray *mutableElements = self.mutableElements;
     for (NSUInteger index = 0; index < kSAPArraySize; index++) {
-        [mutableElements addObject:[SAPDataElement new]];
+        [mutableElements addObject:[SAPUser new]];
     }
 }
 
-- (SAPDataElement *)objectAtIndex:(NSUInteger) index {
+- (SAPUser *)objectAtIndex:(NSUInteger) index {
     return [self.mutableElements objectAtIndex:index];
 }
 
-- (SAPDataElement *)objectAtIndexedSubscript:(NSUInteger) index {
+- (SAPUser *)objectAtIndexedSubscript:(NSUInteger) index {
     return [self objectAtIndex:index];
 }
 

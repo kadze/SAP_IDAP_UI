@@ -1,12 +1,12 @@
 //
-//  SAPDataElement.m
+//  SAPUser.m
 //  IOSProject
 //
 //  Created by S A P on 2/7/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPDataElement.h"
+#import "SAPUser.h"
 
 #import "NSString+SAPStringExtentions.h"
 
@@ -15,7 +15,7 @@ static NSUInteger const kSAPRandomWordSize  = 10;
 static NSString * const kSAPImageName = @"smile";
 static NSString * const kSAPImageType = @"jpeg";
 
-@implementation SAPDataElement
+@implementation SAPUser
 
 #pragma mark -
 #pragma mark Initializations and Deallocations

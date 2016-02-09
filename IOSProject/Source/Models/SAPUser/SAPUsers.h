@@ -1,5 +1,5 @@
 //
-//  SAPData.h
+//  SAPUsers.h
 //  IOSProject
 //
 //  Created by S A P on 2/7/16.
@@ -12,15 +12,15 @@
 
 static NSUInteger const kSAPArraySize = 100;
 
-@class SAPDataElement;
+@class SAPUser;
 
-@interface SAPDataArray : SAPObservableObject
+@interface SAPUsers : SAPObservableObject
 @property (nonatomic, strong, readonly) NSArray     *dataElements;
 @property (nonatomic, readonly)         NSUInteger  count;
 
 - (void)fillWithDataElements;
 
-- (SAPDataElement *)objectAtIndex:(NSUInteger) index;
-- (SAPDataElement *)objectAtIndexedSubscript:(NSUInteger)index;
+- (SAPUser *)objectAtIndex:(NSUInteger) index;
+- (SAPUser *)objectAtIndexedSubscript:(NSUInteger)index;
 
 @end

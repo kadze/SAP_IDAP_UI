@@ -1,5 +1,5 @@
 //
-//  SAPDataElement.h
+//  SAPUser.h
 //  IOSProject
 //
 //  Created by S A P on 2/7/16.
@@ -11,7 +11,7 @@
 
 #import "SAPObservableObject.h"
 
-@interface SAPDataElement : SAPObservableObject
+@interface SAPUser : SAPObservableObject
 @property (nonatomic, copy)     NSString  *randomString;
 @property (nonatomic, strong)   UIImage   *image;
 
