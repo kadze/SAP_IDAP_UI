@@ -13,11 +13,14 @@
 static NSUInteger const kSAPArraySize = 100;
 
 @interface SAPUsers ()
-@property (nonatomic, strong) NSMutableArray *mutableElements;
+@property (nonatomic, strong) NSMutableArray *mutableUsers;
 
 @end
 
 @implementation SAPUsers
+
+@dynamic users;
+@dynamic count;
 
 #pragma mark - 
 #pragma mark Initializations and Deallocations
@@ -26,7 +29,7 @@ static NSUInteger const kSAPArraySize = 100;
     self = [super init];
     
     if (self) {
-        self.mutableElements = [[NSMutableArray alloc] initWithCapacity:kSAPArraySize];
+        [self fillWithUsers];
     }
     
     return self;
@@ -35,30 +38,34 @@ static NSUInteger const kSAPArraySize = 100;
 #pragma mark -
 #pragma mark Accessors
 
-- (NSArray *)dataElements {
-    return [self.mutableElements copy];
+- (NSArray *)users {
+    return [self.mutableUsers copy];
 }
 
 - (NSUInteger)count {
-    return self.mutableElements.count;
+    return self.mutableUsers.count;
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)fillWithDataElements {
-    NSMutableArray *mutableElements = self.mutableElements;
-    for (NSUInteger index = 0; index < kSAPArraySize; index++) {
-        [mutableElements addObject:[SAPUser new]];
-    }
-}
-
 - (SAPUser *)objectAtIndex:(NSUInteger) index {
-    return [self.mutableElements objectAtIndex:index];
+    return [self.mutableUsers objectAtIndex:index];
 }
 
 - (SAPUser *)objectAtIndexedSubscript:(NSUInteger) index {
     return [self objectAtIndex:index];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)fillWithUsers {
+    NSMutableArray *mutableUsers = [NSMutableArray arrayWithCapacity:kSAPArraySize];
+    for (NSUInteger index = 0; index < kSAPArraySize; index++) {
+        [mutableUsers addObject:[SAPUser new]];
+    }
+    self.mutableUsers = mutableUsers;
 }
 
 @end

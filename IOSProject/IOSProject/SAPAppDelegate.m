@@ -28,7 +28,6 @@
     SAPUsersViewController *controller = [SAPUsersViewController new];
 
     SAPUsers *users = [SAPUsers new];
-    [users fillWithDataElements];
     controller.users = users;
     
     window.rootViewController = controller;

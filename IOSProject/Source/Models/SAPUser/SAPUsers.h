@@ -13,10 +13,8 @@
 @class SAPUser;
 
 @interface SAPUsers : SAPObservableObject
-@property (nonatomic, strong, readonly) NSArray     *dataElements;
-@property (nonatomic, readonly)         NSUInteger  count;
-
-- (void)fillWithDataElements;
+@property (nonatomic, readonly) NSArray     *users;
+@property (nonatomic, readonly) NSUInteger  count;
 
 - (SAPUser *)objectAtIndex:(NSUInteger) index;
 - (SAPUser *)objectAtIndexedSubscript:(NSUInteger)index;
