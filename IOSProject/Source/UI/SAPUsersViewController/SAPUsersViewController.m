@@ -24,6 +24,8 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 - (void)setUsers:(SAPUsers *)users {
     if (_users != users) {
         _users = users;
+        
+        [self.tableView.usersView reloadData];
     }
 }
 
