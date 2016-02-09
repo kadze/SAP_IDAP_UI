@@ -9,6 +9,7 @@
 #import "SAPObservableObject.h"
 
 #import "SAPAssignReference.h"
+#import "SAPClangMacro.h"
 
 @interface SAPObservableObject ()
 @property (nonatomic, retain)    NSMutableSet    *mutableObservers;
@@ -96,7 +97,10 @@
         for (SAPAssignReference *reference in self.mutableObservers) {
             id observer = reference.target;
             if ([observer respondsToSelector:selector]) {
+                SAPClangDiagnosticPushOption("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
                 [observer performSelector:selector withObject:object ];
+                SAPClangDiagnosticPopOption
+                
             }
         }
     }
