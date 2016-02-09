@@ -10,6 +10,8 @@
 		BECC6AD11C5A907500F96AC9 /* SAPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC6AD01C5A907500F96AC9 /* SAPAppDelegate.m */; };
 		CA4B3EDD1C69F28100440914 /* NSString+SAPExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EDC1C69F28100440914 /* NSString+SAPExtentions.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EE01C69F2BB00440914 /* NSString+SAPRandomName.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EDF1C69F2BB00440914 /* NSString+SAPRandomName.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3EE41C6A2DF900440914 /* UINib+SAPExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EE31C6A2DF900440914 /* UINib+SAPExtentions.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3EE81C6A2E2F00440914 /* UIView+SAPExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EE71C6A2E2F00440914 /* UIView+SAPExtentions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtentions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BC11C63B96C00DAED4E /* UIWindow+SAPExtentions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BE71C68A18300DAED4E /* smile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CA634BE61C68A18300DAED4E /* smile.jpeg */; settings = {ASSET_TAGS = (); }; };
@@ -58,6 +60,10 @@
 		CA4B3EDC1C69F28100440914 /* NSString+SAPExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPExtentions.m"; sourceTree = "<group>"; };
 		CA4B3EDE1C69F2BB00440914 /* NSString+SAPRandomName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SAPRandomName.h"; sourceTree = "<group>"; };
 		CA4B3EDF1C69F2BB00440914 /* NSString+SAPRandomName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPRandomName.m"; sourceTree = "<group>"; };
+		CA4B3EE21C6A2DF900440914 /* UINib+SAPExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+SAPExtentions.h"; sourceTree = "<group>"; };
+		CA4B3EE31C6A2DF900440914 /* UINib+SAPExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+SAPExtentions.m"; sourceTree = "<group>"; };
+		CA4B3EE61C6A2E2F00440914 /* UIView+SAPExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SAPExtentions.h"; sourceTree = "<group>"; };
+		CA4B3EE71C6A2E2F00440914 /* UIView+SAPExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SAPExtentions.m"; sourceTree = "<group>"; };
 		CA634BBC1C63B93100DAED4E /* CGGeometry+SAPExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+SAPExtentions.h"; sourceTree = "<group>"; };
 		CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+SAPExtentions.m"; sourceTree = "<group>"; };
 		CA634BC01C63B96C00DAED4E /* UIWindow+SAPExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtentions.h"; sourceTree = "<group>"; };
@@ -132,6 +138,8 @@
 		CA4AA8941C5BC6E100B1CBEC /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CA4B3EE51C6A2E1900440914 /* UIView */,
+				CA4B3EE11C6A2DDF00440914 /* UINib */,
 				CA634BD01C67C0EA00DAED4E /* NSString */,
 				CA634BBF1C63B96C00DAED4E /* UIWindow */,
 				CA634BBB1C63B93100DAED4E /* CGGeometry */,
@@ -148,6 +156,24 @@
 				CA4B3EDF1C69F2BB00440914 /* NSString+SAPRandomName.m */,
 			);
 			path = "NSString+SAPExtentions";
+			sourceTree = "<group>";
+		};
+		CA4B3EE11C6A2DDF00440914 /* UINib */ = {
+			isa = PBXGroup;
+			children = (
+				CA4B3EE21C6A2DF900440914 /* UINib+SAPExtentions.h */,
+				CA4B3EE31C6A2DF900440914 /* UINib+SAPExtentions.m */,
+			);
+			path = UINib;
+			sourceTree = "<group>";
+		};
+		CA4B3EE51C6A2E1900440914 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CA4B3EE61C6A2E2F00440914 /* UIView+SAPExtentions.h */,
+				CA4B3EE71C6A2E2F00440914 /* UIView+SAPExtentions.m */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		CA634BBB1C63B93100DAED4E /* CGGeometry */ = {
@@ -528,12 +554,14 @@
 				CA634C071C69C3FC00DAED4E /* SAPUsersView.m in Sources */,
 				CA634BEF1C68D0BD00DAED4E /* SAPObservableObject.m in Sources */,
 				BECC6AD11C5A907500F96AC9 /* SAPAppDelegate.m in Sources */,
+				CA4B3EE41C6A2DF900440914 /* UINib+SAPExtentions.m in Sources */,
 				CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtentions.m in Sources */,
 				CA634C0A1C69C3FC00DAED4E /* SAPUserCell.m in Sources */,
 				CA4B3EDD1C69F28100440914 /* NSString+SAPExtentions.m in Sources */,
 				CA4B3EE01C69F2BB00440914 /* NSString+SAPRandomName.m in Sources */,
 				CA634C121C69C43900DAED4E /* SAPUsers.m in Sources */,
 				CA634BF01C68D0BD00DAED4E /* SAPTableViewCell.m in Sources */,
+				CA4B3EE81C6A2E2F00440914 /* UIView+SAPExtentions.m in Sources */,
 				CA634BF71C68D14500DAED4E /* SAPAssignReference.m in Sources */,
 				CA634BF81C68D14500DAED4E /* SAPReference.m in Sources */,
 			);

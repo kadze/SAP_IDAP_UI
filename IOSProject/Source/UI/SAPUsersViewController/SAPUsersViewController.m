@@ -12,6 +12,8 @@
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
 
+#import "UINib+SAPExtentions.h"
+
 #import "SAPViewControllerMacro.h"
 
 SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
@@ -51,12 +53,12 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellClass = NSStringFromClass([SAPUserCell class]);
-    SAPUserCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClass];
+    Class cellClass = [SAPUserCell class];
+    NSString *cellClassName = NSStringFromClass(cellClass);
+    SAPUserCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
     if (!cell) {
-        UINib *nib = [UINib nibWithNibName:cellClass bundle:nil];
-        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-        cell = [cells firstObject];
+        UINib *nib = [UINib nibWithClass:cellClass];
+        cell = [nib getObjectOfClass:cellClass];
     }
     
     cell.user = self.users[indexPath.row];
