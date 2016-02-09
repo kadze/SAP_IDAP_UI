@@ -12,7 +12,7 @@
 #import "SAPObservableObject.h"
 
 @interface SAPUser : SAPObservableObject
-@property (nonatomic, copy)     NSString  *randomString;
+@property (nonatomic, copy)     NSString  *name;
 @property (nonatomic, strong)   UIImage   *image;
 
 @end

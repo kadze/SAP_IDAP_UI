@@ -24,7 +24,7 @@ static NSString * const kSAPImageType = @"jpeg";
     self = [super init];
     
     if (self) {
-        self.randomString = [self generateRandomString];
+        self.name = [self generateRandomString];
     }
     
     return self;

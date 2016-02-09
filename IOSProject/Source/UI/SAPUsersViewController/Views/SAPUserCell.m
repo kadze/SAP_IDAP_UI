@@ -33,7 +33,7 @@
 #pragma mark Private
 
 - (void)fillWithModel:(SAPUser *)user {
-    self.userLabel.text = user.randomString;
+    self.userLabel.text = user.name;
     self.userImageView.image = user.image;
 }
 
