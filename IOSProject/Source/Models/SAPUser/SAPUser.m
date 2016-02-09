@@ -15,6 +15,8 @@ static NSString * const kSAPImageType = @"jpeg";
 
 @implementation SAPUser
 
+@dynamic image;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -32,9 +34,14 @@ static NSString * const kSAPImageType = @"jpeg";
 #pragma mark Accessors
 
 - (UIImage *)image {
-    NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
+    static UIImage *__image = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
+        __image = [UIImage imageWithContentsOfFile:path];
+    });
     
-    return [UIImage imageWithContentsOfFile:path];
+    return __image;
 }
 
 @end

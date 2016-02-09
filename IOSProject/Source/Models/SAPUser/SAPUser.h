@@ -13,6 +13,6 @@
 
 @interface SAPUser : SAPObservableObject
 @property (nonatomic, copy)     NSString  *name;
-@property (nonatomic, strong)   UIImage   *image;
+@property (nonatomic, readonly)   UIImage   *image;
 
 @end
