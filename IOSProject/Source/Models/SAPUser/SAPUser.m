@@ -8,9 +8,7 @@
 
 #import "SAPUser.h"
 
-#import "NSString+SAPStringExtentions.h"
-
-static NSUInteger const kSAPRandomWordSize  = 10;
+#import "NSString+SAPRandomName.h"
 
 static NSString * const kSAPImageName = @"smile";
 static NSString * const kSAPImageType = @"jpeg";
@@ -24,7 +22,7 @@ static NSString * const kSAPImageType = @"jpeg";
     self = [super init];
     
     if (self) {
-        self.name = [self generateRandomString];
+        self.name = [NSString randomName];
     }
     
     return self;
@@ -37,13 +35,6 @@ static NSString * const kSAPImageType = @"jpeg";
     NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
     
     return [UIImage imageWithContentsOfFile:path];
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (NSString *)generateRandomString {
-    return [NSString generateRandomStringWithAlphabetString:[NSString lowerCaseLetterAlphabet] ofSize:kSAPRandomWordSize];
 }
 
 @end

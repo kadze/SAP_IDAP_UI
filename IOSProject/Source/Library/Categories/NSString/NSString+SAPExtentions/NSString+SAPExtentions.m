@@ -6,7 +6,7 @@
 //  Copyright © 2015 Yosemite Retail. All rights reserved.
 //
 
-#import "NSString+SAPStringExtentions.h"
+#import "NSString+SAPExtentions.h"
 
 static const unichar kSAPFirstLowerCaseLetter = 'a';
 static const unichar kSAPLastLowerCaseLetter = 'z';
@@ -60,21 +60,21 @@ static const unichar kSAPLastNumberSign = '9';
 }
 
 //random strings
-+ (NSString *)generateRandomStringWithAlphabetString:(NSString *)alphabet ofSize:(NSUInteger)size {
++ (NSString *)randomStringWithAlphabetString:(NSString *)alphabet length:(NSUInteger)length {
     int alphabetLength = (int)alphabet.length;
-    unichar unichars[size];
-    for (uint index = 0; index < size; index++) {
+    unichar unichars[length];
+    for (uint index = 0; index < length; index++) {
         unichars[index] = [alphabet characterAtIndex:arc4random_uniform(alphabetLength)];
     }
     
-    return [self stringWithCharacters:unichars length:size];
+    return [self stringWithCharacters:unichars length:length];
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
-- (NSString *)generateRandomStringFromSelfOfSize:(NSUInteger)size {
-    return [[self class] generateRandomStringWithAlphabetString:self ofSize:size];
+- (NSString *)generateRandomStringFromSelfOfLength:(NSUInteger)length {
+    return [[self class] randomStringWithAlphabetString:self length:length];
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (SAPStringExtentions)
+@interface NSString (SAPExtentions)
 
 + (NSString *)alphanumericAlphabet;
 + (NSString *)numericAlphabet;
@@ -17,8 +17,8 @@
 + (NSString *)capitalizedCaseLetterAlphabet;
 + (NSString *)alphabetWithUnicodeRange:(NSRange)range;
 
-+ (NSString *)generateRandomStringWithAlphabetString:(NSString *)alphabet ofSize:(NSUInteger)size;
++ (NSString *)randomStringWithAlphabetString:(NSString *)alphabet length:(NSUInteger)length;
 
-- (NSString *)generateRandomStringFromSelfOfSize:(NSUInteger)size;
+- (NSString *)randomStringFromSelfOfLength:(NSUInteger)length;
 
 @end
