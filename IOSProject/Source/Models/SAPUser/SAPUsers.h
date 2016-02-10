@@ -18,5 +18,11 @@
 
 - (SAPUser *)objectAtIndex:(NSUInteger) index;
 - (SAPUser *)objectAtIndexedSubscript:(NSUInteger)index;
+- (void)addObject:(SAPUser *)anObject;
+- (void)insertObject:(SAPUser *)anObject atIndex:(NSUInteger)index;
+- (void)removeLastObject;
+- (void)removeObjectAtIndex:(NSUInteger)index;
+- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(SAPUser *)anObject;
+- (void)exchangeObjectAtIndex:(NSUInteger)idx1 withObjectAtIndex:(NSUInteger)idx2;
 
 @end
