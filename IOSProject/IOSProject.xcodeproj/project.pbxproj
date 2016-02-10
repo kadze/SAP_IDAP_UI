@@ -12,6 +12,8 @@
 		CA4B3EEC1C6A486200440914 /* NSString+IOPRandomName.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EEB1C6A486200440914 /* NSString+IOPRandomName.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EF01C6A48DD00440914 /* NSString+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EEF1C6A48DD00440914 /* NSString+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3EF71C6BBB5400440914 /* Add User-48.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4B3EF51C6BBB5400440914 /* Add User-48.png */; settings = {ASSET_TAGS = (); }; };
+		CA4B3EF81C6BBB5400440914 /* Add_User-48.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */; settings = {ASSET_TAGS = (); }; };
 		CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BC11C63B96C00DAED4E /* UIWindow+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BE71C68A18300DAED4E /* smile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CA634BE61C68A18300DAED4E /* smile.jpeg */; settings = {ASSET_TAGS = (); }; };
@@ -64,6 +66,8 @@
 		CA4B3EEF1C6A48DD00440914 /* NSString+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA4B3EF21C6B8CDE00440914 /* UITableView+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SAPExtensions.m"; sourceTree = "<group>"; };
+		CA4B3EF51C6BBB5400440914 /* Add User-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add User-48.png"; sourceTree = "<group>"; };
+		CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Add_User-48.jpg"; sourceTree = "<group>"; };
 		CA634BBC1C63B93100DAED4E /* CGGeometry+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA634BC01C63B96C00DAED4E /* UIWindow+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtensions.h"; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 		CA634BE51C68A18300DAED4E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CA4B3EF51C6BBB5400440914 /* Add User-48.png */,
+				CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */,
 				CA634BE61C68A18300DAED4E /* smile.jpeg */,
 			);
 			path = Images;
@@ -526,8 +532,10 @@
 				CAC421CC1C5A4905004E4F1E /* SAPSquareViewController.xib in Resources */,
 				CAC421B21C5A2364004E4F1E /* LaunchScreen.storyboard in Resources */,
 				CAC421B11C5A2364004E4F1E /* Assets.xcassets in Resources */,
+				CA4B3EF71C6BBB5400440914 /* Add User-48.png in Resources */,
 				CA634BE71C68A18300DAED4E /* smile.jpeg in Resources */,
 				CA634C091C69C3FC00DAED4E /* SAPUsersViewController.xib in Resources */,
+				CA4B3EF81C6BBB5400440914 /* Add_User-48.jpg in Resources */,
 				CA634C0B1C69C3FC00DAED4E /* SAPUserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

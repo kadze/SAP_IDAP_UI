@@ -11,6 +11,7 @@
 #import "SAPUsersView.h"
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
+#import "SAPUser.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -47,6 +48,14 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 }
 
 #pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onAddUser:(id)sender {
+    [self.users addObject:[SAPUser new]];
+    [self.tableView.usersView reloadData];
+}
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -59,5 +68,40 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
     
     return cell;
 }
+
+- (void)        tableView:(UITableView *)tableView
+       commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+        forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (UITableViewCellEditingStyleDelete == editingStyle) {
+        [self.users removeObjectAtIndex:indexPath.row];
+        [self.tableView.usersView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                        withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView.usersView reloadData];
+    }
+}
+
+//reordering
+
+-       (void)tableView:(UITableView *)tableView
+     moveRowAtIndexPath:(NSIndexPath *)indexPath1
+            toIndexPath:(NSIndexPath *)indexPath2
+{
+    [self.users exchangeObjectAtIndex:indexPath1.row withObjectAtIndex:indexPath2.row];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return UITableViewCellEditingStyleNone;
+//}
+
 
 @end

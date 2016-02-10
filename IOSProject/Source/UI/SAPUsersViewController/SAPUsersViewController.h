@@ -13,4 +13,6 @@
 @interface SAPUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) SAPUsers *users;
 
+- (IBAction)onAddUser:(id)sender;
+
 @end
