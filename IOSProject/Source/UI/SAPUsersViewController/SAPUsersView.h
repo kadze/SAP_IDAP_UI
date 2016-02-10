@@ -11,4 +11,6 @@
 @interface SAPUsersView : UIView
 @property (nonatomic, strong) IBOutlet UITableView *usersView;
 
+- (IBAction)onLongPress:(UILongPressGestureRecognizer *)sender;
+
 @end

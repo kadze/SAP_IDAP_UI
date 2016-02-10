@@ -25,10 +25,17 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="usersView" destination="NVV-vI-LC5" id="8iA-pQ-tqx"/>
+                <outletCollection property="gestureRecognizers" destination="vCi-Fa-d4M" appends="YES" id="Vme-xQ-wEb"/>
             </connections>
             <point key="canvasLocation" x="282" y="307"/>
         </view>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="vCi-Fa-d4M">
+            <connections>
+                <action selector="onLongPress:" destination="i5M-Pr-FkT" id="ag5-rO-Lld"/>
+            </connections>
+        </pongPressGestureRecognizer>
     </objects>
 </document>
