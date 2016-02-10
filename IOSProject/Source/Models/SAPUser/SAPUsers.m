@@ -64,6 +64,7 @@ static NSUInteger const kSAPArraySize = 100;
     for (NSUInteger index = 0; index < kSAPArraySize; index++) {
         [mutableUsers addObject:[SAPUser new]];
     }
+    
     self.mutableUsers = mutableUsers;
 }
 

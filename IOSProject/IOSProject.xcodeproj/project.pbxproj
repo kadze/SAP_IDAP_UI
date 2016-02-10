@@ -11,6 +11,7 @@
 		CA4B3EE41C6A2DF900440914 /* UINib+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EE31C6A2DF900440914 /* UINib+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EEC1C6A486200440914 /* NSString+IOPRandomName.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EEB1C6A486200440914 /* NSString+IOPRandomName.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EF01C6A48DD00440914 /* NSString+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EEF1C6A48DD00440914 /* NSString+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BC11C63B96C00DAED4E /* UIWindow+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BE71C68A18300DAED4E /* smile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CA634BE61C68A18300DAED4E /* smile.jpeg */; settings = {ASSET_TAGS = (); }; };
@@ -61,6 +62,8 @@
 		CA4B3EEB1C6A486200440914 /* NSString+IOPRandomName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IOPRandomName.m"; sourceTree = "<group>"; };
 		CA4B3EEE1C6A48DD00440914 /* NSString+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA4B3EEF1C6A48DD00440914 /* NSString+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPExtensions.m"; sourceTree = "<group>"; };
+		CA4B3EF21C6B8CDE00440914 /* UITableView+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SAPExtensions.h"; sourceTree = "<group>"; };
+		CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA634BBC1C63B93100DAED4E /* CGGeometry+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA634BC01C63B96C00DAED4E /* UIWindow+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtensions.h"; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		CA4AA8941C5BC6E100B1CBEC /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CA4B3EF11C6B8CB100440914 /* UITableView */,
 				CA4B3EE11C6A2DDF00440914 /* UINib */,
 				CA634BD01C67C0EA00DAED4E /* NSString */,
 				CA634BBF1C63B96C00DAED4E /* UIWindow */,
@@ -168,6 +172,15 @@
 				CA4B3EEF1C6A48DD00440914 /* NSString+SAPExtensions.m */,
 			);
 			path = "NSString+SAPExtensions";
+			sourceTree = "<group>";
+		};
+		CA4B3EF11C6B8CB100440914 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				CA4B3EF21C6B8CDE00440914 /* UITableView+SAPExtensions.h */,
+				CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */,
+			);
+			path = UITableView;
 			sourceTree = "<group>";
 		};
 		CA634BBB1C63B93100DAED4E /* CGGeometry */ = {
@@ -540,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */,
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
 				CA634C111C69C43900DAED4E /* SAPUser.m in Sources */,
 				CA4B3EEC1C6A486200440914 /* NSString+IOPRandomName.m in Sources */,
