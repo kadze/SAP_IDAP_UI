@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (SAPRandomName)
+@interface NSString (IOPRandomName)
 
 + (NSString *)randomName;
 

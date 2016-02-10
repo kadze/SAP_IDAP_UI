@@ -8,7 +8,7 @@
 
 #import "SAPSquareView.h"
 
-#import "CGGeometry+SAPExtentions.h"
+#import "CGGeometry+SAPextensions.h"
 
 #import "SAPOwnershipMacro.h"
 #import "SAPClangMacro.h"

@@ -8,7 +8,7 @@
 
 #import "SAPUser.h"
 
-#import "NSString+SAPRandomName.h"
+#import "NSString+IOPRandomName.h"
 
 static NSString * const kSAPImageName = @"smile";
 static NSString * const kSAPImageType = @"jpeg";
@@ -22,7 +22,6 @@ static NSString * const kSAPImageType = @"jpeg";
 
 - (instancetype)init {
     self = [super init];
-    
     if (self) {
         self.name = [NSString randomName];
     }

@@ -1,5 +1,5 @@
 //
-//  UIWindow+SAPExtentions.h
+//  UIWindow+SAPextensions.h
 //  IOSProject
 //
 //  Created by S A P on 1/29/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIWindow (SAPExtentions)
+@interface UIWindow (SAPextensions)
 
 + (instancetype)window;
 

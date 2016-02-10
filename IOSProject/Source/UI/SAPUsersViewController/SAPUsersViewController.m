@@ -12,7 +12,7 @@
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
 
-#import "UINib+SAPExtentions.h"
+#import "UINib+SAPextensions.h"
 
 #import "SAPViewControllerMacro.h"
 
@@ -57,8 +57,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
     NSString *cellClassName = NSStringFromClass(cellClass);
     SAPUserCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
     if (!cell) {
-        UINib *nib = [UINib nibWithClass:cellClass];
-        cell = [nib getObjectOfClass:cellClass];
+        cell = [UINib objectWithClass:cellClass];
     }
     
     cell.user = self.users[indexPath.row];

@@ -1,5 +1,5 @@
 //
-//  UIWindow+SAPExtentions.h
+//  UIWindow+SAPextensions.h
 //  IOSProject
 //
 //  Created by S A P on 2/4/16.

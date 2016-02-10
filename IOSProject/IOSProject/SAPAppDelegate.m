@@ -11,7 +11,7 @@
 #import "SAPUsersViewController.h"
 #import "SAPUsers.h"
 
-#import "UIWindow+SAPExtentions.h"
+#import "UIWindow+SAPExtensions.h"
 
 @interface SAPAppDelegate ()
 

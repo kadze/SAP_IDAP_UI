@@ -6,7 +6,7 @@
 //  Copyright © 2015 Yosemite Retail. All rights reserved.
 //
 
-#import "NSString+SAPExtentions.h"
+#import "NSString+SAPExtensions.h"
 
 static const unichar kSAPFirstLowerCaseLetter = 'a';
 static const unichar kSAPLastLowerCaseLetter = 'z';

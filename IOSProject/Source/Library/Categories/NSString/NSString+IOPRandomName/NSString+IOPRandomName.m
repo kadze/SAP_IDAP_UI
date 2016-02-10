@@ -6,13 +6,13 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "NSString+SAPRandomName.h"
+#import "NSString+IOPRandomName.h"
 
-#import "NSString+SAPExtentions.h"
+#import "NSString+SAPextensions.h"
 
 static NSUInteger const kSAPRandomNameSize = 10;
 
-@implementation NSString (SAPRandomName)
+@implementation NSString (IOPRandomName)
 
 + (NSString *)randomName {
     return [NSString randomStringWithAlphabetString:[NSString lowerCaseLetterAlphabet] length:kSAPRandomNameSize];
