@@ -65,7 +65,10 @@
 - (void)addObject:(id)anObject {
     @synchronized(self) {
         [self.mutableObjects addObject:anObject];
-//        self.state = kSAPUsersSatateUserDidBecomeAdded;
+        
+        NSUInteger indexes[] = {0, self.count - 1};
+        NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
+        [self notifyObserversWithSelector:@selector(insertRowWithIndexPath:) withObject:ip];
     }
 }
 
@@ -85,17 +88,15 @@
 - (void)removeObjectAtIndex:(NSUInteger)index {
     @synchronized(self) {
         [self.mutableObjects removeObjectAtIndex:index];
-        self notifyObserversWithSelector:SEL(deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                                                      withRowAnimation:UITableViewRowAnimationFade])
-
-//        self.state = kSAPUsersSatateUserDidBecomeDeleted;
+        NSUInteger indexes[] = {0, index};
+        NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
+        [self notifyObserversWithSelector:@selector(deleteRowWithIndexPath:) withObject:ip];
     }
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
     @synchronized(self) {
         [self.mutableObjects replaceObjectAtIndex:index withObject:anObject];
-//        self.state = kSAPUsersSatateUserDidBecomeReplaced;
     }
 }
 

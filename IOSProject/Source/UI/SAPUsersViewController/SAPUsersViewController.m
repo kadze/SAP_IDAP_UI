@@ -56,7 +56,6 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 
 - (IBAction)onAddUser:(id)sender {
     [self.users addObject:[SAPUser new]];
-    [self.tableView.tableView reloadData];
 }
 
 #pragma mark -
@@ -108,5 +107,16 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 //    return UITableViewCellEditingStyleNone;
 //}
 
+#pragma mark -
+#pragma mark Public
+
+- (void)deleteRowWithIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                             withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)insertRowWithIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationTop];
+}
 
 @end
