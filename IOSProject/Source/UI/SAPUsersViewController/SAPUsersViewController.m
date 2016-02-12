@@ -75,9 +75,9 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
         [self.users removeObjectAtIndex:indexPath.row];
-        [self.tableView.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                         withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView.tableView reloadData];
+        [tableView reloadData];
     }
 }
 
