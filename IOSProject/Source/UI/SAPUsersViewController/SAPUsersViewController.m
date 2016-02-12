@@ -29,7 +29,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
     if (_users != users) {
         _users = users;
         
-        [self.tableView.usersView reloadData];
+        [self.tableView.tableView reloadData];
     }
 }
 
@@ -39,7 +39,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView.usersView reloadData];
+    [self.tableView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +52,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 
 - (IBAction)onAddUser:(id)sender {
     [self.users addObject:[SAPUser new]];
-    [self.tableView.usersView reloadData];
+    [self.tableView.tableView reloadData];
 }
 
 #pragma mark -
@@ -75,9 +75,9 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
         [self.users removeObjectAtIndex:indexPath.row];
-        [self.tableView.usersView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+        [self.tableView.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                         withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView.usersView reloadData];
+        [self.tableView.tableView reloadData];
     }
 }
 

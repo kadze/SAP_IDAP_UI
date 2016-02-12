@@ -11,9 +11,9 @@
 @implementation SAPUsersView
 
 - (IBAction)onLongPress:(UILongPressGestureRecognizer *)sender {
-    UITableView *usersView = self.usersView;
+    UITableView *tableView = self.tableView;
     if (UIGestureRecognizerStateBegan == sender.state) {
-        [usersView setEditing:!usersView.editing animated:YES];
+        [tableView setEditing:!tableView.editing animated:YES];
     }
 }
 
