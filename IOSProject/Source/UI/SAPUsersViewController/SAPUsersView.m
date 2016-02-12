@@ -12,7 +12,7 @@
 
 - (IBAction)onLongPress:(UILongPressGestureRecognizer *)sender {
     UITableView *tableView = self.tableView;
-    if (UIGestureRecognizerStateBegan == sender.state) {
+    if (UIGestureRecognizerStateRecognized == sender.state) {
         [tableView setEditing:!tableView.editing animated:YES];
     }
 }
