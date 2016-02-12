@@ -13,7 +13,7 @@
 
 @implementation UITableView (SAPExtensions)
 
-- (id)cellWithCellClass:(Class)class {
+- (id)cellWithClass:(Class)class {
     id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
     if (!cell) {
         cell = [UINib objectWithClass:class];

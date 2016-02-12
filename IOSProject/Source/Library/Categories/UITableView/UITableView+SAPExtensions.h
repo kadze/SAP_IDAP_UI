@@ -10,6 +10,6 @@
 
 @interface UITableView (SAPExtensions)
 
-- (id)cellWithCellClass:(Class)class;
+- (id)cellWithClass:(Class)class;
 
 @end

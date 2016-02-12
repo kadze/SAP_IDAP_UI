@@ -63,7 +63,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SAPUserCell *cell = [tableView cellWithCellClass:[SAPUserCell class]];
+    SAPUserCell *cell = [tableView cellWithClass:[SAPUserCell class]];
     cell.user = self.users[indexPath.row];
     
     return cell;
