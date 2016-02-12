@@ -14,15 +14,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NVV-vI-LC5" userLabel="Users view">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="517"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="HLZ-Fy-7cx"/>
-                        <outlet property="delegate" destination="-1" id="ydk-5X-pWb"/>
-                    </connections>
-                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="headTruncation" id="wIi-sx-sRk" userLabel="Add user">
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -32,12 +23,21 @@
                         <action selector="onAddUser:" destination="-1" eventType="touchUpInside" id="Dvg-k3-SUL"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NVV-vI-LC5" userLabel="table view">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="517"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="HLZ-Fy-7cx"/>
+                        <outlet property="delegate" destination="-1" id="ydk-5X-pWb"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <connections>
                 <outlet property="addUserButton" destination="wIi-sx-sRk" id="479-ZI-fzI"/>
-                <outlet property="usersView" destination="NVV-vI-LC5" id="8iA-pQ-tqx"/>
+                <outlet property="tableView" destination="NVV-vI-LC5" id="M4Q-Gm-h91"/>
                 <outletCollection property="gestureRecognizers" destination="vCi-Fa-d4M" appends="YES" id="Vme-xQ-wEb"/>
             </connections>
             <point key="canvasLocation" x="282" y="307"/>
