@@ -8,6 +8,14 @@
 
 #import "SAPObservableObject.h"
 
+//typedef NS_ENUM (NSUInteger, SAPUsersState) {
+//    kSAPUsersSatateDefault,
+//    kSAPUsersSatateUserDidBecomeDeleted,
+//    kSAPUsersSatateUserDidBecomeAdded,
+//    kSAPUsersSatateUserDidBecomeReplaced
+//};
+
+
 @interface SAPArrayModel : SAPObservableObject
 @property (nonatomic, readonly) NSArray     *objects;
 @property (nonatomic, readonly) NSUInteger  count;

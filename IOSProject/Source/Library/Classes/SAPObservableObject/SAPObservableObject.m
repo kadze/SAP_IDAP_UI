@@ -58,7 +58,7 @@
 }
 
 #pragma mark -
-#pragma mark Public Methods
+#pragma mark Public
 
 - (void)addObserver:(id)observer {
     @synchronized(self) {

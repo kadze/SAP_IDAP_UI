@@ -10,6 +10,9 @@
 
 @implementation SAPUsersView
 
+#pragma mark -
+#pragma mark Interface Handling
+
 - (IBAction)onLongPress:(UILongPressGestureRecognizer *)sender {
     UITableView *tableView = self.tableView;
     if (UIGestureRecognizerStateRecognized == sender.state) {

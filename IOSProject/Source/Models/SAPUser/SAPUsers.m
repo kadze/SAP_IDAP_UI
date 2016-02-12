@@ -36,4 +36,16 @@ static NSUInteger const kSAPInitialUsersCount = 100;
     }
 }
 
+//#pragma mark -
+//#pragma mark Public Methods
+//
+//- (SEL)selectorForState:(NSUInteger)state {
+//    if (kSAPUsersSatateUserDidBecomeAdded == state) {
+//        return SEL(deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+//                                    withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//    return nil;
+//}
+
+
 @end
