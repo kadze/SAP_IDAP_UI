@@ -15,8 +15,10 @@ static NSUInteger const kSAPRandomNameSize = 10;
 @implementation NSString (IOPRandomName)
 
 + (NSString *)randomName {
-    return [NSString randomStringWithAlphabetString:[NSString lowerCaseLetterAlphabet]
-                                             length:kSAPRandomNameSize].capitalizedString;
+    NSString *result = [NSString randomStringWithAlphabetString:[NSString lowerCaseLetterAlphabet]
+                                                       length:kSAPRandomNameSize];
+    
+    return result.capitalizedString;
 }
 
 @end
