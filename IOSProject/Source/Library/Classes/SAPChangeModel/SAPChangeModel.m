@@ -18,7 +18,7 @@
 #pragma mark -
 #pragma mark Class methods
 
-+ (SAPChangeModel *)objectWithChangeType:(SAPChangeType) changeType indexes:(NSArray *)indexes {
++ (SAPChangeModel *)modelWithChangeType:(SAPChangeType) changeType indexes:(NSArray *)indexes {
     SAPChangeModel *result = [self new];
     result.indexes = indexes;
     result.changeType = changeType;

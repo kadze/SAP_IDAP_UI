@@ -22,6 +22,6 @@ typedef NS_ENUM (NSUInteger, SAPChangeType) {
 @property (nonatomic, readonly) SAPChangeType   changeType;
 @property (nonatomic, readonly) NSArray         *indexes;
 
-+ (SAPChangeModel *)objectWithChangeType:(SAPChangeType) changeType indexes:(NSArray *)indexes;
++ (SAPChangeModel *)modelWithChangeType:(SAPChangeType) changeType indexes:(NSArray *)indexes;
 
 @end

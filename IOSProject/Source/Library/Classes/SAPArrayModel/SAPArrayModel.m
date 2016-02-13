@@ -123,7 +123,7 @@
         return;
     }
     
-    SAPChangeModel *changeModel = [SAPChangeModel objectWithChangeType:changeType
+    SAPChangeModel *changeModel = [SAPChangeModel modelWithChangeType:changeType
                                                                indexes:indexes];
     [self notifyObserversWithSelector:@selector(arrayModelChangedWithChangeModel:)
                            withObject:changeModel];
