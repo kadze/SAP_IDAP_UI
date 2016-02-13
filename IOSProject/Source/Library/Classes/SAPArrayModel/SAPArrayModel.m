@@ -19,8 +19,8 @@
 
 @implementation SAPArrayModel
 
-@dynamic objects;
 @dynamic count;
+@dynamic objects;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -68,7 +68,7 @@
     @synchronized(self) {
         [self.mutableObjects addObject:anObject];
         
-        [self notifyWithChangeType:kSAPChangeTypeObjectAdded indexes:nil];
+        [self notifyWithChangeType:kSAPChangeTypeObjectAdded index:self.count - 1];//es:nil];
     }
 }
 
@@ -76,7 +76,7 @@
     @synchronized(self) {
         [self.mutableObjects insertObject:anObject atIndex:index];
         
-        [self notifyWithChangeType:kSAPChangeTypeObjectAdded index:index];
+        [self notifyWithChangeType:kSAPChangeTypeObjectInserted index:index];
     }
 }
 
@@ -91,9 +91,7 @@
 - (void)removeObjectAtIndex:(NSUInteger)index {
     @synchronized(self) {
         [self.mutableObjects removeObjectAtIndex:index];
-//        NSUInteger indexes[] = {0, index};
-//        NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
-//        [self notifyObserversWithSelector:@selector(deleteRowWithIndexPath:) withObject:ip];
+
         [self notifyWithChangeType:kSAPChangeTypeObjectRemoved index:index];
     }
 }
@@ -121,6 +119,10 @@
 #pragma mark Private
 
 - (void)notifyWithChangeType:(SAPChangeType)changeType indexes:(NSArray *)indexes {
+    if (!self.notificationEnabled) {
+        return;
+    }
+    
     SAPChangeModel *changeModel = [SAPChangeModel objectWithChangeType:changeType
                                                                indexes:indexes];
     [self notifyObserversWithSelector:@selector(arrayModelChangedWithChangeModel:)
@@ -128,10 +130,7 @@
 }
 
 - (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)index {
-    NSArray *indexes = [NSArray arrayWithObjects:[NSNumber numberWithInteger:index],
-//                        [NSNumber numberWithInteger:0],
-                        @0,
-                        nil];
+    NSArray *indexes = [NSArray arrayWithObject:[NSNumber numberWithInteger:index]];
     [self notifyWithChangeType:changeType indexes:indexes];
 }
 

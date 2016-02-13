@@ -13,7 +13,6 @@ typedef NS_ENUM (NSUInteger, SAPChangeType) {
     kSAPChangeTypeObjectAdded,
     kSAPChangeTypeObjectInserted,
     kSAPChangeTypeObjectRemoved,
-    kSAPChangeTypeObjectRemovedAtIndex,
     kSAPChangeTypeObjectReplaced,
     kSAPChangeTypeObjectExchanged
 };

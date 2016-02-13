@@ -14,9 +14,5 @@
 @property (nonatomic, strong) SAPUsers *users;
 
 - (IBAction)onAddUser:(id)sender;
-//
-//- (void)deleteRowWithIndexPath:(NSIndexPath *)indexPath;
-//
-//- (void)insertRowWithIndexPath:(NSIndexPath *)indexPath;
 
 @end

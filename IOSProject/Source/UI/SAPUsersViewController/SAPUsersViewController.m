@@ -21,6 +21,13 @@
 
 SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 
+@interface SAPUsersViewController ()
+
+- (NSArray *)indexPathsForIndex:(NSUInteger)index;
+- (NSIndexPath *)indexPathForIndex:(NSUInteger)index;
+
+@end
+
 @implementation SAPUsersViewController
 
 #pragma mark -
@@ -96,35 +103,30 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 }
 
 #pragma mark -
-#pragma mark UITableViewDelegate
-
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
-//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return UITableViewCellEditingStyleNone;
-//}
-
-#pragma mark -
 #pragma mark Public
-
-//- (void)insertRowWithIndexPath:(NSIndexPath *)indexPath {
-//    [self.tableView.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationTop];
-//}
 
 - (void)arrayModelChangedWithChangeModel:(SAPChangeModel *)changeModel {
     UITableView *tableView = self.tableView.tableView;
     NSArray *indexes = changeModel.indexes;
     NSUInteger index1 = [[indexes objectAtIndex:0] integerValue];
-    NSUInteger index2 = [[indexes objectAtIndex:1] integerValue];
     
     switch (changeModel.changeType) {
         case kSAPChangeTypeObjectRemoved:
             [tableView deleteRowsAtIndexPaths:[self indexPathsForIndex:index1]
                              withRowAnimation:UITableViewRowAnimationFade];
-            
+
             break;
-            
+        
+        case kSAPChangeTypeObjectAdded:
+            [tableView insertRowsAtIndexPaths:[self indexPathsForIndex:index1]
+                             withRowAnimation:UITableViewRowAnimationTop];
+            [tableView scrollToRowAtIndexPath:[self indexPathForIndex:index1]
+                             atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        
+            break;
+        
         default:
+            
             break;
     }
 }
@@ -133,10 +135,13 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 #pragma mark Private
 
 - (NSArray *)indexPathsForIndex:(NSUInteger)index {
+   return [NSArray arrayWithObject:[self indexPathForIndex:index]];
+}
+
+- (NSIndexPath *)indexPathForIndex:(NSUInteger)index {
     NSUInteger indexes[] = {0, index};
-    NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
     
-    return [NSArray arrayWithObject:ip];
+    return [NSIndexPath indexPathWithIndexes:indexes length:2];
 }
 
 @end

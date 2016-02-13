@@ -21,6 +21,7 @@ static NSUInteger const kSAPInitialUsersCount = 100;
     self = [super init];
     if (self) {
         [self fillWithUsers];
+        self.notificationEnabled = YES;
     }
     
     return self;

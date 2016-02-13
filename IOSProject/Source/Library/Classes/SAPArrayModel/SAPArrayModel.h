@@ -9,8 +9,9 @@
 #import "SAPObservableObject.h"
 
 @interface SAPArrayModel : SAPObservableObject
-@property (nonatomic, readonly) NSArray     *objects;
 @property (nonatomic, readonly) NSUInteger  count;
+@property (nonatomic, assign)   BOOL        notificationEnabled;
+@property (nonatomic, readonly) NSArray     *objects;
 
 - (id)objectAtIndex:(NSUInteger) index;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
