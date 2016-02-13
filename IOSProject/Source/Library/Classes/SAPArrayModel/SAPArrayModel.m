@@ -7,11 +7,13 @@
 //
 
 #import "SAPArrayModel.h"
-
-
+#import "SAPChangeModel.h"
 
 @interface SAPArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableObjects;
+
+- (void)notifyWithChangeType:(SAPChangeType)changeType indexes:(NSArray *)indexes;
+- (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)index;
 
 @end
 
@@ -66,9 +68,7 @@
     @synchronized(self) {
         [self.mutableObjects addObject:anObject];
         
-        NSUInteger indexes[] = {0, self.count - 1};
-        NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
-        [self notifyObserversWithSelector:@selector(insertRowWithIndexPath:) withObject:ip];
+        [self notifyWithChangeType:kSAPChangeTypeObjectAdded indexes:nil];
     }
 }
 
@@ -76,34 +76,63 @@
     @synchronized(self) {
         [self.mutableObjects insertObject:anObject atIndex:index];
         
+        [self notifyWithChangeType:kSAPChangeTypeObjectAdded index:index];
     }
 }
 
 - (void)removeLastObject {
     @synchronized(self) {
         [self.mutableObjects removeLastObject];
+        
+        [self notifyWithChangeType:kSAPChangeTypeObjectRemoved index:self.count -1];
     }
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
     @synchronized(self) {
         [self.mutableObjects removeObjectAtIndex:index];
-        NSUInteger indexes[] = {0, index};
-        NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
-        [self notifyObserversWithSelector:@selector(deleteRowWithIndexPath:) withObject:ip];
+//        NSUInteger indexes[] = {0, index};
+//        NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
+//        [self notifyObserversWithSelector:@selector(deleteRowWithIndexPath:) withObject:ip];
+        [self notifyWithChangeType:kSAPChangeTypeObjectRemoved index:index];
     }
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
     @synchronized(self) {
         [self.mutableObjects replaceObjectAtIndex:index withObject:anObject];
+        
+        [self notifyWithChangeType:kSAPChangeTypeObjectReplaced index:index];
     }
 }
 
 - (void)exchangeObjectAtIndex:(NSUInteger)idx1 withObjectAtIndex:(NSUInteger)idx2 {
     @synchronized(self) {
         [self.mutableObjects exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
+        
+        NSArray *indexes = [NSArray arrayWithObjects:[NSNumber numberWithInteger:idx1],
+                                                     [NSNumber numberWithInteger:idx2],
+                                                     nil];
+        [self notifyWithChangeType:kSAPChangeTypeObjectExchanged indexes:indexes];
     }
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)notifyWithChangeType:(SAPChangeType)changeType indexes:(NSArray *)indexes {
+    SAPChangeModel *changeModel = [SAPChangeModel objectWithChangeType:changeType
+                                                               indexes:indexes];
+    [self notifyObserversWithSelector:@selector(arrayModelChangedWithChangeModel:)
+                           withObject:changeModel];
+}
+
+- (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)index {
+    NSArray *indexes = [NSArray arrayWithObjects:[NSNumber numberWithInteger:index],
+//                        [NSNumber numberWithInteger:0],
+                        @0,
+                        nil];
+    [self notifyWithChangeType:changeType indexes:indexes];
 }
 
 @end

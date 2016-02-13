@@ -12,6 +12,7 @@
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
 #import "SAPUser.h"
+#import "SAPChangeModel.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -27,12 +28,10 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 
 - (void)setUsers:(SAPUsers *)users {
     if (_users != users) {
+        [_users removeObserver:self];
         _users = users;
-        if (users) {
-            [_users addObserver:self];
-        } else {
-            [_users removeObserver:self];
-        }
+        [_users addObserver:self];
+        
         [self.tableView.tableView reloadData];
     }
 }
@@ -80,8 +79,6 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
         [self.users removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-//                                        withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -110,13 +107,36 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 #pragma mark -
 #pragma mark Public
 
-- (void)deleteRowWithIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                             withRowAnimation:UITableViewRowAnimationFade];
+//- (void)insertRowWithIndexPath:(NSIndexPath *)indexPath {
+//    [self.tableView.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationTop];
+//}
+
+- (void)arrayModelChangedWithChangeModel:(SAPChangeModel *)changeModel {
+    UITableView *tableView = self.tableView.tableView;
+    NSArray *indexes = changeModel.indexes;
+    NSUInteger index1 = [[indexes objectAtIndex:0] integerValue];
+    NSUInteger index2 = [[indexes objectAtIndex:1] integerValue];
+    
+    switch (changeModel.changeType) {
+        case kSAPChangeTypeObjectRemoved:
+            [tableView deleteRowsAtIndexPaths:[self indexPathsForIndex:index1]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
-- (void)insertRowWithIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationTop];
+#pragma mark -
+#pragma mark Private
+
+- (NSArray *)indexPathsForIndex:(NSUInteger)index {
+    NSUInteger indexes[] = {0, index};
+    NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:indexes length:2];
+    
+    return [NSArray arrayWithObject:ip];
 }
 
 @end
