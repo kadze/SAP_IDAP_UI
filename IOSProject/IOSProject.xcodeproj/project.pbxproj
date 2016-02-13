@@ -15,6 +15,7 @@
 		CA4B3EF71C6BBB5400440914 /* Add User-48.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4B3EF51C6BBB5400440914 /* Add User-48.png */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EF81C6BBB5400440914 /* Add_User-48.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EFC1C6E1DE300440914 /* SAPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EFB1C6E1DE300440914 /* SAPArrayModel.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3F001C6E368300440914 /* SAPChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EFF1C6E368300440914 /* SAPChangeModel.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BC11C63B96C00DAED4E /* UIWindow+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BE71C68A18300DAED4E /* smile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CA634BE61C68A18300DAED4E /* smile.jpeg */; settings = {ASSET_TAGS = (); }; };
@@ -71,6 +72,8 @@
 		CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Add_User-48.jpg"; sourceTree = "<group>"; };
 		CA4B3EFA1C6E1DE300440914 /* SAPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayModel.h; sourceTree = "<group>"; };
 		CA4B3EFB1C6E1DE300440914 /* SAPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayModel.m; sourceTree = "<group>"; };
+		CA4B3EFE1C6E368300440914 /* SAPChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChangeModel.h; sourceTree = "<group>"; };
+		CA4B3EFF1C6E368300440914 /* SAPChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChangeModel.m; sourceTree = "<group>"; };
 		CA634BBC1C63B93100DAED4E /* CGGeometry+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA634BC01C63B96C00DAED4E /* UIWindow+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtensions.h"; sourceTree = "<group>"; };
@@ -199,6 +202,15 @@
 			path = SAPArrayModel;
 			sourceTree = "<group>";
 		};
+		CA4B3EFD1C6E365600440914 /* SAPChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA4B3EFE1C6E368300440914 /* SAPChangeModel.h */,
+				CA4B3EFF1C6E368300440914 /* SAPChangeModel.m */,
+			);
+			path = SAPChangeModel;
+			sourceTree = "<group>";
+		};
 		CA634BBB1C63B93100DAED4E /* CGGeometry */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				CA4B3EF91C6E1D9A00440914 /* SAPArrayModel */,
+				CA4B3EFD1C6E365600440914 /* SAPChangeModel */,
 				CA634BF11C68D14500DAED4E /* SAPReference */,
 				CA634BE91C68D0BD00DAED4E /* SAPObservableObject */,
 				CA634BEC1C68D0BD00DAED4E /* SAPTableViewCell */,
@@ -592,6 +605,7 @@
 				CA634C121C69C43900DAED4E /* SAPUsers.m in Sources */,
 				CA634BF01C68D0BD00DAED4E /* SAPTableViewCell.m in Sources */,
 				CA4B3EF01C6A48DD00440914 /* NSString+SAPExtensions.m in Sources */,
+				CA4B3F001C6E368300440914 /* SAPChangeModel.m in Sources */,
 				CA634BF71C68D14500DAED4E /* SAPAssignReference.m in Sources */,
 				CA634BF81C68D14500DAED4E /* SAPReference.m in Sources */,
 			);
