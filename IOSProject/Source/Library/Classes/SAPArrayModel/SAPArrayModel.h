@@ -10,7 +10,6 @@
 
 @interface SAPArrayModel : SAPObservableObject
 @property (nonatomic, readonly) NSUInteger  count;
-@property (nonatomic, assign)   BOOL        notificationEnabled;
 @property (nonatomic, readonly) NSArray     *objects;
 
 - (id)objectAtIndex:(NSUInteger) index;
