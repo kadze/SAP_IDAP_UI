@@ -100,11 +100,20 @@
                 SAPClangDiagnosticPushOption("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
                 [observer performSelector:selector withObject:self withObject:object];
                 SAPClangDiagnosticPopOption
-                
             }
         }
     }
 }
+
+- (void)performWithNotification:(void(^)(void))block {
+    block();
+}
+
+- (void)performWithoutNotification:(void(^)(void))block {
+    block();
+    
+}
+
 
 - (SEL)selectorForState:(NSUInteger)state {
     return nil;
