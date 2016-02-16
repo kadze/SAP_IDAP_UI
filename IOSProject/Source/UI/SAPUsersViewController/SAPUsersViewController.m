@@ -139,9 +139,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 }
 
 - (NSIndexPath *)indexPathForIndex:(NSUInteger)index {
-    NSUInteger indexes[] = {0, index};
-    
-    return [NSIndexPath indexPathWithIndexes:indexes length:2];
+    return [NSIndexPath indexPathForRow:index inSection:0];
 }
 
 @end
