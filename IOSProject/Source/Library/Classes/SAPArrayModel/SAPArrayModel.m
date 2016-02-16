@@ -7,7 +7,10 @@
 //
 
 #import "SAPArrayModel.h"
-#import "SAPArrayModelChangeModel.h"
+//#import "SAPArrayModelChangeModel.h"
+
+//#import "SAPArrayIndexChangeModel.h"
+#import "SAPArrayDoubleIndexChangeModel.h"
 
 @interface SAPArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableObjects;
@@ -125,6 +128,10 @@
 
 - (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)index {
     [self notifyWithChangeType:changeType indexes:@[@(index)]];
+}
+
+- (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
+    SAPArrayDoubleIndexChangeModel *model
 }
 
 @end

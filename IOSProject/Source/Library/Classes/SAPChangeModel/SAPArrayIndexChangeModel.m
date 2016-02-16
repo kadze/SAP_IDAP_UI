@@ -9,18 +9,24 @@
 #import "SAPArrayIndexChangeModel.h"
 
 @interface SAPArrayIndexChangeModel ()
-@property (nonatomic, assign) NSUInteger index;
+
+@property (nonatomic, assign) SAPChangeType changeType;
+@property (nonatomic, assign) NSUInteger    index;
 
 @end
 
 @implementation SAPArrayIndexChangeModel
+@dynamic changeType;
+@dynamic index;
 
 #pragma mark-
 #pragma mark Initializations and Deallocations
 
-+ ()modelWithChangeType:(SAPChangeType)changeType
-                    index:(NSUInteger)index {
-    id result;
++ (instancetype)modelWithChangeType:(SAPChangeType)changeType
+                  index:(NSUInteger)index
+{
+    SAPArrayIndexChangeModel *result = [super modelWithChangeType:changeType];
+    result.index = index;
     
     return result;
 }

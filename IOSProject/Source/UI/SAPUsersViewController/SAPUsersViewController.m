@@ -12,7 +12,7 @@
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
 #import "SAPUser.h"
-#import "SAPArrayModelChangeModel.h"
+//#import "SAPArrayModelChangeModel.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -61,7 +61,10 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 #pragma mark Interface Handling
 
 - (IBAction)onAddUser:(id)sender {
-    [self.users addObject:[SAPUser new]];
+    SAPUsers *users = self.users;
+    [users performWithNotification:^{
+        [users addObject:[SAPUser new]];
+    }];
 }
 
 #pragma mark -
@@ -85,17 +88,23 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
         forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
-        [self.users removeObjectAtIndex:indexPath.row];
+        SAPUsers *users = self.users;
+        [users performWithNotification:^{
+            [users removeObjectAtIndex:indexPath.row];
+        }];
     }
 }
 
 //reordering
 
--       (void)tableView:(UITableView *)tableView
+- (void)      tableView:(UITableView *)tableView
      moveRowAtIndexPath:(NSIndexPath *)indexPath1
             toIndexPath:(NSIndexPath *)indexPath2
 {
-    [self.users exchangeObjectAtIndex:indexPath1.row withObjectAtIndex:indexPath2.row];
+    SAPUsers *users = self.users;
+    [users performWithNotification:^{
+        [users exchangeObjectAtIndex:indexPath1.row withObjectAtIndex:indexPath2.row];
+    }];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
