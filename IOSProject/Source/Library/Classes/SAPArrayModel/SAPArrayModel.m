@@ -108,10 +108,8 @@
     @synchronized(self) {
         [self.mutableObjects exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
         
-        NSArray *indexes = [NSArray arrayWithObjects:[NSNumber numberWithInteger:idx1],
-                                                     [NSNumber numberWithInteger:idx2],
-                                                     nil];
-        [self notifyWithChangeType:kSAPChangeTypeObjectExchanged indexes:indexes];
+        [self notifyWithChangeType:kSAPChangeTypeObjectExchanged
+                           indexes:@[@(idx1), @(idx2)]];
     }
 }
 
@@ -130,8 +128,7 @@
 }
 
 - (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)index {
-    NSArray *indexes = [NSArray arrayWithObject:[NSNumber numberWithInteger:index]];
-    [self notifyWithChangeType:changeType indexes:indexes];
+    [self notifyWithChangeType:changeType indexes:@[@(index)]];
 }
 
 @end
