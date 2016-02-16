@@ -7,7 +7,7 @@
 //
 
 #import "SAPArrayModel.h"
-#import "SAPChangeModel.h"
+#import "SAPArrayModelChangeModel.h"
 
 @interface SAPArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableObjects;
@@ -121,7 +121,7 @@
         return;
     }
     
-    SAPChangeModel *changeModel = [SAPChangeModel modelWithChangeType:changeType
+    SAPArrayModelChangeModel *changeModel = [SAPArrayModelChangeModel modelWithChangeType:changeType
                                                                indexes:indexes];
     [self notifyObserversWithSelector:@selector(didChanged:withModel:)
                            withObject:changeModel];

@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class SAPChangeModel;
+@class SAPArrayModelChangeModel;
 @class SAPArrayModel;
 
 @protocol SAPArrayModelObserver <NSObject>
 
-- (void)didChanged:(SAPArrayModel *)arrayModel withModel:(SAPChangeModel *)changeModel;
+- (void)didChanged:(SAPArrayModel *)arrayModel withModel:(SAPArrayModelChangeModel *)changeModel;
 
 @end

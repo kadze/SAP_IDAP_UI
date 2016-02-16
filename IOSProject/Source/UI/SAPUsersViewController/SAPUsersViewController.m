@@ -12,7 +12,7 @@
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
 #import "SAPUser.h"
-#import "SAPChangeModel.h"
+#import "SAPArrayModelChangeModel.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -105,7 +105,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 #pragma mark -
 #pragma mark SAPArrayModelObserver
 
-- (void)didChanged:(SAPArrayModel *)arrayModel withModel:(SAPChangeModel *)changeModel {
+- (void)didChanged:(SAPArrayModel *)arrayModel withModel:(SAPArrayModelChangeModel *)changeModel {
     UITableView *tableView = self.tableView.tableView;
     NSArray *indexes = changeModel.indexes;
     NSUInteger index1 = [[indexes objectAtIndex:0] integerValue];
