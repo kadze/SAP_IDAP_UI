@@ -103,9 +103,9 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 }
 
 #pragma mark -
-#pragma mark Public
+#pragma mark SAPArrayModelObserver
 
-- (void)arrayModelChangedWithChangeModel:(SAPChangeModel *)changeModel {
+- (void)didChanged:(SAPArrayModel *)arrayModel withModel:(SAPChangeModel *)changeModel {
     UITableView *tableView = self.tableView.tableView;
     NSArray *indexes = changeModel.indexes;
     NSUInteger index1 = [[indexes objectAtIndex:0] integerValue];

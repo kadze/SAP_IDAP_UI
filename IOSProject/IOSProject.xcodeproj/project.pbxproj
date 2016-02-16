@@ -74,6 +74,7 @@
 		CA4B3EFB1C6E1DE300440914 /* SAPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayModel.m; sourceTree = "<group>"; };
 		CA4B3EFE1C6E368300440914 /* SAPChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChangeModel.h; sourceTree = "<group>"; };
 		CA4B3EFF1C6E368300440914 /* SAPChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChangeModel.m; sourceTree = "<group>"; };
+		CA4B3F021C73489900440914 /* SAPArrayModelObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayModelObserver.h; sourceTree = "<group>"; };
 		CA634BBC1C63B93100DAED4E /* CGGeometry+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA634BC01C63B96C00DAED4E /* UIWindow+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtensions.h"; sourceTree = "<group>"; };
@@ -209,6 +210,14 @@
 				CA4B3EFF1C6E368300440914 /* SAPChangeModel.m */,
 			);
 			path = SAPChangeModel;
+			sourceTree = "<group>";
+		};
+		CA4B3F011C73480F00440914 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CA4B3F021C73489900440914 /* SAPArrayModelObserver.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CA634BBB1C63B93100DAED4E /* CGGeometry */ = {
@@ -417,6 +426,7 @@
 			children = (
 				CA634BE81C68D0BD00DAED4E /* Classes */,
 				CA4AA8941C5BC6E100B1CBEC /* Categories */,
+				CA4B3F011C73480F00440914 /* Protocols */,
 				CA634BF91C68F19400DAED4E /* Macro */,
 			);
 			path = Library;

@@ -98,7 +98,7 @@
             id observer = reference.target;
             if ([observer respondsToSelector:selector]) {
                 SAPClangDiagnosticPushOption("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
-                [observer performSelector:selector withObject:object ];
+                [observer performSelector:selector withObject:self withObject:object];
                 SAPClangDiagnosticPopOption
                 
             }

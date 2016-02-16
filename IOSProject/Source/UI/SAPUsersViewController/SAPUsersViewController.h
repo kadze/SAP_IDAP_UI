@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class SAPUsers;
+#import "SAPArrayModelObserver.h"
 
-@interface SAPUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@class SAPUsers;
+@class SAPChangeModel;
+
+@interface SAPUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SAPArrayModelObserver>
 @property (nonatomic, strong) SAPUsers *users;
 
 - (IBAction)onAddUser:(id)sender;
+
+- (void)didChanged:(SAPArrayModel *)arrayModel withModel:(SAPChangeModel *)changeModel;
 
 @end
