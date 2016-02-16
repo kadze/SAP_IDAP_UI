@@ -8,20 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM (NSUInteger, SAPChangeType) {
-    kSAPChangeTypeNoChanges,
-    kSAPChangeTypeObjectAdded,
-    kSAPChangeTypeObjectInserted,
-    kSAPChangeTypeObjectRemoved,
-    kSAPChangeTypeObjectReplaced,
-    kSAPChangeTypeObjectExchanged
-};
-
 
 @interface SAPArrayModelChangeModel : NSObject
 @property (nonatomic, readonly) SAPChangeType   changeType;
 @property (nonatomic, readonly) NSArray         *indexes;
 
-+ (SAPArrayModelChangeModel *)modelWithChangeType:(SAPChangeType)changeType indexes:(NSArray *)indexes;
++ (SAPArrayModelChangeModel *)modelWithChangeType:(SAPChangeType)changeType
+                                          indexes:(NSArray *)indexes;
 
 @end
