@@ -118,9 +118,9 @@
 #pragma mark Private
 
 - (void)notifyWithChangeType:(SAPChangeType)changeType indexes:(NSArray *)indexes {
-    SAPArrayModelChangeModel *changeModel = [SAPArrayModelChangeModel modelWithChangeType:changeType
+    SAPCollectionChangeModel *changeModel = [SAPCollectionChangeModel modelWithChangeType:changeType
                                                                                   indexes:indexes];
-    [self notifyObserversWithSelector:@selector(didChanged:withModel:)
+    [self notifyObserversWithSelector:@selector(collection:didChangedWithModel:)
                            withObject:changeModel];
 }
 
