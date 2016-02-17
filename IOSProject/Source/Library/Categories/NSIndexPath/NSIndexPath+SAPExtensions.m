@@ -7,7 +7,8 @@
 //
 
 #import "NSIndexPath+SAPExtensions.h"
-#import <UIKit/UIKit.h>
+
+#import <UIKit/UITableView.h>
 
 @implementation NSIndexPath (SAPExtensions)
 
