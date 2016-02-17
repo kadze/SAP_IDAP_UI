@@ -112,9 +112,9 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 }
 
 #pragma mark -
-#pragma mark SAPArrayModelObserver
+#pragma mark SAPCollectionObserver
 
-- (void)didChanged:(SAPArrayModel *)arrayModel withModel:(SAPArrayModelChangeModel *)changeModel {
+- (void)collection:(SAPArrayModel *)arrayModel didChangedWithModel:(SAPCollectionChangeModel *)changeModel {
     UITableView *tableView = self.tableView.tableView;
     NSArray *indexes = changeModel.indexes;
     NSUInteger index1 = [[indexes objectAtIndex:0] integerValue];

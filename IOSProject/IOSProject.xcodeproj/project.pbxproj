@@ -74,7 +74,7 @@
 		CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Add_User-48.jpg"; sourceTree = "<group>"; };
 		CA4B3EFA1C6E1DE300440914 /* SAPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayModel.h; sourceTree = "<group>"; };
 		CA4B3EFB1C6E1DE300440914 /* SAPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayModel.m; sourceTree = "<group>"; };
-		CA4B3F021C73489900440914 /* SAPArrayModelObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayModelObserver.h; sourceTree = "<group>"; };
+		CA4B3F021C73489900440914 /* SAPCollectionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPCollectionObserver.h; sourceTree = "<group>"; };
 		CA4B3F031C73686400440914 /* SAPCollectionChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPCollectionChangeModel.h; sourceTree = "<group>"; };
 		CA4B3F041C73686400440914 /* SAPCollectionChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPCollectionChangeModel.m; sourceTree = "<group>"; };
 		CA4B3F061C73696200440914 /* SAPArrayIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayIndexChangeModel.h; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		CA4B3F011C73480F00440914 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CA4B3F021C73489900440914 /* SAPArrayModelObserver.h */,
+				CA4B3F021C73489900440914 /* SAPCollectionObserver.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

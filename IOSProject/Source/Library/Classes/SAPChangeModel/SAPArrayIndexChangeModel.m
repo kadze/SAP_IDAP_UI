@@ -10,14 +10,14 @@
 
 @interface SAPArrayIndexChangeModel ()
 
-@property (nonatomic, assign) SAPChangeType changeType;
+//@property (nonatomic, assign) SAPChangeType changeType;
 @property (nonatomic, assign) NSUInteger    index;
 
 @end
 
 @implementation SAPArrayIndexChangeModel
-@dynamic changeType;
-@dynamic index;
+//@dynamic changeType;
+//@dynamic index;
 
 #pragma mark-
 #pragma mark Initializations and Deallocations
