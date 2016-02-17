@@ -62,9 +62,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 
 - (IBAction)onAddUser:(id)sender {
     SAPUsers *users = self.users;
-    [users performWithNotification:^{
-        [users addObject:[SAPUser new]];
-    }];
+    [users addObject:[SAPUser new]];
 }
 
 #pragma mark -
@@ -89,9 +87,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
         SAPUsers *users = self.users;
-        [users performWithNotification:^{
-            [users removeObjectAtIndex:indexPath.row];
-        }];
+        [users removeObjectAtIndex:indexPath.row];
     }
 }
 
@@ -102,9 +98,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
             toIndexPath:(NSIndexPath *)indexPath2
 {
     SAPUsers *users = self.users;
-    [users performWithNotification:^{
-        [users exchangeObjectAtIndex:indexPath1.row withObjectAtIndex:indexPath2.row];
-    }];
+    [users exchangeObjectAtIndex:indexPath1.row withObjectAtIndex:indexPath2.row];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
