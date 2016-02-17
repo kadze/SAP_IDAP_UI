@@ -26,7 +26,6 @@
         case kSAPChangeTypeObjectRemoved:
             [tableView deleteRowsAtIndexPaths:@[indexPath]
                              withRowAnimation:UITableViewRowAnimationFade];
-            
             break;
             
         case kSAPChangeTypeObjectAdded:
@@ -34,11 +33,9 @@
                              withRowAnimation:UITableViewRowAnimationTop];
             [tableView scrollToRowAtIndexPath:self.indexPath
                              atScrollPosition:UITableViewScrollPositionNone animated:YES];
-            
             break;
             
         default:
-            
             break;
     }
 }
