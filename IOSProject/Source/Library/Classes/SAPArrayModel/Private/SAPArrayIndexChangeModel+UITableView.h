@@ -8,6 +8,9 @@
 
 #import "SAPArrayIndexChangeModel.h"
 
+@class NSIndexPath;
+
 @interface SAPArrayIndexChangeModel (UITableView)
+@property (nonatomic, readonly) NSIndexPath *indexPath;
 
 @end

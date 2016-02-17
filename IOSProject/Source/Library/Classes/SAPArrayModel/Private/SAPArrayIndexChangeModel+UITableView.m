@@ -7,23 +7,32 @@
 //
 
 #import "SAPArrayIndexChangeModel+UITableView.h"
+#import "NSIndexPath+SAPExtentions.h"
 
 #import <UIKit/UIKit.h>
 
 @implementation SAPArrayIndexChangeModel (UITableView)
 
+@dynamic indexPath;
+
+- (NSIndexPath *)indexPath {
+    return [NSIndexPath indexPathForRow:self.index];
+}
+
 - (void)updateTableView:(UITableView *)tableView {
+    NSIndexPath *indexPath = self.indexPath;
+    
     switch (self.changeType) {
         case kSAPChangeTypeObjectRemoved:
-            [tableView deleteRowsAtIndexPaths:[self indexPathsForIndex:index1]
+            [tableView deleteRowsAtIndexPaths:@[indexPath]
                              withRowAnimation:UITableViewRowAnimationFade];
             
             break;
             
         case kSAPChangeTypeObjectAdded:
-            [tableView insertRowsAtIndexPaths:[self indexPathsForIndex:index1]
+            [tableView insertRowsAtIndexPaths:@[indexPath]
                              withRowAnimation:UITableViewRowAnimationTop];
-            [tableView scrollToRowAtIndexPath:[self indexPathForIndex:index1]
+            [tableView scrollToRowAtIndexPath:self.indexPath
                              atScrollPosition:UITableViewScrollPositionNone animated:YES];
             
             break;

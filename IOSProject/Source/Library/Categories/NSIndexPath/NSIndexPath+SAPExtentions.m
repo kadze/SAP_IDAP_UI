@@ -7,7 +7,12 @@
 //
 
 #import "NSIndexPath+SAPExtentions.h"
+#import <UIKit/UIKit.h>
 
 @implementation NSIndexPath (SAPExtentions)
-    
+
++ (instancetype)indexPathForRow:(NSUInteger)row {
+    return [NSIndexPath indexPathForRow:row inSection:0];
+}
+
 @end

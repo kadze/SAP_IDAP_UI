@@ -10,4 +10,6 @@
 
 @interface NSIndexPath (SAPExtentions)
 
++ (instancetype)indexPathForRow:(NSUInteger)row;
+
 @end
