@@ -15,7 +15,7 @@ static const unichar kSAPLastCapitalLetter = 'Z';
 static const unichar kSAPFirstNumberSign = '0';
 static const unichar kSAPLastNumberSign = '9';
 
-@implementation NSString (SAPStringExtentions)
+@implementation NSString (SAPStringExtensions)
 
 #pragma mark -
 #pragma mark Class Methods

@@ -1,15 +1,15 @@
 //
-//  NSIndexPath+SAPExtentions.m
+//  NSIndexPath+SAPExtensions.m
 //  IOSProject
 //
 //  Created by S A P on 2/17/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "NSIndexPath+SAPExtentions.h"
+#import "NSIndexPath+SAPExtensions.h"
 #import <UIKit/UIKit.h>
 
-@implementation NSIndexPath (SAPExtentions)
+@implementation NSIndexPath (SAPExtensions)
 
 + (instancetype)indexPathForRow:(NSUInteger)row {
     return [NSIndexPath indexPathForRow:row inSection:0];

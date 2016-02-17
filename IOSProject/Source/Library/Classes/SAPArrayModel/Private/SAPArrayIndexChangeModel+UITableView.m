@@ -7,7 +7,7 @@
 //
 
 #import "SAPArrayIndexChangeModel+UITableView.h"
-#import "NSIndexPath+SAPExtentions.h"
+#import "NSIndexPath+SAPExtensions.h"
 
 #import <UIKit/UIKit.h>
 

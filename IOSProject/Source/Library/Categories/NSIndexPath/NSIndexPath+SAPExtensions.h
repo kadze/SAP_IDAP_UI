@@ -1,5 +1,5 @@
 //
-//  NSIndexPath+SAPExtentions.h
+//  NSIndexPath+SAPExtensions.h
 //  IOSProject
 //
 //  Created by S A P on 2/17/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSIndexPath (SAPExtentions)
+@interface NSIndexPath (SAPExtensions)
 
 + (instancetype)indexPathForRow:(NSUInteger)row;
 

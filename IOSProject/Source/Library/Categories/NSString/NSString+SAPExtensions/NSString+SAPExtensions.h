@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (SAPExtentions)
+@interface NSString (SAPExtensions)
 
 + (NSString *)alphanumericAlphabet;
 + (NSString *)numericAlphabet;
