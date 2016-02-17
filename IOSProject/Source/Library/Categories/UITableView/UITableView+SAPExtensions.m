@@ -22,4 +22,14 @@
     return cell;
 }
 
+- (void)updateWithBlock:(void(^)(UITableView *))block {
+    if (!block) {
+        return;
+    }
+    
+    [self beginUpdates];
+    block(self);
+    [self endUpdates];
+}
+
 @end
