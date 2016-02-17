@@ -11,5 +11,6 @@
 @interface UITableView (SAPExtensions)
 
 - (id)cellWithClass:(Class)class;
+- (void)updateWithBlock:(void(^)(UITableView *))block;
 
 @end
