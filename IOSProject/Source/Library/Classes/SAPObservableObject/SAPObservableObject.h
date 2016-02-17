@@ -20,8 +20,8 @@
 - (void)notifyObserversWithSelector:(SEL)selector;
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object;
 
-- (void)performWithNotification:(void(^)(void))block;
-- (void)performWithoutNotification:(void(^)(void))block;
+- (void)performBlockWithNotification:(void(^)(void))block;
+- (void)performBlockWithoutNotification:(void(^)(void))block;
 
 - (SEL)selectorForState:(NSUInteger)state;
 

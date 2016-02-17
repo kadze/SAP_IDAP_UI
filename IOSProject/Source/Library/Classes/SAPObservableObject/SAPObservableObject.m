@@ -12,7 +12,10 @@
 #import "SAPClangMacro.h"
 
 @interface SAPObservableObject ()
-@property (nonatomic, retain)    NSMutableSet    *mutableObservers;
+@property (nonatomic, assign) BOOL         notificationEnabled;
+@property (nonatomic, retain) NSMutableSet *mutableObservers;
+
+- (void)notify:(BOOL)shouldNotify whenPerformingBlock:(void(^)(void))block;
 
 @end
 
@@ -94,6 +97,10 @@
 
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object {
     @synchronized(self) {
+        if (!self.notificationEnabled) {
+            return;
+        }
+        
         for (SAPAssignReference *reference in self.mutableObservers) {
             id observer = reference.target;
             if ([observer respondsToSelector:selector]) {
@@ -105,18 +112,30 @@
     }
 }
 
-- (void)performWithNotification:(void(^)(void))block {
-    block();
+- (void)performBlockWithNotification:(void(^)(void))block {
+    [self notify:YES whenPerformingBlock:block];
 }
 
-- (void)performWithoutNotification:(void(^)(void))block {
-    block();
+- (void)performBlockWithoutNotification:(void(^)(void))block {
+    [self notify:NO whenPerformingBlock:block];
     
 }
 
-
 - (SEL)selectorForState:(NSUInteger)state {
     return nil;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)notify:(BOOL)shouldNotify whenPerformingBlock:(void(^)(void))block {
+    BOOL notificationEnabled = self.notificationEnabled;
+    self.notificationEnabled = shouldNotify;
+    if (block) {
+        block();
+    }
+    
+    self.notificationEnabled = notificationEnabled;
 }
 
 @end
