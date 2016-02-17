@@ -62,9 +62,7 @@
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger) index {
-    @synchronized(self) {
-        return [self objectAtIndex:index];
-    }
+    return [self objectAtIndex:index];
 }
 
 - (void)addObject:(id)anObject {
