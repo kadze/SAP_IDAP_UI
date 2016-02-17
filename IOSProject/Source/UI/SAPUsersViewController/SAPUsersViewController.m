@@ -16,6 +16,7 @@
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
+#import "UITableView+SAPCollectionChangeModel.h"
 
 #import "SAPViewControllerMacro.h"
 
@@ -109,29 +110,8 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 #pragma mark SAPCollectionObserver
 
 - (void)collection:(SAPArrayModel *)arrayModel didChangedWithModel:(SAPCollectionChangeModel *)changeModel {
-    UITableView *tableView = self.tableView.tableView;
-    NSArray *indexes = changeModel.indexes;
-    NSUInteger index1 = [[indexes objectAtIndex:0] integerValue];
-    
-    switch (changeModel.changeType) {
-        case kSAPChangeTypeObjectRemoved:
-            [tableView deleteRowsAtIndexPaths:[self indexPathsForIndex:index1]
-                             withRowAnimation:UITableViewRowAnimationFade];
-
-            break;
-        
-        case kSAPChangeTypeObjectAdded:
-            [tableView insertRowsAtIndexPaths:[self indexPathsForIndex:index1]
-                             withRowAnimation:UITableViewRowAnimationTop];
-            [tableView scrollToRowAtIndexPath:[self indexPathForIndex:index1]
-                             atScrollPosition:UITableViewScrollPositionNone animated:YES];
-        
-            break;
-        
-        default:
-            
-            break;
-    }
+    UITableView *tableView = self.tableView.tableView;    
+    [tableView updateWithCollectionChangeModel:changeModel];
 }
 
 #pragma mark -
