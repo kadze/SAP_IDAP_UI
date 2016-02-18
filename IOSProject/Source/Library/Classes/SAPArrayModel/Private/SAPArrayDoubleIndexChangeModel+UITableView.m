@@ -8,6 +8,27 @@
 
 #import "SAPArrayDoubleIndexChangeModel+UITableView.h"
 
-@implementation SAPArrayDoubleIndexChangeModel (UITableView)
+#import "UITableView+SAPExtensions.h"
 
+@implementation SAPArrayDoubleIndexChangeModel (UITableView)
+- (void)updateTableView:(UITableView *)tableView {
+//    NSIndexPath *indexPath = self.indexPath;
+//    NSArray *indexPaths = @[indexPath];
+    SAPArrayIndexChangeType changeType = self.changeType;
+    
+    [tableView updateWithBlock:^(UITableView *tableView) {
+        switch (changeType) {
+            case kSAPChangeTypeObjectExchanged:
+                //
+                break;
+                
+            case kSAPChangeTypeObjectMoved:
+                //
+                break;
+                
+            default:
+                break;
+        }
+    }];
+}
 @end

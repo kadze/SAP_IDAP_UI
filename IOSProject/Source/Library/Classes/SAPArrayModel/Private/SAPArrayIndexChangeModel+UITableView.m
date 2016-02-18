@@ -28,17 +28,25 @@
     
     [tableView updateWithBlock:^(UITableView *tableView) {
         switch (changeType) {
-            case kSAPChangeTypeObjectRemoved:
-                [tableView deleteRowsAtIndexPaths:indexPaths
-                                 withRowAnimation:UITableViewRowAnimationFade];
-                break;
-                
             case kSAPChangeTypeObjectAdded:
                 [tableView insertRowsAtIndexPaths:indexPaths
                                  withRowAnimation:UITableViewRowAnimationTop];
                 
                 [tableView scrollToRowAtIndexPath:indexPath
                                  atScrollPosition:UITableViewScrollPositionNone animated:YES];
+                break;
+                
+            case kSAPChangeTypeObjectInserted:
+                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                break;
+                
+            case kSAPChangeTypeObjectReplaced:
+                //
+                break;
+                
+            case kSAPChangeTypeObjectRemoved:
+                [tableView deleteRowsAtIndexPaths:indexPaths
+                                 withRowAnimation:UITableViewRowAnimationFade];
                 break;
                 
             default:
