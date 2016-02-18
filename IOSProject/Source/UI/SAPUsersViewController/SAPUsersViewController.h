@@ -13,7 +13,7 @@
 @class SAPUsers;
 @class SAPArrayModelChangeModel;
 
-@interface SAPUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
+@interface SAPUsersViewController : UIViewController
 @property (nonatomic, strong) SAPUsers *users;
 
 - (IBAction)onAddUser:(id)sender;

@@ -21,7 +21,7 @@
 
 SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
-@interface SAPUsersViewController ()
+@interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
 
 - (NSArray *)indexPathsForIndex:(NSUInteger)index;
 - (NSIndexPath *)indexPathForIndex:(NSUInteger)index;
