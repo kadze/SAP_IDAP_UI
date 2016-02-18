@@ -14,14 +14,16 @@
 		CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EF71C6BBB5400440914 /* Add User-48.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4B3EF51C6BBB5400440914 /* Add User-48.png */; settings = {ASSET_TAGS = (); }; };
 		CA4B3EF81C6BBB5400440914 /* Add_User-48.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */; settings = {ASSET_TAGS = (); }; };
-		CA4B3F211C74A87D00440914 /* SAPArrayDoubleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F191C74A87D00440914 /* SAPArrayDoubleIndexChangeModel.m */; settings = {ASSET_TAGS = (); }; };
-		CA4B3F221C74A87D00440914 /* SAPArrayIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F1B1C74A87D00440914 /* SAPArrayIndexChangeModel.m */; settings = {ASSET_TAGS = (); }; };
-		CA4B3F241C74A87D00440914 /* SAPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F1F1C74A87D00440914 /* SAPArrayModel.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3F2E1C74AFFE00440914 /* SAPCollectionChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F2C1C74AFFE00440914 /* SAPCollectionChangeModel.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3F341C74C31200440914 /* SAPCollectionChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F331C74C31200440914 /* SAPCollectionChangeModel+UITableView.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3F371C74C46F00440914 /* UITableView+SAPCollectionChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F361C74C46F00440914 /* UITableView+SAPCollectionChangeModel.m */; settings = {ASSET_TAGS = (); }; };
-		CA4B3F3A1C74C8AA00440914 /* SAPArrayIndexChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F391C74C8AA00440914 /* SAPArrayIndexChangeModel+UITableView.m */; settings = {ASSET_TAGS = (); }; };
 		CA4B3F3E1C74C9F600440914 /* NSIndexPath+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F3D1C74C9F600440914 /* NSIndexPath+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3F4E1C75EAF200440914 /* SAPArrayDoubleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F451C75EAF200440914 /* SAPArrayDoubleIndexChangeModel.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3F4F1C75EAF200440914 /* SAPArrayIndexChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F471C75EAF200440914 /* SAPArrayIndexChangeModel+UITableView.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3F501C75EAF200440914 /* SAPArrayIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F491C75EAF200440914 /* SAPArrayIndexChangeModel.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3F511C75EAF200440914 /* SAPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F4B1C75EAF200440914 /* SAPArrayModel.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3F521C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F4D1C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.m */; settings = {ASSET_TAGS = (); }; };
+		CA4B3F551C75ECA600440914 /* SAPArrayDoubleIndexChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B3F541C75ECA600440914 /* SAPArrayDoubleIndexChangeModel+UITableView.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA634BC11C63B96C00DAED4E /* UIWindow+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CA634BE71C68A18300DAED4E /* smile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CA634BE61C68A18300DAED4E /* smile.jpeg */; settings = {ASSET_TAGS = (); }; };
@@ -76,12 +78,6 @@
 		CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA4B3EF51C6BBB5400440914 /* Add User-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add User-48.png"; sourceTree = "<group>"; };
 		CA4B3EF61C6BBB5400440914 /* Add_User-48.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Add_User-48.jpg"; sourceTree = "<group>"; };
-		CA4B3F181C74A87D00440914 /* SAPArrayDoubleIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayDoubleIndexChangeModel.h; sourceTree = "<group>"; };
-		CA4B3F191C74A87D00440914 /* SAPArrayDoubleIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayDoubleIndexChangeModel.m; sourceTree = "<group>"; };
-		CA4B3F1A1C74A87D00440914 /* SAPArrayIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayIndexChangeModel.h; sourceTree = "<group>"; };
-		CA4B3F1B1C74A87D00440914 /* SAPArrayIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayIndexChangeModel.m; sourceTree = "<group>"; };
-		CA4B3F1E1C74A87D00440914 /* SAPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayModel.h; sourceTree = "<group>"; };
-		CA4B3F1F1C74A87D00440914 /* SAPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayModel.m; sourceTree = "<group>"; };
 		CA4B3F2B1C74AFFE00440914 /* SAPCollectionChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPCollectionChangeModel.h; sourceTree = "<group>"; };
 		CA4B3F2C1C74AFFE00440914 /* SAPCollectionChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPCollectionChangeModel.m; sourceTree = "<group>"; };
 		CA4B3F2D1C74AFFE00440914 /* SAPCollectionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPCollectionObserver.h; sourceTree = "<group>"; };
@@ -89,10 +85,20 @@
 		CA4B3F331C74C31200440914 /* SAPCollectionChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SAPCollectionChangeModel+UITableView.m"; sourceTree = "<group>"; };
 		CA4B3F351C74C46F00440914 /* UITableView+SAPCollectionChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SAPCollectionChangeModel.h"; sourceTree = "<group>"; };
 		CA4B3F361C74C46F00440914 /* UITableView+SAPCollectionChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SAPCollectionChangeModel.m"; sourceTree = "<group>"; };
-		CA4B3F381C74C8AA00440914 /* SAPArrayIndexChangeModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SAPArrayIndexChangeModel+UITableView.h"; sourceTree = "<group>"; };
-		CA4B3F391C74C8AA00440914 /* SAPArrayIndexChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SAPArrayIndexChangeModel+UITableView.m"; sourceTree = "<group>"; };
 		CA4B3F3C1C74C9F600440914 /* NSIndexPath+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA4B3F3D1C74C9F600440914 /* NSIndexPath+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+SAPExtensions.m"; sourceTree = "<group>"; };
+		CA4B3F441C75EAF200440914 /* SAPArrayDoubleIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayDoubleIndexChangeModel.h; sourceTree = "<group>"; };
+		CA4B3F451C75EAF200440914 /* SAPArrayDoubleIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayDoubleIndexChangeModel.m; sourceTree = "<group>"; };
+		CA4B3F461C75EAF200440914 /* SAPArrayIndexChangeModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SAPArrayIndexChangeModel+UITableView.h"; sourceTree = "<group>"; };
+		CA4B3F471C75EAF200440914 /* SAPArrayIndexChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SAPArrayIndexChangeModel+UITableView.m"; sourceTree = "<group>"; };
+		CA4B3F481C75EAF200440914 /* SAPArrayIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayIndexChangeModel.h; sourceTree = "<group>"; };
+		CA4B3F491C75EAF200440914 /* SAPArrayIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayIndexChangeModel.m; sourceTree = "<group>"; };
+		CA4B3F4A1C75EAF200440914 /* SAPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayModel.h; sourceTree = "<group>"; };
+		CA4B3F4B1C75EAF200440914 /* SAPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayModel.m; sourceTree = "<group>"; };
+		CA4B3F4C1C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SAPCollectionChangeModel+SAPArrayModel.h"; sourceTree = "<group>"; };
+		CA4B3F4D1C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SAPCollectionChangeModel+SAPArrayModel.m"; sourceTree = "<group>"; };
+		CA4B3F531C75ECA600440914 /* SAPArrayDoubleIndexChangeModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SAPArrayDoubleIndexChangeModel+UITableView.h"; sourceTree = "<group>"; };
+		CA4B3F541C75ECA600440914 /* SAPArrayDoubleIndexChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SAPArrayDoubleIndexChangeModel+UITableView.m"; sourceTree = "<group>"; };
 		CA634BBC1C63B93100DAED4E /* CGGeometry+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+SAPExtensions.h"; sourceTree = "<group>"; };
 		CA634BBD1C63B93100DAED4E /* CGGeometry+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+SAPExtensions.m"; sourceTree = "<group>"; };
 		CA634BC01C63B96C00DAED4E /* UIWindow+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtensions.h"; sourceTree = "<group>"; };
@@ -220,29 +226,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		CA4B3F161C74A87D00440914 /* SAPArrayModel */ = {
-			isa = PBXGroup;
-			children = (
-				CA4B3F171C74A87D00440914 /* Private */,
-				CA4B3F1E1C74A87D00440914 /* SAPArrayModel.h */,
-				CA4B3F1F1C74A87D00440914 /* SAPArrayModel.m */,
-			);
-			path = SAPArrayModel;
-			sourceTree = "<group>";
-		};
-		CA4B3F171C74A87D00440914 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				CA4B3F181C74A87D00440914 /* SAPArrayDoubleIndexChangeModel.h */,
-				CA4B3F191C74A87D00440914 /* SAPArrayDoubleIndexChangeModel.m */,
-				CA4B3F1A1C74A87D00440914 /* SAPArrayIndexChangeModel.h */,
-				CA4B3F1B1C74A87D00440914 /* SAPArrayIndexChangeModel.m */,
-				CA4B3F381C74C8AA00440914 /* SAPArrayIndexChangeModel+UITableView.h */,
-				CA4B3F391C74C8AA00440914 /* SAPArrayIndexChangeModel+UITableView.m */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
 		CA4B3F2A1C74AFFE00440914 /* SAPCollectionChangeModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +247,33 @@
 				CA4B3F3D1C74C9F600440914 /* NSIndexPath+SAPExtensions.m */,
 			);
 			path = NSIndexPath;
+			sourceTree = "<group>";
+		};
+		CA4B3F421C75EAF200440914 /* SAPArrayModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA4B3F431C75EAF200440914 /* Private */,
+				CA4B3F4A1C75EAF200440914 /* SAPArrayModel.h */,
+				CA4B3F4B1C75EAF200440914 /* SAPArrayModel.m */,
+				CA4B3F4C1C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.h */,
+				CA4B3F4D1C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.m */,
+			);
+			path = SAPArrayModel;
+			sourceTree = "<group>";
+		};
+		CA4B3F431C75EAF200440914 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				CA4B3F481C75EAF200440914 /* SAPArrayIndexChangeModel.h */,
+				CA4B3F491C75EAF200440914 /* SAPArrayIndexChangeModel.m */,
+				CA4B3F461C75EAF200440914 /* SAPArrayIndexChangeModel+UITableView.h */,
+				CA4B3F471C75EAF200440914 /* SAPArrayIndexChangeModel+UITableView.m */,
+				CA4B3F441C75EAF200440914 /* SAPArrayDoubleIndexChangeModel.h */,
+				CA4B3F451C75EAF200440914 /* SAPArrayDoubleIndexChangeModel.m */,
+				CA4B3F531C75ECA600440914 /* SAPArrayDoubleIndexChangeModel+UITableView.h */,
+				CA4B3F541C75ECA600440914 /* SAPArrayDoubleIndexChangeModel+UITableView.m */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 		CA634BBB1C63B93100DAED4E /* CGGeometry */ = {
@@ -306,8 +316,8 @@
 		CA634BE81C68D0BD00DAED4E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CA4B3F421C75EAF200440914 /* SAPArrayModel */,
 				CA4B3F2A1C74AFFE00440914 /* SAPCollectionChangeModel */,
-				CA4B3F161C74A87D00440914 /* SAPArrayModel */,
 				CA634BF11C68D14500DAED4E /* SAPReference */,
 				CA634BE91C68D0BD00DAED4E /* SAPObservableObject */,
 				CA634BEC1C68D0BD00DAED4E /* SAPTableViewCell */,
@@ -644,16 +654,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */,
+				CA4B3F551C75ECA600440914 /* SAPArrayDoubleIndexChangeModel+UITableView.m in Sources */,
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
-				CA4B3F241C74A87D00440914 /* SAPArrayModel.m in Sources */,
 				CA634C111C69C43900DAED4E /* SAPUser.m in Sources */,
 				CA4B3F2E1C74AFFE00440914 /* SAPCollectionChangeModel.m in Sources */,
 				CA4B3EEC1C6A486200440914 /* NSString+IOPRandomName.m in Sources */,
-				CA4B3F211C74A87D00440914 /* SAPArrayDoubleIndexChangeModel.m in Sources */,
 				CA4B3F3E1C74C9F600440914 /* NSIndexPath+SAPExtensions.m in Sources */,
 				CA634C081C69C3FC00DAED4E /* SAPUsersViewController.m in Sources */,
 				CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtensions.m in Sources */,
-				CA4B3F3A1C74C8AA00440914 /* SAPArrayIndexChangeModel+UITableView.m in Sources */,
 				CAC421CF1C5A55A2004E4F1E /* SAPSquareView.m in Sources */,
 				CAC421B01C5A2364004E4F1E /* main.m in Sources */,
 				CA634C071C69C3FC00DAED4E /* SAPUsersView.m in Sources */,
@@ -662,14 +670,18 @@
 				CA4B3EE41C6A2DF900440914 /* UINib+SAPExtensions.m in Sources */,
 				CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtensions.m in Sources */,
 				CA634C0A1C69C3FC00DAED4E /* SAPUserCell.m in Sources */,
+				CA4B3F4E1C75EAF200440914 /* SAPArrayDoubleIndexChangeModel.m in Sources */,
+				CA4B3F521C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.m in Sources */,
 				CA634C121C69C43900DAED4E /* SAPUsers.m in Sources */,
+				CA4B3F511C75EAF200440914 /* SAPArrayModel.m in Sources */,
 				CA634BF01C68D0BD00DAED4E /* SAPTableViewCell.m in Sources */,
 				CA4B3EF01C6A48DD00440914 /* NSString+SAPExtensions.m in Sources */,
 				CA4B3F371C74C46F00440914 /* UITableView+SAPCollectionChangeModel.m in Sources */,
+				CA4B3F501C75EAF200440914 /* SAPArrayIndexChangeModel.m in Sources */,
 				CA4B3F341C74C31200440914 /* SAPCollectionChangeModel+UITableView.m in Sources */,
 				CA634BF71C68D14500DAED4E /* SAPAssignReference.m in Sources */,
-				CA4B3F221C74A87D00440914 /* SAPArrayIndexChangeModel.m in Sources */,
 				CA634BF81C68D14500DAED4E /* SAPReference.m in Sources */,
+				CA4B3F4F1C75EAF200440914 /* SAPArrayIndexChangeModel+UITableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

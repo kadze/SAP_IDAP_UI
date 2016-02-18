@@ -24,7 +24,7 @@
 - (void)updateTableView:(UITableView *)tableView {
     NSIndexPath *indexPath = self.indexPath;
     NSArray *indexPaths = @[indexPath];
-    SAPChangeType changeType = self.changeType;
+    SAPArrayIndexChangeType changeType = self.changeType;
     
     [tableView updateWithBlock:^(UITableView *tableView) {
         switch (changeType) {
