@@ -8,11 +8,17 @@
 
 #import "SAPCollectionChangeModel.h"
 
+typedef NS_ENUM (NSUInteger, SAPArrayIndexChangeType) {
+    kSAPChangeTypeObjectAdded,
+    kSAPChangeTypeObjectInserted,
+    kSAPChangeTypeObjectRemoved,
+    kSAPChangeTypeObjectReplaced,
+};
 
 @interface SAPArrayIndexChangeModel : SAPCollectionChangeModel
 @property (nonatomic, readonly) NSUInteger index;
 
-+ (id)modelWithChangeType:(SAPChangeType)changeType
++ (id)modelWithChangeType:(NSUInteger)changeType
                     index:(NSUInteger)index;
 
 @end

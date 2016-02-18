@@ -8,10 +8,15 @@
 
 #import "SAPArrayIndexChangeModel.h"
 
+typedef NS_ENUM(NSUInteger, SAPArrayDoubleIndexChangeType) {
+    kSAPChangeTypeObjectExchanged,
+    kSAPChangeTypeObjectMoved
+};
+
 @interface SAPArrayDoubleIndexChangeModel : SAPArrayIndexChangeModel
 @property (nonatomic, readonly) NSUInteger toIndex;
 
-+ (id)modelWithChangeType:(SAPChangeType)changeType
++ (id)modelWithChangeType:(NSUInteger)changeType
                     index:(NSUInteger)fromIndex
                   toIndex:(NSUInteger)toIndex;
 

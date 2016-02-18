@@ -8,17 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM (NSUInteger, SAPChangeType) {
-    kSAPChangeTypeObjectAdded,
-    kSAPChangeTypeObjectInserted,
-    kSAPChangeTypeObjectRemoved,
-    kSAPChangeTypeObjectReplaced,
-    kSAPChangeTypeObjectExchanged
-};
-
 @interface SAPCollectionChangeModel : NSObject
-@property (nonatomic, readonly) SAPChangeType changeType;
+@property (nonatomic, readonly) NSUInteger changeType;
 
-+ (id)modelWithChangeType:(SAPChangeType)changeType;
++ (id)modelWithChangeType:(NSUInteger)changeType;
 
 @end

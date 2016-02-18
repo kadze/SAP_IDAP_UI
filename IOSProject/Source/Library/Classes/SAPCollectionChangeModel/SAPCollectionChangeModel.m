@@ -12,7 +12,7 @@
 #import "SAPArrayDoubleIndexChangeModel.h"
 
 @interface SAPCollectionChangeModel ()
-@property (nonatomic, assign) SAPChangeType changeType;
+@property (nonatomic, assign) NSUInteger changeType;
 
 @end
 
@@ -23,7 +23,7 @@
 #pragma mark-
 #pragma mark Initializations and Deallocations
 
-- (instancetype)initWithChangeType:(SAPChangeType)changeType {
+- (instancetype)initWithChangeType:(NSUInteger)changeType {
     self = [super init];
     if (self) {
         self.changeType = changeType;
@@ -35,7 +35,7 @@
 #pragma mark-
 #pragma mark Class methods
 
-+ (instancetype)modelWithChangeType:(SAPChangeType)changeType {
++ (instancetype)modelWithChangeType:(NSUInteger)changeType {
     return [[self alloc] initWithChangeType:changeType];
 }
 
