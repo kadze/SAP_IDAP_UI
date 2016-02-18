@@ -7,16 +7,16 @@
 //
 
 #import "SAPArrayModel.h"
-//#import "SAPArrayModelChangeModel.h"
 
-//#import "SAPArrayIndexChangeModel.h"
+#import "SAPArrayIndexChangeModel.h"
 #import "SAPArrayDoubleIndexChangeModel.h"
+
+#import "SAPCollectionChangeModel+SAPArrayModel.h"
 
 @interface SAPArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableObjects;
 
-- (void)notifyWithChangeType:(SAPChangeType)changeType indexes:(NSArray *)indexes;
-- (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)index;
+- (void)notifyWithChangeModel:(SAPCollectionChangeModel *)changeModel;
 
 @end
 
@@ -69,7 +69,7 @@
     @synchronized(self) {
         [self.mutableObjects addObject:anObject];
         
-        [self notifyWithChangeType:kSAPChangeTypeObjectAdded index:self.count - 1];//es:nil];
+        [self notifyWithChangeModel:[SAPCollectionChangeModel additionModelWithIndex:self.count - 1]];
     }
 }
 
@@ -77,7 +77,7 @@
     @synchronized(self) {
         [self.mutableObjects insertObject:anObject atIndex:index];
         
-        [self notifyWithChangeType:kSAPChangeTypeObjectInserted index:index];
+        [self notifyWithChangeModel:[SAPCollectionChangeModel insertionModelWithIndex:index]];
     }
 }
 
@@ -85,7 +85,7 @@
     @synchronized(self) {
         [self.mutableObjects removeLastObject];
         
-        [self notifyWithChangeType:kSAPChangeTypeObjectRemoved index:self.count -1];
+        [self notifyWithChangeModel:[SAPCollectionChangeModel removalModelWithIndex:self.count - 1]];
     }
 }
 
@@ -93,7 +93,7 @@
     @synchronized(self) {
         [self.mutableObjects removeObjectAtIndex:index];
 
-        [self notifyWithChangeType:kSAPChangeTypeObjectRemoved index:index];
+        [self notifyWithChangeModel:[SAPCollectionChangeModel removalModelWithIndex:index]];
     }
 }
 
@@ -101,7 +101,7 @@
     @synchronized(self) {
         [self.mutableObjects replaceObjectAtIndex:index withObject:anObject];
         
-        [self notifyWithChangeType:kSAPChangeTypeObjectReplaced index:index];
+        [self notifyWithChangeModel:[SAPCollectionChangeModel replacementModelWithIndex:index]];
     }
 }
 
@@ -109,27 +109,16 @@
     @synchronized(self) {
         [self.mutableObjects exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
         
-        [self notifyWithChangeType:kSAPChangeTypeObjectExchanged
-                           indexes:@[@(idx1), @(idx2)]];
+        [self notifyWithChangeModel:[SAPCollectionChangeModel exchangingModelAtIndex:idx1 withModelAtIndex:idx2]];
     }
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)notifyWithChangeType:(SAPChangeType)changeType indexes:(NSArray *)indexes {
-    SAPCollectionChangeModel *changeModel = [SAPCollectionChangeModel modelWithChangeType:changeType
-                                                                                  indexes:indexes];
+- (void)notifyWithChangeModel:(SAPCollectionChangeModel *)changeModel; {
     [self notifyObserversWithSelector:@selector(collection:didChangedWithModel:)
                            withObject:changeModel];
-}
-
-- (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)index {
-    [self notifyWithChangeType:changeType indexes:@[@(index)]];
-}
-
-- (void)notifyWithChangeType:(SAPChangeType)changeType index:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
-    SAPArrayDoubleIndexChangeModel *model
 }
 
 @end
