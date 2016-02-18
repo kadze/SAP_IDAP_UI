@@ -9,6 +9,7 @@
 #import "SAPUsers.h"
 
 #import "SAPUser.h"
+#import "SAPOwnershipMacro.h"
 
 static NSUInteger const kSAPInitialUsersCount = 100;
 
@@ -30,9 +31,13 @@ static NSUInteger const kSAPInitialUsersCount = 100;
 #pragma mark Private
 
 - (void)fillWithUsers {
-    for (NSUInteger index = 0; index < kSAPInitialUsersCount; index++) {
-        [self addObject:[SAPUser new]];
-    }
+    SAPWeakify(self);
+    [self performBlockWithoutNotification:^{
+        SAPStrongify(self);
+        for (NSUInteger index = 0; index < kSAPInitialUsersCount; index++) {
+            [self addObject:[SAPUser new]];
+        }
+    }];
 }
 
 @end
