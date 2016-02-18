@@ -18,6 +18,4 @@
 
 - (IBAction)onAddUser:(id)sender;
 
-- (void)collection:(SAPArrayModel *)arrayModel didChangedWithModel:(SAPCollectionChangeModel *)changeModel;
-
 @end
