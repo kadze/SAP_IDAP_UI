@@ -113,6 +113,20 @@
     }
 }
 
+- (void)moveObjectFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
+    @synchronized(self) {
+        NSMutableArray *mutableObjects = self.mutableObjects;
+        id objectFromIndex = mutableObjects[fromIndex];
+        if (fromIndex < toIndex) {
+            [mutableObjects insertObject:objectFromIndex atIndex:toIndex];
+            [mutableObjects removeObjectAtIndex:fromIndex];
+        } else {
+            [mutableObjects removeObjectAtIndex:fromIndex];
+            [mutableObjects insertObject:objectFromIndex atIndex:toIndex];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark Private
 
