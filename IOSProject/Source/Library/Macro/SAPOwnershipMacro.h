@@ -5,6 +5,7 @@
 //  Created by S A P on 2/2/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
+#import "SAPClangMacro.h"
 
 #define SAPEmpty
 
