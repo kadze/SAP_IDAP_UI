@@ -13,4 +13,6 @@
 
 + (id)modelWithChangeType:(NSUInteger)changeType;
 
+- (instancetype)initWithChangeType:(NSUInteger)changeType;
+
 @end

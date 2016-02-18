@@ -20,4 +20,9 @@ typedef NS_ENUM(NSUInteger, SAPArrayDoubleIndexChangeType) {
                     index:(NSUInteger)fromIndex
                   toIndex:(NSUInteger)toIndex;
 
+- (instancetype)initWithChangeType:(NSUInteger)changeType
+                             index:(NSUInteger)index
+                           toIndex:(NSUInteger)toIndex;
+
+
 @end

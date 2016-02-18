@@ -21,4 +21,6 @@ typedef NS_ENUM (NSUInteger, SAPArrayIndexChangeType) {
 + (id)modelWithChangeType:(NSUInteger)changeType
                     index:(NSUInteger)index;
 
+- (instancetype)initWithChangeType:(NSUInteger)changeType index:(NSUInteger)index;
+
 @end
