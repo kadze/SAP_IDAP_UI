@@ -10,7 +10,7 @@
 
 @interface UITableView (SAPExtensions)
 
-- (id)cellWithClass:(Class)class;
+- (id)cellWithClass:(Class)aClass;
 - (void)updateWithBlock:(void(^)(UITableView *))block;
 
 @end
