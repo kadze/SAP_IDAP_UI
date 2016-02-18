@@ -12,7 +12,6 @@
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
 #import "SAPUser.h"
-//#import "SAPArrayModelChangeModel.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -20,7 +19,7 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
+SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
 @interface SAPUsersViewController ()
 
@@ -40,7 +39,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
         _users = users;
         [_users addObserver:self];
         
-        [self.tableView.tableView reloadData];
+        [self.usersView.tableView reloadData];
     }
 }
 
@@ -50,7 +49,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView.tableView reloadData];
+    [self.usersView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,7 +109,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, tableView);
 #pragma mark SAPCollectionObserver
 
 - (void)collection:(SAPArrayModel *)arrayModel didChangedWithModel:(SAPCollectionChangeModel *)changeModel {
-    UITableView *tableView = self.tableView.tableView;    
+    UITableView *tableView = self.usersView.tableView;
     [tableView updateWithCollectionChangeModel:changeModel];
 }
 
