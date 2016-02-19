@@ -24,10 +24,6 @@
 SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
 @interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
-
-- (NSArray *)indexPathsForIndex:(NSUInteger)index;
-- (NSIndexPath *)indexPathForIndex:(NSUInteger)index;
-
 @end
 
 @implementation SAPUsersViewController
@@ -37,12 +33,10 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
 - (void)setUsers:(SAPUsers *)users {
     if (_users != users) {
-        [_users removeObserver:self];
         _users = users;
-        [_users addObserver:self];
-        
-        [self.usersView.tableView reloadData];
     }
+    
+    self.usersView.users = users;
 }
 
 #pragma mark-
@@ -51,7 +45,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.usersView.tableView reloadData];
+    self.users = self.users;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +59,15 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 - (IBAction)onAddUser:(id)sender {
     SAPUsers *users = self.users;
     [users addObject:[SAPUser new]];
+}
+
+- (IBAction)onEdit:(id)sender {
+    SAPUsersView *usersView = self.usersView;
+    UITableView *tableView = usersView.tableView;
+    BOOL newEditingState = !tableView.editing;
+   
+    [tableView setEditing:newEditingState animated:YES];
+    [usersView updateEditButtonTitle:newEditingState];    
 }
 
 #pragma mark -
@@ -100,30 +103,11 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
             toIndexPath:(NSIndexPath *)indexPath2
 {
     SAPUsers *users = self.users;
-    [users exchangeObjectAtIndex:indexPath1.row withObjectAtIndex:indexPath2.row];
+    [users moveObjectFromIndex:indexPath1.row toIndex:indexPath2.row];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
-}
-
-#pragma mark -
-#pragma mark SAPCollectionObserver
-
-- (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
-    UITableView *tableView = self.usersView.tableView;
-    [tableView updateWithCollectionChangeModel:changeModel];
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (NSArray *)indexPathsForIndex:(NSUInteger)index {
-   return [NSArray arrayWithObject:[self indexPathForIndex:index]];
-}
-
-- (NSIndexPath *)indexPathForIndex:(NSUInteger)index {
-    return [NSIndexPath indexPathForRow:index inSection:0];
 }
 
 @end

@@ -15,16 +15,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="headTruncation" id="wIi-sx-sRk" userLabel="Add user">
-                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                    <rect key="frame" x="192" y="509" width="120" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="Add User-48.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="onAddUser:" destination="-1" eventType="touchUpInside" id="Dvg-k3-SUL"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lmr-jZ-J08">
+                    <rect key="frame" x="8" y="509" width="120" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="Edit">
+                        <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onEdit:" destination="-1" eventType="touchUpInside" id="lkC-7T-7Gk"/>
+                    </connections>
+                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NVV-vI-LC5" userLabel="table view">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="517"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="501"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -33,20 +51,15 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
             <gestureRecognizers/>
             <connections>
                 <outlet property="addUserButton" destination="wIi-sx-sRk" id="479-ZI-fzI"/>
+                <outlet property="editButton" destination="lmr-jZ-J08" id="9If-l3-DAx"/>
                 <outlet property="tableView" destination="NVV-vI-LC5" id="M4Q-Gm-h91"/>
-                <outletCollection property="gestureRecognizers" destination="vCi-Fa-d4M" appends="YES" id="Vme-xQ-wEb"/>
             </connections>
             <point key="canvasLocation" x="282" y="307"/>
         </view>
-        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="vCi-Fa-d4M">
-            <connections>
-                <action selector="onLongPress:" destination="i5M-Pr-FkT" id="ag5-rO-Lld"/>
-            </connections>
-        </pongPressGestureRecognizer>
     </objects>
     <resources>
         <image name="Add User-48.png" width="48" height="48"/>

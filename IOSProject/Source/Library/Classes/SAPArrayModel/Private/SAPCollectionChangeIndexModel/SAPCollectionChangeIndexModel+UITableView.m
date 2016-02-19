@@ -32,8 +32,6 @@
                 [tableView insertRowsAtIndexPaths:indexPaths
                                  withRowAnimation:UITableViewRowAnimationTop];
                 
-                [tableView scrollToRowAtIndexPath:indexPath
-                                 atScrollPosition:UITableViewScrollPositionNone animated:YES];
                 break;
                 
             case kSAPChangeTypeObjectInserted:
@@ -53,6 +51,11 @@
                 break;
         }
     }];
+    
+    if (kSAPChangeTypeObjectAdded == changeType) {
+        [tableView scrollToRowAtIndexPath:indexPath
+                         atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 @end

@@ -15,5 +15,6 @@
 @property (nonatomic, strong) SAPUsers *users;
 
 - (IBAction)onAddUser:(id)sender;
+- (IBAction)onEdit:(id)sender;
 
 @end
