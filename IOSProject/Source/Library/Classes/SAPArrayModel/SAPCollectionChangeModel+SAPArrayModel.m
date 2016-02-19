@@ -8,41 +8,41 @@
 
 #import "SAPCollectionChangeModel+SAPArrayModel.h"
 
-#import "SAPArrayIndexChangeModel.h"
-#import "SAPArrayDoubleIndexChangeModel.h"
+#import "SAPCollectionChangeIndexModel.h"
+#import "SAPCollectionChangeDoubleIndexModel.h"
 
 @implementation SAPCollectionChangeModel (SAPArrayModel)
 
-//SAPArrayIndexChangeModel
+//SAPCollectionChangeIndexModel
 
 + (instancetype)additionModelWithIndex:(NSUInteger)index {
-    return [SAPArrayIndexChangeModel modelWithChangeType:kSAPChangeTypeObjectAdded index:index];
+    return [SAPCollectionChangeIndexModel modelWithChangeType:kSAPChangeTypeObjectAdded index:index];
 }
 
 + (instancetype)insertionModelWithIndex:(NSUInteger)index {
-    return [SAPArrayIndexChangeModel modelWithChangeType:kSAPChangeTypeObjectInserted index:index];
+    return [SAPCollectionChangeIndexModel modelWithChangeType:kSAPChangeTypeObjectInserted index:index];
 }
 
 + (instancetype)removalModelWithIndex:(NSUInteger)index {
-    return [SAPArrayIndexChangeModel modelWithChangeType:kSAPChangeTypeObjectRemoved index:index];
+    return [SAPCollectionChangeIndexModel modelWithChangeType:kSAPChangeTypeObjectRemoved index:index];
 }
 
 + (instancetype)replacementModelWithIndex:(NSUInteger)index {
-    return [SAPArrayIndexChangeModel modelWithChangeType:kSAPChangeTypeObjectReplaced index:index];
+    return [SAPCollectionChangeIndexModel modelWithChangeType:kSAPChangeTypeObjectReplaced index:index];
 }
 
-//SAPArrayDoubleIndexChangeModel
+//SAPCollectionChangeDoubleIndexModel
 
 + (instancetype)movingModelFromIndex:(NSUInteger)fromIndex
                              toIndex:(NSUInteger)toIndex {
-    return [SAPArrayDoubleIndexChangeModel modelWithChangeType:kSAPChangeTypeObjectMoved
+    return [SAPCollectionChangeDoubleIndexModel modelWithChangeType:kSAPChangeTypeObjectMoved
                                                          index:fromIndex
                                                        toIndex:toIndex];
 }
 
 + (instancetype)exchangingModelAtIndex:(NSUInteger)index
                       withModelAtIndex:(NSUInteger)toIndex {
-    return [SAPArrayDoubleIndexChangeModel modelWithChangeType:kSAPChangeTypeObjectExchanged
+    return [SAPCollectionChangeDoubleIndexModel modelWithChangeType:kSAPChangeTypeObjectExchanged
                                                          index:index
                                                        toIndex:toIndex];
 }

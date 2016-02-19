@@ -14,6 +14,6 @@
 @protocol SAPCollectionObserver <NSObject>
 
 @optional
-- (void)collection:(SAPArrayModel *)arrayModel didChangedWithModel:(SAPCollectionChangeModel *)changeModel;
+- (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SAPArrayIndexChangeModel.h
+//  SAPCollectionChangeIndexModel.h
 //  IOSProject
 //
 //  Created by S A P on 2/16/16.
@@ -15,12 +15,10 @@ typedef NS_ENUM (NSUInteger, SAPArrayIndexChangeType) {
     kSAPChangeTypeObjectReplaced,
 };
 
-@interface SAPArrayIndexChangeModel : SAPCollectionChangeModel
+@interface SAPCollectionChangeIndexModel : SAPCollectionChangeModel
 @property (nonatomic, readonly) NSUInteger index;
 
 + (id)modelWithChangeType:(NSUInteger)changeType
                     index:(NSUInteger)index;
-
-- (instancetype)initWithChangeType:(NSUInteger)changeType index:(NSUInteger)index;
 
 @end

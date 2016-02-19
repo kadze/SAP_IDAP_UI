@@ -8,8 +8,8 @@
 
 #import "SAPCollectionChangeModel.h"
 
-#import "SAPArrayIndexChangeModel.h"
-#import "SAPArrayDoubleIndexChangeModel.h"
+#import "SAPCollectionChangeIndexModel.h"
+#import "SAPCollectionChangeDoubleIndexModel.h"
 
 @interface SAPCollectionChangeModel ()
 @property (nonatomic, assign) NSUInteger changeType;

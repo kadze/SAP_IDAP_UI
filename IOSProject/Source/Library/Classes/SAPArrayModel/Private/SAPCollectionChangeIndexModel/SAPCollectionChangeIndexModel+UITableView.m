@@ -1,19 +1,19 @@
 //
-//  SAPArrayIndexChangeModel+UITableView.m
+//  SAPCollectionChangeIndexModel+UITableView.m
 //  IOSProject
 //
 //  Created by S A P on 2/17/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPArrayIndexChangeModel+UITableView.h"
+#import "SAPCollectionChangeIndexModel+UITableView.h"
 
 #import <UIKit/UIKit.h>
 
 #import "NSIndexPath+SAPExtensions.h"
 #import "UITableView+SAPExtensions.h"
 
-@implementation SAPArrayIndexChangeModel (UITableView)
+@implementation SAPCollectionChangeIndexModel (UITableView)
 
 @dynamic indexPath;
 

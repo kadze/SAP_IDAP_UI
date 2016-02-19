@@ -17,6 +17,8 @@
 #import "UITableView+SAPExtensions.h"
 #import "UITableView+SAPCollectionChangeModel.h"
 
+#import "SAPCollectionObserver.h"
+
 #import "SAPViewControllerMacro.h"
 
 SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
@@ -108,7 +110,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 #pragma mark -
 #pragma mark SAPCollectionObserver
 
-- (void)collection:(SAPArrayModel *)arrayModel didChangedWithModel:(SAPCollectionChangeModel *)changeModel {
+- (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
     UITableView *tableView = self.usersView.tableView;
     [tableView updateWithCollectionChangeModel:changeModel];
 }

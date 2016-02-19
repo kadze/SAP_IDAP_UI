@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SAPCollectionObserver.h"
-
 @class SAPUsers;
 @class SAPArrayModelChangeModel;
 

@@ -8,10 +8,12 @@
 
 #import "SAPArrayModel.h"
 
-#import "SAPArrayIndexChangeModel.h"
-#import "SAPArrayDoubleIndexChangeModel.h"
+#import "SAPCollectionChangeIndexModel.h"
+#import "SAPCollectionChangeDoubleIndexModel.h"
 
 #import "SAPCollectionChangeModel+SAPArrayModel.h"
+
+#import "SAPCollectionObserver.h"
 
 @interface SAPArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableObjects;
@@ -131,7 +133,7 @@
 #pragma mark Private
 
 - (void)notifyWithChangeModel:(SAPCollectionChangeModel *)changeModel; {
-    [self notifyObserversWithSelector:@selector(collection:didChangedWithModel:)
+    [self notifyObserversWithSelector:@selector(collection:didChangeWithModel:)
                            withObject:changeModel];
 }
 
