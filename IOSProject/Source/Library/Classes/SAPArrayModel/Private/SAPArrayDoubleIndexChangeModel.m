@@ -17,10 +17,6 @@
 
 @implementation SAPArrayDoubleIndexChangeModel
 
-@dynamic changeType;
-@dynamic index;
-@dynamic toIndex;
-
 #pragma mark -
 #pragma mark Class methods
 

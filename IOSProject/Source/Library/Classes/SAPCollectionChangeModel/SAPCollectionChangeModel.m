@@ -18,8 +18,6 @@
 
 @implementation SAPCollectionChangeModel
 
-@dynamic changeType;
-
 #pragma mark-
 #pragma mark Initializations and Deallocations
 

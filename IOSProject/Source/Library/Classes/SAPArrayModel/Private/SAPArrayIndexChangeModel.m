@@ -16,9 +16,6 @@
 
 @implementation SAPArrayIndexChangeModel
 
-@dynamic changeType;
-@dynamic index;
-
 #pragma mark -
 #pragma mark Class methods
 
