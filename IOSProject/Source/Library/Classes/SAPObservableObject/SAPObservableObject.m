@@ -30,6 +30,7 @@
     self = [super init];
     if (self) {
         self.mutableObservers = [NSMutableSet set];
+        self.notificationEnabled = YES;
     }
     
     return self;
