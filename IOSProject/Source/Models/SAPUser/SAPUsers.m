@@ -13,6 +13,8 @@
 
 static NSUInteger const kSAPInitialUsersCount = 100;
 
+static NSString * const kSAPObjectsKey = @"objects";
+
 @implementation SAPUsers
 
 #pragma mark -
@@ -21,7 +23,7 @@ static NSUInteger const kSAPInitialUsersCount = 100;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self fillWithUsers];
+        [self fillWithUsers:[self createUsersWithCount:kSAPInitialUsersCount]];
     }
     
     return self;
@@ -30,14 +32,36 @@ static NSUInteger const kSAPInitialUsersCount = 100;
 #pragma mark -
 #pragma mark Private
 
-- (void)fillWithUsers {
+- (void)fillWithUsers:(NSArray *)users {
     SAPWeakify(self);
     [self performBlockWithoutNotification:^{
         SAPStrongify(self);
-        for (NSUInteger index = 0; index < kSAPInitialUsersCount; index++) {
-            [self addObject:[SAPUser new]];
+        for (SAPUser *user in users) {
+            [self addObject:user];
         }
     }];
+}
+
+- (NSMutableArray *)createUsersWithCount:(NSUInteger)count{
+    NSMutableArray *result = [NSMutableArray new];
+    for (NSUInteger index = 0; index < count; index++) {
+        [result addObject:[SAPUser new]];
+    }
+    
+    return result;
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.objects forKey:kSAPObjectsKey];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    [self fillWithUsers:[aDecoder decodeObjectForKey:kSAPObjectsKey]];
+    
+    return self;
 }
 
 @end

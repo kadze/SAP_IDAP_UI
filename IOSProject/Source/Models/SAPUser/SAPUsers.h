@@ -12,6 +12,6 @@
 
 @class SAPUser;
 
-@interface SAPUsers : SAPArrayModel
+@interface SAPUsers : SAPArrayModel <NSCoding>
 
 @end
