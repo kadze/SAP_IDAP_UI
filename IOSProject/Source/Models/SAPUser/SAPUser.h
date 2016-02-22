@@ -11,7 +11,7 @@
 
 #import "SAPObservableObject.h"
 
-@interface SAPUser : SAPObservableObject
+@interface SAPUser : SAPObservableObject <NSCoding>
 @property (nonatomic, copy)     NSString  *name;
 @property (nonatomic, readonly) UIImage   *image;
 

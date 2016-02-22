@@ -14,4 +14,6 @@
 
 @interface SAPUsers : SAPArrayModel <NSCoding>
 
++(NSString *) archivePath;
+
 @end

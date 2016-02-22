@@ -17,4 +17,7 @@
 - (IBAction)onAddUser:(id)sender;
 - (IBAction)onEdit:(id)sender;
 
+- (void)saveUsers;
+- (NSArray *)loadUsers;
+
 @end

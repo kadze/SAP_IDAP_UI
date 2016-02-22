@@ -110,4 +110,15 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
     return YES;
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (void)saveUsers{
+    [NSKeyedArchiver archiveRootObject:self.users toFile:[SAPUsers archivePath]];
+}
+
+- (NSArray *)loadUsers{
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:[SAPUsers archivePath]];
+}
+
 @end

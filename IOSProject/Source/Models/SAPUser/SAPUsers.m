@@ -13,9 +13,23 @@
 
 static NSUInteger const kSAPInitialUsersCount = 100;
 
-static NSString * const kSAPObjectsKey = @"objects";
+static NSString * const kSAPObjectsKey  = @"objects";
+static NSString * const kSAPPlistName   = @"users";
+static NSString * const kSAPPlistType   = @"plist";
+
+@interface SAPUsers ()
+
+@property (nonatomic, strong) NSString *archivePath;
+
+- (void)fillWithUsers:(NSArray *)users;
+- (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
+    
+@end
+
 
 @implementation SAPUsers
+
+@dynamic archivePath;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -27,6 +41,14 @@ static NSString * const kSAPObjectsKey = @"objects";
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (NSString *)archivePath {
+    NSString *path = [[NSBundle mainBundle] pathForResource:kSAPPlistName ofType:kSAPPlistType];
+    return path;
 }
 
 #pragma mark -

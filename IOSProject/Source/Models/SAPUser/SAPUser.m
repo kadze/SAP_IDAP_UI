@@ -13,6 +13,8 @@
 static NSString * const kSAPImageName = @"smile";
 static NSString * const kSAPImageType = @"jpeg";
 
+static NSString * const kSAPNameKey = @"name";
+
 @implementation SAPUser
 
 @dynamic image;
@@ -42,5 +44,21 @@ static NSString * const kSAPImageType = @"jpeg";
     
     return __image;
 }
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.name forKey:kSAPNameKey];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [self init]) {
+        self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
+    }
+    
+    return self;
+}
+
 
 @end
