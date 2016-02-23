@@ -14,7 +14,7 @@
 - (void)updateTableView:(UITableView *)tableView {
     SAPArrayIndexChangeType changeType = self.changeType;
     
-    [tableView updateWithBlock:^(UITableView *tableView) {
+    [tableView updateWithBlock:^(UITableView *object) {
         switch (changeType) {
             case kSAPChangeTypeObjectExchanged:
                 //

@@ -26,7 +26,7 @@
     NSArray *indexPaths = @[indexPath];
     SAPArrayIndexChangeType changeType = self.changeType;
     
-    [tableView updateWithBlock:^(UITableView *tableView) {
+    [tableView updateWithBlock:^(UITableView *object) {
         switch (changeType) {
             case kSAPChangeTypeObjectAdded:
                 [tableView insertRowsAtIndexPaths:indexPaths
@@ -35,11 +35,13 @@
                 break;
                 
             case kSAPChangeTypeObjectInserted:
-                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                [tableView insertRowsAtIndexPaths:indexPaths
+                                 withRowAnimation:UITableViewRowAnimationTop];
                 break;
                 
             case kSAPChangeTypeObjectReplaced:
-                //
+                [tableView reloadRowsAtIndexPaths:indexPaths
+                                 withRowAnimation:UITableViewRowAnimationMiddle];
                 break;
                 
             case kSAPChangeTypeObjectRemoved:
