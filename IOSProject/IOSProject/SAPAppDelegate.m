@@ -14,6 +14,7 @@
 #import "UIWindow+SAPExtensions.h"
 
 @interface SAPAppDelegate ()
+- (void) saveData;
 
 @end
 
@@ -42,7 +43,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [((SAPUsersViewController *)self.window.rootViewController).users save];
+    [self saveData];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -54,7 +55,14 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    
+
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)saveData {
+    [((SAPUsersViewController *)self.window.rootViewController).users save];
 }
 
 @end
