@@ -14,31 +14,25 @@
 
 #import "UITableView+SAPCollectionChangeModel.h"
 
-#import "SAPCollectionObserver.h"
-
 static NSString * const kSAPButtonTitleDone = @"Done";
 static NSString * const kSAPButtonTitleEdit = @"Edit";
 
-@interface SAPUsersView () <SAPCollectionObserver>
-
-@end
-
 @implementation SAPUsersView
 
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setUsers:(SAPUsers *)users {
-    if (_users != users) {
-        [_users removeObserver:self];
-        
-        _users = users;
-    
-        [_users addObserver:self];
-        
-        [self.tableView reloadData];
-    }
-}
+//#pragma mark -
+//#pragma mark Accessors
+//
+//- (void)setUsers:(SAPUsers *)users {
+//    if (_users != users) {
+//        [_users removeObserver:self];
+//        
+//        _users = users;
+//    
+//        [_users addObserver:self];
+//        
+//        [self.tableView reloadData];
+//    }
+//}
 
 #pragma mark -
 #pragma mark Public
@@ -46,14 +40,6 @@ static NSString * const kSAPButtonTitleEdit = @"Edit";
 - (void)updateEditButtonTitle:(BOOL)editingMode {
     [self.editButton setTitle:(editingMode ? kSAPButtonTitleDone : kSAPButtonTitleEdit)
                      forState:UIControlStateNormal];
-}
-
-#pragma mark -
-#pragma mark SAPCollectionObserver
-
-- (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
-    UITableView *tableView = self.tableView;
-    [tableView updateWithCollectionChangeModel:changeModel];
 }
 
 @end

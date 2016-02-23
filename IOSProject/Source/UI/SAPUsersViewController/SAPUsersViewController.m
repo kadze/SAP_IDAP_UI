@@ -33,10 +33,12 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
 - (void)setUsers:(SAPUsers *)users {
     if (_users != users) {
+        [_users removeObserver:self];
         _users = users;
+        [_users addObserver:self];
     }
     
-    self.usersView.users = users;
+    [self.usersView.tableView reloadData];
 }
 
 #pragma mark-
@@ -108,6 +110,14 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
+}
+
+#pragma mark -
+#pragma mark SAPCollectionObserver
+
+- (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
+    UITableView *tableView = self.usersView.tableView;
+    [tableView updateWithCollectionChangeModel:changeModel];
 }
 
 #pragma mark -
