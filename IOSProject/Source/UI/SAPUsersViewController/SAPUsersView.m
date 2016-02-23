@@ -19,21 +19,6 @@ static NSString * const kSAPButtonTitleEdit = @"Edit";
 
 @implementation SAPUsersView
 
-//#pragma mark -
-//#pragma mark Accessors
-//
-//- (void)setUsers:(SAPUsers *)users {
-//    if (_users != users) {
-//        [_users removeObserver:self];
-//        
-//        _users = users;
-//    
-//        [_users addObserver:self];
-//        
-//        [self.tableView reloadData];
-//    }
-//}
-
 #pragma mark -
 #pragma mark Public
 
