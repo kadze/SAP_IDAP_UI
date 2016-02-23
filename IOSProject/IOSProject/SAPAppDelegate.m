@@ -42,7 +42,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [(SAPUsersViewController *)self.window.rootViewController saveUsers];
+    [((SAPUsersViewController *)self.window.rootViewController).users save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

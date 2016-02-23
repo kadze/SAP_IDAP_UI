@@ -127,15 +127,4 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
     [tableView updateWithCollectionChangeModel:changeModel];
 }
 
-#pragma mark -
-#pragma mark Public
-
-- (void)saveUsers{
-    [NSKeyedArchiver archiveRootObject:self.users toFile:[SAPUsers archivePath]];
-}
-
-- (NSArray *)loadUsers{
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:[SAPUsers archivePath]];
-}
-
 @end

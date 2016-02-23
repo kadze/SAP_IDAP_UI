@@ -13,9 +13,9 @@
 
 static NSUInteger const kSAPInitialUsersCount = 100;
 
-static NSString * const kSAPObjectsKey  = @"objects";
-static NSString * const kSAPPlistName   = @"users";
-static NSString * const kSAPPlistType   = @"plist";
+static NSString * const kSAPObjectsKey      = @"objects";
+static NSString * const kSAPPlistName       = @"users";
+static NSString * const kSAPPlistExteintion = @"plist";
 
 @interface SAPUsers ()
 
@@ -23,6 +23,7 @@ static NSString * const kSAPPlistType   = @"plist";
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
+- (NSString *)path;
     
 @end
 
@@ -44,11 +45,27 @@ static NSString * const kSAPPlistType   = @"plist";
 }
 
 #pragma mark -
-#pragma mark Class Methods
+#pragma mark NSCoding
 
-+ (NSString *)archivePath {
-    NSString *path = [[NSBundle mainBundle] pathForResource:kSAPPlistName ofType:kSAPPlistType];
-    return path;
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.objects forKey:kSAPObjectsKey];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    [self fillWithUsers:[aDecoder decodeObjectForKey:kSAPObjectsKey]];
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)save{
+    [NSKeyedArchiver archiveRootObject:self.objects toFile:[self path]];
+}
+
+- (NSArray *)load{
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
 }
 
 #pragma mark -
@@ -73,17 +90,10 @@ static NSString * const kSAPPlistType   = @"plist";
     return result;
 }
 
-#pragma mark -
-#pragma mark NSCoding
+- (NSString *)path {
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.objects forKey:kSAPObjectsKey];
-}
-
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
-    [self fillWithUsers:[aDecoder decodeObjectForKey:kSAPObjectsKey]];
-    
-    return self;
+    return [[path stringByAppendingPathComponent:kSAPPlistName] stringByAppendingPathExtension:kSAPPlistExteintion];    
 }
 
 @end
