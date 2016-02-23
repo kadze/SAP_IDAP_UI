@@ -11,6 +11,8 @@
 #import "SAPUser.h"
 #import "SAPOwnershipMacro.h"
 
+#import "FileSystem+SAPExtentions.h"
+
 static NSUInteger const kSAPInitialUsersCount = 100;
 
 static NSString * const kSAPObjectsKey      = @"objects";
@@ -86,7 +88,7 @@ static NSString * const kSAPPlistExteintion = @"plist";
 }
 
 - (NSString *)path {
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *path = SAPSearchPath();
 
     return [[path stringByAppendingPathComponent:kSAPPlistName] stringByAppendingPathExtension:kSAPPlistExteintion];    
 }
