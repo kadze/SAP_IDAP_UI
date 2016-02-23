@@ -14,8 +14,6 @@
 
 @interface SAPUsers : SAPArrayModel
 
-//+ (instancetype)load;
-
 - (void)save;
 - (NSArray *)load;
 
