@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "SAPObservableObject.h"
+#import "SAPModel.h"
 
-@interface SAPUser : SAPObservableObject <NSCoding>
+@interface SAPUser : SAPModel <NSCoding>
 @property (nonatomic, copy)     NSString  *name;
 @property (nonatomic, readonly) UIImage   *image;
 

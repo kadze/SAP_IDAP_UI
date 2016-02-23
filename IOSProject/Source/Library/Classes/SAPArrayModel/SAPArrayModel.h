@@ -6,9 +6,9 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPObservableObject.h"
+#import "SAPModel.h"
 
-@interface SAPArrayModel : SAPObservableObject
+@interface SAPArrayModel : SAPModel
 @property (nonatomic, readonly) NSUInteger  count;
 @property (nonatomic, readonly) NSArray     *objects;
 
