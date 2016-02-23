@@ -18,15 +18,14 @@ static NSString * const kSAPPlistName       = @"users";
 static NSString * const kSAPPlistExteintion = @"plist";
 
 @interface SAPUsers ()
-
 @property (nonatomic, strong) NSString *archivePath;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
+- (NSArray *)prepareUsers;
 - (NSString *)path;
     
 @end
-
 
 @implementation SAPUsers
 
@@ -38,21 +37,8 @@ static NSString * const kSAPPlistExteintion = @"plist";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self fillWithUsers:[self createUsersWithCount:kSAPInitialUsersCount]];
+        [self fillWithUsers:[self prepareUsers]];
     }
-    
-    return self;
-}
-
-#pragma mark -
-#pragma mark NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.objects forKey:kSAPObjectsKey];
-}
-
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
-    [self fillWithUsers:[aDecoder decodeObjectForKey:kSAPObjectsKey]];
     
     return self;
 }
@@ -81,13 +67,22 @@ static NSString * const kSAPPlistExteintion = @"plist";
     }];
 }
 
-- (NSMutableArray *)createUsersWithCount:(NSUInteger)count{
+- (NSMutableArray *)createUsersWithCount:(NSUInteger)count {
     NSMutableArray *result = [NSMutableArray new];
     for (NSUInteger index = 0; index < count; index++) {
         [result addObject:[SAPUser new]];
     }
     
     return result;
+}
+
+- (NSArray *)prepareUsers {
+    NSArray *users = [self load];
+    if(!users) {
+        users = [self createUsersWithCount:kSAPInitialUsersCount];
+    }
+    
+    return users;
 }
 
 - (NSString *)path {

@@ -12,7 +12,9 @@
 
 @class SAPUser;
 
-@interface SAPUsers : SAPArrayModel <NSCoding>
+@interface SAPUsers : SAPArrayModel
+
+//+ (instancetype)load;
 
 - (void)save;
 - (NSArray *)load;
