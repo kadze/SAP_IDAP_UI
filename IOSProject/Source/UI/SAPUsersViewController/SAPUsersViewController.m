@@ -29,6 +29,13 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 @implementation SAPUsersViewController
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.users = nil;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setUsers:(SAPUsers *)users {
