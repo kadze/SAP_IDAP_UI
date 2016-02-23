@@ -53,10 +53,8 @@ static NSString * const kSAPNameKey = @"name";
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [self init]) {
-        self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
-    }
-    
+    self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
+        
     return self;
 }
 
