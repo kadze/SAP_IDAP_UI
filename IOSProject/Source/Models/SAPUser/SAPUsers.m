@@ -13,7 +13,7 @@
 #import "SAPUser.h"
 #import "SAPOwnershipMacro.h"
 
-#import "NSFileManager+SAPExtentions.h"
+#import "NSFileManager+SAPExtensions.h"
 
 static NSUInteger const kSAPInitialUsersCount = 100;
 
