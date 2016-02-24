@@ -19,3 +19,6 @@ NSString *SAPPathForDocumentsDirectory(void);
 
 extern
 NSString *SAPPathForAppStateDirectory(void);
+
+extern
+void SAPProvidePathExistence(NSString *path);

@@ -25,3 +25,12 @@ NSString *SAPPathForDocumentsDirectory(void) {
 NSString *SAPPathForAppStateDirectory(void) {
     return [SAPPathForLibraryDirectory() stringByAppendingPathComponent:kSAPAppStateDirectoryName];
 }
+
+void SAPProvidePathExistence(NSString *path) {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path]) {
+        [fileManager createDirectoryAtPath:path
+               withIntermediateDirectories:NO
+                                attributes:nil error:nil];
+    }
+}
