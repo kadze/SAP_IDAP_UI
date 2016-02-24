@@ -23,7 +23,7 @@
 
 SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
-@interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
+@interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
 
 - (void)updateViewWithModel;
 
@@ -125,6 +125,30 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
     UITableView *tableView = self.usersView.tableView;
     [tableView updateWithCollectionChangeModel:changeModel];
 }
+
+#pragma mark -
+#pragma mark SAPModelObserver
+
+- (void)modelDidBeginLoad:(id)model {
+    
+}
+
+- (void)modelDidFinishLoad:(id)model {
+    
+}
+
+- (void)modelDidFailLoad:(id)model {
+    
+}
+
+- (void)modelDidCancelLoad:(id)model {
+    
+}
+
+- (void)modelDidBecomeReadyToLoad:(id)model {
+    
+}
+
 
 #pragma mark -
 #pragma mark Private
