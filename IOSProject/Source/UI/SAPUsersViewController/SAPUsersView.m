@@ -20,10 +20,11 @@ static NSString * const kSAPButtonTitleEdit = @"Edit";
 @implementation SAPUsersView
 
 #pragma mark -
-#pragma mark Public
+#pragma mark Accessors
 
-- (void)updateEditButtonTitle:(BOOL)editingMode {
-    [self.editButton setTitle:(editingMode ? kSAPButtonTitleDone : kSAPButtonTitleEdit)
+- (void)setEditing:(BOOL)editing {
+    self.tableView.editing = editing;
+    [self.editButton setTitle:(editing ? kSAPButtonTitleDone : kSAPButtonTitleEdit)
                      forState:UIControlStateNormal];
 }
 

@@ -15,8 +15,8 @@
 @property (nonatomic, strong) IBOutlet UIButton     *addUserButton;
 @property (nonatomic, strong) IBOutlet UIButton     *editButton;
 
+@property (nonatomic, assign) BOOL editing;
+
 @property (nonatomic, strong) SAPUsers *users;
-
-- (void)updateEditButtonTitle:(BOOL)editingMode;
-
+    
 @end

@@ -75,11 +75,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 
 - (IBAction)onEdit:(id)sender {
     SAPUsersView *usersView = self.usersView;
-    UITableView *tableView = usersView.tableView;
-    BOOL newEditingState = !tableView.editing;
-   
-    [tableView setEditing:newEditingState animated:YES];
-    [usersView updateEditButtonTitle:newEditingState];    
+    usersView.editing = !usersView.editing;
 }
 
 #pragma mark -
