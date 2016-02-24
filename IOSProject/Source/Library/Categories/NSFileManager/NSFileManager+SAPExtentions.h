@@ -13,3 +13,9 @@ NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory);
 
 extern
 NSString *SAPPathForLibraryDirectory(void);
+
+extern
+NSString *SAPPathForDocumentsDirectory(void);
+
+extern
+NSString *SAPPathForAppStateDirectory(void);

@@ -11,13 +11,12 @@
 #import "SAPUser.h"
 #import "SAPOwnershipMacro.h"
 
-#import "FileSystem+SAPExtentions.h"
+#import "NSFileManager+SAPExtentions.h"
 
 static NSUInteger const kSAPInitialUsersCount = 100;
 
 static NSString * const kSAPObjectsKey      = @"objects";
-static NSString * const kSAPPlistName       = @"users";
-static NSString * const kSAPPlistExteintion = @"plist";
+static NSString * const kSAPPlistName       = @"users.plist";
 
 @interface SAPUsers ()
 @property (nonatomic, strong) NSString *archivePath;
@@ -88,9 +87,7 @@ static NSString * const kSAPPlistExteintion = @"plist";
 }
 
 - (NSString *)path {
-    NSString *path = SAPSearchPath();
-
-    return [[path stringByAppendingPathComponent:kSAPPlistName] stringByAppendingPathExtension:kSAPPlistExteintion];    
+    return [SAPPathForAppStateDirectory() stringByAppendingPathComponent:kSAPPlistName];
 }
 
 @end
