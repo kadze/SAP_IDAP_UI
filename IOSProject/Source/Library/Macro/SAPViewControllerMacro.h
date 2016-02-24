@@ -17,7 +17,7 @@
         return nil; \
     }
 
-#define SAPCategoryForViewProperty(controllerName, viewClass, propertyName) \
+#define SAPViewControllerBaseViewProperty(controllerName, viewClass, propertyName) \
     \
     @interface controllerName (__SAPViewControllerProperty__##controllerName##__##viewClass##__##propertyName) \
     SAPViewPropertySynthesize(viewClass, propertyName) \

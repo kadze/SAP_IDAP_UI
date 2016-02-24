@@ -21,7 +21,7 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
+SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
 @interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
 
