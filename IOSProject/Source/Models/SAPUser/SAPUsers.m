@@ -8,6 +8,8 @@
 
 #import "SAPUsers.h"
 
+#import <Foundation/NSFileManager.h>
+
 #import "SAPUser.h"
 #import "SAPOwnershipMacro.h"
 
@@ -48,6 +50,12 @@ static NSString * const kSAPPlistName       = @"users.plist";
 #pragma mark Public
 
 - (void)save{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *appStateDirectory = SAPPathForAppStateDirectory();
+    if (![fileManager fileExistsAtPath:appStateDirectory]) {
+        [fileManager createDirectoryAtPath:appStateDirectory withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
     [NSKeyedArchiver archiveRootObject:self.objects toFile:[self path]];
 }
 
