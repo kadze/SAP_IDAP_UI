@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 extern
-NSString *SAPSearchPath(void);
+NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory);
 
+extern
+NSString *SAPPathForLibraryDirectory(void);
