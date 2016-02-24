@@ -14,6 +14,7 @@
 #import "UIWindow+SAPExtensions.h"
 
 @interface SAPAppDelegate ()
+@property (nonatomic, retain) SAPUsers *users;
 - (void) saveData;
 
 @end
@@ -30,6 +31,7 @@
 
     SAPUsers *users = [SAPUsers new];
     controller.users = users;
+    self.users = users;
     
     window.rootViewController = controller;
     
@@ -43,7 +45,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self saveData];
+    [self.users save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -56,13 +58,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (void)saveData {
-    [((SAPUsersViewController *)self.window.rootViewController).users save];
 }
 
 @end
