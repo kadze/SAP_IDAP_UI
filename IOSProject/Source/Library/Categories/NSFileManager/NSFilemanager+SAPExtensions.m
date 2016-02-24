@@ -6,7 +6,7 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "NSFileManager+SAPExtentions.h"
+#import "NSFileManager+SAPExtensions.h"
 
 static NSString * const kSAPAppStateDirectoryName = @"appState";
 
