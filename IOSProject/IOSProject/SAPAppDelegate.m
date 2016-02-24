@@ -29,6 +29,7 @@
     SAPUsersViewController *controller = [SAPUsersViewController new];
 
     SAPUsers *users = [SAPUsers new];
+    [users load];
     controller.users = users;
     self.users = users;
     

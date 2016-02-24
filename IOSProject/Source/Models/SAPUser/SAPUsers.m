@@ -21,46 +21,30 @@ static NSString * const kSAPObjectsKey      = @"objects";
 static NSString * const kSAPPlistName       = @"users.plist";
 
 @interface SAPUsers ()
-@property (nonatomic, strong) NSString *archivePath;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
-- (NSArray *)prepareUsers;
 - (NSString *)path;
     
 @end
 
 @implementation SAPUsers
 
-@dynamic archivePath;
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self fillWithUsers:[self prepareUsers]];
-    }
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark Public
 
-- (void)save{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *appStateDirectory = SAPPathForAppStateDirectory();
-    if (![fileManager fileExistsAtPath:appStateDirectory]) {
-        [fileManager createDirectoryAtPath:appStateDirectory withIntermediateDirectories:NO attributes:nil error:nil];
-    }
-    
+- (void)save {
+    SAPProvidePathExistence(SAPPathForAppStateDirectory());
     [NSKeyedArchiver archiveRootObject:self.objects toFile:[self path]];
 }
 
-- (NSArray *)load{
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
+- (void)load {
+    NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
+    if (objects) {
+        [self fillWithUsers:objects];
+    } else {
+        [self fillWithUsers:[self createUsersWithCount:kSAPInitialUsersCount]];
+    }
 }
 
 #pragma mark -
@@ -83,15 +67,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
     }
     
     return result;
-}
-
-- (NSArray *)prepareUsers {
-    NSArray *users = [self load];
-    if(!users) {
-        users = [self createUsersWithCount:kSAPInitialUsersCount];
-    }
-    
-    return users;
 }
 
 - (NSString *)path {
