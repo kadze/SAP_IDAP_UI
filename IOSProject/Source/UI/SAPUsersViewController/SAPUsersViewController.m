@@ -24,6 +24,9 @@
 SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
 @interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
+
+- (void)updateViewWithModel;
+
 @end
 
 @implementation SAPUsersViewController
@@ -43,9 +46,9 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
         [_users removeObserver:self];
         _users = users;
         [_users addObserver:self];
+        
+        [self updateViewWithModel];
     }
-    
-    [self.usersView.tableView reloadData];
 }
 
 #pragma mark-
@@ -54,7 +57,7 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.users = self.users;
+    [self updateViewWithModel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,6 +128,13 @@ SAPCategoryForViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 - (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
     UITableView *tableView = self.usersView.tableView;
     [tableView updateWithCollectionChangeModel:changeModel];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)updateViewWithModel {
+    [self.usersView.tableView reloadData];
 }
 
 @end

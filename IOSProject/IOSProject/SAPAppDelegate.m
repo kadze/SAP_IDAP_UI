@@ -15,7 +15,6 @@
 
 @interface SAPAppDelegate ()
 @property (nonatomic, retain) SAPUsers *users;
-- (void) saveData;
 
 @end
 
