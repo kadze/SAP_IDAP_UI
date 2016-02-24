@@ -10,24 +10,29 @@
 
 @implementation SAPModel
 
-- (void)notifyObserversOfReadyState {
-    [self notifyObserversWithSelector:@selector(modelDidBecomeReadyToLoad:)];
-}
+#pragma mark -
+#pragma mark SAPObservableObject
 
-- (void)notifyObserversOfLoading {
-    [self notifyObserversWithSelector:@selector(modelDidBeginLoad:)];
-}
-
-- (void)notifyObserversOfFinishedLoad {
-    [self notifyObserversWithSelector:@selector(modelDidFinishLoad:)];
-}
-
-- (void)notifyObserversOfCancelledLoad {
-    [self notifyObserversWithSelector:@selector(modelDidCancelLoad:)];
-}
-
-- (void)notifyObserversOfFailedLoad {
-    [self notifyObserversWithSelector:@selector(modelDidFailLoad:)];
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case kSAPModelLoadingStateReady:
+            return @selector(modelDidBecomeReadyToLoad:);
+            
+        case kSAPModelLoadingStateInProgress:
+            return @selector(modelDidBeginLoad:);
+            
+        case kSAPModelLoadingStateDidFinish:
+            return @selector(modelDidFinishLoad:);
+        
+        case kSAPModelLoadingStateDidFail:
+            return @selector(modelDidFailLoad:);
+        
+        case kSAPModelLoadingStateDidCancel:
+            return @selector(modelDidCancelLoad:);
+            
+        default:
+            return [super selectorForState:state];
+    }
 }
 
 @end

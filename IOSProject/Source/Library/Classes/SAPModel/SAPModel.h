@@ -9,11 +9,19 @@
 #import "SAPObservableObject.h"
 #import "SAPModelObserver.h"
 
+typedef NS_ENUM (NSUInteger, SAPModelState) {
+    kSAPModelLoadingStateStart,
+    
+    kSAPModelLoadingStateReady,
+    kSAPModelLoadingStateInProgress,
+    kSAPModelLoadingStateDidFinish,
+    kSAPModelLoadingStateDidFail,
+    kSAPModelLoadingStateDidCancel,
+    
+    kSAPModelLoadingStateEnd,
+    kSAPWorkerStateCount = kSAPModelLoadingStateEnd - kSAPModelLoadingStateStart - 1
+};
+
 @interface SAPModel : SAPObservableObject
-- (void)notifyObserversOfReadyState;
-- (void)notifyObserversOfLoading;
-- (void)notifyObserversOfFinishedLoad;
-- (void)notifyObserversOfCancelledLoad;
-- (void)notifyObserversOfFailedLoad;
 
 @end

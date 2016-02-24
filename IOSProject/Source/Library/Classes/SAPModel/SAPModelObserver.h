@@ -8,21 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM (NSUInteger, SAPModelState) {
-    kSAPModelStateStart,
-    kSAPModelStateReady,
-    kSAPModelStateLoading,
-    kSAPModelStateDidFinish,
-    kSAPModelStateDidFail,
-    kSAPModelStateDidCancel,
-    kSAPModelStateEnd,
-    kSAPWorkerStateCount = kSAPModelStateEnd - kSAPModelStateStart - 1
-};
-
 @protocol SAPModelObserver <NSObject>
 
 @optional
-@property (nonatomic, readonly) SAPModelState state;
 
 - (void)modelDidBeginLoad:(id)model;
 - (void)modelDidFinishLoad:(id)model;
