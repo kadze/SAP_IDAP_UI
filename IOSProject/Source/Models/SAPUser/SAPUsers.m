@@ -42,7 +42,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 - (void)load {
-    
     SAPDispatchAsyncOnDefaultQueue(^{
         [self fillWithNewOrLoadedUsers];
         SAPDispatchAsyncOnMainQueue(^{

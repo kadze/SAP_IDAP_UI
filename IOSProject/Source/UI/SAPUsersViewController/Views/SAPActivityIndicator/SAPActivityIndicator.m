@@ -27,7 +27,7 @@ static NSTimeInterval const kSAPHideAnimationDuration  = 1.0;
 - (void)hide {
     [UIView animateWithDuration:kSAPHideAnimationDuration
                     animations:^{
-                        [self stopAnimating];
+                        self.alpha = 0.0;
     }];
 }
 
