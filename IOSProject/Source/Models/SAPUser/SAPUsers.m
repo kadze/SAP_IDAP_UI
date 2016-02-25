@@ -34,6 +34,18 @@ static NSString * const kSAPPlistName       = @"users.plist";
 @implementation SAPUsers
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.state = kSAPModelLoadingStateReady;
+    }
+    
+    return self;
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (void)save {
@@ -42,18 +54,28 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 - (void)load {
+    @synchronized(self) {
+        if (kSAPModelLoadingStateDidFinish == self.state) {
+            [self notifyObserversWithSelector:[self selectorForState:kSAPModelLoadingStateDidFinish]];
+        } else if (kSAPModelLoadingStateReady == self.state) {
+            self.state = kSAPModelLoadingStateInProgress;
+            [self performBacgroundLoading];
+        }
+    }
+}
+
+
+#pragma mark -
+#pragma mark Private
+
+- (void)performBacgroundLoading {
     SAPDispatchAsyncOnDefaultQueue(^{
         [self fillWithNewOrLoadedUsers];
         SAPDispatchAsyncOnMainQueue(^{
             [self cleanupAfterProcessing];
         });
     });
-    
-    
 }
-
-#pragma mark -
-#pragma mark Private
 
 - (void)fillWithUsers:(NSArray *)users {
     SAPWeakify(self);

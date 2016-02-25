@@ -131,7 +131,8 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark SAPModelObserver
 
 - (void)modelDidBeginLoad:(id)model {
-    
+    self.activityIndicator = [SAPActivityIndicator objectWithSuperView:self.usersView];
+
 }
 
 - (void)modelDidFinishLoad:(id)model {

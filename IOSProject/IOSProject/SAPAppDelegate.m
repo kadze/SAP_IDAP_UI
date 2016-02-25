@@ -10,7 +10,6 @@
 
 #import "SAPUsersViewController.h"
 #import "SAPUsers.h"
-#import "SAPActivityIndicator.h"
 
 #import "UIWindow+SAPExtensions.h"
 
@@ -31,7 +30,7 @@
     
     SAPUsers *users = [SAPUsers new];
     
-    controller.activityIndicator = [SAPActivityIndicator objectWithSuperView:controller.view];
+  //  controller.users = users; //add observer self to model
     [users load];
     
     controller.users = users;
