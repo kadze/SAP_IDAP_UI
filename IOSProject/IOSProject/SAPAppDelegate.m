@@ -10,7 +10,7 @@
 
 #import "SAPUsersViewController.h"
 #import "SAPUsers.h"
-#import "SAPLoadWaitView.h"
+#import "SAPActivityIndicator.h"
 
 #import "UIWindow+SAPExtensions.h"
 
@@ -28,10 +28,12 @@
     self.window = window;
     
     SAPUsersViewController *controller = [SAPUsersViewController new];
-    SAPLoadWaitView *view = [SAPLoadWaitView objectWithSuperView:controller.view];
     
     SAPUsers *users = [SAPUsers new];
+    
+    SAPActivityIndicator *view = [SAPActivityIndicator objectWithSuperView:controller.view];
     [users load];
+    
     controller.users = users;
     self.users = users;
     

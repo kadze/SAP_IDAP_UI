@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAPLoadWaitView : UIView
+@interface SAPActivityIndicator : UIActivityIndicatorView
 
 + (instancetype)objectWithSuperView:(UIView *)superview;
 
