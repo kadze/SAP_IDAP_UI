@@ -23,6 +23,7 @@ static NSString * const kSAPButtonTitleEdit = @"Edit";
 #pragma mark Accessors
 
 - (void)setEditing:(BOOL)editing {
+    _editing = editing;
     self.tableView.editing = editing;
     [self.editButton setTitle:(editing ? kSAPButtonTitleDone : kSAPButtonTitleEdit)
                      forState:UIControlStateNormal];
