@@ -12,6 +12,7 @@
 #import "SAPUserCell.h"
 #import "SAPUsers.h"
 #import "SAPUser.h"
+#import "SAPActivityIndicator.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -134,7 +135,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 }
 
 - (void)modelDidFinishLoad:(id)model {
-    
+    [self.activityIndicator hide];
 }
 
 - (void)modelDidFailLoad:(id)model {
@@ -142,7 +143,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 }
 
 - (void)modelDidCancelLoad:(id)model {
-    
+
 }
 
 - (void)modelDidBecomeReadyToLoad:(id)model {

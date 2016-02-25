@@ -10,6 +10,8 @@
 
 #import "UINib+SAPExtensions.h"
 
+static NSTimeInterval const kSAPHideAnimationDuration  = 1.0;
+
 @implementation SAPActivityIndicator
 
 + (instancetype)objectWithSuperView:(UIView *)superview {
@@ -20,6 +22,13 @@
     [view startAnimating];
     
     return view;
+}
+
+- (void)hide {
+    [UIView animateWithDuration:kSAPHideAnimationDuration
+                    animations:^{
+                        [self stopAnimating];
+    }];
 }
 
 @end

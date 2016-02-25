@@ -31,7 +31,7 @@
     
     SAPUsers *users = [SAPUsers new];
     
-    SAPActivityIndicator *view = [SAPActivityIndicator objectWithSuperView:controller.view];
+    controller.activityIndicator = [SAPActivityIndicator objectWithSuperView:controller.view];
     [users load];
     
     controller.users = users;

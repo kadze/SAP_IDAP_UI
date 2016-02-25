@@ -12,4 +12,6 @@
 
 + (instancetype)objectWithSuperView:(UIView *)superview;
 
+- (void)hide;
+
 @end

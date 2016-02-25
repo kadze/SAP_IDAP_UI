@@ -12,6 +12,7 @@
 
 #import "SAPUser.h"
 #import "SAPOwnershipMacro.h"
+#import "SAPDispatch.h"
 
 #import "NSFileManager+SAPExtensions.h"
 
@@ -23,9 +24,11 @@ static NSString * const kSAPPlistName       = @"users.plist";
 @interface SAPUsers ()
 
 - (void)fillWithUsers:(NSArray *)users;
+- (void)fillWithNewOrLoadedUsers;
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
 - (NSString *)path;
-    
+- (void)cleanupAfterProcessing;
+
 @end
 
 @implementation SAPUsers
@@ -39,12 +42,15 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 - (void)load {
-    NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
-    if (objects) {
-        [self fillWithUsers:objects];
-    } else {
-        [self fillWithUsers:[self createUsersWithCount:kSAPInitialUsersCount]];
-    }
+    
+    SAPDispatchAsyncOnDefaultQueue(^{
+        [self fillWithNewOrLoadedUsers];
+        SAPDispatchAsyncOnMainQueue(^{
+            [self cleanupAfterProcessing];
+        });
+    });
+    
+    
 }
 
 #pragma mark -
@@ -60,6 +66,16 @@ static NSString * const kSAPPlistName       = @"users.plist";
     }];
 }
 
+- (void)fillWithNewOrLoadedUsers {
+    NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
+    if (objects) {
+        [self fillWithUsers:objects];
+    } else {
+        [self fillWithUsers:[self createUsersWithCount:kSAPInitialUsersCount]];
+    }
+    sleep(2); //pretend to load slowly
+}
+
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count {
     NSMutableArray *result = [NSMutableArray new];
     for (NSUInteger index = 0; index < count; index++) {
@@ -71,6 +87,12 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 - (NSString *)path {
     return [SAPPathForAppStateDirectory() stringByAppendingPathComponent:kSAPPlistName];
+}
+
+- (void)cleanupAfterProcessing {
+    @synchronized(self) {
+        self.state = kSAPModelLoadingStateDidFinish;
+    }
 }
 
 @end
