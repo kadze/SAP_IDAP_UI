@@ -15,21 +15,18 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case kSAPModelLoadingStateReady:
+        case kSAPModelStateUnloaded:
             return @selector(modelDidBecomeReadyToLoad:);
             
-        case kSAPModelLoadingStateInProgress:
+        case kSAPModelStateWillLoad:
             return @selector(modelDidBeginLoad:);
             
-        case kSAPModelLoadingStateDidFinish:
+        case kSAPModelStateDidFinish:
             return @selector(modelDidFinishLoad:);
         
-        case kSAPModelLoadingStateDidFail:
+        case kSAPModelStateDidFail:
             return @selector(modelDidFailLoad:);
         
-        case kSAPModelLoadingStateDidCancel:
-            return @selector(modelDidCancelLoad:);
-            
         default:
             return [super selectorForState:state];
     }
