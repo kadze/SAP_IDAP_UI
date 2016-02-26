@@ -20,6 +20,7 @@ static NSUInteger const kSAPInitialUsersCount = 100;
 
 static NSString * const kSAPObjectsKey      = @"objects";
 static NSString * const kSAPPlistName       = @"users.plist";
+static NSString * const kSAPAppStateDirectoryName = @"appState";
 
 @interface SAPUsers ()
 
@@ -28,6 +29,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
 - (NSString *)path;
 - (void)cleanupAfterProcessing;
+- (NSString *)appStatePath;
 
 @end
 
@@ -51,14 +53,14 @@ static NSString * const kSAPPlistName       = @"users.plist";
 #pragma mark Accessors
 
 - (NSString *)path {
-    return [SAPPathForAppStateDirectory() stringByAppendingPathComponent:kSAPPlistName];
+    return [[self appStatePath] stringByAppendingPathComponent:kSAPPlistName];
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)save {
-    SAPProvidePathExistence(SAPPathForAppStateDirectory());
+    SAPProvidePathExistence([self appStatePath]);
     [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
 }
 
@@ -119,6 +121,10 @@ static NSString * const kSAPPlistName       = @"users.plist";
     @synchronized(self) {
         self.state = kSAPModelStateDidFinish;
     }
+}
+
+- (NSString *)appStatePath {
+    return [SAPlibraryPath() stringByAppendingPathComponent:kSAPAppStateDirectoryName];
 }
 
 @end

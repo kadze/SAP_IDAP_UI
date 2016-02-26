@@ -12,13 +12,10 @@ extern
 NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory);
 
 extern
-NSString *SAPPathForLibraryDirectory(void);
+NSString *SAPlibraryPath(void);
 
 extern
-NSString *SAPPathForDocumentsDirectory(void);
-
-extern
-NSString *SAPPathForAppStateDirectory(void);
+NSString *SAPDocumentsPath(void);
 
 extern
 void SAPProvidePathExistence(NSString *path);

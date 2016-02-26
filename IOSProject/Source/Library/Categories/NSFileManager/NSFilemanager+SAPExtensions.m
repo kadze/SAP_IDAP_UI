@@ -8,22 +8,16 @@
 
 #import "NSFileManager+SAPExtensions.h"
 
-static NSString * const kSAPAppStateDirectoryName = @"appState";
-
 NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory) {
     return [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
 }
 
-NSString *SAPPathForLibraryDirectory(void) {
+NSString *SAPlibraryPath(void) {
     return SAPSearchPathForDirectory(NSLibraryDirectory);
 }
 
-NSString *SAPPathForDocumentsDirectory(void) {
+NSString *SAPDocumentsPath(void) {
     return SAPSearchPathForDirectory(NSDocumentDirectory);
-}
-
-NSString *SAPPathForAppStateDirectory(void) {
-    return [SAPPathForLibraryDirectory() stringByAppendingPathComponent:kSAPAppStateDirectoryName];
 }
 
 void SAPProvidePathExistence(NSString *path) {
