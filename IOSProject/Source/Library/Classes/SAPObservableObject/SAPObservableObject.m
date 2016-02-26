@@ -52,11 +52,15 @@
 }
 
 - (void)setState:(NSUInteger)state {
+    [self setState:state withObject:self];
+}
+
+- (void)setState:(NSUInteger)state withObject:(id)object {
     if (_state != state) {
         _state = state;
         SEL selector = [self selectorForState:state];
         if (selector) {
-            [self notifyObserversWithSelector:selector withObject:self];
+            [self notifyObserversWithSelector:selector withObject:object];
         }
     }
 }
