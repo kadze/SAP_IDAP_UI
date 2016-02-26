@@ -15,7 +15,6 @@
 
 @interface SAPUsersViewController : UIViewController
 @property (nonatomic, strong) SAPUsers *users;
-@property (nonatomic, strong) SAPActivityIndicator *activityIndicator;
 
 - (IBAction)onAddUser:(id)sender;
 - (IBAction)onEdit:(id)sender;
