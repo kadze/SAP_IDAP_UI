@@ -19,7 +19,7 @@
                      animated:(BOOL)animated;
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible
                      animated:(BOOL)animated
-                   completion:(void(^)(void))completion;
+                   completion:(void(^)(BOOL))completion;
 
 //- (UIView<SAPLoadingView> *)loadingView;
 

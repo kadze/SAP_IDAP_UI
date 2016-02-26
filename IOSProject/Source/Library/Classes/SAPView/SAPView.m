@@ -10,6 +10,13 @@
 
 @implementation SAPView
 
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setLoadingViewVisible:(BOOL)loadingViewVisible {
+    [self setLoadingViewVisible:loadingViewVisible animated:NO];
+}
+
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible
                      animated:(BOOL)animated
 {
@@ -18,7 +25,7 @@
 
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible
                      animated:(BOOL)animated
-                   completion:(void(^)(void))completion
+                   completion:(void(^)(BOOL))completion
 {
     [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
 }
