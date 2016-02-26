@@ -6,12 +6,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <activityIndicatorView hidden="YES" opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="vl7-Ds-BSx" customClass="SAPActivityIndicator">
-            <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+        <view alpha="0.45000000000000001" contentMode="scaleToFill" id="QEG-3D-2fo" customClass="SAPActivityIndicator">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask"/>
-            <color key="backgroundColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
-            <color key="color" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-            <point key="canvasLocation" x="324.5" y="380.5"/>
-        </activityIndicatorView>
+            <subviews>
+                <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" id="vl7-Ds-BSx">
+                    <rect key="frame" x="142" y="265" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <color key="color" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="activityIndicator" destination="vl7-Ds-BSx" id="h6M-vB-mle"/>
+            </connections>
+        </view>
     </objects>
 </document>

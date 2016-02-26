@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAPActivityIndicator : UIActivityIndicatorView
+@interface SAPActivityIndicator : UIView
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 + (instancetype)objectWithSuperView:(UIView *)superview;
 
