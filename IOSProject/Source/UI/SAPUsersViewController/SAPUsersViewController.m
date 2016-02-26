@@ -131,20 +131,20 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark SAPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    self.activityIndicator = [SAPActivityIndicator objectWithSuperView:self.usersView];
+    [self.usersView setLoadingViewVisible:true animated:YES];
 
 }
 
 - (void)modelDidFinishLoad:(id)model {
-    [self.activityIndicator hide];
+    [self.usersView setLoadingViewVisible:NO];
 }
 
 - (void)modelDidFailLoad:(id)model {
-    
+    [self.usersView setLoadingViewVisible:NO];
 }
 
 - (void)modelDidBecomeUnloaded:(id)model {
-    
+    [self.usersView setLoadingViewVisible:NO];
 }
 
 

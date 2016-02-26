@@ -39,7 +39,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.state = kSAPModelLoadingStateReady;
+        self.state = kSAPModelStateUnloaded;
     }
     
     return self;
@@ -55,10 +55,10 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 - (void)load {
     @synchronized(self) {
-        if (kSAPModelLoadingStateDidFinish == self.state) {
-            [self notifyObserversWithSelector:[self selectorForState:kSAPModelLoadingStateDidFinish]];
-        } else if (kSAPModelLoadingStateReady == self.state) {
-            self.state = kSAPModelLoadingStateInProgress;
+        if (kSAPModelStateDidFinish == self.state) {
+            [self notifyObserversWithSelector:[self selectorForState:kSAPModelStateDidFinish]];
+        } else if (kSAPModelStateUnloaded == self.state) {
+            self.state = kSAPModelStateWillLoad;
             [self performBacgroundLoading];
         }
     }
@@ -112,7 +112,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 - (void)cleanupAfterProcessing {
     @synchronized(self) {
-        self.state = kSAPModelLoadingStateDidFinish;
+        self.state = kSAPModelStateDidFinish;
     }
 }
 

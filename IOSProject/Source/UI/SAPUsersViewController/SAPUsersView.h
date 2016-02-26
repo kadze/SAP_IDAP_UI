@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SAPView.h"
 
 @class SAPUsers;
 
-@interface SAPUsersView : UIView
+@interface SAPUsersView : SAPView
 @property (nonatomic, strong) IBOutlet UITableView  *tableView;
 @property (nonatomic, strong) IBOutlet UIButton     *addUserButton;
 @property (nonatomic, strong) IBOutlet UIButton     *editButton;

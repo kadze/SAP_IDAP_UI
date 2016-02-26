@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAPActivityIndicator : UIView
+#import "SAPLoadingView.h"
+
+@interface SAPActivityIndicator : UIView <SAPLoadingView>
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 + (instancetype)objectWithSuperView:(UIView *)superview;
-
-- (void)hide;
 
 @end
