@@ -12,10 +12,9 @@
 
 @optional
 
-- (void)modelDidBeginLoad:(id)model;
+- (void)modelWillLoad:(id)model;
 - (void)modelDidFinishLoad:(id)model;
 - (void)modelDidFailLoad:(id)model;
-- (void)modelDidCancelLoad:(id)model;
-- (void)modelDidBecomeReadyToLoad:(id)model;
+- (void)modelDidBecomeUnloaded:(id)model;
 
 @end

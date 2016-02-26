@@ -130,7 +130,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark -
 #pragma mark SAPModelObserver
 
-- (void)modelDidBeginLoad:(id)model {
+- (void)modelWillLoad:(id)model {
     self.activityIndicator = [SAPActivityIndicator objectWithSuperView:self.usersView];
 
 }
@@ -143,11 +143,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
     
 }
 
-- (void)modelDidCancelLoad:(id)model {
-
-}
-
-- (void)modelDidBecomeReadyToLoad:(id)model {
+- (void)modelDidBecomeUnloaded:(id)model {
     
 }
 
