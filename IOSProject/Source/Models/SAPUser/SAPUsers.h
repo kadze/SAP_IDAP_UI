@@ -13,6 +13,7 @@
 @class SAPUser;
 
 @interface SAPUsers : SAPArrayModel
+@property (nonatomic, readonly) NSString *path;
 
 - (void)save;
 - (void)load;

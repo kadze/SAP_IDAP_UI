@@ -33,6 +33,8 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 @implementation SAPUsers
 
+@dynamic path;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -46,11 +48,18 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (NSString *)path {
+    return [SAPPathForAppStateDirectory() stringByAppendingPathComponent:kSAPPlistName];
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (void)save {
     SAPProvidePathExistence(SAPPathForAppStateDirectory());
-    [NSKeyedArchiver archiveRootObject:self.objects toFile:[self path]];
+    [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
 }
 
 - (void)load {
@@ -88,7 +97,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 - (void)fillWithNewOrLoadedUsers {
-    NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
+    NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
     if (objects) {
         [self fillWithUsers:objects];
     } else {
@@ -104,10 +113,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
     }
     
     return result;
-}
-
-- (NSString *)path {
-    return [SAPPathForAppStateDirectory() stringByAppendingPathComponent:kSAPPlistName];
 }
 
 - (void)cleanupAfterProcessing {
