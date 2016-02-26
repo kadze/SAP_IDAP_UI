@@ -19,7 +19,6 @@ static NSTimeInterval const kSAPHideAnimationDuration  = 1.0;
     view.frame = superview.bounds;
     view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [superview addSubview:view];
-    [view startAnimating];
     
     return view;
 }
