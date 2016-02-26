@@ -59,7 +59,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
             [self notifyObserversWithSelector:[self selectorForState:kSAPModelStateDidFinish]];
         } else if (kSAPModelStateUnloaded == self.state) {
             self.state = kSAPModelStateWillLoad;
-            [self performBacgroundLoading];
+            [self performBackgroundLoading];
         }
     }
 }
@@ -68,7 +68,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 #pragma mark -
 #pragma mark Private
 
-- (void)performBacgroundLoading {
+- (void)performBackgroundLoading {
     SAPDispatchAsyncOnDefaultQueue(^{
         [self fillWithNewOrLoadedUsers];
         SAPDispatchAsyncOnMainQueue(^{
