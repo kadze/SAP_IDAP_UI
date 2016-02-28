@@ -66,9 +66,8 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 
 - (void)load {
     @synchronized(self) {
-        if (kSAPModelStateDidFinish == self.state) {
-            [self notifyObserversWithSelector:[self selectorForState:kSAPModelStateDidFinish]];
-        } else if (kSAPModelStateUnloaded == self.state) {
+        [super load];
+        if (kSAPModelStateUnloaded == self.state) {
             self.state = kSAPModelStateWillLoad;
             [self performBackgroundLoading];
         }
@@ -119,7 +118,7 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 
 - (void)cleanupAfterProcessing {
     @synchronized(self) {
-        self.state = kSAPModelStateDidFinish;
+        self.state = kSAPModelStateDidFinishLoading;
     }
 }
 

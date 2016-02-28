@@ -23,4 +23,6 @@ typedef NS_ENUM (NSUInteger, SAPModelState) {
 
 @interface SAPModel : SAPObservableObject
 
+- (void)load;
+
 @end

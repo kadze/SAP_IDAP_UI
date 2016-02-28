@@ -32,5 +32,17 @@
     }
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (void)load {
+    @synchronized(self) {
+        NSUInteger state = self.state;
+        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
+            [self notifyObserversWithSelector:[self selectorForState:state]];
+        }
+    }
+}
+
 @end
 

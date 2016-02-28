@@ -16,6 +16,5 @@
 @property (nonatomic, readonly) NSString *path;
 
 - (void)save;
-- (void)load;
 
 @end
