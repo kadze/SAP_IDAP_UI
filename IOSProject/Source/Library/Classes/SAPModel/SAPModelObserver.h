@@ -13,8 +13,8 @@
 @optional
 
 - (void)modelWillLoad:(id)model;
-- (void)modelDidFinishLoad:(id)model;
-- (void)modelDidFailLoad:(id)model;
+- (void)modelDidFinishLoading:(id)model;
+- (void)modelDidFailLoading:(id)model;
 - (void)modelDidBecomeUnloaded:(id)model;
 
 @end

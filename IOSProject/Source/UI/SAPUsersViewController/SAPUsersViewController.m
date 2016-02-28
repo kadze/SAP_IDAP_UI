@@ -135,11 +135,12 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 
 }
 
-- (void)modelDidFinishLoad:(id)model {
+- (void)modelDidFinishLoading:(id)model {
+    [self updateViewWithModel];
     [self.usersView setLoadingViewVisible:NO];
 }
 
-- (void)modelDidFailLoad:(id)model {
+- (void)modelDidFailLoading:(id)model {
     [self.usersView setLoadingViewVisible:NO];
 }
 
