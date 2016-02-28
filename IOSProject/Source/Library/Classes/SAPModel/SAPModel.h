@@ -25,4 +25,7 @@ typedef NS_ENUM (NSUInteger, SAPModelState) {
 
 - (void)load;
 
+//this method should be overriden in subclasses
+- (void)performLoading;
+
 @end

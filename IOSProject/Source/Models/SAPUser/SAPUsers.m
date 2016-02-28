@@ -62,20 +62,7 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
     [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
 }
 
-- (void)load {
-    @synchronized(self) {
-        [super load];
-        if (kSAPModelStateUnloaded == self.state) {
-            self.state = kSAPModelStateWillLoad;
-            [self performBackgroundLoading];
-        }
-    }
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (void)performBackgroundLoading {
+- (void)performLoading {
     SAPDispatchAsyncOnDefaultQueue(^{
         [self fillWithNewOrLoadedUsers];
         SAPDispatchAsyncOnMainQueue(^{
@@ -83,6 +70,9 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
         });
     });
 }
+
+#pragma mark -
+#pragma mark Private
 
 - (void)fillWithUsers:(NSArray *)users {
     SAPWeakify(self);

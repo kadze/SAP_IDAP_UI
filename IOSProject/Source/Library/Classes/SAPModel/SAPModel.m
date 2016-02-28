@@ -8,6 +8,8 @@
 
 #import "SAPModel.h"
 
+#import "SAPDispatch.h"
+
 @implementation SAPModel
 
 #pragma mark -
@@ -40,7 +42,13 @@
         NSUInteger state = self.state;
         if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
             [self notifyObserversWithSelector:[self selectorForState:state]];
+            
+            return;
         }
+        
+        SAPDispatchAsyncOnDefaultQueue(^{
+            [self performLoading];
+        });
     }
 }
 
