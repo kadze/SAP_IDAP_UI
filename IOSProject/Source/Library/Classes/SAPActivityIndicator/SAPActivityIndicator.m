@@ -48,6 +48,11 @@ CGFloat const invisibleAlpha = 0.0;
                          }
                          completion:^(BOOL finished) {
                              _visible = visible;
+                             
+                             if (!visible) {
+                                 [self removeFromSuperview];
+                             }
+                             
                              if (completion) {
                                  completion();
                              }
