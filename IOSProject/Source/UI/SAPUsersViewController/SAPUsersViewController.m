@@ -131,7 +131,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark SAPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    [self.usersView setLoadingViewVisible:true animated:YES];
+    [self.usersView setLoadingViewVisible:YES animated:YES];
 
 }
 
