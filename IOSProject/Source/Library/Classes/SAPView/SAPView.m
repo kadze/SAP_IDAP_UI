@@ -13,6 +13,8 @@
 @interface SAPView ()
 @property (nonatomic, strong) UIView<SAPLoadingView> *loadingView;
 
+- (UIView<SAPLoadingView> *)createLoadingView;
+
 @end
 
 @implementation SAPView
@@ -60,14 +62,19 @@
                      animated:(BOOL)animated
                    completion:(void(^)(void))completion
 {
-    [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
+    if (_loadingViewVisible != loadingViewVisible) {
+        if (loadingViewVisible && !self.loadingView) {
+            self.loadingView = [self createLoadingView];
+        }
+        [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
+    }
 }
 
 #pragma mark -
-#pragma mark Public
+#pragma mark Private
 
 - (UIView<SAPLoadingView> *)createLoadingView {
-    return [SAPActivityIndicator objectWithSuperView:self];
+    return [SAPActivityIndicator new];
 }
 
 //- (UIView *)loadingView {

@@ -41,17 +41,17 @@ CGFloat const invisibleAlpha = 0.0;
 
 - (void)setVisible:(BOOL)visible animated:(BOOL)animated completion:(void(^)(void))completion {
     if (_visible != visible) {
-    CGFloat alpha = visible ? visibleAlpha : invisibleAlpha;
-    [UIView animateWithDuration:animated ? kSAPAnimationDuration : 0.0
-                     animations:^{
-                         self.alpha = alpha;
-                     }
-                     completion:^(BOOL finished) {
-                         _visible = visible;
-                         if (completion) {
-                             completion();
+        CGFloat alpha = visible ? visibleAlpha : invisibleAlpha;
+        [UIView animateWithDuration:animated ? kSAPAnimationDuration : 0.0
+                         animations:^{
+                             self.alpha = alpha;
                          }
-                     }];
+                         completion:^(BOOL finished) {
+                             _visible = visible;
+                             if (completion) {
+                                 completion();
+                             }
+                         }];
     }
 }
 
