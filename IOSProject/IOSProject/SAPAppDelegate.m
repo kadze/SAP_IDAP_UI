@@ -29,10 +29,7 @@
     SAPUsersViewController *controller = [SAPUsersViewController new];
     
     SAPUsers *users = [SAPUsers new];
-    
-  //  controller.users = users; //add observer self to model
-    [users load];
-    
+        
     controller.users = users;
     self.users = users;
     

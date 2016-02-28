@@ -46,13 +46,14 @@
             return;
         }
         
-        SAPDispatchAsyncOnDefaultQueue(^{
-            [self performLoading];
-        });
+        self.state = kSAPModelStateWillLoad;
+        
+        [self performBackgroundLoading];
+        
     }
 }
 
-- (void)performLoading {
+- (void)performBackgroundLoading {
     
 }
 

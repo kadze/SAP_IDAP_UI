@@ -26,7 +26,7 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 @property (nonatomic, assign) NSString *path;
 
 - (void)fillWithUsers:(NSArray *)users;
-- (void)fillWithNewOrLoadedUsers;
+- (NSArray *)loadUsers;
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
 - (void)cleanupAfterProcessing;
 - (NSString *)appStatePath;
@@ -62,9 +62,11 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
     [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
 }
 
-- (void)performLoading {
+- (void)performBackgroundLoading {
     SAPDispatchAsyncOnDefaultQueue(^{
-        [self fillWithNewOrLoadedUsers];
+        [self fillWithUsers:[self loadUsers]];
+        sleep(5);
+        
         SAPDispatchAsyncOnMainQueue(^{
             [self cleanupAfterProcessing];
         });
@@ -84,14 +86,13 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
     }];
 }
 
-- (void)fillWithNewOrLoadedUsers {
+- (NSArray *)loadUsers {
     NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
-    if (objects) {
-        [self fillWithUsers:objects];
-    } else {
-        [self fillWithUsers:[self createUsersWithCount:kSAPInitialUsersCount]];
+    if (!objects) {
+        objects = [self createUsersWithCount:kSAPInitialUsersCount];
     }
-    sleep(2); //pretend to load slowly
+    
+    return objects;
 }
 
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count {

@@ -29,14 +29,6 @@
     return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.loadingView = [self createLoadingView];
-}
-
-
-
 #pragma mark -
 #pragma mark Accessors
 
@@ -44,6 +36,8 @@
     if (_loadingView != loadingView) {
         [_loadingView removeFromSuperview];
         _loadingView = loadingView;
+        loadingView.frame = self.bounds;
+        loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:loadingView];
     }
 }

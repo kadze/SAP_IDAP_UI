@@ -55,15 +55,12 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark-
 #pragma mark View Lifecycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self updateViewWithModel];
+- (void)viewWillAppear:(BOOL)animated {
+    [self.users load];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 #pragma mark -
