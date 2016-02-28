@@ -52,7 +52,7 @@
 }
 
 - (void)setState:(NSUInteger)state {
-    [self setState:state withObject:self];
+    [self setState:state withObject:nil];
 }
 
 - (void)setState:(NSUInteger)state withObject:(id)object {
@@ -97,7 +97,7 @@
 }
 
 - (void)notifyObserversWithSelector:(SEL)selector {
-    [self notifyObserversWithSelector:(SEL)selector withObject:(id)nil];
+    [self notifyObserversWithSelector:selector withObject:nil];
 }
 
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object {
