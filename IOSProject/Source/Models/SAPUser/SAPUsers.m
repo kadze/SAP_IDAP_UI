@@ -23,19 +23,17 @@ static NSString * const kSAPPlistName       = @"users.plist";
 static NSString * const kSAPAppStateDirectoryName = @"appState";
 
 @interface SAPUsers ()
+@property (nonatomic, assign) NSString *path;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (void)fillWithNewOrLoadedUsers;
 - (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
-- (NSString *)path;
 - (void)cleanupAfterProcessing;
 - (NSString *)appStatePath;
 
 @end
 
 @implementation SAPUsers
-
-@dynamic path;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -73,7 +71,6 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
         }
     }
 }
-
 
 #pragma mark -
 #pragma mark Private
