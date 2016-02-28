@@ -8,10 +8,43 @@
 
 #import "SAPView.h"
 
+#import "SAPActivityIndicator.h"
+
+@interface SAPView ()
+@property (nonatomic, strong) UIView<SAPLoadingView> *loadingView;
+
+@end
+
 @implementation SAPView
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    self.loadingView = [self createLoadingView];
+    
+    return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.loadingView = [self createLoadingView];
+}
+
+
+
+#pragma mark -
 #pragma mark Accessors
+
+- (void)setLoadingView:(UIView<SAPLoadingView> *)loadingView {
+    if (_loadingView != loadingView) {
+        [_loadingView removeFromSuperview];
+        _loadingView = loadingView;
+        [self addSubview:loadingView];
+    }
+}
 
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible {
     [self setLoadingViewVisible:loadingViewVisible animated:YES];
@@ -28,6 +61,13 @@
                    completion:(void(^)(void))completion
 {
     [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (UIView<SAPLoadingView> *)createLoadingView {
+    return [SAPActivityIndicator objectWithSuperView:self];
 }
 
 //- (UIView *)loadingView {
