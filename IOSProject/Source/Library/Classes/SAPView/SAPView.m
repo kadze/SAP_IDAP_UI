@@ -66,7 +66,9 @@
         if (loadingViewVisible && !self.loadingView) {
             self.loadingView = [self createLoadingView];
         }
+        
         [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
+        [self bringSubviewToFront:self.loadingView];
     }
 }
 
