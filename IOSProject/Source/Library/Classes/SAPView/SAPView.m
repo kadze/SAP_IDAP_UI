@@ -14,7 +14,7 @@
 #pragma mark Accessors
 
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible {
-    [self setLoadingViewVisible:loadingViewVisible animated:NO];
+    [self setLoadingViewVisible:loadingViewVisible animated:YES];
 }
 
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible
@@ -25,7 +25,7 @@
 
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible
                      animated:(BOOL)animated
-                   completion:(void(^)(BOOL))completion
+                   completion:(void(^)(void))completion
 {
     [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
 }

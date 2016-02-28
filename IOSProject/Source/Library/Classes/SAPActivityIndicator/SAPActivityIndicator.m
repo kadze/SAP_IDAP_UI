@@ -18,7 +18,7 @@ CGFloat const invisibleAlpha = 0.0;
 
 @implementation SAPActivityIndicator
 
-@synthesize viewVisible;
+@synthesize visible = _visible;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -39,16 +39,20 @@ CGFloat const invisibleAlpha = 0.0;
     [self setVisible:visible animated:animated completion:nil];
 }
 
-- (void)setVisible:(BOOL)visible animated:(BOOL)animated completion:(void(^)(BOOL))completion {
+- (void)setVisible:(BOOL)visible animated:(BOOL)animated completion:(void(^)(void))completion {
+    if (_visible != visible) {
     CGFloat alpha = visible ? visibleAlpha : invisibleAlpha;
-    SAPWeakify(self);
     [UIView animateWithDuration:animated ? kSAPAnimationDuration : 0.0
                      animations:^{
-                         SAPStrongify(self);
                          self.alpha = alpha;
-                         self.viewVisible = visible;
                      }
-                     completion:completion];
+                     completion:^(BOOL finished) {
+                         _visible = visible;
+                         if (completion) {
+                             completion();
+                         }
+                     }];
+    }
 }
 
 @end
