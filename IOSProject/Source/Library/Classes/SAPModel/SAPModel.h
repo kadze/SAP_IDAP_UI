@@ -14,8 +14,8 @@ typedef NS_ENUM (NSUInteger, SAPModelState) {
     
     kSAPModelStateUnloaded,
     kSAPModelStateWillLoad,
-    kSAPModelStateDidFinish,
-    kSAPModelStateDidFail,
+    kSAPModelStateDidFinishLoading,
+    kSAPModelStateDidFailLoading,
     
     kSAPModelStateEnd,
     kSAPWorkerStateCount = kSAPModelStateEnd - kSAPModelStateStart - 1

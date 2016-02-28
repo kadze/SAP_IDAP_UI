@@ -21,11 +21,11 @@
         case kSAPModelStateWillLoad:
             return @selector(modelWillLoad:);
             
-        case kSAPModelStateDidFinish:
-            return @selector(modelDidFinishLoad:);
+        case kSAPModelStateDidFinishLoading:
+            return @selector(modelDidFinishLoading:);
         
-        case kSAPModelStateDidFail:
-            return @selector(modelDidFailLoad:);
+        case kSAPModelStateDidFailLoading:
+            return @selector(modelDidFailLoading:);
         
         default:
             return [super selectorForState:state];
