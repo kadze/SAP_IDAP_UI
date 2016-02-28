@@ -11,9 +11,9 @@
 #import "SAPLoadingView.h"
 
 @interface SAPView : UIView
-@property (nonatomic, assign) BOOL loadingViewVisible;
-
 @property (nonatomic, strong) UIView<SAPLoadingView> *loadingView;
+
+@property (nonatomic, assign) BOOL loadingViewVisible;
 
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible
                      animated:(BOOL)animated;
