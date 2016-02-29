@@ -65,7 +65,7 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 - (void)performBackgroundLoading {
     SAPDispatchAsyncOnDefaultQueue(^{
         [self fillWithUsers:[self loadUsers]];
-        sleep(5);
+        sleep(3);
         
         SAPDispatchAsyncOnMainQueue(^{
             [self cleanupAfterProcessing];

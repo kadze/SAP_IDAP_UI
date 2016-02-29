@@ -10,6 +10,8 @@
 
 #import "SAPActivityIndicator.h"
 
+#import "UINib+SAPExtensions.h"
+
 @interface SAPView ()
 @property (nonatomic, strong) UIView<SAPLoadingView> *loadingView;
 
@@ -24,7 +26,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    self.loadingView = [self createLoadingView];
     
     return self;
 }
@@ -37,7 +38,6 @@
         [_loadingView removeFromSuperview];
         _loadingView = loadingView;
         loadingView.frame = self.bounds;
-        loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:loadingView];
     }
 }
@@ -61,8 +61,10 @@
             self.loadingView = [self createLoadingView];
         }
         
-        [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
+        _loadingViewVisible = loadingViewVisible;
+        
         [self bringSubviewToFront:self.loadingView];
+        [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
     }
 }
 
@@ -70,11 +72,7 @@
 #pragma mark Private
 
 - (UIView<SAPLoadingView> *)createLoadingView {
-    return [SAPActivityIndicator new];
+    return [UINib objectWithClass:[SAPActivityIndicator class]];
 }
-
-//- (UIView *)loadingView {
-//    return nil;
-//}
 
 @end

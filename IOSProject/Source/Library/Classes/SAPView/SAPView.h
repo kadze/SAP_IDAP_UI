@@ -21,6 +21,4 @@
                      animated:(BOOL)animated
                    completion:(void(^)(void))completion;
 
-//- (UIView<SAPLoadingView> *)loadingView;
-
 @end
