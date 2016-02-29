@@ -42,8 +42,9 @@ static NSString * const kSAPNameKey = @"name";
         __image = [UIImage imageWithContentsOfFile:path];
     });
     
+    [self load];
+    
     return __image;
-    //[self load];
 }
 
 #pragma mark -
@@ -53,7 +54,7 @@ static NSString * const kSAPNameKey = @"name";
     [aCoder encodeObject:self.name forKey:kSAPNameKey];
 }
 
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
     
     return self;

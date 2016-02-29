@@ -23,10 +23,10 @@
 
 - (void)setUser:(SAPUser *)user {
     if (_user != user) {
+        [_user removeObserver:self];
         _user = user;
-        
+        [_user addObserver:self];
         [self fillWithModel:user];
-        
     }
 }
 
