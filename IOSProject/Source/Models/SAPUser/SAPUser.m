@@ -43,6 +43,7 @@ static NSString * const kSAPNameKey = @"name";
     });
     
     return __image;
+    //[self load];
 }
 
 #pragma mark -
@@ -54,9 +55,16 @@ static NSString * const kSAPNameKey = @"name";
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
-        
+    
     return self;
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (void)performBackgroundLoading {
+
+    usleep(1000 * 10);
+}
 
 @end
