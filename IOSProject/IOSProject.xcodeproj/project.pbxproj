@@ -52,6 +52,8 @@
 		CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421C91C5A4905004E4F1E /* SAPSquareViewController.m */; };
 		CAC421CC1C5A4905004E4F1E /* SAPSquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC421CA1C5A4905004E4F1E /* SAPSquareViewController.xib */; };
 		CAC421CF1C5A55A2004E4F1E /* SAPSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC421CE1C5A55A2004E4F1E /* SAPSquareView.m */; };
+		CAC751961C847AB700265578 /* NSObject+SAPAssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751951C847AB700265578 /* NSObject+SAPAssociatedObjects.m */; settings = {ASSET_TAGS = (); }; };
+		CAC751991C847E6100265578 /* UIView+SAPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751981C847E6100265578 /* UIView+SAPLoadingView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,10 @@
 		CAC421CA1C5A4905004E4F1E /* SAPSquareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPSquareViewController.xib; sourceTree = "<group>"; };
 		CAC421CD1C5A55A2004E4F1E /* SAPSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPSquareView.h; sourceTree = "<group>"; };
 		CAC421CE1C5A55A2004E4F1E /* SAPSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPSquareView.m; sourceTree = "<group>"; };
+		CAC751941C847AB700265578 /* NSObject+SAPAssociatedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SAPAssociatedObjects.h"; sourceTree = "<group>"; };
+		CAC751951C847AB700265578 /* NSObject+SAPAssociatedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SAPAssociatedObjects.m"; sourceTree = "<group>"; };
+		CAC751971C847E6100265578 /* UIView+SAPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SAPLoadingView.h"; sourceTree = "<group>"; };
+		CAC751981C847E6100265578 /* UIView+SAPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SAPLoadingView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,8 @@
 		CA4AA8941C5BC6E100B1CBEC /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CAC751921C847A6400265578 /* UIView */,
+				CAC751901C847A4600265578 /* NSObject */,
 				CA4B3F7F1C7DE8DE00440914 /* NSFileManager */,
 				CA4B3F3B1C74C9B200440914 /* NSIndexPath */,
 				CA4B3EF11C6B8CB100440914 /* UITableView */,
@@ -622,6 +630,41 @@
 			path = SAPSquareViewController;
 			sourceTree = "<group>";
 		};
+		CAC751901C847A4600265578 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				CAC751911C847A4600265578 /* NSObject+SAPAssociatedObjects */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		CAC751911C847A4600265578 /* NSObject+SAPAssociatedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				CAC751941C847AB700265578 /* NSObject+SAPAssociatedObjects.h */,
+				CAC751951C847AB700265578 /* NSObject+SAPAssociatedObjects.m */,
+			);
+			path = "NSObject+SAPAssociatedObjects";
+			sourceTree = "<group>";
+		};
+		CAC751921C847A6400265578 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CAC751931C847A6400265578 /* UIView+SAPLoadingView */,
+			);
+			name = UIView;
+			path = Source/Library/Categories/UIView;
+			sourceTree = SOURCE_ROOT;
+		};
+		CAC751931C847A6400265578 /* UIView+SAPLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				CAC751971C847E6100265578 /* UIView+SAPLoadingView.h */,
+				CAC751981C847E6100265578 /* UIView+SAPLoadingView.m */,
+			);
+			path = "UIView+SAPLoadingView";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -762,6 +805,7 @@
 				CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */,
 				CA4B3FA41C80619100440914 /* SAPView.m in Sources */,
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
+				CAC751991C847E6100265578 /* UIView+SAPLoadingView.m in Sources */,
 				CA634C111C69C43900DAED4E /* SAPUser.m in Sources */,
 				CA4B3F881C7E352D00440914 /* SAPUserCell.m in Sources */,
 				CA4B3F641C76FC9500440914 /* SAPCollectionChangeDoubleIndexModel +UITableView.m in Sources */,
@@ -770,6 +814,7 @@
 				CA4B3F3E1C74C9F600440914 /* NSIndexPath+SAPExtensions.m in Sources */,
 				CA4B3F7C1C7C9A2200440914 /* SAPModel.m in Sources */,
 				CA634C081C69C3FC00DAED4E /* SAPUsersViewController.m in Sources */,
+				CAC751961C847AB700265578 /* NSObject+SAPAssociatedObjects.m in Sources */,
 				CA634BBE1C63B93100DAED4E /* CGGeometry+SAPExtensions.m in Sources */,
 				CA4B3F991C7F352000440914 /* SAPDispatch.m in Sources */,
 				CAC421CF1C5A55A2004E4F1E /* SAPSquareView.m in Sources */,
