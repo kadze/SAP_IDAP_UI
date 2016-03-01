@@ -55,6 +55,7 @@ static NSString * const kSAPNameKey = @"name";
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init]; //mutable observers collection initialization
     self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
     
     return self;
