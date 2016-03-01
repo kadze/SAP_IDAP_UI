@@ -9,6 +9,7 @@
 #import "SAPUserCell.h"
 
 #import "SAPUser.h"
+#import "SAPView.h"
 
 @interface SAPUserCell ()
 
@@ -34,29 +35,28 @@
 #pragma mark Private
 
 - (void)fillWithModel:(SAPUser *)user {
-    self.userLabel.text = user.name;
-    self.userImageView.image = user.image;
+    self.label.text = user.name;
+    self.contentImageView.image = user.image;
 }
 
 #pragma mark -
 #pragma mark SAPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    [self setLoadingViewVisible:YES animated:YES];
+    [self.view setLoadingViewVisible:YES animated:YES];
     
 }
 
 - (void)modelDidFinishLoading:(id)model {
-//    [self updateViewWithModel];
-//    [self.usersView setLoadingViewVisible:NO];
+    [self.view setLoadingViewVisible:NO];
 }
 
 - (void)modelDidFailLoading:(id)model {
-//    [self.usersView setLoadingViewVisible:NO];
+    [self.view setLoadingViewVisible:NO];
 }
 
 - (void)modelDidBecomeUnloaded:(id)model {
-//    [self.usersView setLoadingViewVisible:NO];
+    [self.view setLoadingViewVisible:NO];
 }
 
 
