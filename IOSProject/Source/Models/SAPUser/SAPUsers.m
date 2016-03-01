@@ -58,7 +58,10 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 #pragma mark Public
 
 - (void)save {
-    SAPProvidePathExistence([self appStatePath]);
+    [[NSFileManager defaultManager] createDirectoryAtPath:[self appStatePath]
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
     [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
 }
 
