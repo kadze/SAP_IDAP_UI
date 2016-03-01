@@ -8,9 +8,17 @@
 
 #import "NSFileManager+SAPExtensions.h"
 
-NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory) {
-    return [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+@implementation NSFileManager (SAPExtensions)
+
++ (NSString *)searchPathForDirectory:(NSSearchPathDirectory)directory {
+    return [NSSearchPathForDirectoriesInDomains(directory, NSUserDomainMask, YES) firstObject];
 }
+
+//+ (NSString *)
+//@end
+//NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory) {
+//    return [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+//}
 
 NSString *SAPlibraryPath(void) {
     return SAPSearchPathForDirectory(NSLibraryDirectory);

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@interface NSFileManager (SAPExtensions)
+
+@end
 extern
 NSString *SAPSearchPathForDirectory(NSSearchPathDirectory directory);
 
