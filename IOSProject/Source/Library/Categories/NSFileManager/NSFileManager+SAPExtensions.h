@@ -10,7 +10,6 @@
 
 @interface NSFileManager (SAPExtensions)
 
-+ (NSString *)searchPathForDirectory:(NSSearchPathDirectory)directory;
 + (NSString *)libraryPath;
 + (NSString *)documentsPath;
 + (NSString *)appStatePath;

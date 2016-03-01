@@ -56,6 +56,7 @@
 		CAC751AD1C85B20300265578 /* NSObject+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751AC1C85B20300265578 /* NSObject+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CAC751B61C85B4A700265578 /* NSNumber+SAPExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751B31C85B4A700265578 /* NSNumber+SAPExtentions.m */; settings = {ASSET_TAGS = (); }; };
 		CAC751BB1C85B56D00265578 /* SAPNumberGeneratorArray.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751BA1C85B56D00265578 /* SAPNumberGeneratorArray.m */; settings = {ASSET_TAGS = (); }; };
+		CAC751C31C85F35400265578 /* NSPathUtilities+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751C21C85F35400265578 /* NSPathUtilities+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,8 @@
 		CAC751B31C85B4A700265578 /* NSNumber+SAPExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SAPExtentions.m"; sourceTree = "<group>"; };
 		CAC751B91C85B56D00265578 /* SAPNumberGeneratorArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPNumberGeneratorArray.h; sourceTree = "<group>"; };
 		CAC751BA1C85B56D00265578 /* SAPNumberGeneratorArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPNumberGeneratorArray.m; sourceTree = "<group>"; };
+		CAC751C11C85F35400265578 /* NSPathUtilities+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPathUtilities+SAPExtensions.h"; sourceTree = "<group>"; };
+		CAC751C21C85F35400265578 /* NSPathUtilities+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPathUtilities+SAPExtensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,7 @@
 		CA4AA8941C5BC6E100B1CBEC /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CAC751C01C85F35400265578 /* NSPathUtilities */,
 				CAC751901C847A4600265578 /* NSObject */,
 				CAC751AE1C85B35D00265578 /* NSNumber */,
 				CA4B3F7F1C7DE8DE00440914 /* NSFileManager */,
@@ -682,6 +686,15 @@
 			path = SAPNumberGeneratorArray;
 			sourceTree = "<group>";
 		};
+		CAC751C01C85F35400265578 /* NSPathUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				CAC751C11C85F35400265578 /* NSPathUtilities+SAPExtensions.h */,
+				CAC751C21C85F35400265578 /* NSPathUtilities+SAPExtensions.m */,
+			);
+			path = NSPathUtilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -819,6 +832,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC751C31C85F35400265578 /* NSPathUtilities+SAPExtensions.m in Sources */,
 				CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */,
 				CA4B3FA41C80619100440914 /* SAPView.m in Sources */,
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
