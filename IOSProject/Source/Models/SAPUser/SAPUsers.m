@@ -15,6 +15,7 @@
 #import "SAPDispatch.h"
 
 #import "NSFileManager+SAPExtensions.h"
+#import "NSObject+SAPExtensions.h"
 
 static NSUInteger const kSAPInitialUsersCount = 100;
 
@@ -27,7 +28,6 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
-- (NSMutableArray *)createUsersWithCount:(NSUInteger)count;
 - (void)cleanupAfterProcessing;
 - (NSString *)appStatePath;
 
@@ -89,19 +89,10 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 - (NSArray *)loadUsers {
     NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
     if (!objects) {
-        objects = [self createUsersWithCount:kSAPInitialUsersCount];
+        objects = [SAPUser objectsWithCount:kSAPInitialUsersCount];
     }
     
     return objects;
-}
-
-- (NSMutableArray *)createUsersWithCount:(NSUInteger)count {
-    NSMutableArray *result = [NSMutableArray new];
-    for (NSUInteger index = 0; index < count; index++) {
-        [result addObject:[SAPUser new]];
-    }
-    
-    return result;
 }
 
 - (void)cleanupAfterProcessing {
