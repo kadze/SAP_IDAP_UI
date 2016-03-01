@@ -8,27 +8,14 @@
 
 #import "NSObject+SAPAssociatedObjects.h"
 
-#import <objc/runtime.h>
-
 @implementation NSObject (SAPAssociatedObjects)
 
-- (void)associateValue:(id)value withKey:(void *)key {
-    objc_setAssociatedObject(self, key, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)seAssociatedtObject:(id)value forKey:(void *)key withOption:(objc_AssociationPolicy)option {
+    objc_setAssociatedObject(self, key, value, option);
 }
 
-- (id)associatedValueForKey:(void *)key {
+- (id)associatedObjectForKey:(void *)key {
     return objc_getAssociatedObject(self, key);
-}
-
-- (void)associateBoolValue:(BOOL)value withKey:(void *)key {
-    NSNumber *number = [NSNumber numberWithBool:value];
-    [self associateValue:number withKey:key];
-}
-
-- (BOOL)associatedBoolValueForKey:(void *)key {
-    NSNumber *number = [self associatedValueForKey:key];
-    
-    return [number boolValue];
 }
 
 @end

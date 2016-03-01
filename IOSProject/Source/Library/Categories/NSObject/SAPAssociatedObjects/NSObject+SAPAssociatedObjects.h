@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <objc/runtime.h>
 
 @interface NSObject (SAPAssociatedObjects)
 
-- (void)associateValue:(id)value withKey:(void *)key;
-- (id)associatedValueForKey:(void *)key;
-
-- (void)associateBoolValue:(BOOL)value withKey:(void *)key;
-- (BOOL)associatedBoolValueForKey:(void *)key;
+- (void)seAssociatedtObject:(id)value forKey:(void *)key withOption:(objc_AssociationPolicy)option;
+- (id)associatedObjectForKey:(void *)key;
 
 @end
