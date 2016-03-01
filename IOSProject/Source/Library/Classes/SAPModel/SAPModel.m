@@ -12,6 +12,18 @@
 
 @implementation SAPModel
 
+@dynamic cached;
+
+#pragma mark -
+#pragma mark Accessors
+
+- (BOOL)cached {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *cachePath = NSStringFromClass([self class]);
+
+    return [fileManager fileExistsAtPath:cachePath];
+}
+
 #pragma mark -
 #pragma mark SAPObservableObject
 
