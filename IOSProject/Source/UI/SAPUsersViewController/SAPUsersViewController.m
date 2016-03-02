@@ -146,7 +146,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
     [self.usersView setLoadingViewVisible:NO];
 }
 
-- (void)modelDidBecomeUnloaded:(id)model {
+- (void)modelDidUnload:(id)model {
     [self.usersView setLoadingViewVisible:NO];
 }
 

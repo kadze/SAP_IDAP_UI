@@ -15,6 +15,6 @@
 - (void)modelWillLoad:(id)model;
 - (void)modelDidFinishLoading:(id)model;
 - (void)modelDidFailLoading:(id)model;
-- (void)modelDidBecomeUnloaded:(id)model;
+- (void)modelDidUnload:(id)model;
 
 @end

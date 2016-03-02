@@ -30,7 +30,7 @@
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
         case kSAPModelStateUnloaded:
-            return @selector(modelDidBecomeUnloaded:);
+            return @selector(modelDidUnload:);
             
         case kSAPModelStateWillLoad:
             return @selector(modelWillLoad:);

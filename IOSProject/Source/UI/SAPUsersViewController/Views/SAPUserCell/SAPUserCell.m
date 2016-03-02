@@ -55,7 +55,7 @@
     [self.view setLoadingViewVisible:NO];
 }
 
-- (void)modelDidBecomeUnloaded:(id)model {
+- (void)modelDidUnload:(id)model {
     [self.view setLoadingViewVisible:NO];
 }
 
