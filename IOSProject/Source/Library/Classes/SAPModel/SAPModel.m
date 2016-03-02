@@ -11,9 +11,27 @@
 #import "SAPDispatch.h"
 #import "NSFileManager+SAPExtensions.h"
 
+#import "SAPOwnershipMacro.h"
+
 @implementation SAPModel
 
 @dynamic cached;
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        SAPWeakify(self);
+        [self performBlockWithoutNotification:^{
+            SAPStrongify(self);
+            self.state = kSAPModelStateUnloaded;
+        }];
+    }
+    
+    return self;
+}
 
 #pragma mark -
 #pragma mark Accessors

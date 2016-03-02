@@ -35,18 +35,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
 @implementation SAPUsers
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.state = kSAPModelStateUnloaded;
-    }
-    
-    return self;
-}
-
-#pragma mark -
 #pragma mark Accessors
 
 - (NSString *)path {
