@@ -15,9 +15,17 @@ static NSString * const kSAPImageType = @"jpeg";
 
 static NSString * const kSAPNameKey = @"name";
 
+@interface SAPUser ()
+@property (nonatomic, strong) UIImage   *image;
+
+- (UIImage *)loadImage;
+- (void)cleanupAfterProcessing;
+
+@end
+
 @implementation SAPUser
 
-@dynamic image;
+//@dynamic image;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -29,22 +37,6 @@ static NSString * const kSAPNameKey = @"name";
     }
     
     return self;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (UIImage *)image {
-    static UIImage *__image = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
-        __image = [UIImage imageWithContentsOfFile:path];
-    });
-    
-    [self load];
-    
-    return __image;
 }
 
 #pragma mark -
@@ -62,11 +54,34 @@ static NSString * const kSAPNameKey = @"name";
 }
 
 #pragma mark -
-#pragma mark Public
+#pragma mark SAPModel
 
 - (void)performBackgroundLoading {
+    self.image = [self loadImage];
+    
+    sleep(1);
+    
+    [self cleanupAfterProcessing];
+}
 
-    usleep(1000 * 10);
+#pragma mark -
+#pragma mark Private
+
+- (UIImage *)loadImage {
+    static UIImage *__image = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
+        __image = [UIImage imageWithContentsOfFile:path];
+    });
+    
+    return __image;
+}
+
+- (void)cleanupAfterProcessing {
+    @synchronized(self) {
+        self.state = kSAPModelStateDidFinishLoading;
+    }
 }
 
 @end

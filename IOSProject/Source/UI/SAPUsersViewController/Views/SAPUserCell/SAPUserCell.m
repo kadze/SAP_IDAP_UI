@@ -11,6 +11,8 @@
 #import "SAPUser.h"
 #import "SAPView.h"
 
+#import "SAPDispatch.h"
+
 @interface SAPUserCell ()
 
 - (void)fillWithModel:(SAPUser *)user;
@@ -27,7 +29,8 @@
         [_user removeObserver:self];
         _user = user;
         [_user addObserver:self];
-        [self fillWithModel:user];
+        
+        [_user load];
     }
 }
 
@@ -43,12 +46,16 @@
 #pragma mark SAPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    [self.view setLoadingViewVisible:YES animated:YES];
-    
+    SAPDispatchAsyncOnMainQueue(^{
+        [self.view setLoadingViewVisible:YES animated:YES];
+    });
 }
 
 - (void)modelDidFinishLoading:(id)model {
-    [self.view setLoadingViewVisible:NO];
+    SAPDispatchAsyncOnMainQueue(^{
+        [self fillWithModel:model];
+        [self.view setLoadingViewVisible:NO];
+    });
 }
 
 - (void)modelDidFailLoading:(id)model {
