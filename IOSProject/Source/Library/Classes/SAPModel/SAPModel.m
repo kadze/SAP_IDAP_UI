@@ -60,8 +60,9 @@
         
         self.state = kSAPModelStateWillLoad;
         
-        [self performBackgroundLoading];
-        
+        SAPDispatchAsyncOnDefaultQueue(^{
+            [self performBackgroundLoading];
+        });        
     }
 }
 
