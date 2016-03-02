@@ -14,6 +14,8 @@
 #import "SAPUser.h"
 #import "SAPActivityIndicator.h"
 
+#import "SAPDispatch.h"
+
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
 #import "UITableView+SAPCollectionChangeModel.h"
@@ -48,7 +50,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
         _users = users;
         [_users addObserver:self];
         
-        [self updateViewWithModel];
+        [_users load];
     }
 }
 
@@ -128,13 +130,16 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark SAPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    [self.usersView setLoadingViewVisible:YES animated:YES];
-
+    SAPDispatchAsyncOnMainQueue(^{
+        [self.usersView setLoadingViewVisible:YES animated:YES];
+    });
 }
 
 - (void)modelDidFinishLoading:(id)model {
-    [self updateViewWithModel];
-    [self.usersView setLoadingViewVisible:NO];
+    SAPDispatchAsyncOnMainQueue(^{
+        [self updateViewWithModel];
+        [self.usersView setLoadingViewVisible:NO];
+    });
 }
 
 - (void)modelDidFailLoading:(id)model {
