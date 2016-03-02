@@ -12,7 +12,7 @@
 
 #import "SAPOwnershipMacro.h"
 
-static NSTimeInterval const kSAPAnimationDuration  = 1.0;
+static NSTimeInterval const kSAPAnimationDuration  = 0.5;
 CGFloat const visibleAlpha = 0.5;
 CGFloat const invisibleAlpha = 0.0;
 
