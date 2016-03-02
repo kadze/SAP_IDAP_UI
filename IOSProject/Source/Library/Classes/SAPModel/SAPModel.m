@@ -9,6 +9,7 @@
 #import "SAPModel.h"
 
 #import "SAPDispatch.h"
+#import "NSFileManager+SAPExtensions.h"
 
 @implementation SAPModel
 
@@ -19,9 +20,8 @@
 
 - (BOOL)cached {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *cachePath = NSStringFromClass([self class]);
 
-    return [fileManager fileExistsAtPath:cachePath];
+    return [fileManager fileExistsAtPath:[NSFileManager appStatePath]];
 }
 
 #pragma mark -
