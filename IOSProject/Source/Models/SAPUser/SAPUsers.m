@@ -89,7 +89,11 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 - (NSArray *)loadUsers {
-    NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+    NSArray *objects = nil;
+    if (self.cached) {
+        objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+    }
+
     if (!objects) {
         objects = [SAPUser objectsWithCount:kSAPInitialUsersCount];
     }
