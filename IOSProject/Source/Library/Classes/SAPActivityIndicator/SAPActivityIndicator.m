@@ -13,8 +13,8 @@
 #import "SAPOwnershipMacro.h"
 
 static NSTimeInterval const kSAPAnimationDuration  = 0.5;
-CGFloat const visibleAlpha = 0.5;
-CGFloat const invisibleAlpha = 0.0;
+static CGFloat const kSAPAlpha = 0.5;
+static CGFloat const kSAPZeroAlpha = 0.0;
 
 @implementation SAPActivityIndicator
 
@@ -41,7 +41,11 @@ CGFloat const invisibleAlpha = 0.0;
 
 - (void)setVisible:(BOOL)visible animated:(BOOL)animated completion:(void(^)(void))completion {
     if (_visible != visible) {
-        CGFloat alpha = visible ? visibleAlpha : invisibleAlpha;
+        if (!_visible) {
+            _visible = visible;
+        }
+        
+        CGFloat alpha = visible ? kSAPAlpha : kSAPZeroAlpha;
         [UIView animateWithDuration:animated ? kSAPAnimationDuration : 0.0
                          animations:^{
                              self.alpha = alpha;
