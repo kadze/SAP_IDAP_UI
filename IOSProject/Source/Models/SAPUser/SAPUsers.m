@@ -68,9 +68,8 @@ static NSString * const kSAPPlistName       = @"users.plist";
     [self fillWithUsers:[self loadUsers]];
     sleep(3);
     
-//    SAPDispatchAsyncOnMainQueue(^{
-        [self cleanupAfterProcessing];
-//    });
+    [self cleanupAfterProcessing];
+
 }
 
 #pragma mark -
