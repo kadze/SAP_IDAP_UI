@@ -54,7 +54,7 @@ static NSString * const kSAPNameKey = @"name";
 }
 
 #pragma mark -
-#pragma mark SAPModel
+#pragma mark Public
 
 - (void)performBackgroundLoading {
     self.image = [self loadImage];
