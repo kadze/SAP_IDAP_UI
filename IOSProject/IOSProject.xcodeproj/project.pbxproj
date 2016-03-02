@@ -516,7 +516,7 @@
 			children = (
 				CAC421B61C5A24F7004E4F1E /* Source */,
 				CAC421A11C5A2364004E4F1E /* IOSProject */,
-				CAC421A41C5A2364004E4F1E /* Resouces */,
+				CAC421A41C5A2364004E4F1E /* Resources */,
 				CAC421871C5A1AA2004E4F1E /* IOSProjectTests */,
 				CAC421921C5A1AA2004E4F1E /* IOSProjectUITests */,
 				CAC4216C1C5A1AA1004E4F1E /* Products */,
@@ -562,14 +562,14 @@
 			path = IOSProject;
 			sourceTree = "<group>";
 		};
-		CAC421A41C5A2364004E4F1E /* Resouces */ = {
+		CAC421A41C5A2364004E4F1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				CA634BE51C68A18300DAED4E /* Images */,
 				CAC421A51C5A2364004E4F1E /* Assets.xcassets */,
 				CAC421A61C5A2364004E4F1E /* LaunchScreen.storyboard */,
 			);
-			path = Resouces;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CAC421B61C5A24F7004E4F1E /* Source */ = {
