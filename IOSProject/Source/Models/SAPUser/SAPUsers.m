@@ -53,9 +53,8 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 - (void)performBackgroundLoading {
-    [self fillWithUsers:[self loadUsers]];
     sleep(3);
-    
+    [self fillWithUsers:[self loadUsers]];
     [self cleanupAfterProcessing];
 
 }
