@@ -57,10 +57,8 @@ static NSString * const kSAPNameKey = @"name";
 #pragma mark Public
 
 - (void)performBackgroundLoading {
+    sleep(5);
     self.image = [self loadImage];
-    
-    sleep(1);
-    
     [self cleanupAfterProcessing];
 }
 
