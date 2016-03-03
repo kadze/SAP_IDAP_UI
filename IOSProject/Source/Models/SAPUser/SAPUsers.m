@@ -13,6 +13,7 @@
 #import "SAPUser.h"
 #import "SAPOwnershipMacro.h"
 #import "SAPDispatch.h"
+#import "SAPAppDelegate.h"
 
 #import "NSFileManager+SAPExtensions.h"
 #import "NSObject+SAPExtensions.h"
@@ -29,10 +30,27 @@ static NSString * const kSAPPlistName       = @"users.plist";
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
 - (void)cleanupAfterProcessing;
+- (void)observeAppDelegate:(BOOL)enable;
 
 @end
 
 @implementation SAPUsers
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self observeAppDelegate:YES];
+    }
+    
+    return self;
+}
+
+- (void)dealloc {
+    [self observeAppDelegate:NO];
+}
 
 #pragma mark -
 #pragma mark Accessors
@@ -88,6 +106,21 @@ static NSString * const kSAPPlistName       = @"users.plist";
 - (void)cleanupAfterProcessing {
     @synchronized(self) {
         self.state = kSAPModelStateDidFinishLoading;
+    }
+}
+
+- (void)observeAppDelegate:(BOOL)enable {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    SAPAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if (enable) {
+        [center addObserver:self
+                   selector:@selector(save)
+                       name:kSAPAppNotificationName
+                     object:appDelegate];
+    } else {
+        [center removeObserver:self
+                          name:kSAPAppNotificationName
+                        object:appDelegate];
     }
 }
 
