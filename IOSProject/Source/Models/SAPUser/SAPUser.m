@@ -65,14 +65,8 @@ static NSString * const kSAPNameKey = @"name";
 #pragma mark Private
 
 - (UIImage *)loadImage {
-    static UIImage *__image = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
-        __image = [UIImage imageWithContentsOfFile:path];
-    });
-    
-    return __image;
+    NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
+    return [UIImage imageWithContentsOfFile:path];
 }
 
 @end
