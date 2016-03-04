@@ -76,7 +76,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
     @synchronized(self) {
         self.state = kSAPModelStateDidFinishLoading;
     }
-
 }
 
 #pragma mark -
