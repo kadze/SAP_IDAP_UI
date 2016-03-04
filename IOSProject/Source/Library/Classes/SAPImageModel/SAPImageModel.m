@@ -7,12 +7,17 @@
 //
 
 #import "SAPImageModel.h"
+
+#import "NSFileManager+SAPExtensions.h"
+
 #import "SAPOwnershipMacro.h"
 
 @interface SAPImageModel ()
 @property (nonatomic, strong) UIImage     *image;
 @property (nonatomic, strong) NSURL       *url;
-@property (nonatomic, strong) NSOperation *operation;
+
+- (NSOperationQueue *)sharedQueue;
+- (NSBlockOperation *)loadingOperation;
 
 @end
 
@@ -21,10 +26,6 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)dealloc {
-    self.operation = nil;
-}
-
 - (instancetype)initWithUrl:(NSURL *)url {
     self = [super init];
     if (self) {
@@ -32,22 +33,6 @@
     }
     
     return self;
-}
-
-
-#pragma mark -
-#pragma mark Accessors
-
-- (BOOL)imageLoaded {
-    return nil != self.image;
-}
-
-- (void)setOperation:(NSOperation *)operation {
-    if (_operation != operation) {
-        [_operation cancel];
-        
-        _operation = operation;
-    }
 }
 
 #pragma mark -
@@ -60,20 +45,19 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)load {
-    @synchronized(self) {
-        if (kSAPModelStateWillLoad == self.state) {
-            return;
-        }
-        
-        if (kSAPModelStateDidFinishLoading == self.state) {
-            [self notifyObserversWithSelector:[self selectorForState:kSAPModelStateDidFinishLoading]];
-            return;
-        }
-        
-        self.state = kSAPModelStateWillLoad;
-    }
-    
+- (void)performBackgroundLoading {
+    NSBlockOperation *operation = [self loadingOperation];
+    [[self sharedQueue] addOperation:operation];
+}
+
+- (NSString *)path {
+    return [[NSFileManager appStatePath] stringByAppendingPathComponent:[self.url absoluteString]];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (NSOperationQueue *)sharedQueue {
     static NSOperationQueue *queue = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -81,6 +65,10 @@
         queue.maxConcurrentOperationCount = 2;
     });
     
+    return queue;
+}
+
+- (NSBlockOperation *)loadingOperation {
     SAPWeakify(self);
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
         SAPStrongifyAndReturnIfNil(self);
@@ -92,16 +80,7 @@
         self.state = self.image ? kSAPModelStateDidFinishLoading : kSAPModelStateDidFailLoading;
     };
     
-    [queue addOperation:operation];
-    self.operation = operation;
-}
-
-- (void)dump {
-    @synchronized(self) {
-        self.operation = nil;
-        self.image = nil;
-        self.state = kSAPModelStateUnloaded;
-    }
+    return operation;
 }
 
 @end

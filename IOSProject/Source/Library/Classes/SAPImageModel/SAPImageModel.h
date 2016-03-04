@@ -12,12 +12,9 @@
 @interface SAPImageModel : SAPModel
 @property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSURL   *url;
-@property (nonatomic, readonly) BOOL    imageLoaded;
 
 + (instancetype)imageWithUrl:(NSURL *)url;
 
 - (instancetype)initWithUrl:(NSURL *)url;
-
-- (void)dump;
 
 @end
