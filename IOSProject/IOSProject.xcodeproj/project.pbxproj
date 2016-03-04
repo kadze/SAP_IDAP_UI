@@ -58,7 +58,6 @@
 		CAC751BB1C85B56D00265578 /* SAPNumberGeneratorArray.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751BA1C85B56D00265578 /* SAPNumberGeneratorArray.m */; settings = {ASSET_TAGS = (); }; };
 		CAC751C31C85F35400265578 /* NSPathUtilities+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751C21C85F35400265578 /* NSPathUtilities+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CAC751C71C88619400265578 /* SAPImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751C61C88619300265578 /* SAPImageModel.m */; settings = {ASSET_TAGS = (); }; };
-		CAC751CB1C888CFE00265578 /* SAPImageModelDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751CA1C888CFE00265578 /* SAPImageModelDispatcher.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,8 +180,6 @@
 		CAC751C21C85F35400265578 /* NSPathUtilities+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPathUtilities+SAPExtensions.m"; sourceTree = "<group>"; };
 		CAC751C51C88619300265578 /* SAPImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPImageModel.h; sourceTree = "<group>"; };
 		CAC751C61C88619300265578 /* SAPImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPImageModel.m; sourceTree = "<group>"; };
-		CAC751C91C888CFE00265578 /* SAPImageModelDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPImageModelDispatcher.h; sourceTree = "<group>"; };
-		CAC751CA1C888CFE00265578 /* SAPImageModelDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPImageModelDispatcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -705,22 +702,12 @@
 		CAC751C41C88614D00265578 /* SAPImageModel */ = {
 			isa = PBXGroup;
 			children = (
-				CAC751C81C888CAB00265578 /* Private */,
 				CAC751C51C88619300265578 /* SAPImageModel.h */,
 				CAC751C61C88619300265578 /* SAPImageModel.m */,
 			);
 			name = SAPImageModel;
 			path = Source/Library/Classes/SAPImageModel;
 			sourceTree = SOURCE_ROOT;
-		};
-		CAC751C81C888CAB00265578 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				CAC751C91C888CFE00265578 /* SAPImageModelDispatcher.h */,
-				CAC751CA1C888CFE00265578 /* SAPImageModelDispatcher.m */,
-			);
-			path = Private;
-			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -865,7 +852,6 @@
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
 				CA634C111C69C43900DAED4E /* SAPUser.m in Sources */,
 				CA4B3F881C7E352D00440914 /* SAPUserCell.m in Sources */,
-				CAC751CB1C888CFE00265578 /* SAPImageModelDispatcher.m in Sources */,
 				CA4B3F641C76FC9500440914 /* SAPCollectionChangeDoubleIndexModel +UITableView.m in Sources */,
 				CA4B3F2E1C74AFFE00440914 /* SAPCollectionChangeModel.m in Sources */,
 				CA4B3F3E1C74C9F600440914 /* NSIndexPath+SAPExtensions.m in Sources */,
