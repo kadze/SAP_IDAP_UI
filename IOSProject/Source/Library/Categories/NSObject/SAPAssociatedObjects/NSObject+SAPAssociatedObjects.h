@@ -11,7 +11,7 @@
 
 @interface NSObject (SAPAssociatedObjects)
 
-- (void)seAssociatedtObject:(id)value forKey:(void *)key withOption:(objc_AssociationPolicy)option;
+- (void)setAssociatedtObject:(id)value forKey:(void *)key withOption:(objc_AssociationPolicy)option;
 - (id)associatedObjectForKey:(void *)key;
 
 @end

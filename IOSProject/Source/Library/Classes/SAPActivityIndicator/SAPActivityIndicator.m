@@ -14,7 +14,6 @@
 
 static NSTimeInterval const kSAPAnimationDuration  = 0.5;
 static CGFloat const kSAPAlpha = 0.5;
-static CGFloat const kSAPZeroAlpha = 0.0;
 
 @implementation SAPActivityIndicator
 
@@ -23,7 +22,7 @@ static CGFloat const kSAPZeroAlpha = 0.0;
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)objectWithSuperView:(UIView *)superview {
++ (instancetype)indicatorWithSuperview:(UIView *)superview {
     SAPActivityIndicator *view = [UINib objectWithClass:[self class]];
     view.frame = superview.bounds;
     view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -45,7 +44,7 @@ static CGFloat const kSAPZeroAlpha = 0.0;
             _visible = visible;
         }
         
-        CGFloat alpha = visible ? kSAPAlpha : kSAPZeroAlpha;
+        CGFloat alpha = visible ? kSAPAlpha : 0.0;
         [UIView animateWithDuration:animated ? kSAPAnimationDuration : 0.0
                          animations:^{
                              self.alpha = alpha;

@@ -24,11 +24,10 @@
         _loadingView = loadingView;
         
         loadingView.frame = self.bounds;
-        loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
-                                       UIViewAutoresizingFlexibleHeight;
+        loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth
+                                     | UIViewAutoresizingFlexibleHeight;
         [self addSubview:loadingView];
     }
-    
 }
 
 - (void)setLoadingViewVisible:(BOOL)loadingViewVisible {

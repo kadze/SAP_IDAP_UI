@@ -13,6 +13,6 @@
 @interface SAPActivityIndicator : UIView <SAPLoadingView>
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-+ (instancetype)objectWithSuperView:(UIView *)superview;
++ (instancetype)indicatorWithSuperview:(UIView *)superview;
 
 @end

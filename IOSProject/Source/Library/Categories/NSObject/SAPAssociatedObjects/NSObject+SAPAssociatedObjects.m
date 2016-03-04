@@ -10,7 +10,7 @@
 
 @implementation NSObject (SAPAssociatedObjects)
 
-- (void)seAssociatedtObject:(id)value forKey:(void *)key withOption:(objc_AssociationPolicy)option {
+- (void)setAssociatedtObject:(id)value forKey:(void *)key withOption:(objc_AssociationPolicy)option {
     objc_setAssociatedObject(self, key, value, option);
 }
 
