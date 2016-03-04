@@ -28,7 +28,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 
 @interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
 
-- (void)updateViewWithModel;
+- (void)reloadView;
 
 @end
 
@@ -137,7 +137,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        [self updateViewWithModel];
+        [self reloadView];
         [self.usersView setLoadingViewVisible:NO];
     });
 }
@@ -154,7 +154,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark -
 #pragma mark Private
 
-- (void)updateViewWithModel {
+- (void)reloadView {
     [self.usersView.tableView reloadData];
 }
 
