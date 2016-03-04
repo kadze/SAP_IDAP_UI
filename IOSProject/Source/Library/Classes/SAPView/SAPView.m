@@ -20,12 +20,7 @@
 - (void)setLoadingView:(UIView<SAPLoadingView> *)loadingView {
     if (_loadingView != loadingView) {
         [_loadingView removeFromSuperview];
-        
         _loadingView = loadingView;
-        
-        loadingView.frame = self.bounds;
-        loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth
-                                     | UIViewAutoresizingFlexibleHeight;
         [self addSubview:loadingView];
     }
 }
@@ -54,6 +49,15 @@
         [self bringSubviewToFront:self.loadingView];
         [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
     }
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.loadingView.frame = self.bounds;
 }
 
 #pragma mark -
