@@ -47,7 +47,7 @@
         _loadingViewVisible = loadingViewVisible;
         
         [self bringSubviewToFront:self.loadingView];
-        [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];
+        [self.loadingView setVisible:loadingViewVisible animated:animated completion:completion];        
     }
 }
 

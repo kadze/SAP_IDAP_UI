@@ -52,9 +52,9 @@ static CGFloat const kSAPAlpha = 0.5;
                          completion:^(BOOL finished) {
                              _visible = visible;
                              
-                             if (!visible) {
-                                 [self removeFromSuperview];
-                             }
+//                             if (!visible) {
+//                                 [self removeFromSuperview];
+//                             }
                              
                              if (completion) {
                                  completion();
