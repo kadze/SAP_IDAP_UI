@@ -25,7 +25,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 
 @interface SAPUsers ()
-@property (nonatomic, assign) NSString *path;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
