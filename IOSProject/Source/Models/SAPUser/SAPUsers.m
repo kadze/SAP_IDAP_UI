@@ -29,7 +29,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
-- (void)cleanupAfterProcessing;
 - (void)observeAppDelegate:(BOOL)enable;
 
 @end
@@ -73,7 +72,9 @@ static NSString * const kSAPPlistName       = @"users.plist";
 - (void)performBackgroundLoading {
     sleep(3);
     [self fillWithUsers:[self loadUsers]];
-    [self cleanupAfterProcessing];
+    @synchronized(self) {
+        self.state = kSAPModelStateDidFinishLoading;
+    }
 
 }
 
@@ -101,12 +102,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
     }
     
     return objects;
-}
-
-- (void)cleanupAfterProcessing {
-    @synchronized(self) {
-        self.state = kSAPModelStateDidFinishLoading;
-    }
 }
 
 - (void)observeAppDelegate:(BOOL)enable {

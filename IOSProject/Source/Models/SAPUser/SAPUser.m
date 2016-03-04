@@ -19,13 +19,10 @@ static NSString * const kSAPNameKey = @"name";
 @property (nonatomic, strong) UIImage   *image;
 
 - (UIImage *)loadImage;
-- (void)cleanupAfterProcessing;
 
 @end
 
 @implementation SAPUser
-
-//@dynamic image;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -59,7 +56,9 @@ static NSString * const kSAPNameKey = @"name";
 - (void)performBackgroundLoading {
     sleep(5);
     self.image = [self loadImage];
-    [self cleanupAfterProcessing];
+    @synchronized(self) {
+        self.state = kSAPModelStateDidFinishLoading;
+    }
 }
 
 #pragma mark -
@@ -74,12 +73,6 @@ static NSString * const kSAPNameKey = @"name";
     });
     
     return __image;
-}
-
-- (void)cleanupAfterProcessing {
-    @synchronized(self) {
-        self.state = kSAPModelStateDidFinishLoading;
-    }
 }
 
 @end
