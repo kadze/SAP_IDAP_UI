@@ -25,10 +25,12 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 
 @interface SAPUsers ()
+@property (nonatomic, strong) NSObject *applicationObserver;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
-- (void)observeAppDelegate:(BOOL)enable;
+- (void)startObserving;
+- (void)stopObserving;
 
 @end
 
@@ -40,14 +42,14 @@ static NSString * const kSAPPlistName       = @"users.plist";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self observeAppDelegate:YES];
+        [self startObserving];
     }
     
     return self;
 }
 
 - (void)dealloc {
-    [self observeAppDelegate:NO];
+    [self stopObserving];
 }
 
 #pragma mark -
@@ -103,19 +105,24 @@ static NSString * const kSAPPlistName       = @"users.plist";
     return objects;
 }
 
-- (void)observeAppDelegate:(BOOL)enable {
+- (void)startObserving {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    SAPAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    if (enable) {
-        [center addObserver:self
-                   selector:@selector(save)
-                       name:kSAPAppNotificationName
-                     object:appDelegate];
-    } else {
-        [center removeObserver:self
-                          name:kSAPAppNotificationName
-                        object:appDelegate];
-    }
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    SAPWeakify(self);
+    self.applicationObserver = [center addObserverForName:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil
+                                                    queue:queue
+                                               usingBlock:^(NSNotification * note) {
+                                                   SAPStrongify(self);
+                                                   [self save];
+                                               }];
+}
+
+- (void)stopObserving {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self.applicationObserver
+                      name:UIApplicationDidEnterBackgroundNotification
+                    object:nil];
 }
 
 @end
