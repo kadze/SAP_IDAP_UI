@@ -59,6 +59,7 @@
 		CAC751C31C85F35400265578 /* NSPathUtilities+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751C21C85F35400265578 /* NSPathUtilities+SAPExtensions.m */; settings = {ASSET_TAGS = (); }; };
 		CAC751C71C88619400265578 /* SAPImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751C61C88619300265578 /* SAPImageModel.m */; settings = {ASSET_TAGS = (); }; };
 		CAC751D21C8C973300265578 /* SAPCacheableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751D11C8C973300265578 /* SAPCacheableModel.m */; settings = {ASSET_TAGS = (); }; };
+		CAC751D61C8CB3B900265578 /* NSString+SAPURL.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC751D51C8CB3B900265578 /* NSString+SAPURL.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,8 @@
 		CAC751C61C88619300265578 /* SAPImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPImageModel.m; sourceTree = "<group>"; };
 		CAC751D01C8C973300265578 /* SAPCacheableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPCacheableModel.h; sourceTree = "<group>"; };
 		CAC751D11C8C973300265578 /* SAPCacheableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPCacheableModel.m; sourceTree = "<group>"; };
+		CAC751D41C8CB3B900265578 /* NSString+SAPURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SAPURL.h"; sourceTree = "<group>"; };
+		CAC751D51C8CB3B900265578 /* NSString+SAPURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPURL.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +410,7 @@
 		CA634BD01C67C0EA00DAED4E /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				CAC751D31C8CB38F00265578 /* SAPURL */,
 				CAC7519E1C84A07100265578 /* IOPRandomName */,
 				CAC751A21C84A08000265578 /* SAPExtensions */,
 			);
@@ -722,6 +726,15 @@
 			path = SAPCachaebleModel;
 			sourceTree = "<group>";
 		};
+		CAC751D31C8CB38F00265578 /* SAPURL */ = {
+			isa = PBXGroup;
+			children = (
+				CAC751D41C8CB3B900265578 /* NSString+SAPURL.h */,
+				CAC751D51C8CB3B900265578 /* NSString+SAPURL.m */,
+			);
+			path = SAPURL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -863,6 +876,7 @@
 				CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */,
 				CA4B3FA41C80619100440914 /* SAPView.m in Sources */,
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
+				CAC751D61C8CB3B900265578 /* NSString+SAPURL.m in Sources */,
 				CA634C111C69C43900DAED4E /* SAPUser.m in Sources */,
 				CA4B3F881C7E352D00440914 /* SAPUserCell.m in Sources */,
 				CA4B3F641C76FC9500440914 /* SAPCollectionChangeDoubleIndexModel +UITableView.m in Sources */,
