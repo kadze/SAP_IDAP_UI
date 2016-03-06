@@ -9,15 +9,13 @@
 #import "SAPImageModel.h"
 
 #import "NSFileManager+SAPExtensions.h"
+#import "NSString+SAPURL.h"
 
 #import "SAPOwnershipMacro.h"
 
 @interface SAPImageModel ()
 @property (nonatomic, strong) UIImage     *image;
 @property (nonatomic, strong) NSURL       *url;
-
-- (NSOperationQueue *)sharedQueue;
-- (NSBlockOperation *)loadingOperation;
 
 @end
 
@@ -46,41 +44,39 @@
 #pragma mark Public
 
 - (void)performBackgroundLoading {
-    NSBlockOperation *operation = [self loadingOperation];
-    [[self sharedQueue] addOperation:operation];
+    if (!self.cached) {
+        [self loadFromWeb];
+    } else {
+        
+    }
 }
 
 - (NSString *)path {
-    return [[NSFileManager appStatePath] stringByAppendingPathComponent:[self.url absoluteString]];
+    return [[NSFileManager appStatePath] stringByAppendingPathComponent:[NSString fileNameFromURL:self.url]];
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (NSOperationQueue *)sharedQueue {
-    static NSOperationQueue *queue = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        queue = [NSOperationQueue new];
-        queue.maxConcurrentOperationCount = 2;
-    });
+- (void)loadFromWeb {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
-    return queue;
-}
-
-- (NSBlockOperation *)loadingOperation {
-    SAPWeakify(self);
-    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        SAPStrongifyAndReturnIfNil(self);
-        self.image = [UIImage imageWithContentsOfFile:[self.url absoluteString]];
-    }];
-    
-    operation.completionBlock = ^{
-        SAPStrongifyAndReturnIfNil(self);
-        self.state = self.image ? kSAPModelStateDidFinishLoading : kSAPModelStateDidFailLoading;
+    void (^taskCompletion) (NSURL * location, NSURLResponse * response, NSError * error) = ^void(NSURL * location, NSURLResponse * response, NSError * error) {
+        NSFileManager *manager = [NSFileManager defaultManager];
+        [manager moveItemAtURL:location
+                         toURL:[NSURL fileURLWithPath:self.path]
+                         error:nil];
+        self.image = [UIImage imageWithContentsOfFile:self.path];
+        
+        @synchronized(self) {
+            self.state = kSAPModelStateDidFinishLoading;
+        }
     };
     
-    return operation;
+    NSURLSessionDownloadTask *task = [session downloadTaskWithURL:self.url
+                                                completionHandler:taskCompletion];
+    [task resume];
 }
 
 @end
