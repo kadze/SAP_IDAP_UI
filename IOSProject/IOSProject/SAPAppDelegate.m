@@ -45,8 +45,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:kSAPAppNotificationName
-//                                                        object:self];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

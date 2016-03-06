@@ -25,7 +25,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 
 @interface SAPUsers ()
-@property (nonatomic, strong) NSObject *applicationObserver;
+@property (nonatomic, strong) id applicationObserver;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;

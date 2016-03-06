@@ -66,6 +66,7 @@ static NSString * const kSAPNameKey = @"name";
 
 - (UIImage *)loadImage {
     NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
+    
     return [UIImage imageWithContentsOfFile:path];
 }
 
