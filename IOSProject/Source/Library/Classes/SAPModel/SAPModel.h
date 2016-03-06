@@ -22,8 +22,6 @@ typedef NS_ENUM (NSUInteger, SAPModelState) {
 };
 
 @interface SAPModel : SAPObservableObject
-@property (nonatomic, readonly) BOOL cached;
-@property (nonatomic, readonly) NSString *path;
 
 - (void)load;
 

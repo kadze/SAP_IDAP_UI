@@ -15,9 +15,6 @@
 
 @implementation SAPModel
 
-@dynamic cached;
-@dynamic path;
-
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -32,20 +29,6 @@
     }
     
     return self;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (BOOL)cached {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-
-    return [fileManager fileExistsAtPath:self.path];
-}
-
-// to be overriden. each model has it's own cache path
-- (NSString *)path {
-    return nil;
 }
 
 #pragma mark -
