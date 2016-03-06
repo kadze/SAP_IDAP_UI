@@ -10,11 +10,11 @@
 #import <objc/runtime.h>
 
 typedef NS_ENUM(NSUInteger, SAPObjCAssociationPolicy)  {
-    kSAPAssociationAssign = OBJC_ASSOCIATION_ASSIGN,
-    kSAPAssociationNonatomicRetain = OBJC_ASSOCIATION_RETAIN_NONATOMIC,
-    kSAPAssociationNonatomicCopy = OBJC_ASSOCIATION_COPY_NONATOMIC,
-    kSAPAssociationRetain = OBJC_ASSOCIATION_RETAIN,
-    kSAPAssociationCopy = OBJC_ASSOCIATION_COPY
+    kSAPWeakPolicy = OBJC_ASSOCIATION_ASSIGN,
+    kSAPNonatomicStrongPolicy = OBJC_ASSOCIATION_RETAIN_NONATOMIC,
+    kSAPNonatomicCopyPolicy = OBJC_ASSOCIATION_COPY_NONATOMIC,
+    kSAPStrongPolicy = OBJC_ASSOCIATION_RETAIN,
+    kSAPCopyPolicy = OBJC_ASSOCIATION_COPY
 };
 
 @interface NSObject (SAPAssociatedObjects)
