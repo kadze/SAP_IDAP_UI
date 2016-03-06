@@ -22,7 +22,7 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 }
 
 + (NSString *)appStatePath {
-    return [[self documentsPath] stringByAppendingPathComponent:kSAPAppStateDirectoryName];
+    return [[self libraryPath] stringByAppendingPathComponent:kSAPAppStateDirectoryName];
 }
 
 @end
