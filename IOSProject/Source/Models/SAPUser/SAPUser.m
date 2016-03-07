@@ -20,7 +20,7 @@ static NSString * const kSAPNameKey = @"name";
 @interface SAPUser ()
 @property (nonatomic, strong) UIImage   *image;
 
-- (UIImage *)loadImage;
+- (void)loadImage;
 
 @end
 
@@ -57,7 +57,8 @@ static NSString * const kSAPNameKey = @"name";
 
 - (void)performBackgroundLoading {
     sleep(5);
-    self.image = [self loadImage];
+//    self.image = [self loadImage];
+    [self loadImage];
     @synchronized(self) {
         self.state = kSAPModelStateDidFinishLoading;
     }
@@ -72,12 +73,12 @@ static NSString * const kSAPNameKey = @"name";
 //    return [UIImage imageWithContentsOfFile:path];
 //}
 
-- (UIImage *)loadImage {
+- (void)loadImage {
     static NSString * const kSAPImageURL = @"https://coubsecure-a.akamaihd.net/get/b23/p/coub/simple/cw_timeline_pic/75aa6be5afc/3c49409c2f76f0e077a5a/med_1418748390_image.jpg";
     
     SAPImageModel *imageModel = [SAPImageModel imageWithUrl:[NSURL URLWithString:kSAPImageURL]];
     [imageModel load];
-    return imageModel.image;
+    self.image = imageModel.image;
 }
 
 @end
