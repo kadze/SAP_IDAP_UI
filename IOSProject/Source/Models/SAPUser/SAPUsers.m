@@ -53,14 +53,17 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark SAPCacheableModel
 
 - (NSString *)path {
     return [[NSFileManager appStatePath] stringByAppendingPathComponent:kSAPPlistName];
 }
 
-#pragma mark -
-#pragma mark Public
+- (BOOL)cached {
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    return [manager fileExistsAtPath:self.path];
+}
 
 - (void)save {
     [[NSFileManager defaultManager] createDirectoryAtPath:[NSFileManager appStatePath]
@@ -69,6 +72,9 @@ static NSString * const kSAPPlistName       = @"users.plist";
                                                     error:nil];
     [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
 }
+
+#pragma mark -
+#pragma mark Public
 
 - (void)performBackgroundLoading {
     sleep(3);

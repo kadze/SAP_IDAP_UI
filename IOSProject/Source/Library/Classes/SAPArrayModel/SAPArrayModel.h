@@ -9,7 +9,7 @@
 #import "SAPModel.h"
 #import "SAPCacheableModel.h"
 
-@interface SAPArrayModel : SAPCacheableModel
+@interface SAPArrayModel : SAPModel
 @property (nonatomic, readonly) NSUInteger  count;
 @property (nonatomic, readonly) NSArray     *objects;
 

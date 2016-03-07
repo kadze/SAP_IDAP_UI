@@ -9,7 +9,7 @@
 
 #import "SAPCacheableModel.h"
 
-@interface SAPImageModel : SAPCacheableModel
+@interface SAPImageModel : SAPModel
 @property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSURL   *url;
 

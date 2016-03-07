@@ -10,10 +10,10 @@
 
 #import "SAPArrayModel.h"
 
+#import "SAPCacheableModel.h"
+
 @class SAPUser;
 
-@interface SAPUsers : SAPArrayModel
-
-- (void)save;
+@interface SAPUsers : SAPArrayModel <SAPCacheableModel>
 
 @end
