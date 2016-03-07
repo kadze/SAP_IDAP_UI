@@ -10,6 +10,7 @@
 
 #import "SAPUser.h"
 #import "SAPView.h"
+#import "SAPImageView.h"
 
 #import "SAPDispatch.h"
 
@@ -29,7 +30,7 @@
         [_user removeObserver:self];
         _user = user;
         [_user addObserver:self];
-        
+        self.view.model = user.image;
         [_user load];
     }
 }
@@ -48,7 +49,7 @@
 
 - (void)fillWithModel:(SAPUser *)user {
     self.label.text = user.name;
-    self.contentImageView.image = user.image;
+//    self.contentImageView.image = user.image;
 }
 
 #pragma mark -

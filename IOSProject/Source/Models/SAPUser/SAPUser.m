@@ -8,19 +8,15 @@
 
 #import "SAPUser.h"
 
-#import "SAPImageModel.h"
-
 #import "NSString+IOPRandomName.h"
-
-static NSString * const kSAPImageName = @"smile";
-static NSString * const kSAPImageType = @"jpeg";
 
 static NSString * const kSAPNameKey = @"name";
 
-@interface SAPUser ()
-@property (nonatomic, strong) UIImage   *image;
+//static NSString * const kSAPImageURL = @"https://coubsecure-a.akamaihd.net/get/b23/p/coub/simple/cw_timeline_pic/75aa6be5afc/3c49409c2f76f0e077a5a/med_1418748390_image.jpg";
+static NSString * const kSAPImageURL = @"http://weknowyourdreamz.com/images/smile/smile-08.jpg";
 
-- (void)loadImage;
+@interface SAPUser ()
+@property (nonatomic, strong) SAPImageModel  *image;
 
 @end
 
@@ -33,6 +29,7 @@ static NSString * const kSAPNameKey = @"name";
     self = [super init];
     if (self) {
         self.name = [NSString randomName];
+        self.image = [SAPImageModel imageWithUrl:[NSURL URLWithString:kSAPImageURL]];
     }
     
     return self;
@@ -48,6 +45,7 @@ static NSString * const kSAPNameKey = @"name";
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init]; //mutable observers collection initialization
     self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
+    self.image = [SAPImageModel imageWithUrl:[NSURL URLWithString:kSAPImageURL]];
     
     return self;
 }
@@ -56,29 +54,11 @@ static NSString * const kSAPNameKey = @"name";
 #pragma mark Public
 
 - (void)performBackgroundLoading {
-    sleep(5);
-//    self.image = [self loadImage];
-    [self loadImage];
+//    sleep(5);
+    [self.image load];
     @synchronized(self) {
         self.state = kSAPModelStateDidFinishLoading;
     }
-}
-
-#pragma mark -
-#pragma mark Private
-
-//- (UIImage *)loadImage {
-//    NSString *path = [[NSBundle mainBundle] pathForResource:kSAPImageName ofType:kSAPImageType];
-//    
-//    return [UIImage imageWithContentsOfFile:path];
-//}
-
-- (void)loadImage {
-    static NSString * const kSAPImageURL = @"https://coubsecure-a.akamaihd.net/get/b23/p/coub/simple/cw_timeline_pic/75aa6be5afc/3c49409c2f76f0e077a5a/med_1418748390_image.jpg";
-    
-    SAPImageModel *imageModel = [SAPImageModel imageWithUrl:[NSURL URLWithString:kSAPImageURL]];
-    [imageModel load];
-    self.image = imageModel.image;
 }
 
 @end

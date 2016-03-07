@@ -77,7 +77,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 #pragma mark Public
 
 - (void)performBackgroundLoading {
-    sleep(3);
+//    sleep(3);
     [self fillWithUsers:[self loadUsers]];
     @synchronized(self) {
         self.state = kSAPModelStateDidFinishLoading;

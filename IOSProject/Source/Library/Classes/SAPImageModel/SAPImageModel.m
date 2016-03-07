@@ -17,6 +17,9 @@
 @property (nonatomic, strong) UIImage     *image;
 @property (nonatomic, strong) NSURL       *url;
 
+- (void)loadFromWeb;
+- (void)loadFromDisk;
+
 @end
 
 @implementation SAPImageModel
@@ -62,7 +65,7 @@
     if (!self.cached) {
         [self loadFromWeb];
     } else {
-        
+        [self loadFromDisk];
     }
 }
 
@@ -73,8 +76,10 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
+    SAPWeakify(self);
     void (^taskCompletion) (NSURL * location, NSURLResponse * response, NSError * error) = ^void(NSURL * location, NSURLResponse * response, NSError * error) {
         NSFileManager *manager = [NSFileManager defaultManager];
+        SAPStrongify(self);
         [manager moveItemAtURL:location
                          toURL:[NSURL fileURLWithPath:self.path]
                          error:nil];
@@ -88,6 +93,14 @@
     NSURLSessionDownloadTask *task = [session downloadTaskWithURL:self.url
                                                 completionHandler:taskCompletion];
     [task resume];
+}
+
+- (void)loadFromDisk {
+    sleep(2);
+    self.image = [UIImage imageWithContentsOfFile:self.path];
+    @synchronized(self) {
+        self.state = kSAPModelStateDidFinishLoading;
+    }
 }
 
 @end
