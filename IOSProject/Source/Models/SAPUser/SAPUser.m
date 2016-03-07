@@ -73,7 +73,7 @@ static NSString * const kSAPNameKey = @"name";
 //}
 
 - (UIImage *)loadImage {
-    static NSString * const kSAPImageURL = @"https://www.google.com.ua/imgres?imgurl=https://coubsecure-a.akamaihd.net/get/b23/p/coub/simple/cw_timeline_pic/75aa6be5afc/3c49409c2f76f0e077a5a/med_1418748390_image.jpg&imgrefurl=https://coub.com/tags/adsf%2520movie&h=360&w=640&tbnid=KOHdbjDm2SgdQM:&docid=c5c43a87V_GygM&ei=PorcVofzE4WB6ATShZDQBg&tbm=isch&client=safari&ved=0ahUKEwiHirbj6qzLAhWFAJoKHdICBGoQMwglKAowCg";
+    static NSString * const kSAPImageURL = @"https://coubsecure-a.akamaihd.net/get/b23/p/coub/simple/cw_timeline_pic/75aa6be5afc/3c49409c2f76f0e077a5a/med_1418748390_image.jpg";
     
     SAPImageModel *imageModel = [SAPImageModel imageWithUrl:[NSURL URLWithString:kSAPImageURL]];
     [imageModel load];
