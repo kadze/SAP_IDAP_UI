@@ -9,7 +9,7 @@
 #import "SAPImageModel.h"
 
 #import "NSFileManager+SAPExtensions.h"
-#import "NSString+SAPURL.h"
+#import "NSURL+SAPExtensions.h"
 
 #import "SAPOwnershipMacro.h"
 
@@ -41,6 +41,21 @@
 }
 
 #pragma mark -
+#pragma mark SAPCacheableModel
+
+- (BOOL)cached {
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.path];
+}
+
+- (NSString *)path {
+    return [[NSFileManager appStatePath] stringByAppendingPathComponent:[self.url convertIntoFilename]];
+}
+
+- (void)save {
+    
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (void)performBackgroundLoading {
@@ -49,10 +64,6 @@
     } else {
         
     }
-}
-
-- (NSString *)path {
-    return [[NSFileManager appStatePath] stringByAppendingPathComponent:[NSString fileNameFromURL:self.url]];
 }
 
 #pragma mark -
