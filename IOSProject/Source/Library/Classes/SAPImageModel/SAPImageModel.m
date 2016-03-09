@@ -14,8 +14,11 @@
 #import "SAPOwnershipMacro.h"
 
 @interface SAPImageModel ()
-@property (nonatomic, strong) UIImage     *image;
-@property (nonatomic, strong) NSURL       *url;
+@property (nonatomic, strong) UIImage      *image;
+@property (nonatomic, strong) NSURL        *url;
+
+@property (nonatomic, strong) NSURLSession              *session;
+@property (nonatomic, strong) NSURLSessionConfiguration *configuration;
 
 - (void)loadFromWeb;
 - (void)loadFromDisk;
@@ -34,6 +37,19 @@
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSURLSession *)session {
+    static NSURLSession *session = 0;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        session = [NSURLSession sessionWithConfiguration:self.configuration];
+    });
+    
+    return session;
 }
 
 #pragma mark -
@@ -73,8 +89,7 @@
 #pragma mark Private
 
 - (void)loadFromWeb {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    self.configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     SAPWeakify(self);
     void (^taskCompletion) (NSURL * location, NSURLResponse * response, NSError * error) = ^void(NSURL * location, NSURLResponse * response, NSError * error) {
@@ -90,7 +105,7 @@
         }
     };
     
-    NSURLSessionDownloadTask *task = [session downloadTaskWithURL:self.url
+    NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
                                                 completionHandler:taskCompletion];
     [task resume];
 }

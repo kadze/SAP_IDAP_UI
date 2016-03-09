@@ -16,7 +16,6 @@
                     <view contentMode="scaleToFill" id="n4u-L4-D1R" customClass="SAPImageView">
                         <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D62-zE-qtc">
                         <rect key="frame" x="45" y="0.0" width="275" height="43"/>
