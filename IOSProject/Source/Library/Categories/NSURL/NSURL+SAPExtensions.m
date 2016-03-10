@@ -17,26 +17,11 @@ static NSString * const kSAPSlashSubstitute = @"SAPSlash";
 
 @implementation NSURL (SAPExtensions)
 
-//- (NSString *)convertIntoFilename {
-//    NSString *result = [self absoluteString];
-//    result = [result stringByReplacingOccurrencesOfString:kSAPQuestionMark withString:kSAPQuestionMarkSubstitute];
-//   
-//    return [result stringByReplacingOccurrencesOfString:kSAPSlash withString:kSAPSlashSubstitute];
-//}
-
-- (NSString *)convertIntoFilename {
-    CFStringRef originalString = (__bridge CFStringRef)([self absoluteString]);
-    
-    SAPClangDiagnosticPushOption("clang diagnostic ignored \"-Wdeprecated-declarations\"");
-    CFStringRef encodedString = CFURLCreateStringByAddingPercentEscapes(
-                                                                        kCFAllocatorDefault,
-                                                                        originalString,
-                                                                        NULL,
-                                                                        CFSTR(":/?#[]@!$&'()*+,;="),
-                                                                        kCFStringEncodingUTF8);
-    SAPClangDiagnosticPopOption;
-    
-    return (__bridge NSString *)(encodedString);
+- (NSString *)fileSystemStringRepresentation {
+    NSString *result = [self absoluteString];
+    result = [result stringByReplacingOccurrencesOfString:kSAPQuestionMark withString:kSAPQuestionMarkSubstitute];
+   
+    return [result stringByReplacingOccurrencesOfString:kSAPSlash withString:kSAPSlashSubstitute];
 }
 
 @end

@@ -10,6 +10,6 @@
 
 @interface NSURL (SAPExtensions)
 
-- (NSString *)convertIntoFilename;
+- (NSString *)fileSystemStringRepresentation;
 
 @end

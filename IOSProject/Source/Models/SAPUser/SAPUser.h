@@ -13,9 +13,9 @@
 
 #import "SAPImageModel.h"
 
-@interface SAPUser : SAPModel <NSCoding>
+@interface SAPUser : NSObject <NSCoding>
 @property (nonatomic, copy)     NSString        *name;
-@property (nonatomic, readonly) SAPImageModel   *image;
+@property (nonatomic, readonly) SAPImageModel   *imageModel;
 
 //method uses init chain!
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;

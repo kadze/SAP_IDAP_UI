@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) BOOL      cached;
 @property (nonatomic, readonly) NSString  *path;
 
+@optional
 - (void)save;
 
 @end

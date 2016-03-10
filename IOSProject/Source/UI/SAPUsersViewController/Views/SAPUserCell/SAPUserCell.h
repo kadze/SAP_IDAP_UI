@@ -8,14 +8,13 @@
 
 #import "SAPTableViewCell.h"
 
-#import "SAPImageView.h"
-
 @class SAPUser;
 @class SAPView;
+@class SAPImageView;
 
 @interface SAPUserCell : SAPTableViewCell
-@property (nonatomic, strong) IBOutlet SAPImageView *view;
 @property (nonatomic, strong) IBOutlet UILabel      *label;
+@property (nonatomic, strong) IBOutlet SAPImageView  *imgView;
 
 @property (nonatomic, strong) SAPUser  *user;
 

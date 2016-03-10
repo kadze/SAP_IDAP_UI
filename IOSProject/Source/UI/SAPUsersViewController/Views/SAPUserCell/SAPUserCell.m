@@ -27,11 +27,8 @@
 
 - (void)setUser:(SAPUser *)user {
     if (_user != user) {
-        [_user removeObserver:self];
         _user = user;
-        [_user addObserver:self];
-        self.view.model = user.image;
-        [_user load];
+        [self fillWithModel:user];
     }
 }
 
@@ -49,32 +46,7 @@
 
 - (void)fillWithModel:(SAPUser *)user {
     self.label.text = user.name;
-//    self.contentImageView.image = user.image;
+    self.imgView.model = user.imageModel;
 }
-
-#pragma mark -
-#pragma mark SAPModelObserver
-
-- (void)modelWillLoad:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        [self.view setLoadingViewVisible:YES animated:YES];
-    });
-}
-
-- (void)modelDidFinishLoading:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        [self fillWithModel:model];
-        [self.view setLoadingViewVisible:NO];
-    });
-}
-
-- (void)modelDidFailLoading:(id)model {
-    [self.view setLoadingViewVisible:NO];
-}
-
-- (void)modelDidUnload:(id)model {
-    [self.view setLoadingViewVisible:NO];
-}
-
 
 @end

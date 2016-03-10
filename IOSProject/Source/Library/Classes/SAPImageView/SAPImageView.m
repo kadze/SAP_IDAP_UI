@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 
 - (void)fillWithModel:(SAPImageModel *)model;
+- (void)addSubImageView;
 
 @end
 
@@ -24,36 +25,27 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    [self addSubview:self.imageView];
-    self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth
-                                      | UIViewAutoresizingFlexibleHeight;
-
+    [self addSubImageView];
+    
     return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    [self addSubview:self.imageView];
-    self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth
-                                      | UIViewAutoresizingFlexibleHeight;
+    [self addSubImageView];
     
     return self;
 }
-
 
 #pragma mark -
 #pragma mark Accessors
 
 - (void)setModel:(SAPImageModel *)model {
     if (_model != model) {
+        [self fillWithModel:nil];
         [_model removeObserver:self];
-        
         _model = model;
-        
         [_model addObserver:self];
-        
         [_model load];
     }
 }
@@ -78,15 +70,19 @@
     [self setLoadingViewVisible:NO];
 }
 
-- (void)modelDidUnload:(id)model {
-    [self setLoadingViewVisible:NO];
-}
-
 #pragma mark -
 #pragma mark Private
 
 - (void)fillWithModel:(SAPImageModel *)model {
     self.imageView.image = model.image;
 }
+
+- (void)addSubImageView {
+    self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    [self addSubview:self.imageView];
+    self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth
+                                      | UIViewAutoresizingFlexibleHeight;
+}
+
 
 @end

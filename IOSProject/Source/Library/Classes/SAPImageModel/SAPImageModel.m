@@ -17,8 +17,7 @@
 @property (nonatomic, strong) UIImage      *image;
 @property (nonatomic, strong) NSURL        *url;
 
-@property (nonatomic, strong) NSURLSession              *session;
-@property (nonatomic, strong) NSURLSessionConfiguration *configuration;
+@property (nonatomic, readonly) NSURLSession   *session;
 
 - (void)loadFromWeb;
 - (void)loadFromDisk;
@@ -50,10 +49,10 @@
 #pragma mark Accessors
 
 - (NSURLSession *)session {
-    static NSURLSession *session = 0;
+    static NSURLSession *session = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        session = [NSURLSession sessionWithConfiguration:self.configuration];
+        session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     });
     
     return session;
@@ -67,11 +66,7 @@
 }
 
 - (NSString *)path {
-    return [[NSFileManager appStatePath] stringByAppendingPathComponent:[self.url convertIntoFilename]];
-}
-
-- (void)save {
-    
+    return [[NSFileManager appStatePath] stringByAppendingPathComponent:[self.url fileSystemStringRepresentation]];
 }
 
 #pragma mark -
@@ -89,19 +84,18 @@
 #pragma mark Private
 
 - (void)loadFromWeb {
-    self.configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
     SAPWeakify(self);
-    void (^taskCompletion) (NSURL * location, NSURLResponse * response, NSError * error) = ^void(NSURL * location, NSURLResponse * response, NSError * error) {
-        NSFileManager *manager = [NSFileManager defaultManager];
+    id taskCompletion = ^(NSURL * location, NSURLResponse * response, NSError * error) {
         SAPStrongify(self);
-        [manager moveItemAtURL:location
-                         toURL:[NSURL fileURLWithPath:self.path]
-                         error:nil];
-        self.image = [UIImage imageWithContentsOfFile:self.path];
-        
-        @synchronized(self) {
-            self.state = kSAPModelStateDidFinishLoading;
+        if (error) {
+            @synchronized(self) {
+                self.state = kSAPModelStateDidFailLoading;
+            }
+        } else {
+            [[NSFileManager defaultManager] moveItemAtURL:location
+                                                    toURL:[NSURL fileURLWithPath:self.path]
+                                                    error:nil];
+            [self loadFromDisk];
         }
     };
     
@@ -112,9 +106,25 @@
 
 - (void)loadFromDisk {
     sleep(2);
-    self.image = [UIImage imageWithContentsOfFile:self.path];
-    @synchronized(self) {
-        self.state = kSAPModelStateDidFinishLoading;
+    NSString *path = self.path;
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    if (image) {
+        self.image = image;
+        @synchronized(self) {
+            self.state = kSAPModelStateDidFinishLoading;
+        }
+    } else {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [self loadFromWeb];
+            
+            return;
+        });
+        
+        @synchronized(self) {
+            self.state = kSAPModelStateDidFailLoading;
+        }
     }
 }
 
