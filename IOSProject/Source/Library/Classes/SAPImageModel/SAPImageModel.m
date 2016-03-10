@@ -21,6 +21,7 @@
 
 - (void)loadFromWeb;
 - (void)loadFromDisk;
+- (id)taskCompletion;
 
 @end
 
@@ -84,24 +85,8 @@
 #pragma mark Private
 
 - (void)loadFromWeb {
-    SAPWeakify(self);
-    id taskCompletion = ^(NSURL * location, NSURLResponse * response, NSError * error) {
-        if (error) {
-            @synchronized(self) {
-                SAPStrongify(self);
-                self.state = kSAPModelStateDidFailLoading;
-            }
-        } else {
-            SAPStrongify(self);
-            [[NSFileManager defaultManager] moveItemAtURL:location
-                                                    toURL:[NSURL fileURLWithPath:self.path]
-                                                    error:nil];
-            [self loadFromDisk];
-        }
-    };
-
     NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
-                                                completionHandler:taskCompletion];
+                                                completionHandler:[self taskCompletion]];
     [task resume];
 }
 
@@ -123,6 +108,33 @@
             self.state = kSAPModelStateDidFailLoading;
         }
     }
+}
+
+- (id)taskCompletion {
+    SAPWeakify(self);
+    
+    return ^(NSURL * location, NSURLResponse * response, NSError * error) {
+        if (error) {
+            @synchronized(self) {
+                SAPStrongify(self);
+                self.state = kSAPModelStateDidFailLoading;
+            }
+        } else {
+            UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+            if (downloadedImage) {
+                SAPStrongify(self);
+                [[NSFileManager defaultManager] moveItemAtURL:location
+                                                        toURL:[NSURL fileURLWithPath:self.path]
+                                                        error:nil];
+                [self loadFromDisk];
+            } else {
+                @synchronized(self) {
+                    SAPStrongify(self);
+                    self.state = kSAPModelStateDidFailLoading;
+                }
+            }
+        }
+    };
 }
 
 @end
