@@ -32,14 +32,14 @@
     }
 }
 
-#pragma mark -
-#pragma mark Public
-
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    
-    [self fillWithModel:nil];
-}
+//#pragma mark -
+//#pragma mark Public
+//
+//- (void)prepareForReuse {
+//    [super prepareForReuse];
+//    
+//    [self fillWithModel:nil];
+//}
 
 #pragma mark -
 #pragma mark Private
