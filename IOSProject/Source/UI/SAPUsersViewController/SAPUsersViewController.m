@@ -150,7 +150,6 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
     [self.usersView setLoadingViewVisible:NO];
 }
 
-
 #pragma mark -
 #pragma mark Private
 

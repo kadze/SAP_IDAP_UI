@@ -86,41 +86,38 @@
 - (void)loadFromWeb {
     SAPWeakify(self);
     id taskCompletion = ^(NSURL * location, NSURLResponse * response, NSError * error) {
-        SAPStrongify(self);
         if (error) {
             @synchronized(self) {
+                SAPStrongify(self);
                 self.state = kSAPModelStateDidFailLoading;
             }
         } else {
+            SAPStrongify(self);
             [[NSFileManager defaultManager] moveItemAtURL:location
                                                     toURL:[NSURL fileURLWithPath:self.path]
                                                     error:nil];
             [self loadFromDisk];
         }
     };
-    
+
     NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
                                                 completionHandler:taskCompletion];
     [task resume];
 }
 
 - (void)loadFromDisk {
-    sleep(2);
+    //sleep(2);
     NSString *path = self.path;
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     if (image) {
         self.image = image;
+        
         @synchronized(self) {
             self.state = kSAPModelStateDidFinishLoading;
         }
     } else {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            [self loadFromWeb];
-            
-            return;
-        });
+        [self loadFromWeb];
         
         @synchronized(self) {
             self.state = kSAPModelStateDidFailLoading;

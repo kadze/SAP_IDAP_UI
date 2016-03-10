@@ -26,6 +26,15 @@
                         <action selector="onAddUser:" destination="-1" eventType="touchUpInside" id="Dvg-k3-SUL"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NVV-vI-LC5" userLabel="table view">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="501"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="HLZ-Fy-7cx"/>
+                        <outlet property="delegate" destination="-1" id="ydk-5X-pWb"/>
+                    </connections>
+                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lmr-jZ-J08">
                     <rect key="frame" x="8" y="509" width="120" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -41,15 +50,6 @@
                         <action selector="onEdit:" destination="-1" eventType="touchUpInside" id="lkC-7T-7Gk"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NVV-vI-LC5" userLabel="table view">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="501"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="HLZ-Fy-7cx"/>
-                        <outlet property="delegate" destination="-1" id="ydk-5X-pWb"/>
-                    </connections>
-                </tableView>
             </subviews>
             <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
             <gestureRecognizers/>
