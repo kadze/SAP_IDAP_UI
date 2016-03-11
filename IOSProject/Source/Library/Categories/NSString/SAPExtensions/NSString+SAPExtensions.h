@@ -20,5 +20,6 @@
 + (instancetype)randomStringWithAlphabetString:(NSString *)alphabet length:(NSUInteger)length;
 
 - (instancetype)randomStringFromSelfOfLength:(NSUInteger)length;
+- (instancetype)stringByReplacingOccurrencesOfKeysWithValuesInDictionary:(NSDictionary *)dictionary;
 
 @end

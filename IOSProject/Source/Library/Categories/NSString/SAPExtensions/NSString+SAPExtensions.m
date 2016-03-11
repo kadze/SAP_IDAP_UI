@@ -73,8 +73,20 @@ static const unichar kSAPLastNumberSign = '9';
 #pragma mark -
 #pragma mark Public Methods
 
-- (instancetype)generateRandomStringFromSelfOfLength:(NSUInteger)length {
+- (instancetype)randomStringFromSelfOfLength:(NSUInteger)length {
     return [[self class] randomStringWithAlphabetString:self length:length];
+}
+
+- (instancetype)stringByReplacingOccurrencesOfKeysWithValuesInDictionary:(NSDictionary *)dictionary {
+    NSMutableString *result = [NSMutableString stringWithString:self];
+    for (id key in dictionary.allKeys) {
+        [result replaceOccurrencesOfString:key
+                                withString:dictionary[key]
+                                   options:NSLiteralSearch
+                                     range:NSMakeRange(0, self.length)];
+    }
+    
+    return [result copy];
 }
 
 @end
