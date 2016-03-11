@@ -28,18 +28,19 @@
 - (void)setUser:(SAPUser *)user {
     if (_user != user) {
         _user = user;
+        
         [self fillWithModel:user];
     }
 }
 
-//#pragma mark -
-//#pragma mark Public
-//
-//- (void)prepareForReuse {
-//    [super prepareForReuse];
-//    
-//    [self fillWithModel:nil];
-//}
+#pragma mark -
+#pragma mark Public
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    [self fillWithModel:nil];
+}
 
 #pragma mark -
 #pragma mark Private
