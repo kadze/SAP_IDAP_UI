@@ -8,7 +8,7 @@
 
 #import "NSURL+SAPExtensions.h"
 
-#import "SAPClangMacro.h"
+#import "NSString+SAPExtensions.h"
 
 static NSString * const kSAPQuestionMark = @"?";
 static NSString * const kSAPQuestionMarkSubstitute = @"SAPQuestionMark";
@@ -17,11 +17,28 @@ static NSString * const kSAPSlashSubstitute = @"SAPSlash";
 
 @implementation NSURL (SAPExtensions)
 
+#pragma mark -
+#pragma Public
+
 - (NSString *)fileSystemStringRepresentation {
     NSString *result = [self absoluteString];
-    result = [result stringByReplacingOccurrencesOfString:kSAPQuestionMark withString:kSAPQuestionMarkSubstitute];
-   
-    return [result stringByReplacingOccurrencesOfString:kSAPSlash withString:kSAPSlashSubstitute];
+    NSDictionary *substitutions = [self fileSystemSubstitutionDictionary];
+    
+    return [result stringByReplacingOccurrencesOfKeysWithValuesInDictionary:substitutions];
+}
+
+#pragma mark -
+#pragma Private
+
+- (NSDictionary *)fileSystemSubstitutionDictionary {
+    static NSDictionary *result = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        result = @{ kSAPQuestionMark : kSAPQuestionMarkSubstitute,
+                    kSAPSlash : kSAPSlashSubstitute};
+    });
+    
+    return result;
 }
 
 @end
