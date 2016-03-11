@@ -21,36 +21,36 @@ static const unichar kSAPLastNumberSign = '9';
 #pragma mark Class Methods
 
 //alphabets
-+ (NSString *)alphanumericAlphabet {
++ (instancetype)alphanumericAlphabet {
     NSMutableString *result = [NSMutableString stringWithString:[self numericAlphabet]];
     [result appendString:[self letterAlphabet]];
     
     return [self stringWithString:result];
 }
 
-+ (NSString *)numericAlphabet {
++ (instancetype)numericAlphabet {
     return [self alphabetWithUnicodeRange:NSMakeRange(kSAPFirstNumberSign,
                                                       kSAPLastNumberSign - kSAPFirstNumberSign)];
 }
 
-+ (NSString *)letterAlphabet {
++ (instancetype)letterAlphabet {
     NSMutableString *result = [NSMutableString stringWithString:[self lowerCaseLetterAlphabet]];
     [result appendString:[self capitalizedCaseLetterAlphabet]];
     
     return [self stringWithString:result];
 }
 
-+ (NSString *)lowerCaseLetterAlphabet {
++ (instancetype)lowerCaseLetterAlphabet {
     return [self alphabetWithUnicodeRange:NSMakeRange(kSAPFirstLowerCaseLetter,
                                                       kSAPLastLowerCaseLetter - kSAPFirstLowerCaseLetter)];
 }
 
-+ (NSString *)capitalizedCaseLetterAlphabet {
++ (instancetype)capitalizedCaseLetterAlphabet {
     return [self alphabetWithUnicodeRange:NSMakeRange(kSAPFirstCapitalLetter,
                                                       kSAPLastCapitalLetter - kSAPFirstCapitalLetter)];
 }
 
-+ (NSString *)alphabetWithUnicodeRange:(NSRange)range {
++ (instancetype)alphabetWithUnicodeRange:(NSRange)range {
     NSMutableString *result = [NSMutableString string];
     for (unichar symbol = range.location; symbol <= NSMaxRange(range); symbol++) {
         [result appendFormat:@"%c", symbol];
@@ -60,7 +60,7 @@ static const unichar kSAPLastNumberSign = '9';
 }
 
 //random strings
-+ (NSString *)randomStringWithAlphabetString:(NSString *)alphabet length:(NSUInteger)length {
++ (instancetype)randomStringWithAlphabetString:(NSString *)alphabet length:(NSUInteger)length {
     int alphabetLength = (int)alphabet.length;
     unichar unichars[length];
     for (uint index = 0; index < length; index++) {
@@ -73,7 +73,7 @@ static const unichar kSAPLastNumberSign = '9';
 #pragma mark -
 #pragma mark Public Methods
 
-- (NSString *)generateRandomStringFromSelfOfLength:(NSUInteger)length {
+- (instancetype)generateRandomStringFromSelfOfLength:(NSUInteger)length {
     return [[self class] randomStringWithAlphabetString:self length:length];
 }
 

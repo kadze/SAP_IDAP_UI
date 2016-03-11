@@ -10,15 +10,15 @@
 
 @interface NSString (SAPExtensions)
 
-+ (NSString *)alphanumericAlphabet;
-+ (NSString *)numericAlphabet;
-+ (NSString *)letterAlphabet;
-+ (NSString *)lowerCaseLetterAlphabet;
-+ (NSString *)capitalizedCaseLetterAlphabet;
-+ (NSString *)alphabetWithUnicodeRange:(NSRange)range;
++ (instancetype)alphanumericAlphabet;
++ (instancetype)numericAlphabet;
++ (instancetype)letterAlphabet;
++ (instancetype)lowerCaseLetterAlphabet;
++ (instancetype)capitalizedCaseLetterAlphabet;
++ (instancetype)alphabetWithUnicodeRange:(NSRange)range;
 
-+ (NSString *)randomStringWithAlphabetString:(NSString *)alphabet length:(NSUInteger)length;
++ (instancetype)randomStringWithAlphabetString:(NSString *)alphabet length:(NSUInteger)length;
 
-- (NSString *)randomStringFromSelfOfLength:(NSUInteger)length;
+- (instancetype)randomStringFromSelfOfLength:(NSUInteger)length;
 
 @end
