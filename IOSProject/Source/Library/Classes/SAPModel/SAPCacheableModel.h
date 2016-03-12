@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @protocol SAPCacheableModel <NSObject>
-@property (nonatomic, readonly) BOOL      cached;
-@property (nonatomic, readonly) NSString  *path;
 
 @optional
+@property (nonatomic, readonly) BOOL      cached;
+@property (nonatomic, readonly) NSString  *path;
 - (void)save;
 
 @end
