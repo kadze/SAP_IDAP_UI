@@ -13,6 +13,6 @@
 #import "SAPImageModel.h"
 
 @interface SAPImageView : SAPView <SAPModelObserver>
-@property (nonatomic, strong) SAPImageModel *model;
+@property (nonatomic, strong) SAPImageModel *imageModel;
 
 @end

@@ -13,7 +13,7 @@
 @interface SAPImageView ()
 @property (nonatomic, strong) UIImageView *imageView;
 
-- (void)fillWithModel:(SAPImageModel *)model;
+- (void)fillWithModel:(SAPImageModel *)imageModel;
 - (void)addSubImageView;
 
 @end
@@ -40,13 +40,13 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setModel:(SAPImageModel *)model {
-    if (_model != model) {
+- (void)setImageModel:(SAPImageModel *)imageModel {
+    if (_imageModel != imageModel) {
         [self fillWithModel:nil];
-        [_model removeObserver:self];
-        _model = model;
-        [_model addObserver:self];
-        [_model load];
+        [_imageModel removeObserver:self];
+        _imageModel = imageModel;
+        [_imageModel addObserver:self];
+        [_imageModel load];
     }
 }
 
@@ -83,6 +83,5 @@
     self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth
                                       | UIViewAutoresizingFlexibleHeight;
 }
-
 
 @end
