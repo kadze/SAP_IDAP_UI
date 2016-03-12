@@ -14,18 +14,24 @@
 #import "SAPOwnershipMacro.h"
 
 @interface SAPImageModel ()
-@property (nonatomic, strong) UIImage      *image;
-@property (nonatomic, strong) NSURL        *url;
-
-@property (nonatomic, readonly) NSURLSession   *session;
+@property (nonatomic, strong) UIImage           *image;
+@property (nonatomic, strong) NSURL             *url;
+@property (nonatomic, strong) NSURLSessionTask  *task;
+@property (nonatomic, readonly) NSURLSession    *session;
+@property (nonatomic, readonly) NSURLRequest    *request;
 
 - (void)loadFromWeb;
+- (void)startDownloading:(NSURLRequest *)request;
 - (void)loadFromDisk;
 - (id)taskCompletion;
+- (void)setAtomicState:(NSUInteger)state;
+- (void)setImageWithNotification:(UIImage *)image;
 
 @end
 
 @implementation SAPImageModel
+
+@dynamic request;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -46,6 +52,10 @@
     return self;
 }
 
+- (void)dealloc {
+    self.task = nil;
+}
+
 #pragma mark -
 #pragma mark Accessors
 
@@ -57,6 +67,18 @@
     });
     
     return session;
+}
+
+- (void)setTask:(NSURLSessionTask *)task {
+    if (_task != task) {
+        [_task cancel];
+        
+        _task = task;
+    }
+}
+
+- (NSURLRequest *)request {
+    return [NSURLRequest requestWithURL:self.url];
 }
 
 #pragma mark -
@@ -85,28 +107,25 @@
 #pragma mark Private
 
 - (void)loadFromWeb {
-    NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
-                                                completionHandler:[self taskCompletion]];
+    [self startDownloading:self.request];
+}
+
+- (void)startDownloading:(NSURLRequest *)request {
+    [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];
+    
+    NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:self.request
+                                                     completionHandler:[self taskCompletion]];
+    self.task = task;
     [task resume];
 }
 
 - (void)loadFromDisk {
     //sleep(2);
-    NSString *path = self.path;
-    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    UIImage *image = [UIImage imageWithContentsOfFile:self.path];
     if (image) {
-        self.image = image;
-        
-        @synchronized(self) {
-            self.state = kSAPModelStateDidFinishLoading;
-        }
+        [self setImageWithNotification:image];
     } else {
-        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         [self loadFromWeb];
-        
-        @synchronized(self) {
-            self.state = kSAPModelStateDidFailLoading;
-        }
     }
 }
 
@@ -114,27 +133,33 @@
     SAPWeakify(self);
     
     return ^(NSURL * location, NSURLResponse * response, NSError * error) {
+        SAPStrongifyAndReturnIfNil(self);
         if (error) {
-            @synchronized(self) {
-                SAPStrongify(self);
-                self.state = kSAPModelStateDidFailLoading;
-            }
-        } else {
-            UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-            if (downloadedImage) {
-                SAPStrongify(self);
-                [[NSFileManager defaultManager] moveItemAtURL:location
-                                                        toURL:[NSURL fileURLWithPath:self.path]
-                                                        error:nil];
-                [self loadFromDisk];
-            } else {
-                @synchronized(self) {
-                    SAPStrongify(self);
-                    self.state = kSAPModelStateDidFailLoading;
-                }
-            }
+            [self setAtomicState:kSAPModelStateDidFailLoading];
+            
+            return;
         }
+        
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+        if (image) {
+            [[NSFileManager defaultManager] moveItemAtURL:location
+                                                    toURL:[NSURL fileURLWithPath:self.path]
+                                                    error:nil];
+        }
+        
+        [self setImageWithNotification:image];
     };
+}
+
+- (void)setAtomicState:(NSUInteger)state {
+    @synchronized(self) {
+        self.state = state;
+    }
+}
+
+- (void)setImageWithNotification:(UIImage *)image {
+    self.image = image;
+    [self setAtomicState:image ? kSAPModelStateDidFinishLoading : kSAPModelStateDidFailLoading];
 }
 
 @end
