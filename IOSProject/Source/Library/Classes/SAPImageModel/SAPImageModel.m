@@ -8,6 +8,8 @@
 
 #import "SAPImageModel.h"
 
+#import "SAPObjectCache.h"
+
 #import "NSFileManager+SAPExtensions.h"
 #import "NSURL+SAPExtensions.h"
 
@@ -40,20 +42,45 @@
     return [[self alloc] initWithUrl:url];
 }
 
++ (SAPObjectCache *)cache {
+    static id cache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cache = [SAPObjectCache new];
+    });
+    
+    return cache;
+}
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)initWithUrl:(NSURL *)url {
-    self = [super init];
-    if (self) {
-        self.url = url;
-    }
+- (void)dealloc {
+    self.task = nil;
+}
+
+- (instancetype)init {
+    self = [self initWithUrl:nil];
     
     return self;
 }
 
-- (void)dealloc {
-    self.task = nil;
+- (instancetype)initWithUrl:(NSURL *)url {
+    if (!url) {
+        return nil;
+    }
+    
+    SAPObjectCache *cache = [[self class] cache];
+    id result = cache[url];
+    if (result) {
+        return result;
+    }
+    
+    self = [super init];
+    self.url = url;
+    cache[url] = self;
+    
+    return self;
 }
 
 #pragma mark -
