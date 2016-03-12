@@ -22,7 +22,17 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 }
 
 + (NSString *)appStatePath {
-    return [[self libraryPath] stringByAppendingPathComponent:kSAPAppStateDirectoryName];
+    NSString *path = [[self libraryPath] stringByAppendingPathComponent:kSAPAppStateDirectoryName];
+    
+    NSFileManager *fileManager = [self defaultManager];
+    if (![fileManager fileExistsAtPath:path]) {
+        [fileManager createDirectoryAtPath:path
+               withIntermediateDirectories:YES
+                                attributes:nil
+                                     error:nil];
+    }
+    
+    return path;
 }
 
 @end
