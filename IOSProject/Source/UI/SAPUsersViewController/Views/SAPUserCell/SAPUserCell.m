@@ -34,20 +34,11 @@
 }
 
 #pragma mark -
-#pragma mark Public
-
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    
-    [self fillWithModel:nil];
-}
-
-#pragma mark -
 #pragma mark Private
 
 - (void)fillWithModel:(SAPUser *)user {
     self.label.text = user.name;
-    self.imgView.model = user.imageModel;
+    self.userView.imageModel = user.imageModel;
 }
 
 @end
