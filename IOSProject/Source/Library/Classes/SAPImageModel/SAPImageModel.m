@@ -16,11 +16,11 @@
 #import "SAPOwnershipMacro.h"
 
 @interface SAPImageModel ()
-@property (nonatomic, strong) UIImage           *image;
-@property (nonatomic, strong) NSURL             *url;
-@property (nonatomic, strong) NSURLSessionTask  *task;
-@property (nonatomic, readonly) NSURLSession    *session;
-@property (nonatomic, readonly) NSURLRequest    *request;
+@property (nonatomic, strong)   UIImage           *image;
+@property (nonatomic, copy)     NSURL             *url;
+@property (nonatomic, strong)   NSURLSessionTask  *task;
+@property (nonatomic, readonly) NSURLSession      *session;
+@property (nonatomic, readonly) NSURLRequest      *request;
 
 - (void)loadFromWeb;
 - (void)startDownloading:(NSURLRequest *)request;
@@ -34,6 +34,9 @@
 @implementation SAPImageModel
 
 @dynamic request;
+@dynamic session;
+@dynamic path;
+@dynamic cached;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -60,9 +63,7 @@
 }
 
 - (instancetype)init {
-    self = [self initWithUrl:nil];
-    
-    return self;
+    return [self initWithUrl:nil];
 }
 
 - (instancetype)initWithUrl:(NSURL *)url {
@@ -90,7 +91,7 @@
     static NSURLSession *session = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+      session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
     });
     
     return session;
@@ -138,8 +139,6 @@
 }
 
 - (void)startDownloading:(NSURLRequest *)request {
-    [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];
-    
     NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:self.request
                                                      completionHandler:[self taskCompletion]];
     self.task = task;
@@ -147,11 +146,12 @@
 }
 
 - (void)loadFromDisk {
-    //sleep(2);
-    UIImage *image = [UIImage imageWithContentsOfFile:self.path];
+    NSString *path = self.path;
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
     if (image) {
         [self setImageWithNotification:image];
     } else {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         [self loadFromWeb];
     }
 }

@@ -38,7 +38,7 @@
 
 - (void)fillWithModel:(SAPUser *)user {
     self.label.text = user.name;
-    self.userView.imageModel = user.imageModel;
+    self.userImageView.imageModel = user.imageModel;
 }
 
 @end

@@ -14,7 +14,7 @@
 
 @interface SAPUserCell : SAPTableViewCell
 @property (nonatomic, strong) IBOutlet UILabel      *label;
-@property (nonatomic, strong) IBOutlet SAPImageView  *userView;
+@property (nonatomic, strong) IBOutlet SAPImageView  *userImageView;
 
 @property (nonatomic, strong) SAPUser  *user;
 
