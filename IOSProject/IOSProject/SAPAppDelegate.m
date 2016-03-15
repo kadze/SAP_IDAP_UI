@@ -8,6 +8,8 @@
 
 #import "SAPAppDelegate.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #import "SAPUsersViewController.h"
 #import "SAPUsers.h"
 
@@ -37,6 +39,10 @@
     
     [window makeKeyAndVisible];
     
+    //facebook
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
 }
 
@@ -53,11 +59,21 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    
+//    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     
 }
 
+- (BOOL)        application:(UIApplication *)application
+                    openURL:(NSURL *)url
+          sourceApplication:(NSString *)sourceApplication
+                 annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation
+            ];
+}
 @end
