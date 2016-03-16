@@ -10,6 +10,8 @@
 
 #import "SAPLoginView.h"
 #import "SAPFriendsViewController.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 #import "SAPViewControllerMacro.h"
 
 SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginView);
@@ -25,7 +27,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,8 +38,17 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 #pragma mark Interface Handling
 
 - (IBAction)onLogin:(id)sender {
-    SAPFriendsViewController *controller = [SAPFriendsViewController new];
-    [self.navigationController pushViewController:controller animated:YES];
-}
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login logInWithReadPermissions: @[@"public_profile"]
+                 fromViewController:self
+                            handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+//                                if (error) {
+//                                    NSLog(@"Process error");
+//                                } else if (result.isCancelled) {
+//                                    NSLog(@"Cancelled");
+//                                } else {
+//                                    NSLog(@"Logged in");
+//                                }
+                            }];}
 
 @end
