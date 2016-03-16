@@ -9,7 +9,7 @@
 #import "SAPLoginViewController.h"
 
 #import "SAPLoginView.h"
-
+#import "SAPFriendsViewController.h"
 #import "SAPViewControllerMacro.h"
 
 SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginView);
@@ -37,7 +37,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 #pragma mark Interface Handling
 
 - (IBAction)onLogin:(id)sender {
-    
+    SAPFriendsViewController *controller = [SAPFriendsViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

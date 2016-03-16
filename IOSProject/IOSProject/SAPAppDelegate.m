@@ -10,6 +10,7 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
+#import "SAPLoginViewController.h"
 #import "SAPUsersViewController.h"
 #import "SAPUsers.h"
 
@@ -28,22 +29,22 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    SAPUsersViewController *controller = [SAPUsersViewController new];
+    SAPLoginViewController *controller = [SAPLoginViewController new];
     
-    SAPUsers *users = [SAPUsers new];
-        
-    controller.users = users;
-    self.users = users;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
     
-    window.rootViewController = controller;
+//    SAPUsers *users = [SAPUsers new];
+//        
+//    controller.users = users;
+//    self.users = users;
+    
+    window.rootViewController = navigationController;
     
     [window makeKeyAndVisible];
     
     //facebook
-    [[FBSDKApplicationDelegate sharedInstance] application:application
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-    
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
