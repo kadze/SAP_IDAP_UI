@@ -13,6 +13,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 #import "SAPViewControllerMacro.h"
+#import "SAPOwnershipMacro.h"
 
 SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginView);
 
@@ -39,16 +40,20 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 
 - (IBAction)onLogin:(id)sender {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    SAPWeakify(self);
     [login logInWithReadPermissions: @[@"public_profile"]
                  fromViewController:self
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-//                                if (error) {
-//                                    NSLog(@"Process error");
-//                                } else if (result.isCancelled) {
-//                                    NSLog(@"Cancelled");
-//                                } else {
-//                                    NSLog(@"Logged in");
-//                                }
+                                if (error) {
+                                    NSLog(@"Process error");
+                                } else if (result.isCancelled) {
+                                    NSLog(@"Cancelled");
+                                } else {
+                                    SAPFriendsViewController *controller = [SAPFriendsViewController new];
+                                    SAPStrongify(self);
+                                    [self.navigationController pushViewController:controller
+                                                                         animated:YES];
+                                }
                             }];}
 
 @end
