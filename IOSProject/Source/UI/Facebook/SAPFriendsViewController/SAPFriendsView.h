@@ -8,6 +8,9 @@
 
 #import "SAPView.h"
 
-@interface SAPFriendsView : SAPView
+#import "SAPUsers.h"
 
+@interface SAPFriendsView : SAPView
+@property (nonatomic, strong) IBOutlet UITableView  *tableView;
+@property (nonatomic, strong) SAPUsers *users;
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAPFriendsViewController : UIViewController
+#import "SAPUsersViewController.h"
+
+@interface SAPFriendsViewController : SAPUsersViewController
 
 @end

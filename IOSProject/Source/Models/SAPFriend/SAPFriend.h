@@ -6,8 +6,8 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPView.h"
+#import "SAPUser.h"
 
-@interface SAPFriend : SAPView
+@interface SAPFriend : SAPUser
 
 @end
