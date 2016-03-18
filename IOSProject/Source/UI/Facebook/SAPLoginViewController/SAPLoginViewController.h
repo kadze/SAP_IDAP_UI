@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SAPFacebookUser;
+
 @interface SAPLoginViewController : UIViewController
+@property (nonatomic, strong) SAPFacebookUser *user;
 
 - (IBAction)onLogin:(id)sender;
 

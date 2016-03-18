@@ -10,6 +10,26 @@
 
 @implementation SAPContext
 
+#pragma mark -
+#pragma mark Initializations and deallocations
+
+- (instancetype)initWithModel:(SAPModel *)model {
+    self = [super init];
+    self.model = model;
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)contextWithModel:(SAPModel *)model {
+    return [[self alloc] initWithModel:model];
+}
+
+#pragma mark -
+#pragma mark Public
+
 - (void)execute {
     return;
 }

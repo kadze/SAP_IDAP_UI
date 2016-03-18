@@ -8,6 +8,8 @@
 
 #import "SAPUser.h"
 
+#import "SAPImageModel.h"
+
 #import "NSString+IOPRandomName.h"
 
 static NSString * const kSAPNameKey = @"name";

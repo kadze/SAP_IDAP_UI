@@ -26,7 +26,7 @@
 
 SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsView);
 
-@interface SAPArrayViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
+@interface SAPArrayViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
 
 - (void)reloadView;
 
@@ -39,6 +39,13 @@ SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsVie
 
 - (void)dealloc {
     self.items = nil;
+}
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (Class)cellClass {
+    return [SAPUserCell class];
 }
 
 #pragma mark -
@@ -66,19 +73,6 @@ SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsVie
 }
 
 #pragma mark -
-#pragma mark Interface Handling
-
-//- (IBAction)onAddUser:(id)sender {
-//    SAPitems *items = self.items;
-//    [items addObject:[SAPUser new]];
-//}
-//
-//- (IBAction)onEdit:(id)sender {
-//    SAPitemsView *itemsView = self.itemsView;
-//    itemsView.editing = !itemsView.editing;
-//}
-
-#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -88,7 +82,7 @@ SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsVie
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SAPUserCell *cell = [tableView cellWithClass:[SAPUserCell class]];
+    SAPUserCell *cell = [tableView cellWithClass:[[self class] cellClass]];
     cell.user = self.items[indexPath.row];
     
     return cell;
@@ -129,25 +123,11 @@ SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsVie
 #pragma mark -
 #pragma mark SAPModelObserver
 
-- (void)modelWillLoad:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        [self.itemsView setLoadingViewVisible:YES animated:YES];
-    });
-}
-
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
         [self reloadView];
         [self.itemsView setLoadingViewVisible:NO];
     });
-}
-
-- (void)modelDidFailLoading:(id)model {
-    [self.itemsView setLoadingViewVisible:NO];
-}
-
-- (void)modelDidUnload:(id)model {
-    [self.itemsView setLoadingViewVisible:NO];
 }
 
 #pragma mark -

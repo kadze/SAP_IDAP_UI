@@ -11,7 +11,7 @@
 
 #import "SAPModel.h"
 
-#import "SAPImageModel.h"
+@class SAPImageModel;
 
 @interface SAPUser : NSObject <NSCoding>
 @property (nonatomic, copy)     NSString        *name;

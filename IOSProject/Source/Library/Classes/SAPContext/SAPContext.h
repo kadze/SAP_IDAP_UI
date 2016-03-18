@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SAPModel.h"
+
 @interface SAPContext : NSObject
-@property (nonatomic, retain) id model;
+@property (nonatomic, retain) SAPModel *model;
+
++ (instancetype)contextWithModel:(SAPModel *)model;
+
+- (instancetype)initWithModel:(SAPModel *)model;
 
 - (void)execute;
 - (void)cancel;

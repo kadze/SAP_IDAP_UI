@@ -12,8 +12,6 @@
 
 #import "SAPCacheableModel.h"
 
-@class SAPUser;
-
 @interface SAPUsers : SAPArrayModel <SAPCacheableModel>
 
 @end

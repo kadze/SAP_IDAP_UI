@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SAPViewController.h"
+
 
 @class SAPArrayModel;
 @class SAPArrayModelChangeModel;
 @class SAPActivityIndicator;
 
-@interface SAPArrayViewController : UIViewController
+@interface SAPArrayViewController : SAPViewController
 @property (nonatomic, strong) SAPArrayModel *items;
 
-//- (IBAction)onAddUser:(id)sender;
-//- (IBAction)onEdit:(id)sender;
++ (Class)cellClass;
 
 @end

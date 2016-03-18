@@ -131,7 +131,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 
 - (void)modelWillLoad:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        [self.usersView setLoadingViewVisible:YES animated:YES];
+        [self.usersView setLoadingViewVisible:YES];
     });
 }
 
