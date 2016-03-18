@@ -10,6 +10,7 @@
 
 #import "SAPFacebookUsers.h"
 #import "SAPImageModel.h"
+#import "SAPFacebookLoginContext.h"
 
 static NSString * const kSAPFirstNameKey = @"firstName";
 static NSString * const kSAPLastNameKey  = @"lastName";
@@ -54,9 +55,14 @@ static NSString * const kSAPFriendsKey   = @"friends";
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init]; //mutable observers collection initialization
-//    self.name = [aDecoder decodeObjectForKey:kSAPNameKey];
+    
+    self.firstName = [aDecoder decodeObjectForKey:kSAPFirstNameKey];
+    self.lastName = [aDecoder decodeObjectForKey:kSAPLastNameKey];
+    self.imageURL = [aDecoder decodeObjectForKey:kSAPImageURLKey];
+    self.friends = [aDecoder decodeObjectForKey:kSAPFriendsKey];
     
     return self;
 }
+
 
 @end

@@ -71,7 +71,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 - (IBAction)onLogin:(id)sender {
     SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
     self.context = context;
-    [context executeWithViewController:self];
+    context.controller = self;
+    [context execute];
 }
 
 #pragma mark -

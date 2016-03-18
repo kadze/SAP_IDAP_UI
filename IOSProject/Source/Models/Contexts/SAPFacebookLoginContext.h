@@ -12,7 +12,6 @@
 @class SAPLoginViewController;
 
 @interface SAPFacebookLoginContext : SAPContext
-
-- (void)executeWithViewController:(SAPLoginViewController *)controller;
+@property (nonatomic, weak) SAPLoginViewController *controller;
 
 @end
