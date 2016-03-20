@@ -8,14 +8,14 @@
 
 #import "SAPTableViewCell.h"
 
-@class SAPUser;
+@class SAPFacebookUser;
 @class SAPView;
 @class SAPImageView;
 
 @interface SAPUserCell : SAPTableViewCell
 @property (nonatomic, strong) IBOutlet UILabel      *label;
-@property (nonatomic, strong) IBOutlet SAPImageView  *userImageView;
+@property (nonatomic, strong) IBOutlet SAPImageView *userImageView;
 
-@property (nonatomic, strong) SAPUser  *user;
+@property (nonatomic, strong) SAPFacebookUser  *user;
 
 @end
