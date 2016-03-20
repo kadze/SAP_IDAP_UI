@@ -8,7 +8,7 @@
 
 #import "SAPFacebookUser.h"
 
-#import "SAPFacebookUsers.h"
+#import "SAPUsers.h"
 #import "SAPImageModel.h"
 #import "SAPFacebookLoginContext.h"
 
@@ -27,7 +27,7 @@ static NSString * const kSAPFriendsKey   = @"friends";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.friends = [SAPFacebookUsers new];
+        self.friends = [SAPUsers new];
     }
     
     return self;

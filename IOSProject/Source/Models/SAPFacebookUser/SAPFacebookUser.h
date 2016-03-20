@@ -11,14 +11,14 @@
 #import "SAPCacheableModel.h"
 
 @class SAPImageModel;
-@class SAPFacebookUsers;
+@class SAPUsers;
 
 @interface SAPFacebookUser : SAPModel <NSCoding, SAPCacheableModel>
 @property (nonatomic, copy)     NSString         *firstName;
 @property (nonatomic, copy)     NSString         *lastName;
 @property (nonatomic, readonly) SAPImageModel    *imageModel;
 @property (nonatomic, copy)     NSURL            *imageURL;
-@property (nonatomic, strong)   SAPFacebookUsers *friends;
+@property (nonatomic, strong)   SAPUsers *friends;
 
 //method uses init chain!
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
