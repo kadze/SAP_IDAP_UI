@@ -6,10 +6,11 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SAPViewController.h"
 
-#import "SAPUsersViewController.h"
+@class SAPUsers;
 
-@interface SAPFriendsViewController : SAPUsersViewController
+@interface SAPFriendsViewController : SAPViewController
+@property (nonatomic, strong) SAPUsers *friends;
 
 @end
