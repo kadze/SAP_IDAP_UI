@@ -124,7 +124,6 @@
 		2ED4B5C51C9AF91A001670F6 /* SAPArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayViewController.m; sourceTree = "<group>"; };
 		2ED4B5C81C9B5CF0001670F6 /* SAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPViewController.h; sourceTree = "<group>"; };
 		2ED4B5C91C9B5CF0001670F6 /* SAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPViewController.m; sourceTree = "<group>"; };
-		2ED4B5CC1C9B6217001670F6 /* SAPViewControllerBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPViewControllerBaseView.h; sourceTree = "<group>"; };
 		2ED4B5D41C9B8CE6001670F6 /* SAPFacebookUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFacebookUser.h; sourceTree = "<group>"; };
 		2ED4B5D51C9B8CE6001670F6 /* SAPFacebookUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFacebookUser.m; sourceTree = "<group>"; };
 		2ED4B5D71C9B8D12001670F6 /* SAPFacebookUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFacebookUsers.h; sourceTree = "<group>"; };
@@ -356,17 +355,8 @@
 			children = (
 				2ED4B5C81C9B5CF0001670F6 /* SAPViewController.h */,
 				2ED4B5C91C9B5CF0001670F6 /* SAPViewController.m */,
-				2ED4B5CB1C9B5FFA001670F6 /* SAPViewControllerBaseView */,
 			);
 			path = SAPViewController;
-			sourceTree = "<group>";
-		};
-		2ED4B5CB1C9B5FFA001670F6 /* SAPViewControllerBaseView */ = {
-			isa = PBXGroup;
-			children = (
-				2ED4B5CC1C9B6217001670F6 /* SAPViewControllerBaseView.h */,
-			);
-			path = SAPViewControllerBaseView;
 			sourceTree = "<group>";
 		};
 		2ED4B5CD1C9B8C4F001670F6 /* SAPFacebookUser */ = {

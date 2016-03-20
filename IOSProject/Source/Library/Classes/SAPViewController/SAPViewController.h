@@ -10,6 +10,4 @@
 
 @interface SAPViewController : UIViewController
 
-+ (Class)baseViewClass;
-
 @end
