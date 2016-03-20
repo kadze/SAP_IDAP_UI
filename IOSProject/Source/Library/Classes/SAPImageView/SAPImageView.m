@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 
 - (void)fillWithModel:(SAPImageModel *)imageModel;
-- (void)prepareImageSubview;
+- (void)prepareSubviews;
 
 @end
 
@@ -25,14 +25,14 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    [self prepareImageSubview];
+    [self prepareSubviews];
     
     return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    [self prepareImageSubview];
+    [self prepareSubviews];
     
     return self;
 }
@@ -77,7 +77,7 @@
     self.imageView.image = model.image;
 }
 
-- (void)prepareImageSubview {
+- (void)prepareSubviews {
     UIImageView *subview = [[UIImageView alloc] initWithFrame:self.bounds];
     self.imageView = subview;
     [self addSubview:subview];
