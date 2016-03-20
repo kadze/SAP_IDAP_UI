@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SAPViewController.h"
 
 @class SAPUsers;
-@class SAPArrayModelChangeModel;
 @class SAPActivityIndicator;
 
-@interface SAPUsersViewController : UIViewController
+@interface SAPUsersViewController : SAPViewController
 @property (nonatomic, strong) SAPUsers *users;
 
 - (IBAction)onAddUser:(id)sender;

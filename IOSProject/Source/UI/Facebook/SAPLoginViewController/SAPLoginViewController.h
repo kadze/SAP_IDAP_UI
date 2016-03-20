@@ -6,11 +6,11 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SAPViewController.h"
 
 @class SAPFacebookUser;
 
-@interface SAPLoginViewController : UIViewController
+@interface SAPLoginViewController : SAPViewController
 @property (nonatomic, strong) SAPFacebookUser *user;
 
 - (IBAction)onLogin:(id)sender;
