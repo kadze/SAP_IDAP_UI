@@ -14,6 +14,7 @@
 #import "SAPOwnershipMacro.h"
 #import "SAPDispatch.h"
 #import "SAPAppDelegate.h"
+#import "SAPFacebookFriendsContext.h"
 
 #import "NSFileManager+SAPExtensions.h"
 #import "NSObject+SAPExtensions.h"
@@ -26,6 +27,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 @interface SAPUsers ()
 @property (nonatomic, strong) id applicationObserver;
+@property (nonatomic, strong) SAPFacebookFriendsContext *context;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
@@ -99,12 +101,12 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 - (NSArray *)loadUsers {
     NSArray *objects = nil;
-    if (self.cached) {
-        objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
-    }
+//    if (self.cached) {
+//        objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+//    }
 
     if (!objects) {
-        objects = [SAPUser objectsWithCount:kSAPInitialUsersCount];
+        objects = [self usersFromWeb];
     }
     
     return objects;
@@ -128,6 +130,15 @@ static NSString * const kSAPPlistName       = @"users.plist";
     [center removeObserver:self.applicationObserver
                       name:UIApplicationDidEnterBackgroundNotification
                     object:nil];
+}
+
+- (NSArray *)usersFromWeb {
+    SAPArrayModel *result = nil;
+    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:result];
+    self.context = context;
+    [context execute];
+    
+    return result.objects;
 }
 
 @end

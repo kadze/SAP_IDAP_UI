@@ -10,7 +10,6 @@
 
 #import "SAPUsers.h"
 #import "SAPImageModel.h"
-#import "SAPFacebookLoginContext.h"
 
 static NSString * const kSAPFirstNameKey = @"firstName";
 static NSString * const kSAPLastNameKey  = @"lastName";
@@ -63,6 +62,5 @@ static NSString * const kSAPFriendsKey   = @"friends";
     
     return self;
 }
-
 
 @end

@@ -22,5 +22,6 @@
 
 //method uses init chain!
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
+- (void)loadFriendsFromWeb;
 
 @end

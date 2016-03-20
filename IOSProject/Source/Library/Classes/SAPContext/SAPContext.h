@@ -10,8 +10,10 @@
 
 #import "SAPModel.h"
 
+@class FBSDKGraphRequest;
+
 @interface SAPContext : NSObject
-@property (nonatomic, retain) SAPModel *model;
+@property (nonatomic, strong) SAPModel *model;
 
 + (instancetype)contextWithModel:(SAPModel *)model;
 
@@ -19,5 +21,7 @@
 
 - (void)execute;
 - (void)cancel;
+
+- (FBSDKGraphRequest *)graphRequest:(NSString *)graphPath;
 
 @end

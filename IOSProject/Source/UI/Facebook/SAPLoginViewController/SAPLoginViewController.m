@@ -12,6 +12,7 @@
 #import "SAPFriendsViewController.h"
 #import "SAPFacebookUser.h"
 #import "SAPFacebookLoginContext.h"
+#import "SAPFacebookFriendsContext.h"
 
 #import "SAPModelObserver.h"
 
@@ -23,6 +24,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 
 @interface SAPLoginViewController () <SAPModelObserver>
 @property (nonatomic, strong) SAPFacebookLoginContext *context;
+@property (nonatomic, strong) SAPFacebookFriendsContext *friendsContext;
 
 @end
 
@@ -58,6 +60,14 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    SAPFacebookUser *user = self.user;
+//    if ([FBSDKAccessToken currentAccessToken]) {
+//        @synchronized (user) {
+//            user.state = kSAPModelStateDidFinishLoading;
+//        }
+//    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,9 +93,18 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
     SAPDispatchAsyncOnMainQueue(^{
         SAPFriendsViewController *controller = [SAPFriendsViewController new];
         SAPStrongify(self);
+        controller.friends = self.user.friends;
         [self.navigationController pushViewController:controller
                                              animated:YES];
     });
+}
+
+#pragma mark -
+#pragma mark Public
+- (void)loadUserFromWeb {
+    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.user.friends];
+    self.friendsContext = context;
+    [context execute];
 }
 
 @end

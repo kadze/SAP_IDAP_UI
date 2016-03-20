@@ -8,6 +8,8 @@
 
 #import "SAPContext.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 @implementation SAPContext
 
 #pragma mark -
@@ -36,6 +38,10 @@
 
 - (void)cancel {
     return;
+}
+
+- (FBSDKGraphRequest *)graphRequest:(NSString *)graphPath {
+    return [[FBSDKGraphRequest alloc] initWithGraphPath:graphPath parameters:nil];
 }
 
 @end

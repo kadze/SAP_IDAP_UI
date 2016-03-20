@@ -14,5 +14,6 @@
 @property (nonatomic, strong) SAPFacebookUser *user;
 
 - (IBAction)onLogin:(id)sender;
+- (void)loadUserFromWeb;
 
 @end

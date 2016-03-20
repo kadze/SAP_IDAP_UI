@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E4249F71C9ED6B90089CECC /* SAPFacebookFriendsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4249F41C9ED6B90089CECC /* SAPFacebookFriendsContext.m */; };
+		2E4249F81C9ED6B90089CECC /* SAPFacebookLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4249F61C9ED6B90089CECC /* SAPFacebookLoginContext.m */; };
 		2E44ACDD1C94647200965DFA /* SAPObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E44ACDC1C94647200965DFA /* SAPObjectCache.m */; };
 		2ED4B5801C99CF52001670F6 /* SAPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B57F1C99CF52001670F6 /* SAPContext.m */; };
-		2ED4B5841C99D080001670F6 /* SAPFacebookLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5831C99D080001670F6 /* SAPFacebookLoginContext.m */; };
-		2ED4B5871C99D105001670F6 /* SAPFacebookFriendsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5861C99D105001670F6 /* SAPFacebookFriendsContext.m */; };
 		2ED4B59C1C99DD5B001670F6 /* SAPLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5981C99DD5B001670F6 /* SAPLoginView.m */; };
 		2ED4B59D1C99DD5B001670F6 /* SAPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B59A1C99DD5B001670F6 /* SAPLoginViewController.m */; };
 		2ED4B59E1C99DD5B001670F6 /* SAPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4B59B1C99DD5B001670F6 /* SAPLoginViewController.xib */; };
@@ -96,14 +96,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E4249F31C9ED6B90089CECC /* SAPFacebookFriendsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFacebookFriendsContext.h; sourceTree = "<group>"; };
+		2E4249F41C9ED6B90089CECC /* SAPFacebookFriendsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFacebookFriendsContext.m; sourceTree = "<group>"; };
+		2E4249F51C9ED6B90089CECC /* SAPFacebookLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFacebookLoginContext.h; sourceTree = "<group>"; };
+		2E4249F61C9ED6B90089CECC /* SAPFacebookLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFacebookLoginContext.m; sourceTree = "<group>"; };
 		2E44ACDB1C94647200965DFA /* SAPObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPObjectCache.h; sourceTree = "<group>"; };
 		2E44ACDC1C94647200965DFA /* SAPObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPObjectCache.m; sourceTree = "<group>"; };
 		2ED4B57E1C99CF52001670F6 /* SAPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPContext.h; sourceTree = "<group>"; };
 		2ED4B57F1C99CF52001670F6 /* SAPContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPContext.m; sourceTree = "<group>"; };
-		2ED4B5821C99D080001670F6 /* SAPFacebookLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFacebookLoginContext.h; sourceTree = "<group>"; };
-		2ED4B5831C99D080001670F6 /* SAPFacebookLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFacebookLoginContext.m; sourceTree = "<group>"; };
-		2ED4B5851C99D105001670F6 /* SAPFacebookFriendsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFacebookFriendsContext.h; sourceTree = "<group>"; };
-		2ED4B5861C99D105001670F6 /* SAPFacebookFriendsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFacebookFriendsContext.m; sourceTree = "<group>"; };
 		2ED4B5971C99DD5B001670F6 /* SAPLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPLoginView.h; sourceTree = "<group>"; };
 		2ED4B5981C99DD5B001670F6 /* SAPLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPLoginView.m; sourceTree = "<group>"; };
 		2ED4B5991C99DD5B001670F6 /* SAPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPLoginViewController.h; sourceTree = "<group>"; };
@@ -262,6 +262,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E4249F21C9ED6B90089CECC /* Contexts */ = {
+			isa = PBXGroup;
+			children = (
+				2E4249F51C9ED6B90089CECC /* SAPFacebookLoginContext.h */,
+				2E4249F61C9ED6B90089CECC /* SAPFacebookLoginContext.m */,
+				2E4249F31C9ED6B90089CECC /* SAPFacebookFriendsContext.h */,
+				2E4249F41C9ED6B90089CECC /* SAPFacebookFriendsContext.m */,
+			);
+			path = Contexts;
+			sourceTree = "<group>";
+		};
 		2E44ACDA1C94643400965DFA /* SAPObjectCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,17 +297,6 @@
 				2ED4B57F1C99CF52001670F6 /* SAPContext.m */,
 			);
 			path = SAPContext;
-			sourceTree = "<group>";
-		};
-		2ED4B5811C99D022001670F6 /* Contexts */ = {
-			isa = PBXGroup;
-			children = (
-				2ED4B5821C99D080001670F6 /* SAPFacebookLoginContext.h */,
-				2ED4B5831C99D080001670F6 /* SAPFacebookLoginContext.m */,
-				2ED4B5851C99D105001670F6 /* SAPFacebookFriendsContext.h */,
-				2ED4B5861C99D105001670F6 /* SAPFacebookFriendsContext.m */,
-			);
-			path = Contexts;
 			sourceTree = "<group>";
 		};
 		2ED4B5941C99DD5B001670F6 /* SAPFriendDetailViewController */ = {
@@ -755,6 +755,7 @@
 			isa = PBXGroup;
 			children = (
 				CAC421C61C5A4905004E4F1E /* UI */,
+				2E4249F21C9ED6B90089CECC /* Contexts */,
 				CAC421BA1C5A24F7004E4F1E /* Models */,
 				CAC421B91C5A24F7004E4F1E /* Library */,
 			);
@@ -777,7 +778,6 @@
 			isa = PBXGroup;
 			children = (
 				2ED4B5CD1C9B8C4F001670F6 /* SAPFacebookUser */,
-				2ED4B5811C99D022001670F6 /* Contexts */,
 				CA634C0C1C69C43900DAED4E /* SAPUser */,
 			);
 			path = Models;
@@ -1135,19 +1135,19 @@
 				CAC7519D1C84A02A00265578 /* NSObject+SAPAssociatedObjects.m in Sources */,
 				CA634C121C69C43900DAED4E /* SAPUsers.m in Sources */,
 				CAC751DF1C8DFB4000265578 /* SAPImageView.m in Sources */,
-				2ED4B5841C99D080001670F6 /* SAPFacebookLoginContext.m in Sources */,
 				CA4B3F671C76FC9500440914 /* SAPCollectionChangeIndexModel.m in Sources */,
 				2ED4B59D1C99DD5B001670F6 /* SAPLoginViewController.m in Sources */,
 				2ED4B5801C99CF52001670F6 /* SAPContext.m in Sources */,
 				CAC751BB1C85B56D00265578 /* SAPNumberGeneratorArray.m in Sources */,
 				CA4B3F651C76FC9500440914 /* SAPCollectionChangeDoubleIndexModel.m in Sources */,
+				2E4249F71C9ED6B90089CECC /* SAPFacebookFriendsContext.m in Sources */,
 				CA4B3F511C75EAF200440914 /* SAPArrayModel.m in Sources */,
 				2ED4B5A71C99E0D7001670F6 /* SAPFriendDetailViewController.m in Sources */,
 				CA634BF01C68D0BD00DAED4E /* SAPTableViewCell.m in Sources */,
 				CA4B3F821C7DE8DE00440914 /* NSFilemanager+SAPExtensions.m in Sources */,
 				CAC751AD1C85B20300265578 /* NSObject+SAPExtensions.m in Sources */,
-				2ED4B5871C99D105001670F6 /* SAPFacebookFriendsContext.m in Sources */,
 				CA4B3F9E1C805F6C00440914 /* SAPActivityIndicator.m in Sources */,
+				2E4249F81C9ED6B90089CECC /* SAPFacebookLoginContext.m in Sources */,
 				CA4B3F371C74C46F00440914 /* UITableView+SAPCollectionChangeModel.m in Sources */,
 				CA4B3F341C74C31200440914 /* SAPCollectionChangeModel+UITableView.m in Sources */,
 				CA634BF71C68D14500DAED4E /* SAPAssignReference.m in Sources */,
