@@ -8,7 +8,8 @@
 
 #import "SAPFriendsView.h"
 
-@implementation SAPFriendsView
+#import "SAPUsers.h"
 
+@implementation SAPFriendsView
 
 @end
