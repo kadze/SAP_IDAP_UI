@@ -102,7 +102,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 #pragma mark -
 #pragma mark Public
 - (void)loadUserFromWeb {
-    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.user.friends];
+    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.user];
     self.friendsContext = context;
     [context execute];
 }
