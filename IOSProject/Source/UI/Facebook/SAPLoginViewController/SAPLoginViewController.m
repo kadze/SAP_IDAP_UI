@@ -15,6 +15,7 @@
 #import "SAPFacebookUser.h"
 #import "SAPFacebookLoginContext.h"
 #import "SAPFacebookFriendsContext.h"
+#import "SAPUsers.h"
 
 #import "SAPModelObserver.h"
 
@@ -119,6 +120,10 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
             [context execute];
 //        });
     }
+}
+
+- (void)loadUserFromDisk {
+    [self.user.friends load];
 }
 
 @end

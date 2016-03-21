@@ -32,6 +32,7 @@ static NSString * const kSAPUserEmailPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 if (error) {
                                     NSLog(@"Process error");
+                                    [controller loadUserFromDisk];
                                 } else if (result.isCancelled) {
                                     NSLog(@"Cancelled");
                                     @synchronized (user) {
@@ -41,10 +42,6 @@ static NSString * const kSAPUserEmailPermission = @"user_friends";
                                     [controller loadUserFromWeb];
                                 }
                             }];
-}
-
-- (void)cancel {
-    
 }
 
 @end

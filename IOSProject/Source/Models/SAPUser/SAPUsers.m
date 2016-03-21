@@ -19,8 +19,6 @@
 #import "NSFileManager+SAPExtensions.h"
 #import "NSObject+SAPExtensions.h"
 
-static NSUInteger const kSAPInitialUsersCount = 100;
-
 static NSString * const kSAPObjectsKey      = @"objects";
 static NSString * const kSAPPlistName       = @"users.plist";
 
@@ -101,9 +99,9 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 - (NSArray *)loadUsers {
     NSArray *objects = nil;
-//    if (self.cached) {
-//        objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
-//    }
+    if (self.cached) {
+        objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+    }
     
     return objects;
 }

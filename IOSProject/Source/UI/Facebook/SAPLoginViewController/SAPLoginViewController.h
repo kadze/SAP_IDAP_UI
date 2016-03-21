@@ -17,5 +17,6 @@
 - (IBAction)onLogout:(id)sender;
 
 - (void)loadUserFromWeb;
+- (void)loadUserFromDisk;
 
 @end
