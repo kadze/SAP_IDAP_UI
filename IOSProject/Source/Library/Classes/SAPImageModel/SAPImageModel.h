@@ -15,7 +15,7 @@
 
 @interface SAPImageModel : SAPModel <SAPCacheableModel>
 @property (nonatomic, readonly) UIImage *image;
-@property (nonatomic, readonly) NSURL   *url;
+@property (nonatomic, copy, readonly) NSURL   *url;
 
 + (SAPObjectCache *)cache;
 

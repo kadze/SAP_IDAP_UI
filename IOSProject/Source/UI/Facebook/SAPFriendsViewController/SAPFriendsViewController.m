@@ -48,7 +48,7 @@ SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, frie
         _friends = friends;
         [_friends addObserver:self];
         
-        [_friends load];
+        [self reloadView];
     }
 }
 

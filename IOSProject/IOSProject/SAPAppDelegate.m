@@ -33,11 +33,6 @@
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
     
-//    SAPUsers *users = [SAPUsers new];
-//        
-//    controller.users = users;
-//    self.users = users;
-    
     window.rootViewController = navigationController;
     
     [window makeKeyAndVisible];

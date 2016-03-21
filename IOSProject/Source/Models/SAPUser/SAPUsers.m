@@ -104,10 +104,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
 //    if (self.cached) {
 //        objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
 //    }
-
-    if (!objects) {
-        objects = [self usersFromWeb];
-    }
     
     return objects;
 }
@@ -130,15 +126,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
     [center removeObserver:self.applicationObserver
                       name:UIApplicationDidEnterBackgroundNotification
                     object:nil];
-}
-
-- (NSArray *)usersFromWeb {
-    SAPArrayModel *result = nil;
-    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:result];
-    self.context = context;
-    [context execute];
-    
-    return result.objects;
 }
 
 @end

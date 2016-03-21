@@ -27,20 +27,20 @@ static NSString * const kSAPPictureKey = @"picture";
 
 - (void)execute {
     FBSDKGraphRequest *request = [self graphRequest:kSAPFriendsGraphPath];
+    SAPFacebookUser *model = (SAPFacebookUser *)self.model;
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-        SAPFacebookUser *model = self.model;
         SAPUsers *modelFriends = model.friends;
-        
         NSArray *friends = [[result objectForKey:kSAPFriendsKey] objectForKey:kSAPFriendsDataKey];
         for (NSUInteger counter = 0 ; counter < friends.count; counter++) {
             SAPFacebookUser *user = [SAPFacebookUser new];
             user.firstName = [friends[counter] objectForKey:kSAPNameKey];
-            user.imageURL = [[[friends[counter] objectForKey:kSAPPictureKey] objectForKey:kSAPFriendsDataKey] objectForKey:kSAPUrlKey];
+            NSString *urlString = [[[friends[counter] objectForKey:kSAPPictureKey] objectForKey:kSAPFriendsDataKey] objectForKey:kSAPUrlKey];
+            user.imageURL = [NSURL URLWithString:urlString];
 
             [modelFriends addObject:user];
         }
         @synchronized (model) {
-            self.model.state = kSAPModelStateDidFinishLoading;
+            model.state = kSAPModelStateDidFinishLoading;
         }
     }];
 }

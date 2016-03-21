@@ -8,6 +8,8 @@
 
 #import "SAPLoginViewController.h"
 
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 #import "SAPLoginView.h"
 #import "SAPFriendsViewController.h"
 #import "SAPFacebookUser.h"
@@ -60,19 +62,10 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    SAPFacebookUser *user = self.user;
-//    if ([FBSDKAccessToken currentAccessToken]) {
-//        @synchronized (user) {
-//            user.state = kSAPModelStateDidFinishLoading;
-//        }
-//    }
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark -
@@ -83,6 +76,11 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
     self.context = context;
     context.controller = self;
     [context execute];
+}
+
+- (IBAction)onLogout:(id)sender {
+    FBSDKLoginManager *manager = [[FBSDKLoginManager alloc] init];
+    [manager logOut];
 }
 
 #pragma mark -
@@ -102,9 +100,25 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 #pragma mark -
 #pragma mark Public
 - (void)loadUserFromWeb {
-    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.user];
-    self.friendsContext = context;
-    [context execute];
+    SAPFacebookUser *user = self.user;
+    @synchronized(user) {
+        NSUInteger state = user.state;
+        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
+            [user notifyObserversWithSelector:[user selectorForState:state]];
+            
+            return;
+        }
+        
+        user.state = kSAPModelStateWillLoad;
+        
+        SAPWeakify(self);
+//        SAPDispatchAsyncOnDefaultQueue(^{  //in this case completion handler from start request won't be called
+            SAPStrongify(self);
+            SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:user];
+            self.friendsContext = context;
+            [context execute];
+//        });
+    }
 }
 
 @end
