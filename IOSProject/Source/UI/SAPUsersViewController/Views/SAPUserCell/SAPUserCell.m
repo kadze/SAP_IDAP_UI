@@ -41,4 +41,23 @@
     self.userImageView.imageModel = user.imageModel;
 }
 
+//+ (UIViewController *)viewControllerforView:(UIView*)view
+//{
+//    UIResponder *responder = view.nextResponder;
+//    while (responder) {
+//        if ([responder isKindOfClass:[UIViewController class]]) {
+//            return (UIViewController *)responder;
+//        }
+//        responder = responder.nextResponder;
+//    }
+//    return nil;
+//}
+
+#pragma mark -
+#pragma mark Interface Handling
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    
+}
+
+
 @end
