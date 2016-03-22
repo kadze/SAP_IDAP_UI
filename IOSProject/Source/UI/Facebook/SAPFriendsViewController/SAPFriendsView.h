@@ -12,6 +12,7 @@
 
 @interface SAPFriendsView : SAPView
 @property (nonatomic, strong) IBOutlet UITableView  *tableView;
+
 @property (nonatomic, strong) SAPUsers *users;
 
 @end
