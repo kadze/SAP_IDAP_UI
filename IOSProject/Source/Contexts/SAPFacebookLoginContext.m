@@ -16,7 +16,7 @@
 #import "SAPDispatch.h"
 
 static NSString * const kSAPPublicPofilePermission = @"public_profile";
-static NSString * const kSAPUserEmailPermission = @"user_friends";
+static NSString * const kSAPUserFriendsPermission = @"user_friends";
 
 @implementation SAPFacebookLoginContext
 
@@ -27,7 +27,7 @@ static NSString * const kSAPUserEmailPermission = @"user_friends";
     SAPModel *user = self.model;
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     SAPLoginViewController *controller = self.controller;
-    [login logInWithReadPermissions: @[kSAPPublicPofilePermission, kSAPUserEmailPermission]
+    [login logInWithReadPermissions: @[kSAPPublicPofilePermission, kSAPUserFriendsPermission]
                  fromViewController:controller
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 if (error) {
