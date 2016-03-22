@@ -13,10 +13,7 @@
 
 @implementation SAPFacebookContext
 
-@dynamic graphRequest;
-@dynamic completionHandler;
-
-#pragma mark - 
+#pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
@@ -25,14 +22,6 @@
 
 #pragma mark -
 #pragma mark Accessors
-
-- (FBSDKGraphRequest *)graphRequest {
-    return nil;
-}
-
-- (id)completionHandler {
-    return nil;
-}
 
 - (void)setConnection:(FBSDKGraphRequestConnection *)connection {
     if (_connection != connection) {
