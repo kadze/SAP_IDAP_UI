@@ -56,17 +56,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
     }
 }
 
-#pragma mark-
-#pragma mark View Lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark -
 #pragma mark Interface Handling
 
@@ -83,8 +72,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 - (void)modelDidFinishLoading:(id)model {
     SAPWeakify(self);
     SAPDispatchAsyncOnMainQueue(^{
+        SAPStrongifyAndReturnIfNil(self);
         SAPFriendsViewController *controller = [SAPFriendsViewController new];
-        SAPStrongify(self);
         controller.friends = self.user.friends;
         [self.navigationController pushViewController:controller
                                              animated:YES];
