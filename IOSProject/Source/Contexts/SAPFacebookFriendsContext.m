@@ -13,32 +13,46 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-static NSString * const kSAPFriendsGraphPath = @"me?fields=taggable_friends";
-//static NSString * const kSAPFriendsGraphPath = @"me?fields=taggable_friends{first_name, last_name}";
-static NSString * const kSAPFriendsKey = @"taggable_friends";
-static NSString * const kSAPFriendsDataKey = @"data";
-static NSString * const kSAPNameKey = @"name";
-static NSString * const kSAPUrlKey = @"url";
+static NSString * const kSAPDataKey = @"data";
+static NSString * const kSAPFieldsKey = @"fields";
+
+static NSString * const kSAPUserGraphPath = @"me";
+
+static NSString * const kSAPFriendsKey = @"friends";
+
+static NSString * const kSAPFirstNameKey = @"first_name";
+static NSString * const kSAPLastNameKey = @"last_name";
 static NSString * const kSAPPictureKey = @"picture";
+static NSString * const kSAPUrlKey = @"url";
 
 @implementation SAPFacebookFriendsContext
 
 #pragma mark Public
 
 - (void)execute {
-    FBSDKGraphRequest *request = [self graphRequest:kSAPFriendsGraphPath];
+    NSString *fieldsParameter = [NSString stringWithFormat:@"%@{%@,%@,%@{%@}}",
+                                 kSAPFriendsKey,
+                                 kSAPFirstNameKey,
+                                 kSAPLastNameKey,
+                                 kSAPPictureKey,
+                                 kSAPUrlKey];
+    NSDictionary *parameters = @{kSAPFieldsKey : fieldsParameter};
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:kSAPUserGraphPath
+                                                                   parameters:parameters];
     SAPFacebookUser *model = (SAPFacebookUser *)self.model;
-    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
         SAPUsers *modelFriends = model.friends;
-        NSArray *friends = [[result objectForKey:kSAPFriendsKey] objectForKey:kSAPFriendsDataKey];
-        for (NSUInteger counter = 0 ; counter < friends.count; counter++) {
+        NSArray *friends = [[result objectForKey:kSAPFriendsKey] objectForKey:kSAPDataKey];
+        for (id friend in friends) {
             SAPFacebookUser *user = [SAPFacebookUser new];
-            user.firstName = [friends[counter] objectForKey:kSAPNameKey];
-            NSString *urlString = [[[friends[counter] objectForKey:kSAPPictureKey] objectForKey:kSAPFriendsDataKey] objectForKey:kSAPUrlKey];
+            user.firstName = friend[kSAPFirstNameKey];
+            user.lastName = friend[kSAPLastNameKey];
+            NSString *urlString = friend[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
             user.imageURL = [NSURL URLWithString:urlString];
 
             [modelFriends addObject:user];
         }
+        
         @synchronized (model) {
             model.state = kSAPModelStateDidFinishLoading;
         }
