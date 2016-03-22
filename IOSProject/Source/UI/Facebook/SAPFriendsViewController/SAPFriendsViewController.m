@@ -11,6 +11,7 @@
 #import "SAPUsers.h"
 #import "SAPFriendsView.h"
 #import "SAPUserCell.h"
+#import "SAPFacebookFriendsContext.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -25,6 +26,7 @@
 SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, friendsView);
 
 @interface SAPFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
+@property (nonatomic, strong) SAPFacebookFriendsContext *context;
 
 - (void)reloadView;
 
@@ -55,18 +57,10 @@ SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, frie
 #pragma mark-
 #pragma mark View Lifecycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
 - (void)viewWillAppear:(BOOL)animated {
-    [self.friends load];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.friends];
+    self.context = context;
+    [context execute];
 }
 
 #pragma mark -
