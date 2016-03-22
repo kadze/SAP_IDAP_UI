@@ -14,20 +14,18 @@
 #import "SAPFriendsViewController.h"
 #import "SAPFacebookUser.h"
 #import "SAPFacebookLoginContext.h"
-#import "SAPFacebookFriendsContext.h"
-#import "SAPUsers.h"
 
 #import "SAPModelObserver.h"
 
 #import "SAPViewControllerMacro.h"
 #import "SAPOwnershipMacro.h"
+
 #import "SAPDispatch.h"
 
 SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginView);
 
 @interface SAPLoginViewController () <SAPModelObserver>
 @property (nonatomic, strong) SAPFacebookLoginContext *context;
-@property (nonatomic, strong) SAPFacebookFriendsContext *friendsContext;
 
 @end
 
@@ -79,11 +77,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
     [context execute];
 }
 
-- (IBAction)onLogout:(id)sender {
-    FBSDKLoginManager *manager = [[FBSDKLoginManager alloc] init];
-    [manager logOut];
-}
-
 #pragma mark -
 #pragma mark SAPModelObserver
 
@@ -96,30 +89,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
         [self.navigationController pushViewController:controller
                                              animated:YES];
     });
-}
-
-#pragma mark -
-#pragma mark Public
-- (void)loadUserFromWeb {
-    SAPFacebookUser *user = self.user;
-    @synchronized(user) {
-        NSUInteger state = user.state;
-        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
-            [user notifyObserversWithSelector:[user selectorForState:state]];
-            
-            return;
-        }
-        
-        user.state = kSAPModelStateWillLoad;
-        
-        SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:user];
-        self.friendsContext = context;
-        [context execute];
-    }
-}
-
-- (void)loadUserFromDisk {
-    [self.user.friends load];
 }
 
 @end
