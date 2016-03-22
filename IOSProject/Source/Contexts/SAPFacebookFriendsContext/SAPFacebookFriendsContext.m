@@ -8,77 +8,65 @@
 
 #import "SAPFacebookFriendsContext.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #import "SAPFacebookUser.h"
 #import "SAPUsers.h"
 
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-
-static NSString * const kSAPDataKey = @"data";
-static NSString * const kSAPFieldsKey = @"fields";
-
-static NSString * const kSAPUserGraphPath = @"me";
-
-static NSString * const kSAPFriendsKey = @"friends";
-
-static NSString * const kSAPFirstNameKey = @"first_name";
-static NSString * const kSAPLastNameKey = @"last_name";
-static NSString * const kSAPPictureKey = @"picture";
-static NSString * const kSAPUrlKey = @"url";
+#import "SAPGraphStringConstants.h"
 
 @implementation SAPFacebookFriendsContext
 
-#pragma mark Public
+@dynamic graphRequest;
+@dynamic completionHandler;
 
-- (void)execute {
+#pragma mark -
+#pragma mark Accessors
+
+- (FBSDKGraphRequest *)graphRequest {
     NSString *fieldsParameter = [NSString stringWithFormat:@"%@{%@,%@,%@{%@}}",
                                  kSAPFriendsKey,
                                  kSAPFirstNameKey,
                                  kSAPLastNameKey,
                                  kSAPPictureKey,
                                  kSAPUrlKey];
+    
     NSDictionary *parameters = @{kSAPFieldsKey : fieldsParameter};
-    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:kSAPUserGraphPath
-                                                                   parameters:parameters];
-    SAPFacebookUser *model = (SAPFacebookUser *)self.model;
-    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
-        SAPUsers *modelFriends = model.friends;
-        NSArray *friends = [[result objectForKey:kSAPFriendsKey] objectForKey:kSAPDataKey];
+    
+    return [[FBSDKGraphRequest alloc] initWithGraphPath:kSAPUserGraphPath
+                                             parameters:parameters];
+}
+
+- (id)completionHandler {
+    SAPUsers *users = self.model;
+    
+    return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
+        if (error) {
+            @synchronized (users) {
+                users.state = kSAPModelStateDidFailLoading;
+                ///load from disk !!!!!!!
+                return;
+            }
+        }
+        
+        NSArray *friends = result[kSAPFriendsKey][kSAPDataKey];
         for (id friend in friends) {
             SAPFacebookUser *user = [SAPFacebookUser new];
+            user.userId = friend[kSAPIDKey];
             user.firstName = friend[kSAPFirstNameKey];
             user.lastName = friend[kSAPLastNameKey];
             NSString *urlString = friend[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
             user.imageURL = [NSURL URLWithString:urlString];
+            
+            [users addObject:user];
+        }
 
-            [modelFriends addObject:user];
-        }
-        
-        @synchronized (model) {
-            model.state = kSAPModelStateDidFinishLoading;
-        }
-    }];
+        @synchronized (users) {
+            users.state = kSAPModelStateDidFinishLoading;
+        };
+    };
 }
 
-//#pragma mark -
-//#pragma mark Public
-//- (void)loadUserFromWeb {
-//    SAPFacebookUser *user = self.user;
-//    @synchronized(user) {
-//        NSUInteger state = user.state;
-//        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
-//            [user notifyObserversWithSelector:[user selectorForState:state]];
-//            
-//            return;
-//        }
-//        
-//        user.state = kSAPModelStateWillLoad;
-//        
-//        SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:user];
-//        self.friendsContext = context;
-//        [context execute];
-//    }
-//}
-//
 //- (void)loadUserFromDisk {
 //    [self.user.friends load];
 //}

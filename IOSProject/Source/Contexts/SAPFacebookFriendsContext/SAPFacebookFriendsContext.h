@@ -6,8 +6,8 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPContext.h"
+#import "SAPFacebookContext.h"
 
-@interface SAPFacebookFriendsContext : SAPContext
+@interface SAPFacebookFriendsContext : SAPFacebookContext;
 
 @end
