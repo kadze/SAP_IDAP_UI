@@ -112,13 +112,9 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
         
         user.state = kSAPModelStateWillLoad;
         
-        SAPWeakify(self);
-//        SAPDispatchAsyncOnDefaultQueue(^{  //in this case completion handler from start request won't be called
-            SAPStrongify(self);
-            SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:user];
-            self.friendsContext = context;
-            [context execute];
-//        });
+        SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:user];
+        self.friendsContext = context;
+        [context execute];
     }
 }
 
