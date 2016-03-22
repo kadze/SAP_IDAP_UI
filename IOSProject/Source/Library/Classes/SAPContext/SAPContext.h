@@ -6,22 +6,20 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-#import "SAPModel.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @class FBSDKGraphRequest;
 
 @interface SAPContext : NSObject
-@property (nonatomic, strong) SAPModel *model;
+@property (nonatomic, strong) id model;
 
-+ (instancetype)contextWithModel:(SAPModel *)model;
++ (instancetype)contextWithModel:(id)model;
 
-- (instancetype)initWithModel:(SAPModel *)model;
+- (instancetype)initWithModel:(id)model;
 
 - (void)execute;
 - (void)cancel;
 
-- (FBSDKGraphRequest *)graphRequest:(NSString *)graphPath;
+//- (FBSDKGraphRequest *)graphRequest:(NSString *)graphPath;
 
 @end
