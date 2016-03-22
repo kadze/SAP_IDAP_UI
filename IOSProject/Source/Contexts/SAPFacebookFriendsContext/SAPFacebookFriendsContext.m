@@ -59,4 +59,29 @@ static NSString * const kSAPUrlKey = @"url";
     }];
 }
 
+//#pragma mark -
+//#pragma mark Public
+//- (void)loadUserFromWeb {
+//    SAPFacebookUser *user = self.user;
+//    @synchronized(user) {
+//        NSUInteger state = user.state;
+//        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
+//            [user notifyObserversWithSelector:[user selectorForState:state]];
+//            
+//            return;
+//        }
+//        
+//        user.state = kSAPModelStateWillLoad;
+//        
+//        SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:user];
+//        self.friendsContext = context;
+//        [context execute];
+//    }
+//}
+//
+//- (void)loadUserFromDisk {
+//    [self.user.friends load];
+//}
+
+
 @end
