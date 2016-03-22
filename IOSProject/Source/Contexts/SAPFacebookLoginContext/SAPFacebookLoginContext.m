@@ -12,11 +12,17 @@
 
 #import "SAPModel.h"
 #import "SAPLoginViewController.h"
+#import "SAPFacebookUserContext.h"
 
 #import "SAPDispatch.h"
 
 static NSString * const kSAPPublicPofilePermission = @"public_profile";
 static NSString * const kSAPUserFriendsPermission = @"user_friends";
+
+@interface SAPFacebookLoginContext ()
+@property (nonatomic, strong) SAPFacebookUserContext *userContext;
+
+@end
 
 @implementation SAPFacebookLoginContext
 
@@ -32,16 +38,24 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 if (error) {
                                     NSLog(@"Process error");
-                                    [controller loadUserFromDisk];
                                 } else if (result.isCancelled) {
                                     NSLog(@"Cancelled");
                                     @synchronized (user) {
                                         user.state = kSAPModelStateDidFailLoading;
                                     }
                                 } else {
-                                    [controller loadUserFromWeb];
+                                    [self loadUser];
                                 }
                             }];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)loadUser {
+    SAPFacebookUserContext *context = [SAPFacebookUserContext contextWithModel:self.model];
+    self.userContext = context;
+    [context execute];
 }
 
 @end
