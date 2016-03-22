@@ -55,19 +55,19 @@
 
 - (void)modelWillLoad:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        [self setLoadingViewVisible:YES animated:YES];
+        self.loadingViewVisible = YES;
     });
 }
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
         [self fillWithModel:model];
-        [self setLoadingViewVisible:NO];
+        self.loadingViewVisible = NO;
     });
 }
 
 - (void)modelDidFailLoading:(id)model {
-    [self setLoadingViewVisible:NO];
+    self.loadingViewVisible = NO;
 }
 
 #pragma mark -

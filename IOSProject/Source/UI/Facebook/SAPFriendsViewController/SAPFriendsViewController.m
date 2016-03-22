@@ -121,23 +121,23 @@ SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, frie
 
 - (void)modelWillLoad:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        [self.friendsView setLoadingViewVisible:YES];
+        self.friendsView.loadingViewVisible = YES;
     });
 }
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
         [self reloadView];
-        [self.friendsView setLoadingViewVisible:NO];
+        self.friendsView.loadingViewVisible = NO;
     });
 }
 
 - (void)modelDidFailLoading:(id)model {
-    [self.friendsView setLoadingViewVisible:NO];
+    self.friendsView.loadingViewVisible = NO;
 }
 
 - (void)modelDidUnload:(id)model {
-    [self.friendsView setLoadingViewVisible:NO];
+    self.friendsView.loadingViewVisible = NO;
 }
 
 #pragma mark -

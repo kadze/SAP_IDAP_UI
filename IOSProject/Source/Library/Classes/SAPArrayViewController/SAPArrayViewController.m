@@ -126,7 +126,7 @@ SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsVie
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
         [self reloadView];
-        [self.itemsView setLoadingViewVisible:NO];
+        self.itemsView.loadingViewVisible = NO;
     });
 }
 

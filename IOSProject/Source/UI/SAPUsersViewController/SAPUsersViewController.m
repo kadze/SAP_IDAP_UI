@@ -131,23 +131,23 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 
 - (void)modelWillLoad:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        [self.usersView setLoadingViewVisible:YES];
+        self.usersView.loadingViewVisible = YES;
     });
 }
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
         [self reloadView];
-        [self.usersView setLoadingViewVisible:NO];
+        self.usersView.loadingViewVisible = NO;
     });
 }
 
 - (void)modelDidFailLoading:(id)model {
-    [self.usersView setLoadingViewVisible:NO];
+    self.usersView.loadingViewVisible = NO;
 }
 
 - (void)modelDidUnload:(id)model {
-    [self.usersView setLoadingViewVisible:NO];
+    self.usersView.loadingViewVisible = NO;
 }
 
 #pragma mark -
