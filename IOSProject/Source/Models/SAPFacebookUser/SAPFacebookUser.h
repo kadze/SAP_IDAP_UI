@@ -14,6 +14,7 @@
 @class SAPUsers;
 
 @interface SAPFacebookUser : SAPModel <NSCoding, SAPCacheableModel>
+@property (nonatomic, copy)     NSString         *userId;
 @property (nonatomic, copy)     NSString         *firstName;
 @property (nonatomic, copy)     NSString         *lastName;
 @property (nonatomic, readonly) SAPImageModel    *imageModel;
@@ -22,6 +23,5 @@
 
 //method uses init chain!
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
-- (void)loadFriendsFromWeb;
 
 @end
