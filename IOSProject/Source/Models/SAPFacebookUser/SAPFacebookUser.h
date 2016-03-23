@@ -19,7 +19,9 @@
 @property (nonatomic, copy)     NSString         *lastName;
 @property (nonatomic, readonly) SAPImageModel    *imageModel;
 @property (nonatomic, copy)     NSURL            *imageURL;
-@property (nonatomic, strong)   SAPUsers *friends;
+@property (nonatomic, copy)     NSURL            *lagreImageURL;
+@property (nonatomic, copy)     NSString         *gender;
+@property (nonatomic, strong)   SAPUsers         *friends;
 
 //method uses init chain!
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
