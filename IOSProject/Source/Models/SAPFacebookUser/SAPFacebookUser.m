@@ -11,10 +11,20 @@
 #import "SAPUsers.h"
 #import "SAPImageModel.h"
 
-static NSString * const kSAPFirstNameKey = @"firstName";
-static NSString * const kSAPLastNameKey  = @"lastName";
-static NSString * const kSAPImageURLKey  = @"imageURL";
-static NSString * const kSAPFriendsKey   = @"friends";
+//properties names for NSCoding
+static NSString * const kSAPUserIDKey        = @"userID";
+static NSString * const kSAPFirstNameKey     = @"firstName";
+static NSString * const kSAPLastNameKey      = @"lastName";
+static NSString * const kSAPImageURLKey      = @"imageURL";
+static NSString * const kSAPFriendsKey       = @"friends";
+static NSString * const kSAPGenderKey        = @"gender";
+static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
+
+@interface SAPFacebookUser ()
+
+- (NSDictionary *)encodingDictionary;
+
+@end
 
 @implementation SAPFacebookUser
 
@@ -47,10 +57,7 @@ static NSString * const kSAPFriendsKey   = @"friends";
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSDictionary *encodingDictionary = @{kSAPFirstNameKey : self.firstName,
-                                         kSAPLastNameKey : self.lastName,
-                                         kSAPImageURLKey : self.imageURL,
-                                         kSAPFriendsKey : self.friends};
+    NSDictionary *encodingDictionary = [self encodingDictionary];
     for (NSString *key in encodingDictionary.allKeys) {
         [aCoder encodeObject:[encodingDictionary objectForKey:key] forKey:key];
     }
@@ -58,13 +65,24 @@ static NSString * const kSAPFriendsKey   = @"friends";
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init]; //mutable observers collection initialization
-    
-    self.firstName = [aDecoder decodeObjectForKey:kSAPFirstNameKey];
-    self.lastName = [aDecoder decodeObjectForKey:kSAPLastNameKey];
-    self.imageURL = [aDecoder decodeObjectForKey:kSAPImageURLKey];
-    self.friends = [aDecoder decodeObjectForKey:kSAPFriendsKey];
+    for (NSString *key in [[self encodingDictionary] allKeys]) {
+        [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
+    }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (NSDictionary *)encodingDictionary {
+    return @{kSAPUserIDKey    : self.userId,
+             kSAPFirstNameKey : self.firstName,
+             kSAPLastNameKey  : self.lastName,
+             kSAPImageURLKey  : self.imageURL,
+             kSAPLagreImageUrlKey : self.largeImageURL,
+             kSAPFriendsKey   : self.friends,
+             kSAPGenderKey    : self.gender};
 }
 
 @end
