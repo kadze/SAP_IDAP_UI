@@ -22,7 +22,7 @@
 - (FBSDKGraphRequest *)graphRequest {
     NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@{%@}",
                                  kSAPGengerKey,
-                                 kSAPLagrePictureKey,
+                                 kSAPLargePictureKey,
                                  kSAPUrlKey];
     
     NSDictionary *parameters = @{kSAPFieldsKey : fieldsParameter};
@@ -47,7 +47,7 @@
         
         user.gender = result[kSAPGengerKey];
         NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-        user.imageURL = [NSURL URLWithString:urlString];
+        user.largeImageURL = [NSURL URLWithString:urlString];
         
         @synchronized (user) {
             user.state = kSAPModelStateDidFinishLoading;

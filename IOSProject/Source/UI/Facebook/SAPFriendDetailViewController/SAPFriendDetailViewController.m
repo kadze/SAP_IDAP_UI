@@ -10,7 +10,8 @@
 
 #import "SAPFriendDetailView.h"
 #import "SAPFacebookUser.h"
-#import "SAPFacebookFriendsContext.h"
+#import "SAPFriendDetailContext.h"
+#import "SAPImageView.h"
 
 #import "SAPDispatch.h"
 
@@ -19,8 +20,10 @@
 SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetailView, friendDetailView);
 
 @interface SAPFriendDetailViewController ()
-@property (nonatomic, strong) SAPFacebookFriendsContext *context;
-    
+@property (nonatomic, strong) SAPFriendDetailContext *context;
+
+- (void)fillWithModel;
+
 @end
 
 @implementation SAPFriendDetailViewController
@@ -35,7 +38,7 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setFriends:(SAPFacebookUser *)friend {
+- (void)setFriend:(SAPFacebookUser *)friend {
     if (_friend != friend) {
         [_friend removeObserver:self];
         _friend = friend;
@@ -47,7 +50,7 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 #pragma mark View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.friend];
+    SAPFriendDetailContext *context = [SAPFriendDetailContext contextWithModel:self.friend];
     self.context = context;
     [context execute];
 }
@@ -63,6 +66,7 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
+        [self fillWithModel];
         self.friendDetailView.loadingViewVisible = NO;
     });
 }
@@ -75,5 +79,17 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
     self.friendDetailView.loadingViewVisible = NO;
 }
 
+#pragma mark -
+#pragma mark Private
+
+- (void)fillWithModel {
+    SAPFriendDetailView *view = self.friendDetailView;
+    SAPFacebookUser *friend = self.friend;
+    
+    view.userImageView.imageModel = friend.largeImageModel;
+    view.firstNameLabel.text = friend.firstName;
+    view.lastNameLabel.text = friend.lastName;
+    view.genderLabel.text = friend.gender;
+}
 
 @end
