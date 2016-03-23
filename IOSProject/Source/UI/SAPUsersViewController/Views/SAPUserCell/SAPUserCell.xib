@@ -14,10 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" id="n4u-L4-D1R" customClass="SAPImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="72" height="74"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D62-zE-qtc">
                         <rect key="frame" x="80" y="0.0" width="240" height="74"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -26,21 +22,18 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" id="n4u-L4-D1R" customClass="SAPImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="72" height="74"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
                 <outlet property="label" destination="D62-zE-qtc" id="IrC-R3-DBa"/>
-                <outlet property="tapRecognizer" destination="iKY-DK-m5a" id="khH-fc-AhD"/>
                 <outlet property="userImageView" destination="n4u-L4-D1R" id="RwI-xd-5hn"/>
-                <outletCollection property="gestureRecognizers" destination="iKY-DK-m5a" appends="YES" id="7cT-u7-gfx"/>
             </connections>
             <point key="canvasLocation" x="272" y="305.5"/>
         </tableViewCell>
-        <tapGestureRecognizer id="iKY-DK-m5a">
-            <connections>
-                <action selector="onTap:" destination="FoA-xr-q4U" id="af5-jG-zcT"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>

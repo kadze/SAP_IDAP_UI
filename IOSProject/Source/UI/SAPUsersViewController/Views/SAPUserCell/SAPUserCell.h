@@ -9,17 +9,12 @@
 #import "SAPTableViewCell.h"
 
 @class SAPFacebookUser;
-@class SAPView;
 @class SAPImageView;
 
 @interface SAPUserCell : SAPTableViewCell
 @property (nonatomic, strong) IBOutlet UILabel      *label;
 @property (nonatomic, strong) IBOutlet SAPImageView *userImageView;
 
-@property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tapRecognizer;
-
 @property (nonatomic, strong) SAPFacebookUser  *user;
-
-- (IBAction)onTap:(UITapGestureRecognizer *)sender;
 
 @end
