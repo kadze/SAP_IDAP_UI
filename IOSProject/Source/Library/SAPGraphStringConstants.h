@@ -19,7 +19,7 @@ static NSString * const kSAPLastNameKey = @"last_name";
 static NSString * const kSAPGengerKey = @"gender";
 
 static NSString * const kSAPPictureKey = @"picture";
-static NSString * const kSAPLagrePictureKey = @"picture.type(lagre)";
+static NSString * const kSAPLargePictureKey = @"picture.type(large)";
 static NSString * const kSAPSmallPictureKey = @"picture.type(small)";
 static NSString * const kSAPNormalPictureKey = @"picture.type(normal)";
 static NSString * const kSAPAlbumPictureKey = @"picture.type(album)";
