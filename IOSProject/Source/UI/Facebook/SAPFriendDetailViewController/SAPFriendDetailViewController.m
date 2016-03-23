@@ -9,35 +9,71 @@
 #import "SAPFriendDetailViewController.h"
 
 #import "SAPFriendDetailView.h"
+#import "SAPFacebookUser.h"
+#import "SAPFacebookFriendsContext.h"
+
+#import "SAPDispatch.h"
 
 #import "SAPViewControllerMacro.h"
 
 SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetailView, friendDetailView);
 
 @interface SAPFriendDetailViewController ()
-
+@property (nonatomic, strong) SAPFacebookFriendsContext *context;
+    
 @end
 
 @implementation SAPFriendDetailViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.friend = nil;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setFriends:(SAPFacebookUser *)friend {
+    if (_friend != friend) {
+        [_friend removeObserver:self];
+        _friend = friend;
+        [_friend addObserver:self];
+    }
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark-
+#pragma mark View Lifecycle
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillAppear:(BOOL)animated {
+    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.friend];
+    self.context = context;
+    [context execute];
 }
-*/
+
+#pragma mark -
+#pragma mark SAPModelObserver
+
+- (void)modelWillLoad:(id)model {
+    SAPDispatchAsyncOnMainQueue(^{
+        self.friendDetailView.loadingViewVisible = YES;
+    });
+}
+
+- (void)modelDidFinishLoading:(id)model {
+    SAPDispatchAsyncOnMainQueue(^{
+        self.friendDetailView.loadingViewVisible = NO;
+    });
+}
+
+- (void)modelDidFailLoading:(id)model {
+    self.friendDetailView.loadingViewVisible = NO;
+}
+
+- (void)modelDidUnload:(id)model {
+    self.friendDetailView.loadingViewVisible = NO;
+}
+
 
 @end
