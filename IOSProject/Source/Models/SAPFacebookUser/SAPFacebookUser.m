@@ -39,6 +39,10 @@ static NSString * const kSAPFriendsKey   = @"friends";
     return [SAPImageModel imageWithUrl:self.imageURL];
 }
 
+- (SAPImageModel *)largeImageModel {
+    return [SAPImageModel imageWithUrl:self.largeImageURL];
+}
+
 #pragma mark -
 #pragma mark NSCoding
 

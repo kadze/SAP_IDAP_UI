@@ -19,7 +19,8 @@
 @property (nonatomic, copy)     NSString         *lastName;
 @property (nonatomic, readonly) SAPImageModel    *imageModel;
 @property (nonatomic, copy)     NSURL            *imageURL;
-@property (nonatomic, copy)     NSURL            *lagreImageURL;
+@property (nonatomic, readonly) SAPImageModel    *largeImageModel;
+@property (nonatomic, copy)     NSURL            *largeImageURL;
 @property (nonatomic, copy)     NSString         *gender;
 @property (nonatomic, strong)   SAPUsers         *friends;
 
