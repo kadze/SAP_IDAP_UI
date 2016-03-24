@@ -1,5 +1,5 @@
 //
-//  SAPFacebookUser.h
+//  SAPUser.h
 //  IOSProject
 //
 //  Created by SAP on 3/17/16.
@@ -13,7 +13,7 @@
 @class SAPImageModel;
 @class SAPUsers;
 
-@interface SAPFacebookUser : SAPModel <NSCoding, SAPCacheableModel>
+@interface SAPUser : SAPModel <NSCoding, SAPCacheableModel>
 @property (nonatomic, copy)     NSString         *userId;
 @property (nonatomic, copy)     NSString         *firstName;
 @property (nonatomic, copy)     NSString         *lastName;

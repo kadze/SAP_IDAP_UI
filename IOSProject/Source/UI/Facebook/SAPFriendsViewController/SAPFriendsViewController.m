@@ -11,7 +11,7 @@
 #import "SAPUsers.h"
 #import "SAPFriendsView.h"
 #import "SAPUserCell.h"
-#import "SAPFacebookFriendsContext.h"
+#import "SAPUserFriendsContext.h"
 #import "SAPFriendDetailViewController.h"
 
 #import "UINib+SAPextensions.h"
@@ -27,7 +27,7 @@
 SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, friendsView);
 
 @interface SAPFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
-@property (nonatomic, strong) SAPFacebookFriendsContext *context;
+@property (nonatomic, strong) SAPUserFriendsContext *context;
 
 - (void)reloadView;
 
@@ -59,7 +59,7 @@ SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, frie
 #pragma mark View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    SAPFacebookFriendsContext *context = [SAPFacebookFriendsContext contextWithModel:self.friends];
+    SAPUserFriendsContext *context = [SAPUserFriendsContext contextWithModel:self.friends];
     self.context = context;
     [context execute];
 }
@@ -68,7 +68,7 @@ SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, frie
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SAPFacebookUser *friend = self.friends[indexPath.row];
+    SAPUser *friend = self.friends[indexPath.row];
     SAPFriendDetailViewController *controller = [SAPFriendDetailViewController new];
     controller.friend = friend;
     [self.navigationController pushViewController:controller animated:YES];

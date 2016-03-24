@@ -8,7 +8,7 @@
 
 #import "SAPContext.h"
 
-@class SAPFacebookUser;
+@class SAPUser;
 @class SAPLoginViewController;
 
 @interface SAPFacebookLoginContext : SAPContext

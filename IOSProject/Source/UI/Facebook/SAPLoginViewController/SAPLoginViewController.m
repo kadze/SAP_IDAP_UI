@@ -12,7 +12,7 @@
 
 #import "SAPLoginView.h"
 #import "SAPFriendsViewController.h"
-#import "SAPFacebookUser.h"
+#import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
 
 #import "SAPModelObserver.h"
@@ -36,7 +36,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 
 - (instancetype)init {
     self = [super init];
-    self.user = [SAPFacebookUser new];
+    self.user = [SAPUser new];
     
     return self;
 }
@@ -48,7 +48,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(SAPFacebookUser *)user {
+- (void)setUser:(SAPUser *)user {
     if (_user != user) {
         [_user removeObserver:self];
         _user = user;

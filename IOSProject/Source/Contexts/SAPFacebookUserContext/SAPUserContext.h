@@ -1,5 +1,5 @@
 //
-//  SAPFacebookUserContext.h
+//  SAPUserContext.h
 //  IOSProject
 //
 //  Created by SAP on 3/22/16.
@@ -8,6 +8,6 @@
 
 #import "SAPFacebookContext.h"
 
-@interface SAPFacebookUserContext : SAPFacebookContext
+@interface SAPUserContext : SAPFacebookContext
 
 @end

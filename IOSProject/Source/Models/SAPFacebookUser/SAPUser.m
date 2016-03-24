@@ -1,12 +1,12 @@
 //
-//  SAPFacebookUser.m
+//  SAPUser.m
 //  IOSProject
 //
 //  Created by SAP on 3/17/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPFacebookUser.h"
+#import "SAPUser.h"
 #import <Foundation/NSObject.h>
 #import "SAPUsers.h"
 #import "SAPImageModel.h"
@@ -19,13 +19,13 @@ static NSString * const kSAPImageURLKey      = @"imageURL";
 static NSString * const kSAPGenderKey        = @"gender";
 static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 
-@interface SAPFacebookUser ()
+@interface SAPUser ()
 
 - (NSDictionary *)encodingDictionary;
 
 @end
 
-@implementation SAPFacebookUser
+@implementation SAPUser
 
 @dynamic imageModel;
 

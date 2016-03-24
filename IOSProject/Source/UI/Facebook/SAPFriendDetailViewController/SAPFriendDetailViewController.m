@@ -9,7 +9,7 @@
 #import "SAPFriendDetailViewController.h"
 
 #import "SAPFriendDetailView.h"
-#import "SAPFacebookUser.h"
+#import "SAPUser.h"
 #import "SAPFriendDetailContext.h"
 #import "SAPImageView.h"
 
@@ -38,7 +38,7 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setFriend:(SAPFacebookUser *)friend {
+- (void)setFriend:(SAPUser *)friend {
     if (_friend != friend) {
         [_friend removeObserver:self];
         _friend = friend;
@@ -84,7 +84,7 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 
 - (void)fillWithModel {
     SAPFriendDetailView *view = self.friendDetailView;
-    SAPFacebookUser *friend = self.friend;
+    SAPUser *friend = self.friend;
     
     view.userImageView.imageModel = friend.largeImageModel;
     view.firstNameLabel.text = friend.firstName;

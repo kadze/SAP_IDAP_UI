@@ -8,7 +8,7 @@
 
 #import "SAPFriendDetailContext.h"
 
-#import "SAPFacebookUser.h"
+#import "SAPUser.h"
 
 #import "SAPDispatch.h"
 
@@ -27,14 +27,14 @@
     
     NSDictionary *parameters = @{kSAPFieldsKey : fieldsParameter};
     
-    SAPFacebookUser *user = self.model;
+    SAPUser *user = self.model;
     
     return [[FBSDKGraphRequest alloc] initWithGraphPath:user.userId
                                              parameters:parameters];
 }
 
 - (id)completionHandler {
-    SAPFacebookUser *user = self.model;
+    SAPUser *user = self.model;
     
     return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
         if (error) {

@@ -1,21 +1,21 @@
 //
-//  SAPFacebookFriendsContext.m
+//  SAPUserFriendsContext.m
 //  IOSProject
 //
 //  Created by SAP on 3/16/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPFacebookFriendsContext.h"
+#import "SAPUserFriendsContext.h"
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-#import "SAPFacebookUser.h"
+#import "SAPUser.h"
 #import "SAPUsers.h"
 
 #import "SAPGraphStringConstants.h"
 
-@implementation SAPFacebookFriendsContext
+@implementation SAPUserFriendsContext
 
 @dynamic graphRequest;
 @dynamic completionHandler;
@@ -51,7 +51,7 @@
         
         NSArray *friends = result[kSAPFriendsKey][kSAPDataKey];
         for (id friend in friends) {
-            SAPFacebookUser *user = [SAPFacebookUser new];
+            SAPUser *user = [SAPUser new];
             user.userId = friend[kSAPIDKey];
             user.firstName = friend[kSAPFirstNameKey];
             user.lastName = friend[kSAPLastNameKey];

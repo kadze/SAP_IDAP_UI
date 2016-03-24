@@ -8,14 +8,14 @@
 
 #import "SAPUserCell.h"
 
-#import "SAPFacebookUser.h"
+#import "SAPUser.h"
 #import "SAPImageView.h"
 
 #import "SAPDispatch.h"
 
 @interface SAPUserCell ()
 
-- (void)fillWithModel:(SAPFacebookUser *)user;
+- (void)fillWithModel:(SAPUser *)user;
 
 @end
 
@@ -24,7 +24,7 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(SAPFacebookUser *)user {
+- (void)setUser:(SAPUser *)user {
     if (_user != user) {
         _user = user;
         
@@ -35,7 +35,7 @@
 #pragma mark -
 #pragma mark Private
 
-- (void)fillWithModel:(SAPFacebookUser *)user {
+- (void)fillWithModel:(SAPUser *)user {
     self.label.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     self.userImageView.imageModel = user.imageModel;
 }

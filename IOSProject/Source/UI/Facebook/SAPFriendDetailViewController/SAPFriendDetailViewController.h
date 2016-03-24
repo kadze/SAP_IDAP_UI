@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class SAPFacebookUser;
+@class SAPUser;
 
 @interface SAPFriendDetailViewController : UIViewController
-@property (nonatomic, strong) SAPFacebookUser *friend;
+@property (nonatomic, strong) SAPUser *friend;
 
 @end

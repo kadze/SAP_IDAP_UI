@@ -14,7 +14,7 @@
 #import "SAPOwnershipMacro.h"
 #import "SAPDispatch.h"
 #import "SAPAppDelegate.h"
-#import "SAPFacebookFriendsContext.h"
+#import "SAPUserFriendsContext.h"
 
 #import "NSFileManager+SAPExtensions.h"
 #import "NSObject+SAPExtensions.h"
@@ -25,7 +25,7 @@ static NSString * const kSAPPlistName       = @"users.plist";
 
 @interface SAPUsers ()
 @property (nonatomic, strong) id applicationObserver;
-@property (nonatomic, strong) SAPFacebookFriendsContext *context;
+@property (nonatomic, strong) SAPUserFriendsContext *context;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;

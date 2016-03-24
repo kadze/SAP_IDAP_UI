@@ -8,10 +8,10 @@
 
 #import "SAPViewController.h"
 
-@class SAPFacebookUser;
+@class SAPUser;
 
 @interface SAPLoginViewController : SAPViewController
-@property (nonatomic, strong) SAPFacebookUser *user;
+@property (nonatomic, strong) SAPUser *user;
 
 - (IBAction)onLogin:(id)sender;
 

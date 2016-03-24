@@ -12,7 +12,7 @@
 
 #import "SAPModel.h"
 #import "SAPLoginViewController.h"
-#import "SAPFacebookUserContext.h"
+#import "SAPUserContext.h"
 
 #import "SAPDispatch.h"
 
@@ -20,7 +20,7 @@ static NSString * const kSAPPublicPofilePermission = @"public_profile";
 static NSString * const kSAPUserFriendsPermission = @"user_friends";
 
 @interface SAPFacebookLoginContext ()
-@property (nonatomic, strong) SAPFacebookUserContext *userContext;
+@property (nonatomic, strong) SAPUserContext *userContext;
 
 @end
 
@@ -53,7 +53,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 #pragma mark Private
 
 - (void)loadUser {
-    SAPFacebookUserContext *context = [SAPFacebookUserContext contextWithModel:self.model];
+    SAPUserContext *context = [SAPUserContext contextWithModel:self.model];
     self.userContext = context;
     [context execute];
 }

@@ -1,20 +1,20 @@
 //
-//  SAPFacebookUserContext.m
+//  SAPUserContext.m
 //  IOSProject
 //
 //  Created by SAP on 3/22/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPFacebookUserContext.h"
+#import "SAPUserContext.h"
 
-#import "SAPFacebookUser.h"
+#import "SAPUser.h"
 
 #import "SAPDispatch.h"
 
 #import "SAPGraphStringConstants.h"
 
-@implementation SAPFacebookUserContext
+@implementation SAPUserContext
 
 #pragma mark -
 #pragma mark Accessors
@@ -33,7 +33,7 @@
 }
 
 - (id)completionHandler {
-    SAPFacebookUser *user = self.model;
+    SAPUser *user = self.model;
     
     return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
         if (error) {
