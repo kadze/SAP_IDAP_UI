@@ -7,7 +7,7 @@
 //
 
 #import "SAPFacebookUser.h"
-
+#import <Foundation/NSObject.h>
 #import "SAPUsers.h"
 #import "SAPImageModel.h"
 
@@ -16,7 +16,6 @@ static NSString * const kSAPUserIDKey        = @"userID";
 static NSString * const kSAPFirstNameKey     = @"firstName";
 static NSString * const kSAPLastNameKey      = @"lastName";
 static NSString * const kSAPImageURLKey      = @"imageURL";
-static NSString * const kSAPFriendsKey       = @"friends";
 static NSString * const kSAPGenderKey        = @"gender";
 static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 
@@ -76,13 +75,13 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 #pragma mark Private
 
 - (NSDictionary *)encodingDictionary {
-    return @{kSAPUserIDKey    : self.userId,
-             kSAPFirstNameKey : self.firstName,
-             kSAPLastNameKey  : self.lastName,
-             kSAPImageURLKey  : self.imageURL,
-             kSAPLagreImageUrlKey : self.largeImageURL,
-             kSAPFriendsKey   : self.friends,
-             kSAPGenderKey    : self.gender};
+    NSNull *null = [NSNull null];
+    return @{kSAPUserIDKey        : ((!self.userId) ? null : self.userId),
+             kSAPFirstNameKey     : ((!self.firstName) ? null : self.firstName),
+             kSAPLastNameKey      : ((!self.lastName) ? null : self.lastName),
+             kSAPImageURLKey      : ((!self.imageURL) ? null : self.imageURL),
+             kSAPLagreImageUrlKey : ((!self.largeImageURL) ? null : self.largeImageURL),
+             kSAPGenderKey        : ((!self.gender) ? null : self.gender)};
 }
 
 @end
