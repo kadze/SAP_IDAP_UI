@@ -276,8 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				2E4249FC1CA198980089CECC /* SAPFacebookLoginContext */,
-				2E4249F91CA198980089CECC /* SAPFacebookFriendsContext */,
 				2E424A011CA1A6A10089CECC /* SAPFacebookUserContext */,
+				2E4249F91CA198980089CECC /* SAPFacebookFriendsContext */,
 				2E424A0A1CA28DEA0089CECC /* SAPFriendDetailcontext */,
 			);
 			path = Contexts;
