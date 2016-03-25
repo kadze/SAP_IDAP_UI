@@ -37,7 +37,7 @@
                                              parameters:parameters];
 }
 
-- (id)completionHandler {
+- (FBSDKGraphRequestHandler)completionHandler {
     SAPUsers *users = self.model;
     
     return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
