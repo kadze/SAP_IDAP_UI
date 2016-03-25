@@ -24,11 +24,9 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsView);
-
 @interface SAPArrayViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
 
-- (void)reloadView;
+- (id)cellClass;
 
 @end
 
@@ -45,7 +43,7 @@ SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsVie
 #pragma mark Class Methods
 
 + (Class)cellClass {
-    return [SAPUserCell class];
+    return Nil;
 }
 
 #pragma mark -
@@ -82,59 +80,34 @@ SAPViewControllerBaseViewProperty(SAPArrayViewController, SAPUsersView, itemsVie
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SAPUserCell *cell = [tableView cellWithClass:[[self class] cellClass]];
-    cell.user = self.items[indexPath.row];
+    SAPTableViewCell *cell = [tableView cellWithClass:[self cellClass]];
+    //cell.user = self.items[indexPath.row];
     
     return cell;
-}
-
-- (void)        tableView:(UITableView *)tableView
-       commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-        forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (UITableViewCellEditingStyleDelete == editingStyle) {
-        SAPArrayModel *items = self.items;
-        [items removeObjectAtIndex:indexPath.row];
-    }
-}
-
-//reordering
-
-- (void)      tableView:(UITableView *)tableView
-     moveRowAtIndexPath:(NSIndexPath *)indexPath1
-            toIndexPath:(NSIndexPath *)indexPath2
-{
-    SAPArrayModel *items = self.items;
-    [items moveObjectFromIndex:indexPath1.row toIndex:indexPath2.row];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
 }
 
 #pragma mark -
 #pragma mark SAPCollectionObserver
 
-- (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
-    UITableView *tableView = self.itemsView.tableView;
+- (void)collection:(SAPArrayModel *)arrayModel
+didChangeWithModel:(SAPCollectionChangeModel *)changeModel
+{
+    UITableView *tableView = self.tableView;
     [tableView updateWithCollectionChangeModel:changeModel];
-}
-
-#pragma mark -
-#pragma mark SAPModelObserver
-
-- (void)modelDidFinishLoading:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        [self reloadView];
-        self.itemsView.loadingViewVisible = NO;
-    });
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)reloadView {
-//    [self.itemsView.tableView reloadData];
+- (id)cellClass {
+    return [[self class] cellClass];
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (UITableView *)tableView {
+    return nil;
 }
 
 @end

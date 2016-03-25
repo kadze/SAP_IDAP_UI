@@ -20,4 +20,6 @@
 
 + (Class)cellClass;
 
+- (UITableView *)tableView;
+
 @end
