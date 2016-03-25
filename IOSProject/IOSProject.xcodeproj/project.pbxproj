@@ -17,14 +17,14 @@
 		2E424A1D1CA578CC0089CECC /* SAPUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A1A1CA578CC0089CECC /* SAPUserDetailViewController.m */; };
 		2E424A1E1CA578CC0089CECC /* SAPUserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E424A1B1CA578CC0089CECC /* SAPUserDetailViewController.xib */; };
 		2E424A221CA579060089CECC /* SAPUserDetailContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A211CA579060089CECC /* SAPUserDetailContext.m */; };
+		2E424A2B1CA57A4B0089CECC /* SAPUserFriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A251CA57A4B0089CECC /* SAPUserFriendsView.m */; };
+		2E424A2C1CA57A4B0089CECC /* SAPUserFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A271CA57A4B0089CECC /* SAPUserFriendsViewController.m */; };
+		2E424A2D1CA57A4B0089CECC /* SAPUserFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E424A281CA57A4B0089CECC /* SAPUserFriendsViewController.xib */; };
 		2E44ACDD1C94647200965DFA /* SAPObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E44ACDC1C94647200965DFA /* SAPObjectCache.m */; };
 		2ED4B5801C99CF52001670F6 /* SAPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B57F1C99CF52001670F6 /* SAPContext.m */; };
 		2ED4B59C1C99DD5B001670F6 /* SAPLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5981C99DD5B001670F6 /* SAPLoginView.m */; };
 		2ED4B59D1C99DD5B001670F6 /* SAPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B59A1C99DD5B001670F6 /* SAPLoginViewController.m */; };
 		2ED4B59E1C99DD5B001670F6 /* SAPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4B59B1C99DD5B001670F6 /* SAPLoginViewController.xib */; };
-		2ED4B5A21C99E095001670F6 /* SAPFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5A01C99E095001670F6 /* SAPFriendsViewController.m */; };
-		2ED4B5A31C99E095001670F6 /* SAPFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4B5A11C99E095001670F6 /* SAPFriendsViewController.xib */; };
-		2ED4B5AB1C99E278001670F6 /* SAPFriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5AA1C99E278001670F6 /* SAPFriendsView.m */; };
 		2ED4B5C61C9AF91A001670F6 /* SAPArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5C51C9AF91A001670F6 /* SAPArrayViewController.m */; };
 		2ED4B5CA1C9B5CF0001670F6 /* SAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5C91C9B5CF0001670F6 /* SAPViewController.m */; };
 		BCCE3BA8393D8C73DFFE3BA9 /* libPods-IOSProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED29099FBEDCCA134C5A005C /* libPods-IOSProject.a */; };
@@ -118,6 +118,11 @@
 		2E424A1B1CA578CC0089CECC /* SAPUserDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPUserDetailViewController.xib; sourceTree = "<group>"; };
 		2E424A201CA579060089CECC /* SAPUserDetailContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserDetailContext.h; sourceTree = "<group>"; };
 		2E424A211CA579060089CECC /* SAPUserDetailContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserDetailContext.m; sourceTree = "<group>"; };
+		2E424A241CA57A4B0089CECC /* SAPUserFriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SAPUserFriendsView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2E424A251CA57A4B0089CECC /* SAPUserFriendsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SAPUserFriendsView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2E424A261CA57A4B0089CECC /* SAPUserFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SAPUserFriendsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2E424A271CA57A4B0089CECC /* SAPUserFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SAPUserFriendsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2E424A281CA57A4B0089CECC /* SAPUserFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPUserFriendsViewController.xib; sourceTree = "<group>"; };
 		2E44ACDB1C94647200965DFA /* SAPObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPObjectCache.h; sourceTree = "<group>"; };
 		2E44ACDC1C94647200965DFA /* SAPObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPObjectCache.m; sourceTree = "<group>"; };
 		2ED4B57E1C99CF52001670F6 /* SAPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPContext.h; sourceTree = "<group>"; };
@@ -125,13 +130,8 @@
 		2ED4B5971C99DD5B001670F6 /* SAPLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPLoginView.h; sourceTree = "<group>"; };
 		2ED4B5981C99DD5B001670F6 /* SAPLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPLoginView.m; sourceTree = "<group>"; };
 		2ED4B5991C99DD5B001670F6 /* SAPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPLoginViewController.h; sourceTree = "<group>"; };
-		2ED4B59A1C99DD5B001670F6 /* SAPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPLoginViewController.m; sourceTree = "<group>"; };
+		2ED4B59A1C99DD5B001670F6 /* SAPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SAPLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2ED4B59B1C99DD5B001670F6 /* SAPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPLoginViewController.xib; sourceTree = "<group>"; };
-		2ED4B59F1C99E095001670F6 /* SAPFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFriendsViewController.h; sourceTree = "<group>"; };
-		2ED4B5A01C99E095001670F6 /* SAPFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFriendsViewController.m; sourceTree = "<group>"; };
-		2ED4B5A11C99E095001670F6 /* SAPFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPFriendsViewController.xib; sourceTree = "<group>"; };
-		2ED4B5A91C99E278001670F6 /* SAPFriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPFriendsView.h; sourceTree = "<group>"; };
-		2ED4B5AA1C99E278001670F6 /* SAPFriendsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFriendsView.m; sourceTree = "<group>"; };
 		2ED4B5C41C9AF90E001670F6 /* SAPArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPArrayViewController.h; sourceTree = "<group>"; };
 		2ED4B5C51C9AF91A001670F6 /* SAPArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPArrayViewController.m; sourceTree = "<group>"; };
 		2ED4B5C81C9B5CF0001670F6 /* SAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPViewController.h; sourceTree = "<group>"; };
@@ -356,6 +356,35 @@
 			path = SAPUserDetailContext;
 			sourceTree = "<group>";
 		};
+		2E424A231CA57A4B0089CECC /* SAPUserFriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2E424A241CA57A4B0089CECC /* SAPUserFriendsView.h */,
+				2E424A251CA57A4B0089CECC /* SAPUserFriendsView.m */,
+				2E424A261CA57A4B0089CECC /* SAPUserFriendsViewController.h */,
+				2E424A271CA57A4B0089CECC /* SAPUserFriendsViewController.m */,
+				2E424A281CA57A4B0089CECC /* SAPUserFriendsViewController.xib */,
+				2E424A291CA57A4B0089CECC /* Views */,
+			);
+			name = SAPUserFriendsViewController;
+			path = Facebook/SAPUserFriendsViewController;
+			sourceTree = "<group>";
+		};
+		2E424A291CA57A4B0089CECC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2E424A2A1CA57A4B0089CECC /* SAPFriendCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2E424A2A1CA57A4B0089CECC /* SAPFriendCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SAPFriendCell;
+			sourceTree = "<group>";
+		};
 		2E44ACDA1C94643400965DFA /* SAPObjectCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,19 +410,6 @@
 				2E424A061CA1B4790089CECC /* SAPFacebookContext */,
 			);
 			path = SAPContext;
-			sourceTree = "<group>";
-		};
-		2ED4B5951C99DD5B001670F6 /* SAPFriendsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				2ED4B5A91C99E278001670F6 /* SAPFriendsView.h */,
-				2ED4B5AA1C99E278001670F6 /* SAPFriendsView.m */,
-				2ED4B59F1C99E095001670F6 /* SAPFriendsViewController.h */,
-				2ED4B5A01C99E095001670F6 /* SAPFriendsViewController.m */,
-				2ED4B5A11C99E095001670F6 /* SAPFriendsViewController.xib */,
-			);
-			name = SAPFriendsViewController;
-			path = Facebook/SAPFriendsViewController;
 			sourceTree = "<group>";
 		};
 		2ED4B5961C99DD5B001670F6 /* SAPLoginViewController */ = {
@@ -839,7 +855,7 @@
 			isa = PBXGroup;
 			children = (
 				2ED4B5961C99DD5B001670F6 /* SAPLoginViewController */,
-				2ED4B5951C99DD5B001670F6 /* SAPFriendsViewController */,
+				2E424A231CA57A4B0089CECC /* SAPUserFriendsViewController */,
 				2E424A161CA578CC0089CECC /* SAPUserDetailViewController */,
 				CA634BFD1C69C3FC00DAED4E /* SAPUsersViewController */,
 				CAC421C71C5A4905004E4F1E /* SAPSquareViewController */,
@@ -1069,11 +1085,11 @@
 				CAC421CC1C5A4905004E4F1E /* SAPSquareViewController.xib in Resources */,
 				CAC421B11C5A2364004E4F1E /* Assets.xcassets in Resources */,
 				CA4B3F891C7E352D00440914 /* SAPUserCell.xib in Resources */,
-				2ED4B5A31C99E095001670F6 /* SAPFriendsViewController.xib in Resources */,
 				CA4B3EF71C6BBB5400440914 /* Add User-48.png in Resources */,
 				CA634BE71C68A18300DAED4E /* smile.jpeg in Resources */,
 				CA634C091C69C3FC00DAED4E /* SAPUsersViewController.xib in Resources */,
 				CA4B3F9F1C805F6C00440914 /* SAPActivityIndicator.xib in Resources */,
+				2E424A2D1CA57A4B0089CECC /* SAPUserFriendsViewController.xib in Resources */,
 				2ED4B59E1C99DD5B001670F6 /* SAPLoginViewController.xib in Resources */,
 				2E424A1E1CA578CC0089CECC /* SAPUserDetailViewController.xib in Resources */,
 				CA4B3EF81C6BBB5400440914 /* Add_User-48.jpg in Resources */,
@@ -1152,7 +1168,7 @@
 				CAC751C31C85F35400265578 /* NSPathUtilities+SAPExtensions.m in Sources */,
 				CAC751DB1C8DBF0F00265578 /* NSURL+SAPExtensions.m in Sources */,
 				2E44ACDD1C94647200965DFA /* SAPObjectCache.m in Sources */,
-				2ED4B5AB1C99E278001670F6 /* SAPFriendsView.m in Sources */,
+				2E424A2B1CA57A4B0089CECC /* SAPUserFriendsView.m in Sources */,
 				CA4B3EF41C6B8CDE00440914 /* UITableView+SAPExtensions.m in Sources */,
 				2E424A151CA54A030089CECC /* SAPUsers.m in Sources */,
 				CA4B3FA41C80619100440914 /* SAPView.m in Sources */,
@@ -1162,6 +1178,7 @@
 				CA4B3F641C76FC9500440914 /* SAPCollectionChangeDoubleIndexModel +UITableView.m in Sources */,
 				CA4B3F2E1C74AFFE00440914 /* SAPCollectionChangeModel.m in Sources */,
 				CA4B3F3E1C74C9F600440914 /* NSIndexPath+SAPExtensions.m in Sources */,
+				2E424A2C1CA57A4B0089CECC /* SAPUserFriendsViewController.m in Sources */,
 				CA4B3F7C1C7C9A2200440914 /* SAPModel.m in Sources */,
 				CAC751C71C88619400265578 /* SAPImageModel.m in Sources */,
 				CA634C081C69C3FC00DAED4E /* SAPUsersViewController.m in Sources */,
@@ -1176,7 +1193,6 @@
 				CA634BEF1C68D0BD00DAED4E /* SAPObservableObject.m in Sources */,
 				CA4B3F661C76FC9500440914 /* SAPCollectionChangeIndexModel+UITableView.m in Sources */,
 				BECC6AD11C5A907500F96AC9 /* SAPAppDelegate.m in Sources */,
-				2ED4B5A21C99E095001670F6 /* SAPFriendsViewController.m in Sources */,
 				CA4B3EE41C6A2DF900440914 /* UINib+SAPExtensions.m in Sources */,
 				CA634BC21C63B96C00DAED4E /* UIWindow+SAPExtensions.m in Sources */,
 				CA4B3F521C75EAF200440914 /* SAPCollectionChangeModel+SAPArrayModel.m in Sources */,

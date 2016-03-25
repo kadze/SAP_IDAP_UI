@@ -11,7 +11,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 #import "SAPLoginView.h"
-#import "SAPFriendsViewController.h"
+#import "SAPUserFriendsViewController.h"
 #import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
 
@@ -72,7 +72,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, baseView
     SAPWeakify(self);
     SAPDispatchAsyncOnMainQueue(^{
         SAPStrongifyAndReturnIfNil(self);
-        SAPFriendsViewController *controller = [SAPFriendsViewController new];
+        SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
         controller.friends = self.user.friends;
         [self.navigationController pushViewController:controller
                                              animated:YES];

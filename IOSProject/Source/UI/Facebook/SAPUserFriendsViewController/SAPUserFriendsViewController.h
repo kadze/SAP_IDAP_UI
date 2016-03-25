@@ -1,5 +1,5 @@
 //
-//  SAPFriendsViewController.h
+//  SAPUserFriendsViewController.h
 //  IOSProject
 //
 //  Created by SAP on 3/16/16.
@@ -10,7 +10,7 @@
 
 @class SAPUsers;
 
-@interface SAPFriendsViewController : SAPViewController
+@interface SAPUserFriendsViewController : SAPViewController
 @property (nonatomic, strong) SAPUsers *friends;
 
 @end

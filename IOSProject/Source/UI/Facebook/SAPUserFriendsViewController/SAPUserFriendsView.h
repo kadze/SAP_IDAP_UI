@@ -1,5 +1,5 @@
 //
-//  SAPFriendsView.h
+//  SAPUserFriendsView.h
 //  IOSProject
 //
 //  Created by SAP on 3/16/16.
@@ -10,7 +10,7 @@
 
 @class SAPUsers;
 
-@interface SAPFriendsView : SAPView
+@interface SAPUserFriendsView : SAPView
 @property (nonatomic, strong) IBOutlet UITableView  *tableView;
 
 @property (nonatomic, strong) SAPUsers *users;

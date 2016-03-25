@@ -1,15 +1,15 @@
 //
-//  SAPFriendsViewController.m
+//  SAPUserFriendsViewController.m
 //  IOSProject
 //
 //  Created by SAP on 3/16/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPFriendsViewController.h"
+#import "SAPUserFriendsViewController.h"
 
 #import "SAPUsers.h"
-#import "SAPFriendsView.h"
+#import "SAPUserFriendsView.h"
 #import "SAPUserCell.h"
 #import "SAPUserFriendsContext.h"
 #import "SAPUserDetailViewController.h"
@@ -24,15 +24,15 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, baseView);
+SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, baseView);
 
-@interface SAPFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
+@interface SAPUserFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
 
 - (void)reloadView;
 
 @end
 
-@implementation SAPFriendsViewController
+@implementation SAPUserFriendsViewController
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
