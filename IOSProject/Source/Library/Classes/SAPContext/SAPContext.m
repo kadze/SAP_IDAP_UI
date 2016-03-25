@@ -31,15 +31,11 @@
 #pragma mark Public
 
 - (void)execute {
-    return;
+    
 }
 
 - (void)cancel {
-    return;
+    
 }
-
-//- (FBSDKGraphRequest *)graphRequest:(NSString *)graphPath {
-//    return [[FBSDKGraphRequest alloc] initWithGraphPath:graphPath parameters:nil];
-//}
 
 @end
