@@ -1,25 +1,25 @@
 //
-//  SAPFriendDetailViewController.m
+//  SAPUserDetailViewController.m
 //  IOSProject
 //
 //  Created by SAP on 3/16/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPFriendDetailViewController.h"
+#import "SAPUserDetailViewController.h"
 
-#import "SAPFriendDetailView.h"
+#import "SAPUserDetailView.h"
 #import "SAPUser.h"
-#import "SAPFriendDetailContext.h"
+#import "SAPUserDetailContext.h"
 #import "SAPImageView.h"
 
 #import "SAPDispatch.h"
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetailView, baseView);
+SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView, baseView);
 
-@implementation SAPFriendDetailViewController
+@implementation SAPUserDetailViewController
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -43,7 +43,7 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 #pragma mark View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    SAPFriendDetailContext *context = [SAPFriendDetailContext contextWithModel:self.friend];
+    SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.friend];
     self.context = context;
     [context execute];
 }
@@ -52,7 +52,7 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 #pragma mark Public
 
 - (void)finishModelLoading {
-    SAPFriendDetailView *view = self.baseView;
+    SAPUserDetailView *view = self.baseView;
     SAPUser *friend = self.friend;
     
     view.userImageView.imageModel = friend.largeImageModel;

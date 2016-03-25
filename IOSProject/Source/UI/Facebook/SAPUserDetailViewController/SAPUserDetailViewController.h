@@ -1,5 +1,5 @@
 //
-//  SAPFriendDetailViewController.h
+//  SAPUserDetailViewController.h
 //  IOSProject
 //
 //  Created by SAP on 3/16/16.
@@ -10,7 +10,7 @@
 
 @class SAPUser;
 
-@interface SAPFriendDetailViewController : SAPViewController
+@interface SAPUserDetailViewController : SAPViewController
 @property (nonatomic, strong) SAPUser *friend;
 
 @end

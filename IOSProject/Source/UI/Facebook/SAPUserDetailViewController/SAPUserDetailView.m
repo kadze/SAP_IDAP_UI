@@ -1,13 +1,13 @@
 //
-//  SAPFriendDetailView.m
+//  SAPUserDetailView.m
 //  IOSProject
 //
 //  Created by SAP on 3/16/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPFriendDetailView.h"
+#import "SAPUserDetailView.h"
 
-@implementation SAPFriendDetailView
+@implementation SAPUserDetailView
 
 @end

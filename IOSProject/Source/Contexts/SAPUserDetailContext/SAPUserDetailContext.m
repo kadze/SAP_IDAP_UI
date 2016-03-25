@@ -1,12 +1,12 @@
 //
-//  SAPFriendDetailContext.m
+//  SAPUserDetailContext.m
 //  IOSProject
 //
 //  Created by SAP on 3/23/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPFriendDetailContext.h"
+#import "SAPUserDetailContext.h"
 
 #import "SAPUser.h"
 
@@ -14,7 +14,7 @@
 
 #import "SAPGraphStringConstants.h"
 
-@implementation SAPFriendDetailContext
+@implementation SAPUserDetailContext
 
 #pragma mark -
 #pragma mark Accessors

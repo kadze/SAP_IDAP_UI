@@ -12,7 +12,7 @@
 #import "SAPFriendsView.h"
 #import "SAPUserCell.h"
 #import "SAPUserFriendsContext.h"
-#import "SAPFriendDetailViewController.h"
+#import "SAPUserDetailViewController.h"
 
 #import "UINib+SAPextensions.h"
 #import "UITableView+SAPExtensions.h"
@@ -68,7 +68,7 @@ SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, base
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SAPUser *friend = self.friends[indexPath.row];
-    SAPFriendDetailViewController *controller = [SAPFriendDetailViewController new];
+    SAPUserDetailViewController *controller = [SAPUserDetailViewController new];
     controller.friend = friend;
     [self.navigationController pushViewController:controller animated:YES];
 }
