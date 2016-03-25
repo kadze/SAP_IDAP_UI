@@ -9,7 +9,7 @@
 #import "SAPContext.h"
 
 @interface SAPFacebookContext : SAPContext
-@property (nonatomic, readonly) id completionHandler;
+@property (nonatomic, readonly) FBSDKGraphRequestHandler completionHandler;
 
 @property (nonatomic, readonly) FBSDKGraphRequest           *graphRequest;
 @property (nonatomic, strong)   FBSDKGraphRequestConnection *connection;
