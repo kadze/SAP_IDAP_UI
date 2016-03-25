@@ -6,9 +6,9 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SAPView.h"
 
-@interface SAPLoginView : UIView
+@interface SAPLoginView : SAPView
 @property (nonatomic, strong) IBOutlet UIButton *loginButton;
 
 @end

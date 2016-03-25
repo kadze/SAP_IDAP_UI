@@ -31,6 +31,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 
 - (void)execute {
     SAPModel *user = self.model;
+    user.state = kSAPModelStateWillLoad;
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     SAPLoginViewController *controller = self.controller;
     [login logInWithReadPermissions: @[kSAPPublicPofilePermission, kSAPUserFriendsPermission]
@@ -44,6 +45,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         user.state = kSAPModelStateDidFailLoading;
                                     }
                                 } else {
+                                    user.state = kSAPModelStateDidFinishLoading;
                                     [self loadUser];
                                 }
                             }];

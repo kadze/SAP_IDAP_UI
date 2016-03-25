@@ -61,8 +61,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
 
 - (IBAction)onLogin:(id)sender {
     SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
-    self.context = context;
     context.controller = self;
+    self.context = context;
     [context execute];
 }
 
@@ -77,6 +77,12 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
         controller.friends = self.user.friends;
         [self.navigationController pushViewController:controller
                                              animated:YES];
+    });
+}
+
+- (void)modelWillLoad:(id)model {
+    SAPDispatchAsyncOnMainQueue(^{
+        self.loginView.loadingViewVisible = YES;
     });
 }
 
