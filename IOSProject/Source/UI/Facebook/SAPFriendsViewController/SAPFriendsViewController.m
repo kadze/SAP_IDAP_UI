@@ -24,10 +24,9 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, friendsView);
+SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, baseView);
 
 @interface SAPFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
-@property (nonatomic, strong) SAPUserFriendsContext *context;
 
 - (void)reloadView;
 
@@ -117,39 +116,22 @@ SAPViewControllerBaseViewProperty(SAPFriendsViewController, SAPFriendsView, frie
 #pragma mark SAPCollectionObserver
 
 - (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
-    UITableView *tableView = self.friendsView.tableView;
+    UITableView *tableView = self.baseView.tableView;
     [tableView updateWithCollectionChangeModel:changeModel];
 }
 
 #pragma mark -
-#pragma mark SAPModelObserver
+#pragma mark Public
 
-- (void)modelWillLoad:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        self.friendsView.loadingViewVisible = YES;
-    });
-}
-
-- (void)modelDidFinishLoading:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        [self reloadView];
-        self.friendsView.loadingViewVisible = NO;
-    });
-}
-
-- (void)modelDidFailLoading:(id)model {
-    self.friendsView.loadingViewVisible = NO;
-}
-
-- (void)modelDidUnload:(id)model {
-    self.friendsView.loadingViewVisible = NO;
+- (void)finishModelLoading {
+    [self reloadView];
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (void)reloadView {
-    [self.friendsView.tableView reloadData];
+    [self.baseView.tableView reloadData];
 }
 
 @end

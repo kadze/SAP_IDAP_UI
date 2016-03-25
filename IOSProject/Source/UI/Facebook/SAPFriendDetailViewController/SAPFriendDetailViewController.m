@@ -17,14 +17,7 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetailView, friendDetailView);
-
-@interface SAPFriendDetailViewController ()
-@property (nonatomic, strong) SAPFriendDetailContext *context;
-
-- (void)fillWithModel;
-
-@end
+SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetailView, baseView);
 
 @implementation SAPFriendDetailViewController
 
@@ -56,34 +49,10 @@ SAPViewControllerBaseViewProperty(SAPFriendDetailViewController, SAPFriendDetail
 }
 
 #pragma mark -
-#pragma mark SAPModelObserver
+#pragma mark Public
 
-- (void)modelWillLoad:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        self.friendDetailView.loadingViewVisible = YES;
-    });
-}
-
-- (void)modelDidFinishLoading:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        [self fillWithModel];
-        self.friendDetailView.loadingViewVisible = NO;
-    });
-}
-
-- (void)modelDidFailLoading:(id)model {
-    self.friendDetailView.loadingViewVisible = NO;
-}
-
-- (void)modelDidUnload:(id)model {
-    self.friendDetailView.loadingViewVisible = NO;
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (void)fillWithModel {
-    SAPFriendDetailView *view = self.friendDetailView;
+- (void)finishModelLoading {
+    SAPFriendDetailView *view = self.baseView;
     SAPUser *friend = self.friend;
     
     view.userImageView.imageModel = friend.largeImageModel;

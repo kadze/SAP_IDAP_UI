@@ -22,10 +22,9 @@
 
 #import "SAPDispatch.h"
 
-SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginView);
+SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, baseView);
 
 @interface SAPLoginViewController () <SAPModelObserver>
-@property (nonatomic, strong) SAPFacebookLoginContext *context;
 
 @end
 
@@ -77,12 +76,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, loginVie
         controller.friends = self.user.friends;
         [self.navigationController pushViewController:controller
                                              animated:YES];
-    });
-}
-
-- (void)modelWillLoad:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        self.loginView.loadingViewVisible = YES;
     });
 }
 

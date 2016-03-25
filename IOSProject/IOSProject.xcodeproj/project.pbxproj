@@ -840,8 +840,8 @@
 			children = (
 				2ED4B5961C99DD5B001670F6 /* SAPLoginViewController */,
 				2ED4B5951C99DD5B001670F6 /* SAPFriendsViewController */,
-				CA634BFD1C69C3FC00DAED4E /* SAPUsersViewController */,
 				2ED4B5941C99DD5B001670F6 /* SAPFriendDetailViewController */,
+				CA634BFD1C69C3FC00DAED4E /* SAPUsersViewController */,
 				CAC421C71C5A4905004E4F1E /* SAPSquareViewController */,
 			);
 			path = UI;

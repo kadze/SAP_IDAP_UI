@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class SAPContext;
+@class SAPView;
+
 @interface SAPViewController : UIViewController
+@property (nonatomic, readonly) SAPView *baseView;
+@property (nonatomic, strong) SAPContext *context;
+
+- (void)finishModelLoading;
 
 @end
