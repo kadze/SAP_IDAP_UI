@@ -12,6 +12,8 @@
 #import "SAPDispatch.h"
 
 @implementation SAPFacebookContext
+@dynamic graphRequest;
+@dynamic completionHandler;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations

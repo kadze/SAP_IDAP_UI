@@ -46,8 +46,8 @@
             <connections>
                 <outlet property="firstNameLabel" destination="Qqe-az-KCk" id="M50-k4-EN0"/>
                 <outlet property="genderLabel" destination="lg9-jG-vPl" id="dZt-Gb-SWE"/>
+                <outlet property="imageView" destination="cth-Sc-3lF" id="khL-oN-3XP"/>
                 <outlet property="lastNameLabel" destination="DUZ-a9-R9u" id="pPD-E6-jxc"/>
-                <outlet property="userImageView" destination="cth-Sc-3lF" id="ZzM-Jn-Jpx"/>
             </connections>
             <point key="canvasLocation" x="140" y="307"/>
         </view>

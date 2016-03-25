@@ -55,7 +55,7 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
     SAPUserDetailView *view = self.baseView;
     SAPUser *friend = self.friend;
     
-    view.userImageView.imageModel = friend.largeImageModel;
+    view.imageView.imageModel = friend.largeImageModel;
     view.firstNameLabel.text = friend.firstName;
     view.lastNameLabel.text = friend.lastName;
     view.genderLabel.text = friend.gender;

@@ -20,6 +20,4 @@
 - (void)execute;
 - (void)cancel;
 
-//- (FBSDKGraphRequest *)graphRequest:(NSString *)graphPath;
-
 @end
