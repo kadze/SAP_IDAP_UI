@@ -15,7 +15,7 @@
 
 @interface SAPUserCell ()
 
-- (void)fillWithModel:(SAPUser *)user;
+- (void)fillWithModel:(SAPUser *)model;
 
 @end
 
@@ -24,20 +24,20 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(SAPUser *)user {
-    if (_user != user) {
-        _user = user;
+- (void)setModel:(SAPUser *)model {
+    if (_model != model) {
+        _model = model;
         
-        [self fillWithModel:user];
+        [self fillWithModel:model];
     }
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)fillWithModel:(SAPUser *)user {
-    self.label.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
-    self.userImageView.imageModel = user.imageModel;
+- (void)fillWithModel:(SAPUser *)model {
+    self.label.text = [NSString stringWithFormat:@"%@ %@", model.firstName, model.lastName];
+    self.userImageView.imageModel = model.imageModel;
 }
 
 @end

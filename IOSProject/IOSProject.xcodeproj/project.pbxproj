@@ -123,6 +123,7 @@
 		2E424A301CA57C7E0089CECC /* SAPFacebookContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPFacebookContext.m; sourceTree = "<group>"; };
 		2E424A331CA58A140089CECC /* SAPUserFriendsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserFriendsContext.h; sourceTree = "<group>"; };
 		2E424A341CA58A140089CECC /* SAPUserFriendsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserFriendsContext.m; sourceTree = "<group>"; };
+		2E424A381CA803EF0089CECC /* SAPModelKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPModelKeeper.h; sourceTree = "<group>"; };
 		2E44ACDB1C94647200965DFA /* SAPObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPObjectCache.h; sourceTree = "<group>"; };
 		2E44ACDC1C94647200965DFA /* SAPObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPObjectCache.m; sourceTree = "<group>"; };
 		2ED4B57E1C99CF52001670F6 /* SAPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPContext.h; sourceTree = "<group>"; };
@@ -385,6 +386,14 @@
 			path = SAPUserFriendsContext;
 			sourceTree = "<group>";
 		};
+		2E424A371CA803BC0089CECC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2E424A381CA803EF0089CECC /* SAPModelKeeper.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		2E44ACDA1C94643400965DFA /* SAPObjectCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,13 +494,6 @@
 				CA4B3EF31C6B8CDE00440914 /* UITableView+SAPExtensions.m */,
 			);
 			path = UITableView;
-			sourceTree = "<group>";
-		};
-		CA4B3F011C73480F00440914 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CA4B3F2A1C74AFFE00440914 /* SAPCollectionChangeModel */ = {
@@ -835,7 +837,7 @@
 				CA4B3F951C7F352000440914 /* Functions */,
 				CA634BE81C68D0BD00DAED4E /* Classes */,
 				CA4AA8941C5BC6E100B1CBEC /* Categories */,
-				CA4B3F011C73480F00440914 /* Protocols */,
+				2E424A371CA803BC0089CECC /* Protocols */,
 				CA634BF91C68F19400DAED4E /* Macro */,
 				2E424A051CA1A7880089CECC /* SAPGraphStringConstants.h */,
 			);

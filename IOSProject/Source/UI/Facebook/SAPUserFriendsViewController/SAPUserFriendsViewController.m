@@ -84,7 +84,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SAPUserCell *cell = [tableView cellWithClass:[SAPUserCell class]];
-    cell.user = self.friends[indexPath.row];
+    cell.model = self.friends[indexPath.row];
     
     return cell;
 }

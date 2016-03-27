@@ -89,7 +89,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SAPUserCell *cell = [tableView cellWithClass:[SAPUserCell class]];
-    cell.user = self.users[indexPath.row];
+    cell.model = self.users[indexPath.row];
     
     return cell;
 }
