@@ -24,10 +24,6 @@
 
 SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, baseView);
 
-@interface SAPLoginViewController () <SAPModelObserver>
-
-@end
-
 @implementation SAPLoginViewController
 
 #pragma mark -
@@ -62,21 +58,17 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, baseView
     SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
     context.controller = self;
     self.context = context;
-    [context execute];
 }
 
 #pragma mark -
-#pragma mark SAPModelObserver
+#pragma mark Public
 
-- (void)modelDidFinishLoading:(id)model {
-    SAPWeakify(self);
-    SAPDispatchAsyncOnMainQueue(^{
-        SAPStrongifyAndReturnIfNil(self);
-        SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
-        controller.friends = self.user.friends;
-        [self.navigationController pushViewController:controller
-                                             animated:YES];
-    });
+- (void)updateViewControllerWithModel:(id)model {
+    SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
+    controller.user = self.user;
+    [self.navigationController pushViewController:controller
+                                         animated:YES];
 }
+
 
 @end
