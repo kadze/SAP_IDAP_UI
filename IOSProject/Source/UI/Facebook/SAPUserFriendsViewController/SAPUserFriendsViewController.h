@@ -6,11 +6,11 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPViewController.h"
+#import "SAPArrayViewController.h"
 
-@class SAPUsers;
+@class SAPUser;
 
-@interface SAPUserFriendsViewController : SAPViewController
-@property (nonatomic, strong) SAPUsers *friends;
+@interface SAPUserFriendsViewController : SAPArrayViewController
+@property (nonatomic, strong) SAPUser *user;
 
 @end

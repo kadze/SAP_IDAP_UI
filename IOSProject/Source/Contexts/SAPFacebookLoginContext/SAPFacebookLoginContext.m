@@ -70,8 +70,13 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         user.state = kSAPModelStateDidFailLoading;
                                     }
                                 } else {
-                                    user.state = kSAPModelStateDidFinishLoading;
-                                    [self loadUser];
+                                    [user performBlockWithoutNotification:^{
+                                        user.state = kSAPModelStateUnloaded;
+                                    }];
+                                    //user.state = kSAPModelStateDidFinishLoading;
+//                                    SAPDispatchAsyncOnMainQueue(^{
+                                        [self loadUser];
+//                                    });
                                 }
                             }
      ];
