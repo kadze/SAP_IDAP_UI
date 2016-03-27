@@ -9,9 +9,14 @@
 #import "SAPFacebookContext.h"
 
 #import "SAPModel.h"
+
+#import "SAPOwnershipMacro.h"
+
 #import "SAPDispatch.h"
 
 @interface SAPFacebookContext ()
+@property (nonatomic, readonly) FBSDKGraphRequestHandler completionHandler;
+
 @property (nonatomic, readonly) FBSDKGraphRequest *graphRequest;
 
 @end
@@ -46,7 +51,25 @@
 }
 
 - (FBSDKGraphRequestHandler)completionHandler {
-    return nil;
+    SAPModel *model = self.model;
+    SAPWeakify(self);
+    return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
+        SAPStrongifyAndReturnIfNil(self);
+        
+        if (error) {
+            @synchronized (model) {
+                model.state = kSAPModelStateDidFailLoading;
+                
+                return;
+            }
+        }
+        
+        [self fillModelWithResult:result];
+        
+        @synchronized (model) {
+            model.state = kSAPModelStateDidFinishLoading;
+        };
+    };
 }
 
 #pragma mark -
@@ -65,13 +88,17 @@
         model.state = kSAPModelStateWillLoad;
     }
 
-    SAPDispatchSyncOnDefaultQueue(^{
+    SAPDispatchAsyncOnDefaultQueue(^{
         [self performBackgroundExecution];
     });
 }
 
 - (void)cancel {
     self.connection = nil;
+}
+
+- (void)fillModelWithResult:(NSDictionary *)result {
+    
 }
 
 - (NSString *)graphRequestPath {

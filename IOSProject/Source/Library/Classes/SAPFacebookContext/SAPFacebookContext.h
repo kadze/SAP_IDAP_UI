@@ -9,11 +9,10 @@
 #import "SAPContext.h"
 
 @interface SAPFacebookContext : SAPContext
-@property (nonatomic, readonly) FBSDKGraphRequestHandler completionHandler;
-
 @property (nonatomic, strong) FBSDKGraphRequestConnection *connection;
 
 - (NSString *)graphRequestPath;
 - (NSDictionary *)graphRequestParameters;
+- (void)fillModelWithResult:(NSDictionary *)result;
 
 @end

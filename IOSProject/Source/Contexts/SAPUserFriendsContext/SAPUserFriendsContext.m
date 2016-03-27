@@ -17,41 +17,6 @@
 
 @implementation SAPUserFriendsContext
 
-@dynamic completionHandler;
-
-#pragma mark -
-#pragma mark Accessors
-
-- (FBSDKGraphRequestHandler)completionHandler {
-    SAPUsers *users = self.model;
-    
-    return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
-        if (error) {
-            @synchronized (users) {
-                users.state = kSAPModelStateDidFailLoading;
-                ///load from disk !!!!!!!
-                return;
-            }
-        }
-        
-        NSArray *friends = result[kSAPFriendsKey][kSAPDataKey];
-        for (id friend in friends) {
-            SAPUser *user = [SAPUser new];
-            user.userId = friend[kSAPIDKey];
-            user.firstName = friend[kSAPFirstNameKey];
-            user.lastName = friend[kSAPLastNameKey];
-            NSString *urlString = friend[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-            user.imageURL = [NSURL URLWithString:urlString];
-            
-            [users addObject:user];
-        }
-
-        @synchronized (users) {
-            users.state = kSAPModelStateDidFinishLoading;
-        };
-    };
-}
-
 #pragma mark -
 #pragma mark Public
 
@@ -68,6 +33,21 @@
                                  kSAPUrlKey];
     
     return @{kSAPFieldsKey : fieldsParameter};
+}
+
+- (void)fillModelWithResult:(NSDictionary *)result {
+    SAPUsers *users = self.model;
+    NSArray *friends = result[kSAPFriendsKey][kSAPDataKey];
+    for (id friend in friends) {
+        SAPUser *user = [SAPUser new];
+        user.userId = friend[kSAPIDKey];
+        user.firstName = friend[kSAPFirstNameKey];
+        user.lastName = friend[kSAPLastNameKey];
+        NSString *urlString = friend[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+        user.imageURL = [NSURL URLWithString:urlString];
+        
+        [users addObject:user];
+    }
 }
 
 @end
