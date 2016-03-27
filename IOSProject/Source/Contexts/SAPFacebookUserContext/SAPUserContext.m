@@ -10,27 +10,14 @@
 
 #import "SAPUser.h"
 
-#import "SAPDispatch.h"
-
 #import "SAPGraphStringConstants.h"
 
 @implementation SAPUserContext
 
+@dynamic completionHandler;
+
 #pragma mark -
 #pragma mark Accessors
-
-- (FBSDKGraphRequest *)graphRequest {
-    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@,%@{%@}",
-                                 kSAPFirstNameKey,
-                                 kSAPLastNameKey,
-                                 kSAPPictureKey,
-                                 kSAPUrlKey];
-    
-    NSDictionary *parameters = @{kSAPFieldsKey : fieldsParameter};
-    
-    return [[FBSDKGraphRequest alloc] initWithGraphPath:kSAPUserGraphPath
-                                             parameters:parameters];
-}
 
 - (FBSDKGraphRequestHandler)completionHandler {
     SAPUser *user = self.model;
@@ -54,6 +41,23 @@
             user.state = kSAPModelStateDidFinishLoading;
         };
     };
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (NSString *)graphRequestPath {
+    return kSAPUserGraphPath;
+}
+
+- (NSDictionary *)graphRequestParameters {
+    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@,%@{%@}",
+                                 kSAPFirstNameKey,
+                                 kSAPLastNameKey,
+                                 kSAPPictureKey,
+                                 kSAPUrlKey];
+    
+    return @{kSAPFieldsKey : fieldsParameter};
 }
 
 @end

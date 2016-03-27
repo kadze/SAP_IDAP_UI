@@ -11,6 +11,11 @@
 #import "SAPModel.h"
 #import "SAPDispatch.h"
 
+@interface SAPFacebookContext ()
+@property (nonatomic, readonly) FBSDKGraphRequest *graphRequest;
+
+@end
+
 @implementation SAPFacebookContext
 @dynamic graphRequest;
 @dynamic completionHandler;
@@ -31,6 +36,17 @@
         _connection = connection;
         [connection start];
     }
+}
+
+- (FBSDKGraphRequest *)graphRequest {
+    NSDictionary *parameters = [self graphRequestParameters];
+    
+    return [[FBSDKGraphRequest alloc] initWithGraphPath:[self graphRequestPath]
+                                             parameters:parameters];
+}
+
+- (FBSDKGraphRequestHandler)completionHandler {
+    return nil;
 }
 
 #pragma mark -
@@ -56,6 +72,14 @@
 
 - (void)cancel {
     self.connection = nil;
+}
+
+- (NSString *)graphRequestPath {
+    return nil;
+}
+
+- (NSDictionary *)graphRequestParameters {
+    return nil;
 }
 
 #pragma mark -

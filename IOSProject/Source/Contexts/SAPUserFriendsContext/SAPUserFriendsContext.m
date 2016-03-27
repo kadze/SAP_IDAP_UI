@@ -17,25 +17,10 @@
 
 @implementation SAPUserFriendsContext
 
-@dynamic graphRequest;
 @dynamic completionHandler;
 
 #pragma mark -
 #pragma mark Accessors
-
-- (FBSDKGraphRequest *)graphRequest {
-    NSString *fieldsParameter = [NSString stringWithFormat:@"%@{%@,%@,%@{%@}}",
-                                 kSAPFriendsKey,
-                                 kSAPFirstNameKey,
-                                 kSAPLastNameKey,
-                                 kSAPPictureKey,
-                                 kSAPUrlKey];
-    
-    NSDictionary *parameters = @{kSAPFieldsKey : fieldsParameter};
-    
-    return [[FBSDKGraphRequest alloc] initWithGraphPath:kSAPUserGraphPath
-                                             parameters:parameters];
-}
 
 - (FBSDKGraphRequestHandler)completionHandler {
     SAPUsers *users = self.model;
@@ -67,9 +52,22 @@
     };
 }
 
-//- (void)loadUserFromDisk {
-//    [self.user.friends load];
-//}
+#pragma mark -
+#pragma mark Public
 
+- (NSString *)graphRequestPath {
+    return kSAPUserGraphPath;
+}
+
+- (NSDictionary *)graphRequestParameters {
+    NSString *fieldsParameter = [NSString stringWithFormat:@"%@{%@,%@,%@{%@}}",
+                                 kSAPFriendsKey,
+                                 kSAPFirstNameKey,
+                                 kSAPLastNameKey,
+                                 kSAPPictureKey,
+                                 kSAPUrlKey];
+    
+    return @{kSAPFieldsKey : fieldsParameter};
+}
 
 @end

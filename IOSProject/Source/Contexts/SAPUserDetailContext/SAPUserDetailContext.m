@@ -16,22 +16,10 @@
 
 @implementation SAPUserDetailContext
 
+@dynamic completionHandler;
+
 #pragma mark -
 #pragma mark Accessors
-
-- (FBSDKGraphRequest *)graphRequest {
-    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@{%@}",
-                                 kSAPGengerKey,
-                                 kSAPLargePictureKey,
-                                 kSAPUrlKey];
-    
-    NSDictionary *parameters = @{kSAPFieldsKey : fieldsParameter};
-    
-    SAPUser *user = self.model;
-    
-    return [[FBSDKGraphRequest alloc] initWithGraphPath:user.userId
-                                             parameters:parameters];
-}
 
 - (FBSDKGraphRequestHandler)completionHandler {
     SAPUser *user = self.model;
@@ -53,6 +41,24 @@
             user.state = kSAPModelStateDidFinishLoading;
         };
     };
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (NSString *)graphRequestPath {
+    SAPUser *user = self.model;
+    
+    return user.userId;
+}
+
+- (NSDictionary *)graphRequestParameters {
+    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@{%@}",
+                                 kSAPGengerKey,
+                                 kSAPLargePictureKey,
+                                 kSAPUrlKey];
+    
+    return @{kSAPFieldsKey : fieldsParameter};
 }
 
 @end

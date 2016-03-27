@@ -11,7 +11,9 @@
 @interface SAPFacebookContext : SAPContext
 @property (nonatomic, readonly) FBSDKGraphRequestHandler completionHandler;
 
-@property (nonatomic, readonly) FBSDKGraphRequest           *graphRequest;
-@property (nonatomic, strong)   FBSDKGraphRequestConnection *connection;
+@property (nonatomic, strong) FBSDKGraphRequestConnection *connection;
+
+- (NSString *)graphRequestPath;
+- (NSDictionary *)graphRequestParameters;
 
 @end
