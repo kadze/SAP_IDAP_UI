@@ -20,12 +20,11 @@
 #import "UITableView+SAPExtensions.h"
 #import "UITableView+SAPCollectionChangeModel.h"
 
-#import "SAPCollectionObserver.h"
 #import "SAPModelKeeper.h"
 
 #import "SAPViewControllerMacro.h"
 
-@interface SAPArrayViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
+@interface SAPArrayViewController ()
 
 - (id)cellClass;
 

@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "SAPViewController.h"
-
+#import "SAPCollectionObserver.h"
 
 @class SAPArrayModel;
 @class SAPArrayModelChangeModel;
 @class SAPActivityIndicator;
 
-@interface SAPArrayViewController : SAPViewController
+@interface SAPArrayViewController : SAPViewController<UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
 @property (nonatomic, strong) SAPArrayModel *items;
 
 + (Class)cellClass;
