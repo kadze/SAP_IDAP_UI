@@ -8,6 +8,35 @@
 
 #import "SAPUserDetailView.h"
 
+#import "SAPUser.h"
+#import "SAPImageView.h"
+
+@interface SAPUserDetailView ()
+- (void)fillWithModel:(SAPUser *)model;
+
+@end
+
 @implementation SAPUserDetailView
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setModel:(SAPUser *)model {
+    if (_model != model) {
+        _model = model;
+        
+        [self fillWithModel:model];
+    }
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)fillWithModel:(SAPUser *)model {
+    self.imageView.imageModel = model.largeImageModel;
+    self.firstNameLabel.text = model.firstName;
+    self.lastNameLabel.text = model.lastName;
+    self.genderLabel.text = model.gender;
+}
 
 @end

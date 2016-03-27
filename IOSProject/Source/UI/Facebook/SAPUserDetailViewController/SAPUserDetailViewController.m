@@ -11,7 +11,6 @@
 #import "SAPUserDetailView.h"
 #import "SAPUser.h"
 #import "SAPUserDetailContext.h"
-#import "SAPImageView.h"
 
 #import "SAPDispatch.h"
 
@@ -45,20 +44,13 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 - (void)viewWillAppear:(BOOL)animated {
     SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.friend];
     self.context = context;
-    [context execute];
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)finishModelLoading {
-    SAPUserDetailView *view = self.baseView;
-    SAPUser *friend = self.friend;
-    
-    view.imageView.imageModel = friend.largeImageModel;
-    view.firstNameLabel.text = friend.firstName;
-    view.lastNameLabel.text = friend.lastName;
-    view.genderLabel.text = friend.gender;
+- (void)updateViewControllerWithModel:(id)model {
+    self.baseView.model = model;
 }
 
 @end
