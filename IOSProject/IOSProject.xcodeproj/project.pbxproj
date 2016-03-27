@@ -347,25 +347,9 @@
 				2E424A261CA57A4B0089CECC /* SAPUserFriendsViewController.h */,
 				2E424A271CA57A4B0089CECC /* SAPUserFriendsViewController.m */,
 				2E424A281CA57A4B0089CECC /* SAPUserFriendsViewController.xib */,
-				2E424A291CA57A4B0089CECC /* Views */,
 			);
 			name = SAPUserFriendsViewController;
 			path = Facebook/SAPUserFriendsViewController;
-			sourceTree = "<group>";
-		};
-		2E424A291CA57A4B0089CECC /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2E424A2A1CA57A4B0089CECC /* SAPFriendCell */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		2E424A2A1CA57A4B0089CECC /* SAPFriendCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SAPFriendCell;
 			sourceTree = "<group>";
 		};
 		2E424A2E1CA57C7E0089CECC /* SAPFacebookContext */ = {
