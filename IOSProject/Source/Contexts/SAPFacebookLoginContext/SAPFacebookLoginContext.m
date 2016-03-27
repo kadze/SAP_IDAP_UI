@@ -14,6 +14,8 @@
 #import "SAPLoginViewController.h"
 #import "SAPUserContext.h"
 
+#import "SAPOwnershipMacro.h"
+
 #import "SAPDispatch.h"
 
 static NSString * const kSAPPublicPofilePermission = @"public_profile";
@@ -21,6 +23,9 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 
 @interface SAPFacebookLoginContext ()
 @property (nonatomic, strong) SAPUserContext *userContext;
+
+- (void)login;
+- (void)loadUser;
 
 @end
 
@@ -31,12 +36,32 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 
 - (void)execute {
     SAPModel *user = self.model;
+    
+    NSUInteger state = user.state;
+    if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
+        [user notifyObserversWithSelector:[user selectorForState:state]];
+        
+        return;
+    }
+    
+    [self login];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)login {
+    SAPModel *user = self.model;
+    
     user.state = kSAPModelStateWillLoad;
+    
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     SAPLoginViewController *controller = self.controller;
+    SAPWeakify(self);
     [login logInWithReadPermissions: @[kSAPPublicPofilePermission, kSAPUserFriendsPermission]
                  fromViewController:controller
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                                SAPStrongifyAndReturnIfNil(self);
                                 if (error) {
                                     NSLog(@"Process error");
                                 } else if (result.isCancelled) {
@@ -48,11 +73,9 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                     user.state = kSAPModelStateDidFinishLoading;
                                     [self loadUser];
                                 }
-                            }];
+                            }
+     ];
 }
-
-#pragma mark -
-#pragma mark Private
 
 - (void)loadUser {
     SAPUserContext *context = [SAPUserContext contextWithModel:self.model];
