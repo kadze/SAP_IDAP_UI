@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SAPModelObserver.h"
+
 @class SAPContext;
 @class SAPView;
 
-@interface SAPViewController : UIViewController
-@property (nonatomic, readonly) SAPView *baseView;
-@property (nonatomic, strong) SAPContext *context;
+@interface SAPViewController : UIViewController <SAPModelObserver>
+@property (nonatomic, readonly) SAPView    *baseView;
+@property (nonatomic, strong)   SAPContext *context;
 
-- (void)finishModelLoading;
+- (void)updateViewControllerWithModel:(id)model;
 
 @end

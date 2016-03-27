@@ -29,6 +29,7 @@
     if (_context != context) {
         [_context cancel];
         _context = context;
+        [context execute];
     }
 }
 
@@ -43,7 +44,7 @@
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        [self finishModelLoading];
+        [self updateViewControllerWithModel:model];
         self.baseView.loadingViewVisible = NO;
     });
 }
@@ -63,7 +64,7 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)finishModelLoading {
+- (void)updateViewControllerWithModel:(id)model {
     
 }
 
