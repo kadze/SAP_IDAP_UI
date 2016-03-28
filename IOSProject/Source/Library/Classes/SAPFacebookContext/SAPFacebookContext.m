@@ -88,7 +88,11 @@
         model.state = kSAPModelStateWillLoad;
     }
 
-    SAPDispatchAsyncOnDefaultQueue(^{
+    SAPWeakify(self);
+//    SAPDispatchAsyncOnDefaultQueue(^{
+//        /doesn't work. doesn't call completion handler
+    SAPDispatchSyncOnDefaultQueue(^{
+        SAPStrongifyAndReturnIfNil(self);
         [self performBackgroundExecution];
     });
 }

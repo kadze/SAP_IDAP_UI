@@ -73,10 +73,8 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                     [user performBlockWithoutNotification:^{
                                         user.state = kSAPModelStateUnloaded;
                                     }];
-                                    //user.state = kSAPModelStateDidFinishLoading;
-//                                    SAPDispatchAsyncOnMainQueue(^{
-                                        [self loadUser];
-//                                    });
+                                    
+                                    [self loadUser];
                                 }
                             }
      ];
