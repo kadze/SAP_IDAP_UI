@@ -49,13 +49,11 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setitems:(SAPArrayModel *)items {
+- (void)setItems:(SAPArrayModel *)items {
     if (_items != items) {
         [_items removeObserver:self];
         _items = items;
         [_items addObserver:self];
-        
-        [_items load];
     }
 }
 
