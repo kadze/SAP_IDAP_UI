@@ -18,10 +18,20 @@
 @implementation SAPUserFriendsContext
 
 #pragma mark -
+#pragma mark Accessors
+
+- (void)setUser:(SAPUser *)user {
+    if (_user != user) {
+        _user = user;
+        self.model = user.friends;
+    }
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (NSString *)graphRequestPath {
-    return kSAPUserGraphPath;
+    return self.user.userId;
 }
 
 - (NSDictionary *)graphRequestParameters {
@@ -36,18 +46,20 @@
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
-    SAPUsers *users = self.model;
-    NSArray *friends = result[kSAPFriendsKey][kSAPDataKey];
-    for (id friend in friends) {
-        SAPUser *user = [SAPUser new];
-        user.userId = friend[kSAPIDKey];
-        user.firstName = friend[kSAPFirstNameKey];
-        user.lastName = friend[kSAPLastNameKey];
-        NSString *urlString = friend[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-        user.imageURL = [NSURL URLWithString:urlString];
-        
-        [users addObject:user];
-    }
+    SAPUsers *friends = self.model;
+    NSArray *friendElements = result[kSAPFriendsKey][kSAPDataKey];
+    [friends performBlockWithoutNotification:^{
+        for (id friendElement in friendElements) {
+            SAPUser *user = [SAPUser new];
+            user.userId = friendElement[kSAPIDKey];
+            user.firstName = friendElement[kSAPFirstNameKey];
+            user.lastName = friendElement[kSAPLastNameKey];
+            NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+            user.imageURL = [NSURL URLWithString:urlString];
+            
+            [friends addObject:user];
+        }
+    }];
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import "SAPFacebookContext.h"
 
+@class SAPUser;
+
 @interface SAPUserFriendsContext : SAPFacebookContext;
+@property (nonatomic, strong) SAPUser *user;
 
 @end
