@@ -49,11 +49,10 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 #pragma mark -
 #pragma mark Accessors
+
 - (void)setUser:(SAPUser *)user {
     if (_user != user) {
-        [_user removeObserver:self];
         _user = user;
-        [_user addObserver:self];
         
         self.items = user.friends;
     }
@@ -63,7 +62,8 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 #pragma mark View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    SAPUserFriendsContext *context = [SAPUserFriendsContext contextWithModel:self.items];
+    SAPUserFriendsContext *context = [SAPUserFriendsContext new];
+    context.user = self.user;
     self.context = context;
 }
 
