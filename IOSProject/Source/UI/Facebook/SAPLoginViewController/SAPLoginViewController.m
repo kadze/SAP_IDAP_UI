@@ -66,6 +66,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, baseView
 - (void)updateViewControllerWithModel:(id)model {
     SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
     controller.user = self.user;
+    self.user = [SAPUser new];
     [self.navigationController pushViewController:controller
                                          animated:YES];
 }
