@@ -6,13 +6,13 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPUserContext.h"
+#import "SAPUserContextOnline.h"
 
 #import "SAPUser.h"
 
 #import "SAPGraphStringConstants.h"
 
-@implementation SAPUserContext
+@implementation SAPUserContextOnline
 
 #pragma mark -
 #pragma mark Public

@@ -8,6 +8,6 @@
 
 #import "SAPFacebookContext.h"
 
-@interface SAPUserContext : SAPFacebookContext
+@interface SAPUserContextOnline : SAPFacebookContext
 
 @end

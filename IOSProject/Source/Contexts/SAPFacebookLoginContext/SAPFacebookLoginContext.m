@@ -12,7 +12,8 @@
 
 #import "SAPModel.h"
 #import "SAPLoginViewController.h"
-#import "SAPUserContext.h"
+#import "SAPUserContextOnline.h"
+#import "SAPUserContextOffline.h"
 
 #import "SAPOwnershipMacro.h"
 
@@ -22,10 +23,10 @@ static NSString * const kSAPPublicPofilePermission = @"public_profile";
 static NSString * const kSAPUserFriendsPermission = @"user_friends";
 
 @interface SAPFacebookLoginContext ()
-@property (nonatomic, strong) SAPUserContext *userContext;
+@property (nonatomic, strong) SAPContext *userContext;
 
 - (void)login;
-- (void)loadUser;
+- (void)loadUserWithContextOfClass:(Class)aClass;
 
 @end
 
@@ -63,7 +64,11 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 SAPStrongifyAndReturnIfNil(self);
                                 if (error) {
-                                    NSLog(@"Process error");
+                                    [user performBlockWithoutNotification:^{
+                                        user.state = kSAPModelStateUnloaded;
+                                    }];
+                                    
+                                    [self loadUserWithContextOfClass:[SAPUserContextOffline class]];
                                 } else if (result.isCancelled) {
                                     NSLog(@"Cancelled");
                                     @synchronized (user) {
@@ -74,14 +79,14 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         user.state = kSAPModelStateUnloaded;
                                     }];
                                     
-                                    [self loadUser];
+                                    [self loadUserWithContextOfClass:[SAPUserContextOnline class]];
                                 }
                             }
      ];
 }
 
-- (void)loadUser {
-    SAPUserContext *context = [SAPUserContext contextWithModel:self.model];
+- (void)loadUserWithContextOfClass:(Class)aClass {
+    SAPContext *context = [aClass contextWithModel:self.model];
     self.userContext = context;
     [context execute];
 }
