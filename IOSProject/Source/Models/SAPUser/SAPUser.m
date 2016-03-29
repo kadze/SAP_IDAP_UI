@@ -24,6 +24,7 @@ static NSString * const kSAPLastNameKey      = @"lastName";
 static NSString * const kSAPImageURLKey      = @"imageURL";
 static NSString * const kSAPGenderKey        = @"gender";
 static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
+static NSString * const kSAPFriendsKey       = @"friends";
 
 @interface SAPUser ()
 @property (nonatomic, strong) id applicationObserver;
@@ -71,16 +72,35 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    //single object properties
     NSDictionary *encodingDictionary = [self encodingDictionary];
     for (NSString *key in encodingDictionary.allKeys) {
         [aCoder encodeObject:[encodingDictionary objectForKey:key] forKey:key];
     }
+    
+    //friends IDs
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.friends.count];
+    for (SAPUser *friend in self.friends.objects) {
+        [array addObject:friend.userId];
+    };
+    
+    [aCoder encodeObject:array forKey:kSAPFriendsKey];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init]; //mutable observers collection initialization
+    
+    //single object properties
     for (NSString *key in [[self encodingDictionary] allKeys]) {
         [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
+    }
+    
+    NSArray *friendsIDs = [aDecoder decodeObjectForKey:kSAPFriendsKey];
+    SAPUsers *friends = self.friends;
+    for (NSString *userId in friendsIDs) {
+        SAPUser *friend = [SAPUser new];
+        friend.userId = userId;
+        [friends addObject:friend];
     }
     
     return self;
@@ -115,16 +135,6 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 #pragma mark -
 #pragma mark Private
 
-- (NSDictionary *)encodingDictionary {
-    NSNull *null = [NSNull null];
-    return @{kSAPUserIDKey        : ((!self.userId) ? null : self.userId),
-             kSAPFirstNameKey     : ((!self.firstName) ? null : self.firstName),
-             kSAPLastNameKey      : ((!self.lastName) ? null : self.lastName),
-             kSAPImageURLKey      : ((!self.imageURL) ? null : self.imageURL),
-             kSAPLagreImageUrlKey : ((!self.largeImageURL) ? null : self.largeImageURL),
-             kSAPGenderKey        : ((!self.gender) ? null : self.gender)};
-}
-
 - (void)startObserving {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     NSOperationQueue *queue = [NSOperationQueue mainQueue];
@@ -135,7 +145,8 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
                                                usingBlock:^(NSNotification * note) {
                                                    SAPStrongify(self);
                                                    [self save];
-                                               }];
+                                               }
+                                ];
 }
 
 - (void)stopObserving {
@@ -143,6 +154,16 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
     [center removeObserver:self.applicationObserver
                       name:UIApplicationDidEnterBackgroundNotification
                     object:nil];
+}
+
+- (NSDictionary *)encodingDictionary {
+    NSNull *null = [NSNull null];
+    return @{kSAPUserIDKey        : ((!self.userId) ? null : self.userId),
+             kSAPFirstNameKey     : ((!self.firstName) ? null : self.firstName),
+             kSAPLastNameKey      : ((!self.lastName) ? null : self.lastName),
+             kSAPImageURLKey      : ((!self.imageURL) ? null : self.imageURL),
+             kSAPLagreImageUrlKey : ((!self.largeImageURL) ? null : self.largeImageURL),
+             kSAPGenderKey        : ((!self.gender) ? null : self.gender)};
 }
 
 @end
