@@ -14,7 +14,6 @@
 #import "SAPAppDelegate.h"
 #import "SAPUserFriendsContext.h"
 
-//#import "NSFileManager+SAPExtensions.h"
 #import "NSObject+SAPExtensions.h"
 
 #import "SAPOwnershipMacro.h"
@@ -23,7 +22,6 @@
 
 static NSString * const kSAPObjectsKey      = @"objects";
 static NSString * const kSAPPlistName       = @"users.plist";
-
 
 @interface SAPUsers ()
 
