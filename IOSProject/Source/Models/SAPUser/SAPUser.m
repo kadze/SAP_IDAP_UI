@@ -8,8 +8,14 @@
 
 #import "SAPUser.h"
 #import <Foundation/NSObject.h>
+#import <UIKit/UIApplication.h>
+
 #import "SAPUsers.h"
 #import "SAPImageModel.h"
+
+#import "NSFileManager+SAPExtensions.h"
+
+#import "SAPOwnershipMacro.h"
 
 //properties names for NSCoding
 static NSString * const kSAPUserIDKey        = @"userID";
@@ -20,6 +26,10 @@ static NSString * const kSAPGenderKey        = @"gender";
 static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 
 @interface SAPUser ()
+@property (nonatomic, strong) id applicationObserver;
+
+- (void)startObserving;
+- (void)stopObserving;
 
 - (NSDictionary *)encodingDictionary;
 
@@ -36,9 +46,14 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
     self = [super init];
     if (self) {
         self.friends = [SAPUsers new];
+        [self startObserving];
     }
     
     return self;
+}
+
+- (void)dealloc {
+    [self stopObserving];
 }
 
 #pragma mark -
@@ -72,6 +87,32 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 }
 
 #pragma mark -
+#pragma mark SAPCacheableModel
+
+- (NSString *)path {
+    return [[NSFileManager appStatePath] stringByAppendingPathComponent:self.userId];
+}
+
+- (BOOL)cached {
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    return [manager fileExistsAtPath:self.path];
+}
+
+- (void)save {
+    if (!self.userId || self.userId.length == 0) {
+        return;
+    }
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:[NSFileManager appStatePath]
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
+    [NSKeyedArchiver archiveRootObject:self toFile:self.path];
+}
+
+
+#pragma mark -
 #pragma mark Private
 
 - (NSDictionary *)encodingDictionary {
@@ -82,6 +123,26 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
              kSAPImageURLKey      : ((!self.imageURL) ? null : self.imageURL),
              kSAPLagreImageUrlKey : ((!self.largeImageURL) ? null : self.largeImageURL),
              kSAPGenderKey        : ((!self.gender) ? null : self.gender)};
+}
+
+- (void)startObserving {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    SAPWeakify(self);
+    self.applicationObserver = [center addObserverForName:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil
+                                                    queue:queue
+                                               usingBlock:^(NSNotification * note) {
+                                                   SAPStrongify(self);
+                                                   [self save];
+                                               }];
+}
+
+- (void)stopObserving {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self.applicationObserver
+                      name:UIApplicationDidEnterBackgroundNotification
+                    object:nil];
 }
 
 @end

@@ -11,67 +11,30 @@
 #import <Foundation/NSFileManager.h>
 
 #import "SAPUser.h"
-#import "SAPOwnershipMacro.h"
-#import "SAPDispatch.h"
 #import "SAPAppDelegate.h"
 #import "SAPUserFriendsContext.h"
 
-#import "NSFileManager+SAPExtensions.h"
+//#import "NSFileManager+SAPExtensions.h"
 #import "NSObject+SAPExtensions.h"
+
+#import "SAPOwnershipMacro.h"
+
+#import "SAPDispatch.h"
 
 static NSString * const kSAPObjectsKey      = @"objects";
 static NSString * const kSAPPlistName       = @"users.plist";
 
 
 @interface SAPUsers ()
-@property (nonatomic, strong) id applicationObserver;
+
 @property (nonatomic, strong) SAPUserFriendsContext *context;
 
 - (void)fillWithUsers:(NSArray *)users;
 - (NSArray *)loadUsers;
-- (void)startObserving;
-- (void)stopObserving;
 
 @end
 
 @implementation SAPUsers
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self startObserving];
-    }
-    
-    return self;
-}
-
-- (void)dealloc {
-    [self stopObserving];
-}
-
-#pragma mark -
-#pragma mark SAPCacheableModel
-
-- (NSString *)path {
-    return [[NSFileManager appStatePath] stringByAppendingPathComponent:kSAPPlistName];
-}
-
-- (BOOL)cached {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    
-    return [manager fileExistsAtPath:self.path];
-}
-
-- (void)save {
-    [[NSFileManager defaultManager] createDirectoryAtPath:[NSFileManager appStatePath]
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:nil];
-    [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
-}
 
 #pragma mark -
 #pragma mark Public
@@ -106,24 +69,5 @@ static NSString * const kSAPPlistName       = @"users.plist";
     return objects;
 }
 
-- (void)startObserving {
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    NSOperationQueue *queue = [NSOperationQueue mainQueue];
-    SAPWeakify(self);
-    self.applicationObserver = [center addObserverForName:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil
-                                                    queue:queue
-                                               usingBlock:^(NSNotification * note) {
-                                                   SAPStrongify(self);
-                                                   [self save];
-                                               }];
-}
-
-- (void)stopObserving {
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self.applicationObserver
-                      name:UIApplicationDidEnterBackgroundNotification
-                    object:nil];
-}
 
 @end
