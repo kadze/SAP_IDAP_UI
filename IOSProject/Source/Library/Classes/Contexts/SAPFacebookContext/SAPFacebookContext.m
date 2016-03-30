@@ -43,11 +43,9 @@
     }
 }
 
-- (FBSDKGraphRequest *)graphRequest {
-    NSDictionary *parameters = [self graphRequestParameters];
-    
+- (FBSDKGraphRequest *)graphRequest {    
     return [[FBSDKGraphRequest alloc] initWithGraphPath:[self graphRequestPath]
-                                             parameters:parameters];
+                                             parameters:[self graphRequestParameters]];
 }
 
 - (FBSDKGraphRequestHandler)completionHandler {
