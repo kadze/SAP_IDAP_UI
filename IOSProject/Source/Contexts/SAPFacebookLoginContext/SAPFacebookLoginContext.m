@@ -44,7 +44,12 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
         return;
     }
     
-    [self login];
+    SAPWeakify(self);
+    SAPDispatchSyncOnMainQueue(^{
+        SAPStrongify(self);
+        [self login];
+    });
+    
 }
 
 #pragma mark -
