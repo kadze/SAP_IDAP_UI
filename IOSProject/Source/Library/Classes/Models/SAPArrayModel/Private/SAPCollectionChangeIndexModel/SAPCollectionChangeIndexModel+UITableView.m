@@ -8,7 +8,7 @@
 
 #import "SAPCollectionChangeIndexModel+UITableView.h"
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UITableView.h>
 
 #import "NSIndexPath+SAPExtensions.h"
 #import "UITableView+SAPExtensions.h"

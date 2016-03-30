@@ -8,7 +8,7 @@
 
 #import "SAPCollectionChangeModel+UITableView.h"
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UITableView.h>
 
 @implementation SAPCollectionChangeModel (UITableView)
 

@@ -6,6 +6,8 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
+#import <UIKit/UILabel.h>
+
 #import "SAPUserCell.h"
 
 #import "SAPUser.h"

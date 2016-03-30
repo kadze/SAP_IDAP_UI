@@ -6,7 +6,7 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UIViewController.h>
 
 #import "SAPModelObserver.h"
 

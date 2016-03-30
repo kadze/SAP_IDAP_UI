@@ -5,6 +5,7 @@
 //  Created by S A P on 1/29/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
+#import <UIKit/UIScreen.h>
 
 #import "UIWindow+SAPextensions.h"
 

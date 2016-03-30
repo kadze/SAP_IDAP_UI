@@ -6,7 +6,9 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UILabel.h>
+#import <UIKit/UIButton.h>
+#import <UIKit/UIView.h>
 
 typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
     kSAPSquarePositionTopLeft,

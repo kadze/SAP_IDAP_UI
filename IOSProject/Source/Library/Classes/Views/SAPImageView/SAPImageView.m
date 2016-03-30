@@ -5,6 +5,7 @@
 //  Created by S A P on 3/7/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
+#import <UIKit/UIImageView.h>
 
 #import "SAPImageView.h"
 
