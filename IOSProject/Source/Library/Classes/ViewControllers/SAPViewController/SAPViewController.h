@@ -14,7 +14,7 @@
 @class SAPView;
 
 @interface SAPViewController : UIViewController <SAPModelObserver>
-@property (nonatomic, readonly) SAPView    *mainView;
+@property (nonatomic, readonly) SAPView    *mainView; //to be overriden in subclasses
 @property (nonatomic, strong)   SAPContext *context;
 
 //this method should be overriden in subclasses

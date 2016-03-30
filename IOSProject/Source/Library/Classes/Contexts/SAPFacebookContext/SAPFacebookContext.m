@@ -117,6 +117,7 @@
 - (void)performBackgroundExecution {
     FBSDKGraphRequestConnection *connection = [FBSDKGraphRequestConnection new];
     [connection addRequest:self.graphRequest completionHandler:self.completionHandler];
+    
     self.connection = connection;
 }
 
