@@ -8,10 +8,8 @@
 
 #import "SAPArrayViewController.h"
 
-#import "SAPUsersView.h"
-#import "SAPUserCell.h"
+#import "SAPTableViewCell.h"
 #import "SAPArrayModel.h"
-#import "SAPUser.h"
 #import "SAPActivityIndicator.h"
 
 #import "SAPDispatch.h"
@@ -31,6 +29,7 @@
 @end
 
 @implementation SAPArrayViewController
+@dynamic itemsContext;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -54,7 +53,13 @@
         [_items removeObserver:self];
         _items = items;
         [_items addObserver:self];
+        
+        self.context = self.itemsContext;
     }
+}
+
+- (SAPContext *)itemsContext {
+    return nil;
 }
 
 #pragma mark-
@@ -62,10 +67,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.items load];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark -
