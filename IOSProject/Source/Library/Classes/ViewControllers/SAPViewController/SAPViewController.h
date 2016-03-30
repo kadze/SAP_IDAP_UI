@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) SAPView    *mainView;
 @property (nonatomic, strong)   SAPContext *context;
 
+//this method should be overriden in subclasses
 - (void)updateViewControllerWithModel:(id)model;
 
 @end

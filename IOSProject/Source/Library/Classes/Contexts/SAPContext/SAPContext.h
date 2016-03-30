@@ -17,6 +17,7 @@
 
 - (instancetype)initWithModel:(id)model;
 
+//this methods should be overriden in subclasses
 - (void)execute;
 - (void)cancel;
 

@@ -11,8 +11,10 @@
 @interface SAPFacebookContext : SAPContext
 @property (nonatomic, strong) FBSDKGraphRequestConnection *connection;
 
+//this methods should be overriden in subclasses
 - (NSString *)graphRequestPath;
 - (NSDictionary *)graphRequestParameters;
+
 - (void)fillModelWithResult:(NSDictionary *)result;
 
 @end
