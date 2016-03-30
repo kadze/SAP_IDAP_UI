@@ -27,7 +27,8 @@ static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
 static NSString * const kSAPFriendsKey       = @"friends";
 
 @interface SAPUser ()
-@property (nonatomic, strong) id applicationObserver;
+@property (nonatomic, strong) SAPUsers  *friends;
+@property (nonatomic, strong) id        applicationObserver;
 
 - (void)startObserving;
 - (void)stopObserving;

@@ -22,7 +22,7 @@
 @property (nonatomic, readonly) SAPImageModel    *largeImageModel;
 @property (nonatomic, copy)     NSURL            *largeImageURL;
 @property (nonatomic, copy)     NSString         *gender;
-@property (nonatomic, strong)   SAPUsers         *friends;
+@property (nonatomic, readonly) SAPUsers         *friends;
 
 //method uses init chain!
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
