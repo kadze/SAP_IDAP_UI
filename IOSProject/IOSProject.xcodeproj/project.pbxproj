@@ -19,8 +19,7 @@
 		2E424A2D1CA57A4B0089CECC /* SAPUserFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E424A281CA57A4B0089CECC /* SAPUserFriendsViewController.xib */; };
 		2E424A311CA57C7E0089CECC /* SAPFacebookContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A301CA57C7E0089CECC /* SAPFacebookContext.m */; };
 		2E424A351CA58A140089CECC /* SAPUserFriendsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A341CA58A140089CECC /* SAPUserFriendsContext.m */; };
-		2E424A3D1CAAC0C90089CECC /* SAPUserContextOnline.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A3B1CAAC0C90089CECC /* SAPUserContextOnline.m */; };
-		2E424A401CAAC1560089CECC /* SAPUserContextOffline.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A3F1CAAC1560089CECC /* SAPUserContextOffline.m */; };
+		2E424A3D1CAAC0C90089CECC /* SAPUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E424A3B1CAAC0C90089CECC /* SAPUserContext.m */; };
 		2E44ACDD1C94647200965DFA /* SAPObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E44ACDC1C94647200965DFA /* SAPObjectCache.m */; };
 		2ED4B5801C99CF52001670F6 /* SAPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B57F1C99CF52001670F6 /* SAPContext.m */; };
 		2ED4B59C1C99DD5B001670F6 /* SAPLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5981C99DD5B001670F6 /* SAPLoginView.m */; };
@@ -123,10 +122,8 @@
 		2E424A331CA58A140089CECC /* SAPUserFriendsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserFriendsContext.h; sourceTree = "<group>"; };
 		2E424A341CA58A140089CECC /* SAPUserFriendsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserFriendsContext.m; sourceTree = "<group>"; };
 		2E424A381CA803EF0089CECC /* SAPModelKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPModelKeeper.h; sourceTree = "<group>"; };
-		2E424A3A1CAAC0C90089CECC /* SAPUserContextOnline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserContextOnline.h; sourceTree = "<group>"; };
-		2E424A3B1CAAC0C90089CECC /* SAPUserContextOnline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserContextOnline.m; sourceTree = "<group>"; };
-		2E424A3E1CAAC1560089CECC /* SAPUserContextOffline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserContextOffline.h; sourceTree = "<group>"; };
-		2E424A3F1CAAC1560089CECC /* SAPUserContextOffline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserContextOffline.m; sourceTree = "<group>"; };
+		2E424A3A1CAAC0C90089CECC /* SAPUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserContext.h; sourceTree = "<group>"; };
+		2E424A3B1CAAC0C90089CECC /* SAPUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserContext.m; sourceTree = "<group>"; };
 		2E44ACDB1C94647200965DFA /* SAPObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPObjectCache.h; sourceTree = "<group>"; };
 		2E44ACDC1C94647200965DFA /* SAPObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPObjectCache.m; sourceTree = "<group>"; };
 		2ED4B57E1C99CF52001670F6 /* SAPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPContext.h; sourceTree = "<group>"; };
@@ -278,7 +275,6 @@
 			children = (
 				2E4249FC1CA198980089CECC /* SAPFacebookLoginContext */,
 				2E424A391CAAC0C90089CECC /* SAPUserContext */,
-				2E424A3C1CAAC0C90089CECC /* SAPUserContextOffLine */,
 				2E424A321CA58A140089CECC /* SAPUserFriendsContext */,
 				2E424A1F1CA579060089CECC /* SAPUserDetailContext */,
 			);
@@ -376,19 +372,10 @@
 		2E424A391CAAC0C90089CECC /* SAPUserContext */ = {
 			isa = PBXGroup;
 			children = (
-				2E424A3A1CAAC0C90089CECC /* SAPUserContextOnline.h */,
-				2E424A3B1CAAC0C90089CECC /* SAPUserContextOnline.m */,
+				2E424A3A1CAAC0C90089CECC /* SAPUserContext.h */,
+				2E424A3B1CAAC0C90089CECC /* SAPUserContext.m */,
 			);
 			path = SAPUserContext;
-			sourceTree = "<group>";
-		};
-		2E424A3C1CAAC0C90089CECC /* SAPUserContextOffLine */ = {
-			isa = PBXGroup;
-			children = (
-				2E424A3E1CAAC1560089CECC /* SAPUserContextOffline.h */,
-				2E424A3F1CAAC1560089CECC /* SAPUserContextOffline.m */,
-			);
-			path = SAPUserContextOffLine;
 			sourceTree = "<group>";
 		};
 		2E44ACDA1C94643400965DFA /* SAPObjectCache */ = {
@@ -1208,7 +1195,7 @@
 				CAC751BB1C85B56D00265578 /* SAPNumberGeneratorArray.m in Sources */,
 				CA4B3F651C76FC9500440914 /* SAPCollectionChangeDoubleIndexModel.m in Sources */,
 				CA4B3F511C75EAF200440914 /* SAPArrayModel.m in Sources */,
-				2E424A3D1CAAC0C90089CECC /* SAPUserContextOnline.m in Sources */,
+				2E424A3D1CAAC0C90089CECC /* SAPUserContext.m in Sources */,
 				2E424A1C1CA578CC0089CECC /* SAPUserDetailView.m in Sources */,
 				CA634BF01C68D0BD00DAED4E /* SAPTableViewCell.m in Sources */,
 				2E424A141CA54A030089CECC /* SAPUser.m in Sources */,
@@ -1219,7 +1206,6 @@
 				2E424A351CA58A140089CECC /* SAPUserFriendsContext.m in Sources */,
 				CA4B3F371C74C46F00440914 /* UITableView+SAPCollectionChangeModel.m in Sources */,
 				CA4B3F341C74C31200440914 /* SAPCollectionChangeModel+UITableView.m in Sources */,
-				2E424A401CAAC1560089CECC /* SAPUserContextOffline.m in Sources */,
 				CA634BF71C68D14500DAED4E /* SAPAssignReference.m in Sources */,
 				CA634BF81C68D14500DAED4E /* SAPReference.m in Sources */,
 			);

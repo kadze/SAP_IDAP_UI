@@ -12,8 +12,7 @@
 
 #import "SAPModel.h"
 #import "SAPLoginViewController.h"
-#import "SAPUserContextOnline.h"
-#import "SAPUserContextOffline.h"
+#import "SAPUserContext.h"
 
 #import "SAPOwnershipMacro.h"
 
@@ -68,7 +67,6 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         user.state = kSAPModelStateUnloaded;
                                     }];
                                     
-                                    [self loadUserWithContextOfClass:[SAPUserContextOffline class]];
                                 } else if (result.isCancelled) {
                                     NSLog(@"Cancelled");
                                     @synchronized (user) {
@@ -79,7 +77,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         user.state = kSAPModelStateUnloaded;
                                     }];
                                     
-                                    [self loadUserWithContextOfClass:[SAPUserContextOnline class]];
+                                    [self loadUserWithContextOfClass:[SAPUserContext class]];
                                 }
                             }
      ];
