@@ -23,7 +23,7 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, baseView);
+SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, mainView);
 
 @interface SAPUserFriendsViewController ()
 
@@ -88,7 +88,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 #pragma mark Private
 
 - (void)reloadView {
-    [self.baseView.tableView reloadData];
+    [self.mainView.tableView reloadData];
 }
 
 @end

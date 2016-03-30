@@ -22,7 +22,7 @@
 
 #import "SAPDispatch.h"
 
-SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, baseView);
+SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView);
 
 @implementation SAPLoginViewController
 

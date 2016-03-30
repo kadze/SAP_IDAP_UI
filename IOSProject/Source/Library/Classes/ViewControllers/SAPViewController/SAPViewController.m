@@ -14,6 +14,7 @@
 #import "SAPDispatch.h"
 
 @implementation SAPViewController
+@dynamic mainView;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -38,26 +39,26 @@
 
 - (void)modelWillLoad:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        self.baseView.loadingViewVisible = YES;
+        self.mainView.loadingViewVisible = YES;
     });
 }
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
         [self updateViewControllerWithModel:model];
-        self.baseView.loadingViewVisible = NO;
+        self.mainView.loadingViewVisible = NO;
     });
 }
 
 - (void)modelDidFailLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        self.baseView.loadingViewVisible = NO;
+        self.mainView.loadingViewVisible = NO;
     });
 }
 
 - (void)modelDidUnload:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        self.baseView.loadingViewVisible = NO;
+        self.mainView.loadingViewVisible = NO;
     });
 }
 

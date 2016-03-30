@@ -24,7 +24,7 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersView);
+SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, mainView);
 
 @interface SAPUsersViewController ()
 <
@@ -80,7 +80,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 }
 
 - (IBAction)onEdit:(id)sender {
-    SAPUsersView *usersView = self.usersView;
+    SAPUsersView *usersView = self.mainView;
     usersView.editing = !usersView.editing;
 }
 
@@ -128,7 +128,7 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 #pragma mark SAPCollectionObserver
 
 - (void)collection:(SAPArrayModel *)arrayModel didChangeWithModel:(SAPCollectionChangeModel *)changeModel {
-    UITableView *tableView = self.usersView.tableView;
+    UITableView *tableView = self.mainView.tableView;
     [tableView updateWithCollectionChangeModel:changeModel];
 }
 
@@ -137,30 +137,30 @@ SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersVie
 
 - (void)modelWillLoad:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
-        self.usersView.loadingViewVisible = YES;
+        self.mainView.loadingViewVisible = YES;
     });
 }
 
 - (void)modelDidFinishLoading:(id)model {
     SAPDispatchAsyncOnMainQueue(^{
         [self reloadView];
-        self.usersView.loadingViewVisible = NO;
+        self.mainView.loadingViewVisible = NO;
     });
 }
 
 - (void)modelDidFailLoading:(id)model {
-    self.usersView.loadingViewVisible = NO;
+    self.mainView.loadingViewVisible = NO;
 }
 
 - (void)modelDidUnload:(id)model {
-    self.usersView.loadingViewVisible = NO;
+    self.mainView.loadingViewVisible = NO;
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (void)reloadView {
-    [self.usersView.tableView reloadData];
+    [self.mainView.tableView reloadData];
 }
 
 @end

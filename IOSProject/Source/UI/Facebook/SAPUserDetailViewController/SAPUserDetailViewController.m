@@ -16,7 +16,7 @@
 
 #import "SAPViewControllerMacro.h"
 
-SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView, baseView);
+SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView, mainView);
 
 @implementation SAPUserDetailViewController
 
@@ -50,7 +50,7 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 #pragma mark Public
 
 - (void)updateViewControllerWithModel:(id)model {
-    self.baseView.model = model;
+    self.mainView.model = model;
 }
 
 @end

@@ -14,7 +14,7 @@
 @class SAPView;
 
 @interface SAPViewController : UIViewController <SAPModelObserver>
-@property (nonatomic, readonly) SAPView    *baseView;
+@property (nonatomic, readonly) SAPView    *mainView;
 @property (nonatomic, strong)   SAPContext *context;
 
 - (void)updateViewControllerWithModel:(id)model;
