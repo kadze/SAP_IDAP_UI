@@ -66,6 +66,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 - (void)updateViewControllerWithModel:(id)model {
     SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
     controller.user = self.user;
+    //new user so as to remove self from observer of old user. Not nil because init self with user, not nil.
     self.user = [SAPUser new];
     [self.navigationController pushViewController:controller
                                          animated:YES];

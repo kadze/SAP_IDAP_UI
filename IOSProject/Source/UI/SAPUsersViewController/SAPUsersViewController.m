@@ -26,8 +26,7 @@
 
 SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, mainView);
 
-@interface SAPUsersViewController ()
-<
+@interface SAPUsersViewController () <
     UITableViewDelegate,
     UITableViewDataSource,
     SAPCollectionObserver,
