@@ -27,7 +27,7 @@
 
 - (NSDictionary *)graphRequestParameters {
     NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@{%@}",
-                                 kSAPGengerKey,
+                                 kSAPGenderKey,
                                  kSAPLargePictureKey,
                                  kSAPUrlKey];
     
@@ -36,7 +36,7 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.gender = result[kSAPGengerKey];
+    user.gender = result[kSAPGenderKey];
     NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
     user.largeImageURL = [NSURL URLWithString:urlString];
 }
