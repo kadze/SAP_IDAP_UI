@@ -10,7 +10,7 @@
 
 @class SAPModel;
 
-@protocol SAPModelKeeper <NSObject>
+@protocol SAPModelOwner <NSObject>
 @property (nonatomic, strong) SAPModel *model;
 
 @end

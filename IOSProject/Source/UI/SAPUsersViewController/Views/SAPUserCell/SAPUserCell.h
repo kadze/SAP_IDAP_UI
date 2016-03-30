@@ -7,15 +7,15 @@
 //
 
 #import "SAPTableViewCell.h"
-#import "SAPModelKeeper.h"
+
 #import "SAPUser.h"
+
+#import "SAPModelOwner.h"
 
 @class SAPImageView;
 
-@interface SAPUserCell : SAPTableViewCell <SAPModelKeeper>
+@interface SAPUserCell : SAPTableViewCell <SAPModelOwner>
 @property (nonatomic, strong) IBOutlet UILabel      *label;
 @property (nonatomic, strong) IBOutlet SAPImageView *userImageView;
-
-@property (nonatomic, strong) SAPUser  *model;
 
 @end

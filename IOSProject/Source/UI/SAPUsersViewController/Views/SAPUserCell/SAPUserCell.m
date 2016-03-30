@@ -20,6 +20,7 @@
 @end
 
 @implementation SAPUserCell
+@synthesize model = _model;
 
 #pragma mark -
 #pragma mark Accessors

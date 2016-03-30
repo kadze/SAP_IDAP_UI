@@ -20,7 +20,7 @@
 #import "UITableView+SAPExtensions.h"
 #import "UITableView+SAPCollectionChangeModel.h"
 
-#import "SAPModelKeeper.h"
+#import "SAPModelOwner.h"
 
 #import "SAPViewControllerMacro.h"
 
@@ -78,7 +78,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SAPTableViewCell<SAPModelKeeper> *cell = [tableView cellWithClass:[self cellClass]];
+    SAPTableViewCell<SAPModelOwner> *cell = [tableView cellWithClass:[self cellClass]];
     cell.model = self.items[indexPath.row];
     
     return cell;
