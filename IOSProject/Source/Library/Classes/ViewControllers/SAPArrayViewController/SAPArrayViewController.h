@@ -15,7 +15,13 @@
 @class SAPArrayModelChangeModel;
 @class SAPActivityIndicator;
 
-@interface SAPArrayViewController : SAPViewController<UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver>
+@interface SAPArrayViewController : SAPViewController
+<
+    UITableViewDelegate,
+    UITableViewDataSource,
+    SAPCollectionObserver
+>
+
 @property (nonatomic, strong) SAPArrayModel *items;
 
 + (Class)cellClass;

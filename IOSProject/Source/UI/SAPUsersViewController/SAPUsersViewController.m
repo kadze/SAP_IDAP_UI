@@ -26,7 +26,13 @@
 
 SAPViewControllerBaseViewProperty(SAPUsersViewController, SAPUsersView, usersView);
 
-@interface SAPUsersViewController () <UITableViewDelegate, UITableViewDataSource, SAPCollectionObserver, SAPModelObserver>
+@interface SAPUsersViewController ()
+<
+    UITableViewDelegate,
+    UITableViewDataSource,
+    SAPCollectionObserver,
+    SAPModelObserver
+>
 
 - (void)reloadView;
 

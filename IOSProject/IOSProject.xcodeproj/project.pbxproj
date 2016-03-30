@@ -544,18 +544,10 @@
 		2E424A871CAC41C10089CECC /* SAPTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				2E424A881CAC41C10089CECC /* SAPModelCell */,
 				2E424A891CAC41C10089CECC /* SAPTableViewCell.h */,
 				2E424A8A1CAC41C10089CECC /* SAPTableViewCell.m */,
 			);
 			path = SAPTableViewCell;
-			sourceTree = "<group>";
-		};
-		2E424A881CAC41C10089CECC /* SAPModelCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SAPModelCell;
 			sourceTree = "<group>";
 		};
 		2E424A8B1CAC41C10089CECC /* SAPView */ = {
@@ -875,10 +867,10 @@
 		CAC421B91C5A24F7004E4F1E /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				CA4B3F951C7F352000440914 /* Functions */,
 				CA634BE81C68D0BD00DAED4E /* Classes */,
 				CA4AA8941C5BC6E100B1CBEC /* Categories */,
 				2E424A371CA803BC0089CECC /* Protocols */,
+				CA4B3F951C7F352000440914 /* Functions */,
 				CA634BF91C68F19400DAED4E /* Macro */,
 				2E424A051CA1A7880089CECC /* SAPGraphStringConstants.h */,
 			);
