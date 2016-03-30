@@ -13,12 +13,6 @@
 
 #import "SAPDispatch.h"
 
-@interface SAPUserCell ()
-
-- (void)fillWithModel:(SAPUser *)model;
-
-@end
-
 @implementation SAPUserCell
 @synthesize model = _model;
 
@@ -34,7 +28,7 @@
 }
 
 #pragma mark -
-#pragma mark Private
+#pragma mark SAPModelView
 
 - (void)fillWithModel:(SAPUser *)model {
     self.label.text = [NSString stringWithFormat:@"%@ %@", model.firstName, model.lastName];

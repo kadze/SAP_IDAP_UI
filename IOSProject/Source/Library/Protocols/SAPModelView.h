@@ -10,7 +10,9 @@
 
 @class SAPModel;
 
-@protocol SAPModelOwner <NSObject>
-@property (nonatomic, strong) SAPModel *model;
+@protocol SAPModelView <NSObject>
+@property (nonatomic, strong) id model;
+
+- (void)fillWithModel:(id)model;
 
 @end
