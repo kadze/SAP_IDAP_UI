@@ -59,16 +59,17 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 }
 
 - (SAPUserFriendsContext *)itemsContext {
-    return [SAPUserFriendsContext contextWithModel:self.user];
+    SAPUserFriendsContext *context = [SAPUserFriendsContext new];
+    context.user = self.user;
+    
+    return context;
 }
 
 #pragma mark-
 #pragma mark View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
-//    SAPUserFriendsContext *context = [SAPUserFriendsContext new];
-//    context.user = self.user;
-//    self.context = context;
+    
 }
 
 #pragma mark -
