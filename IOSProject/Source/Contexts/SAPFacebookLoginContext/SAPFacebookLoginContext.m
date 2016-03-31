@@ -68,9 +68,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 SAPStrongifyAndReturnIfNil(self);
                                 if (error) {
-                                    [user performBlockWithoutNotification:^{
-                                        user.state = kSAPModelStateUnloaded;
-                                    }];
+                                    
                                     
                                 } else if (result.isCancelled) {
                                     NSLog(@"Cancelled");
@@ -81,7 +79,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                     [user performBlockWithoutNotification:^{
                                         user.state = kSAPModelStateUnloaded;
                                     }];
-                                    
+                                    [self alertWithError:nil];
                                     [self loadUser];
                                 }
                             }
@@ -92,6 +90,15 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
     SAPContext *context = [SAPUserContext contextWithModel:self.model];
     self.userContext = context;
     [context execute];
+}
+
+- (void)alertWithError:(NSError *)error {
+    UIAlertView *allert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                     message:error.localizedDescription
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil];
+    [allert show];
 }
 
 @end
