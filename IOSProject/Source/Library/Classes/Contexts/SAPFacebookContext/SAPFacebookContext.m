@@ -49,11 +49,10 @@
 }
 
 - (FBSDKGraphRequestHandler)completionHandler {
-    SAPModel *model = self.model;
     SAPWeakify(self);
     return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
         SAPStrongifyAndReturnIfNil(self);
-        
+        SAPModel *model = self.model;
         if (error) {
             @synchronized (model) {
                 model.state = kSAPModelStateDidFailLoading;
