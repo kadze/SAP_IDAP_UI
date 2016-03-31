@@ -87,9 +87,7 @@
     }
 
     SAPWeakify(self);
-//    SAPDispatchAsyncOnDefaultQueue(^{
-//        /doesn't work. doesn't call completion handler
-    SAPDispatchSyncOnDefaultQueue(^{
+    SAPDispatchAsyncOnDefaultQueue(^{
         SAPStrongifyAndReturnIfNil(self);
         [self performBackgroundExecution];
     });
@@ -115,10 +113,11 @@
 #pragma mark Private
 
 - (void)performBackgroundExecution {
-    FBSDKGraphRequestConnection *connection = [FBSDKGraphRequestConnection new];
-    [connection addRequest:self.graphRequest completionHandler:self.completionHandler];
-    
-    self.connection = connection;
+    SAPWeakify(self);
+    SAPDispatchAsyncOnMainQueue(^{
+        SAPStrongify(self);
+        self.connection = [self.graphRequest startWithCompletionHandler:self.completionHandler];
+    });
 }
 
 @end
