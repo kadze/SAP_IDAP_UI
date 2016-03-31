@@ -9,11 +9,13 @@
 #import "SAPLoginViewController.h"
 
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKAccessToken.h>
 
 #import "SAPLoginView.h"
 #import "SAPUserFriendsViewController.h"
 #import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
+#import "SAPUserContext.h"
 
 #import "SAPModelObserver.h"
 
@@ -51,13 +53,24 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
     }
 }
 
+#pragma mark-
+#pragma mark View Lifecycle
+
+- (void)viewDidLoad {
+    
+}
+
 #pragma mark -
 #pragma mark Interface Handling
 
 - (IBAction)onLogin:(id)sender {
-    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
-    context.controller = self;
-    self.context = context;
+    if ([FBSDKAccessToken currentAccessToken]) {
+        self.context = [SAPUserContext contextWithModel:self.user];
+    } else {
+        SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
+        context.controller = self;
+        self.context = context;
+    }
 }
 
 #pragma mark -
