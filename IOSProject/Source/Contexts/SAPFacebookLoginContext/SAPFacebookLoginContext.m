@@ -25,7 +25,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 @property (nonatomic, strong) SAPContext *userContext;
 
 - (void)login;
-- (void)loadUserWithContextOfClass:(Class)aClass;
+- (void)loadUser;
 
 @end
 
@@ -82,14 +82,14 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         user.state = kSAPModelStateUnloaded;
                                     }];
                                     
-                                    [self loadUserWithContextOfClass:[SAPUserContext class]];
+                                    [self loadUser];
                                 }
                             }
      ];
 }
 
-- (void)loadUserWithContextOfClass:(Class)aClass {
-    SAPContext *context = [aClass contextWithModel:self.model];
+- (void)loadUser {
+    SAPContext *context = [SAPUserContext contextWithModel:self.model];
     self.userContext = context;
     [context execute];
 }
