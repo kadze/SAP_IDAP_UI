@@ -9,18 +9,17 @@
 #import "UIAlertView+SAPExtensions.h"
 
 static NSString * const kSAPCancelButtonTitle = @"OK";
+static NSString * const kSAPErrorTitle = @"Error!";
 
 @implementation UIAlertView (SAPExtensions)
 
-+ (instancetype)alertWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[error localizedDescription]
-                                                    message:[error localizedRecoverySuggestion]
++ (void)showAlertWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kSAPErrorTitle
+                                                    message:[error localizedDescription]
                                                    delegate:nil
                                           cancelButtonTitle:kSAPCancelButtonTitle
                                           otherButtonTitles:nil];
     [alert show];
-    
-    return alert;
 }
 
 @end

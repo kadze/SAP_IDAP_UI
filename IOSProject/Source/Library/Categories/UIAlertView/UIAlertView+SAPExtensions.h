@@ -10,6 +10,6 @@
 
 @interface UIAlertView (SAPExtensions)
 
-+ (instancetype)alertWithError:(NSError *)error;
++ (void)showAlertWithError:(NSError *)error;
 
 @end
