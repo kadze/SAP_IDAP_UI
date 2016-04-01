@@ -56,19 +56,33 @@
         SAPStrongifyAndReturnIfNil(self);
         SAPModel *model = self.model;
         if (error) {
-            @synchronized (model) {
-                model.state = kSAPModelStateDidFailLoading;
-                [UIAlertView alertWithError:error];
+            SAPModel *cachedResult = [self cachedResult];
+            
+            if (!cachedResult) {
+                @synchronized (model) {
+                    model.state = kSAPModelStateDidFailLoading;
+                    
+                    [UIAlertView alertWithError:error];
+                    
+                    return;
+                }
+            } else {
+                NSArray *observers = model.observers;
+                for (id observer in observers) {
+                    [cachedResult addObserver:observer];
+                }
                 
-                return;
+                [model removeObserversFromArray:observers];
+                model = cachedResult;
+                self.model = model;
             }
+        } else {
+            [self fillModelWithResult:result];
         }
-        
-        [self fillModelWithResult:result];
         
         @synchronized (model) {
             model.state = kSAPModelStateDidFinishLoading;
-        };
+        }
     };
 }
 
@@ -97,6 +111,10 @@
 
 - (void)cancel {
     self.connection = nil;
+}
+
+- (id)cachedResult {
+    return nil;
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {

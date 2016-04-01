@@ -15,6 +15,7 @@
 - (NSString *)graphRequestPath;
 - (NSDictionary *)graphRequestParameters;
 
+- (id)cachedResult;
 - (void)fillModelWithResult:(NSDictionary *)result;
 
 @end

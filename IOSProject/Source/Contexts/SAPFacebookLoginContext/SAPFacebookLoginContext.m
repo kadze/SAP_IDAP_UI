@@ -70,7 +70,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 SAPStrongifyAndReturnIfNil(self);
                                 if (error) {
-                                    [UIAlertView alertWithError:error];                                    
+                                    [UIAlertView alertWithError:error];
                                 } else if (result.isCancelled) {
                                     NSLog(@"Cancelled");
                                     @synchronized (user) {

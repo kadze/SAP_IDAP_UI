@@ -31,6 +31,16 @@
     return @{kSAPFieldsKey : fieldsParameter};
 }
 
+- (SAPUser *)cachedResult {
+    SAPUser *result = nil;
+    SAPUser *user = self.model;
+    if (user.cached) {
+        result = [NSKeyedUnarchiver unarchiveObjectWithFile:user.path];
+    }
+    
+    return result;
+}
+
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
     user.userId = result[kSAPIDKey];
