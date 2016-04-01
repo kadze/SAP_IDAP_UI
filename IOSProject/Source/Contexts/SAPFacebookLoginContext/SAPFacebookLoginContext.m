@@ -14,6 +14,8 @@
 #import "SAPLoginViewController.h"
 #import "SAPUserContext.h"
 
+#import "UIAlertView+SAPExtensions.h"
+
 #import "SAPOwnershipMacro.h"
 
 #import "SAPDispatch.h"
@@ -68,8 +70,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 SAPStrongifyAndReturnIfNil(self);
                                 if (error) {
-                                    
-                                    
+                                    [UIAlertView alertWithError:error];                                    
                                 } else if (result.isCancelled) {
                                     NSLog(@"Cancelled");
                                     @synchronized (user) {
@@ -79,7 +80,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                     [user performBlockWithoutNotification:^{
                                         user.state = kSAPModelStateUnloaded;
                                     }];
-                                    [self alertWithError:nil];
+                                
                                     [self loadUser];
                                 }
                             }
@@ -92,13 +93,6 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
     [context execute];
 }
 
-- (void)alertWithError:(NSError *)error {
-    UIAlertView *allert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                     message:error.localizedDescription
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-    [allert show];
-}
+
 
 @end

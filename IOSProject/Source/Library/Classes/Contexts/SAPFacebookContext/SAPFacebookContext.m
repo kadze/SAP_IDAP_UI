@@ -10,6 +10,8 @@
 
 #import "SAPModel.h"
 
+#import "UIAlertView+SAPExtensions.h"
+
 #import "SAPOwnershipMacro.h"
 
 #import "SAPDispatch.h"
@@ -56,6 +58,7 @@
         if (error) {
             @synchronized (model) {
                 model.state = kSAPModelStateDidFailLoading;
+                [UIAlertView alertWithError:error];
                 
                 return;
             }
