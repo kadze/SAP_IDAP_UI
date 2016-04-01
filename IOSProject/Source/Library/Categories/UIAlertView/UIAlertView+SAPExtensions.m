@@ -13,7 +13,7 @@ static NSString * const kSAPErrorTitle = @"Error!";
 
 @implementation UIAlertView (SAPExtensions)
 
-+ (void)showAlertWithError:(NSError *)error {
++ (void)showWithError:(NSError *)error {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kSAPErrorTitle
                                                     message:[error localizedDescription]
                                                    delegate:nil
