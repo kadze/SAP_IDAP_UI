@@ -18,7 +18,7 @@
 #import "SAPOwnershipMacro.h"
 
 //properties names for NSCoding
-static NSString * const kSAPUserIDKey        = @"userID";
+static NSString * const kSAPUserIDKey        = @"userId";
 static NSString * const kSAPFirstNameKey     = @"firstName";
 static NSString * const kSAPLastNameKey      = @"lastName";
 static NSString * const kSAPImageURLKey      = @"imageURL";
@@ -34,6 +34,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
 - (void)stopObserving;
 
 - (NSDictionary *)encodingDictionary;
+- (void)decodeFriendsWithCoder:(NSCoder *)aDecoder;
 
 @end
 
@@ -96,13 +97,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
         [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
     }
     
-    NSArray *friendsIDs = [aDecoder decodeObjectForKey:kSAPFriendsKey];
-    SAPUsers *friends = self.friends;
-    for (NSString *userId in friendsIDs) {
-        SAPUser *friend = [SAPUser new];
-        friend.userId = userId;
-        [friends addObject:friend];
-    }
+    [self decodeFriendsWithCoder:aDecoder];
     
     return self;
 }
@@ -165,6 +160,23 @@ static NSString * const kSAPFriendsKey       = @"friends";
              kSAPImageURLKey      : ((!self.imageURL) ? null : self.imageURL),
              kSAPLagreImageUrlKey : ((!self.largeImageURL) ? null : self.largeImageURL),
              kSAPGenderKey        : ((!self.gender) ? null : self.gender)};
+}
+
+- (void)decodeFriendsWithCoder:(NSCoder *)aDecoder {
+    NSArray *friendsIDs = [aDecoder decodeObjectForKey:kSAPFriendsKey];
+    
+    SAPUsers *friends = [SAPUsers new];
+    for (NSString *userId in friendsIDs) {
+        SAPUser *friend = [SAPUser new];
+        friend.userId = userId;
+        if (friend.cached) {
+            friend = [NSKeyedUnarchiver unarchiveObjectWithFile:friend.path];
+        }
+        
+        [friends addObject:friend];
+    }
+    
+    self.friends = friends;
 }
 
 @end
