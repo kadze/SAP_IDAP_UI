@@ -64,10 +64,13 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark Interface Handling
 
 - (IBAction)onLogin:(id)sender {
-    if ([FBSDKAccessToken currentAccessToken]) {
+    FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
+    SAPUser *user = self.user;
+    if (accessToken) {
+        user.userId = accessToken.userID;
         self.context = [SAPUserContext contextWithModel:self.user];
     } else {
-        SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
+        SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:user];
         context.controller = self;
         self.context = context;
     }
@@ -83,6 +86,5 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
     self.user = [SAPUser new];
     [self.navigationController pushViewController:controller animated:YES];
 }
-
 
 @end
