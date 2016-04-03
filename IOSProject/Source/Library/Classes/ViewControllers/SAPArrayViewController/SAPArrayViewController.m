@@ -66,6 +66,8 @@
 #pragma mark View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [self.items load];
 }
 

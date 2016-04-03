@@ -42,6 +42,8 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 #pragma mark View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.friend];
     self.context = context;
 }

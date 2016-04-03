@@ -65,13 +65,6 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
     return context;
 }
 
-#pragma mark-
-#pragma mark View Lifecycle
-
-- (void)viewWillAppear:(BOOL)animated {
-    
-}
-
 #pragma mark -
 #pragma mark UITableViewDelegate
 
