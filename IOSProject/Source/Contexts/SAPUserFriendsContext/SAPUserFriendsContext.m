@@ -13,9 +13,12 @@
 #import "SAPUser.h"
 #import "SAPUsers.h"
 
-#import "SAPGraphStringConstants.h"
+#import "NSNull+SAPJSONNull.h"
+#import "NSArray+SAPJSONArray.h"
+#import "NSObject+SAPJSONObject.h"
+#import "NSDictionary+SAPJSONDictionary.h"
 
-#import "SAPNilVsNSNullSubstituteMacro.h"
+#import "SAPGraphStringConstants.h"
 
 @implementation SAPUserFriendsContext
 
@@ -79,11 +82,11 @@
     [friends performBlockWithoutNotification:^{
         for (id friendElement in friendElements) {
             SAPUser *user = [SAPUser new];
-            user.userId         = SAPNilIfNSNull(friendElement[kSAPIDKey]);
-            user.firstName      = SAPNilIfNSNull(friendElement[kSAPFirstNameKey]);
-            user.lastName       = SAPNilIfNSNull(friendElement[kSAPLastNameKey]);
-            NSString *urlString = SAPNilIfNSNull(friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]);
-            user.imageURL       = SAPNilIfNSNull([NSURL URLWithString:urlString]);
+            user.userId         = [friendElement[kSAPIDKey] JSONRepresentation];
+            user.firstName      = [friendElement[kSAPFirstNameKey] JSONRepresentation];
+            user.lastName       = [friendElement[kSAPLastNameKey] JSONRepresentation];
+            NSString *urlString = [friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]  JSONRepresentation];
+            user.imageURL       = [[NSURL URLWithString:urlString] JSONRepresentation];
             
             [friends addObject:user];
         }

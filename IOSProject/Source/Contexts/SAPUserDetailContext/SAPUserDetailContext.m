@@ -12,6 +12,11 @@
 
 #import "SAPDispatch.h"
 
+#import "NSNull+SAPJSONNull.h"
+#import "NSArray+SAPJSONArray.h"
+#import "NSObject+SAPJSONObject.h"
+#import "NSDictionary+SAPJSONDictionary.h"
+
 #import "SAPGraphStringConstants.h"
 
 #import "SAPNilVsNSNullSubstituteMacro.h"
@@ -57,9 +62,9 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.gender         = SAPNilIfNSNull(result[kSAPGenderKey]);
-    NSString *urlString = SAPNilIfNSNull(result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]);
-    user.largeImageURL  = SAPNilIfNSNull([NSURL URLWithString:urlString]);
+    user.gender         = [result[kSAPGenderKey] JSONRepresentation];
+    NSString *urlString = [result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey] JSONRepresentation];
+    user.largeImageURL  = [[NSURL URLWithString:urlString] JSONRepresentation];
 }
 
 @end

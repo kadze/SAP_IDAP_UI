@@ -10,9 +10,12 @@
 
 #import "SAPUser.h"
 
-#import "SAPGraphStringConstants.h"
+#import "NSNull+SAPJSONNull.h"
+#import "NSArray+SAPJSONArray.h"
+#import "NSObject+SAPJSONObject.h"
+#import "NSDictionary+SAPJSONDictionary.h"
 
-#import "SAPNilVsNSNullSubstituteMacro.h"
+#import "SAPGraphStringConstants.h"
 
 @implementation SAPUserContext
 
@@ -53,11 +56,11 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.userId =       SAPNilIfNSNull(result[kSAPIDKey]);
-    user.firstName =    SAPNilIfNSNull(result[kSAPFirstNameKey]);
-    user.lastName =     SAPNilIfNSNull(result[kSAPLastNameKey]);
-    NSString *urlString = SAPNilIfNSNull(result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]);
-    user.imageURL =     SAPNilIfNSNull([NSURL URLWithString:urlString]);
+    user.userId         = [result[kSAPIDKey] JSONRepresentation];
+    user.firstName      = [result[kSAPFirstNameKey] JSONRepresentation];
+    user.lastName       = [result[kSAPLastNameKey] JSONRepresentation];
+    NSString *urlString = [result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey] JSONRepresentation];
+    user.imageURL       = [[NSURL URLWithString:urlString] JSONRepresentation];
 }
 
 @end
