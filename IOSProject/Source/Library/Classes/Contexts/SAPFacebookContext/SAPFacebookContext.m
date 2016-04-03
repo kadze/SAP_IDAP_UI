@@ -55,31 +55,21 @@
     return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
         SAPStrongifyAndReturnIfNil(self);
         SAPModel *model = self.model;
+        
         if (error) {
-            SAPModel *cachedResult = [self cachedResult];
-            
-            if (!cachedResult) {
+            NSDictionary *cachedResult = [self cachedResult];
+            if (cachedResult) {
+                result = cachedResult;
+            } else {
                 @synchronized (model) {
-//                    model.state = kSAPModelStateDidFailLoading;
-//                    
-//                    [UIAlertView alertWithError:error];
                     [model setState:kSAPModelStateDidFailLoading withObject:error];
                     
                     return;
                 }
-            } else {
-                NSArray *observers = model.observers;
-                for (id observer in observers) {
-                    [cachedResult addObserver:observer];
-                }
-                
-                [model removeObserversFromArray:observers];
-                model = cachedResult;
-                self.model = model;
             }
-        } else {
-            [self fillModelWithResult:result];
         }
+        
+        [self fillModelWithResult:result];
         
         @synchronized (model) {
             model.state = kSAPModelStateDidFinishLoading;

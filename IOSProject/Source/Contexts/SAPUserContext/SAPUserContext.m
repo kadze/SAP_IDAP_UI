@@ -31,11 +31,19 @@
     return @{kSAPFieldsKey : fieldsParameter};
 }
 
-- (SAPUser *)cachedResult {
-    SAPUser *result = nil;
-    SAPUser *user = self.model;
-    if (user.cached) {
-        result = [NSKeyedUnarchiver unarchiveObjectWithFile:user.path];
+- (NSDictionary *)cachedResult {
+    NSDictionary *result = nil;
+    SAPUser *model = self.model;
+    if (model.cached) {
+        SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
+        result = @{kSAPIDKey : cachedModel.userId,
+                   kSAPFirstNameKey : cachedModel.firstName,
+                   kSAPLastNameKey : cachedModel.lastName,
+                   kSAPPictureKey : @{
+                           kSAPDataKey : @{
+                                   kSAPUrlKey : cachedModel.imageURL.absoluteString}
+                           }
+                   };
     }
     
     return result;

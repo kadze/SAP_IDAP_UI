@@ -45,6 +45,32 @@
     return @{kSAPFieldsKey : fieldsParameter};
 }
 
+- (NSDictionary *)cachedResult {
+    NSDictionary *result = nil;
+    SAPUser *user = self.user;
+    if (user.cached) {
+        SAPUser *cachedUser = [NSKeyedUnarchiver unarchiveObjectWithFile:user.path];
+        
+        NSMutableArray *friendElements = [NSMutableArray new];
+        
+        for (SAPUser *friend in cachedUser.friends.objects) {
+            NSDictionary *friendElement = @{kSAPIDKey : friend.userId,
+                                            kSAPFirstNameKey : friend.firstName,
+                                            kSAPLastNameKey : friend.lastName,
+                                            kSAPPictureKey : @{
+                                                    kSAPDataKey : @{
+                                                            kSAPUrlKey : friend.imageURL.absoluteString
+                                                            }
+                                                    }
+                                            };
+            [friendElements addObject:friendElement];
+        }
+        result = @{kSAPFriendsKey : @{kSAPDataKey : [friendElements copy]}};
+    }
+    
+    return result;
+}
+
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUsers *friends = self.model;
     NSArray *friendElements = result[kSAPFriendsKey][kSAPDataKey];
