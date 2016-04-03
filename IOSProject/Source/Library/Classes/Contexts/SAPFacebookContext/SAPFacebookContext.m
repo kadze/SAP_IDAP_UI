@@ -60,9 +60,10 @@
             
             if (!cachedResult) {
                 @synchronized (model) {
-                    model.state = kSAPModelStateDidFailLoading;
-                    
-                    [UIAlertView alertWithError:error];
+//                    model.state = kSAPModelStateDidFailLoading;
+//                    
+//                    [UIAlertView alertWithError:error];
+                    [model setState:kSAPModelStateDidFailLoading withObject:error];
                     
                     return;
                 }
