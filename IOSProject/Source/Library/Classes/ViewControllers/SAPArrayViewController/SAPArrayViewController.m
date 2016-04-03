@@ -30,6 +30,7 @@
 
 @implementation SAPArrayViewController
 @dynamic itemsContext;
+@dynamic tableView;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -59,6 +60,10 @@
 }
 
 - (SAPContext *)itemsContext {
+    return nil;
+}
+
+- (UITableView *)tableView {
     return nil;
 }
 
@@ -102,13 +107,6 @@ didChangeWithModel:(SAPCollectionChangeModel *)changeModel
 
 - (id)cellClass {
     return [[self class] cellClass];
-}
-
-#pragma mark -
-#pragma mark Public
-
-- (UITableView *)tableView {
-    return nil;
 }
 
 @end
