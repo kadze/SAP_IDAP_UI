@@ -46,7 +46,7 @@
             return @selector(modelDidFinishLoading:);
         
         case kSAPModelStateDidFailLoading:
-            return @selector(modelDidFailLoading:);
+            return @selector(modelDidFailLoading:withError:);
         
         default:
             return [super selectorForState:state];

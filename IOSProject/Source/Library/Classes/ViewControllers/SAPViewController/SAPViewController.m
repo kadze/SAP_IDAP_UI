@@ -11,6 +11,8 @@
 #import "SAPView.h"
 #import "SAPContext.h"
 
+#import "UIAlertView+SAPExtensions.h"
+
 #import "SAPDispatch.h"
 
 @implementation SAPViewController
@@ -50,9 +52,12 @@
     });
 }
 
-- (void)modelDidFailLoading:(id)model {
+- (void)modelDidFailLoading:(id)model withError:(NSError *)error{
     SAPDispatchAsyncOnMainQueue(^{
         self.mainView.loadingViewVisible = NO;
+        if (error) {
+            [UIAlertView showWithError:error];
+        }
     });
 }
 

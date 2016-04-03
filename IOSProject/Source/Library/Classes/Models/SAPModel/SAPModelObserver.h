@@ -14,7 +14,7 @@
 
 - (void)modelWillLoad:(id)model;
 - (void)modelDidFinishLoading:(id)model;
-- (void)modelDidFailLoading:(id)model;
+- (void)modelDidFailLoading:(id)model withError:(NSError *)error;
 - (void)modelDidUnload:(id)model;
 
 @end
