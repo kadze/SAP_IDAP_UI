@@ -73,7 +73,7 @@
         result = @{kSAPFriendsKey : @{kSAPDataKey : [friendElements copy]}};
     }
     
-    return result;
+    return [result JSONRepresentation];
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
@@ -82,11 +82,11 @@
     [friends performBlockWithoutNotification:^{
         for (id friendElement in friendElements) {
             SAPUser *user = [SAPUser new];
-            user.userId         = [friendElement[kSAPIDKey] JSONRepresentation];
-            user.firstName      = [friendElement[kSAPFirstNameKey] JSONRepresentation];
-            user.lastName       = [friendElement[kSAPLastNameKey] JSONRepresentation];
-            NSString *urlString = [friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]  JSONRepresentation];
-            user.imageURL       = [[NSURL URLWithString:urlString] JSONRepresentation];
+            user.userId         = friendElement[kSAPIDKey];
+            user.firstName      = friendElement[kSAPFirstNameKey];
+            user.lastName       = friendElement[kSAPLastNameKey];
+            NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+            user.imageURL       = [NSURL URLWithString:urlString];
             
             [friends addObject:user];
         }

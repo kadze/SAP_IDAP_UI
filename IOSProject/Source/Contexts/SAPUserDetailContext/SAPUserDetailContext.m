@@ -57,14 +57,14 @@
                    };
     }
     
-    return result;
+    return [result JSONRepresentation];
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.gender         = [result[kSAPGenderKey] JSONRepresentation];
-    NSString *urlString = [result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey] JSONRepresentation];
-    user.largeImageURL  = [[NSURL URLWithString:urlString] JSONRepresentation];
+    user.gender         = result[kSAPGenderKey];
+    NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+    user.largeImageURL  = [NSURL URLWithString:urlString];
 }
 
 @end

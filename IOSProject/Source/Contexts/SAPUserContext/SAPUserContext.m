@@ -51,16 +51,16 @@
                    };
     }
     
-    return result;
+    return [result JSONRepresentation];
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.userId         = [result[kSAPIDKey] JSONRepresentation];
-    user.firstName      = [result[kSAPFirstNameKey] JSONRepresentation];
-    user.lastName       = [result[kSAPLastNameKey] JSONRepresentation];
-    NSString *urlString = [result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey] JSONRepresentation];
-    user.imageURL       = [[NSURL URLWithString:urlString] JSONRepresentation];
+    user.userId         = result[kSAPIDKey];
+    user.firstName      = result[kSAPFirstNameKey];
+    user.lastName       = result[kSAPLastNameKey];
+    NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+    user.imageURL       = [NSURL URLWithString:urlString];
 }
 
 @end
