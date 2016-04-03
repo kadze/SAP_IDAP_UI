@@ -10,6 +10,8 @@
 
 #import "NSString+SAPExtensions.h"
 
+#import "SAPDispatchOnceMacro.h"
+
 static NSString * const kSAPQuestionMark = @"?";
 static NSString * const kSAPQuestionMarkSubstitute = @"SAPQuestionMark";
 static NSString * const kSAPSlash = @"/";
@@ -32,11 +34,10 @@ static NSString * const kSAPSlashSubstitute = @"SAPSlash";
 
 - (NSDictionary *)fileSystemSubstitutionDictionary {
     static NSDictionary *result = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    SAPDispatchOnce((^{
         result = @{ kSAPQuestionMark : kSAPQuestionMarkSubstitute,
                     kSAPSlash : kSAPSlashSubstitute};
-    });
+    }));
     
     return result;
 }

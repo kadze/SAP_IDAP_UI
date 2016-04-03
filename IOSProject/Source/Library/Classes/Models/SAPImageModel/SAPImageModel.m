@@ -14,6 +14,7 @@
 #import "NSURL+SAPExtensions.h"
 
 #import "SAPOwnershipMacro.h"
+#import "SAPDispatchOnceMacro.h"
 
 @interface SAPImageModel ()
 @property (nonatomic, strong)   UIImage           *image;
@@ -47,8 +48,7 @@
 
 + (SAPObjectCache *)cache {
     static id cache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    SAPDispatchOnce(^{
         cache = [SAPObjectCache new];
     });
     

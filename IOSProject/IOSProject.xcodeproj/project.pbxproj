@@ -168,6 +168,7 @@
 		2E424A8E1CAC41C10089CECC /* SAPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPView.m; sourceTree = "<group>"; };
 		2E424A9A1CAE6B450089CECC /* UIAlertView+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+SAPExtensions.h"; sourceTree = "<group>"; };
 		2E424A9B1CAE6B450089CECC /* UIAlertView+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+SAPExtensions.m"; sourceTree = "<group>"; };
+		2E424A9D1CB14B330089CECC /* SAPDispatchOnceMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAPDispatchOnceMacro.h; sourceTree = "<group>"; };
 		2E44ACDB1C94647200965DFA /* SAPObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPObjectCache.h; sourceTree = "<group>"; };
 		2E44ACDC1C94647200965DFA /* SAPObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPObjectCache.m; sourceTree = "<group>"; };
 		2ED4B5971C99DD5B001670F6 /* SAPLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPLoginView.h; sourceTree = "<group>"; };
@@ -779,6 +780,7 @@
 				CA634BFA1C68F19400DAED4E /* SAPClangMacro.h */,
 				CA634BFB1C68F19400DAED4E /* SAPOwnershipMacro.h */,
 				CA634BFC1C68F19400DAED4E /* SAPViewControllerMacro.h */,
+				2E424A9D1CB14B330089CECC /* SAPDispatchOnceMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";

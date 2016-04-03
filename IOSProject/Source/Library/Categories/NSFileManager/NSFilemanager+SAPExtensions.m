@@ -9,6 +9,8 @@
 #import "NSFileManager+SAPExtensions.h"
 #import "NSPathUtilities+SAPExtensions.h"
 
+#import "SAPDispatchOnceMacro.h"
+
 static NSString * const kSAPAppStateDirectoryName = @"appState";
 
 @implementation NSFileManager (SAPExtensions)
@@ -23,8 +25,7 @@ static NSString * const kSAPAppStateDirectoryName = @"appState";
 
 + (NSString *)appStatePath {
     static NSString *path = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    SAPDispatchOnce(^{
         path = [[self libraryPath] stringByAppendingPathComponent:kSAPAppStateDirectoryName];
         
         NSFileManager *fileManager = [self defaultManager];
