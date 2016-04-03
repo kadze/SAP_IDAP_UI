@@ -14,6 +14,8 @@
 
 #import "SAPGraphStringConstants.h"
 
+#import "SAPNilVsNSNullSubstituteMacro.h"
+
 @implementation SAPUserDetailContext
 
 #pragma mark -
@@ -34,11 +36,30 @@
     return @{kSAPFieldsKey : fieldsParameter};
 }
 
+- (NSDictionary *)cachedResult {
+    NSDictionary *result = nil;
+    SAPUser *model = self.model;
+    if (model.cached) {
+        SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
+        id cachedModelUrl = cachedModel.largeImageURL.absoluteString;
+        cachedModelUrl = (!cachedModelUrl) ? [NSNull new ]: cachedModelUrl;
+        result = @{kSAPIDKey        : SAPNSNullIfNil(cachedModel.userId),
+                   kSAPGenderKey    : SAPNSNullIfNil(cachedModel.gender),
+                   kSAPPictureKey   : @{
+                           kSAPDataKey : @{
+                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL.absoluteString)}
+                           }
+                   };
+    }
+    
+    return result;
+}
+
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.gender = result[kSAPGenderKey];
-    NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-    user.largeImageURL = [NSURL URLWithString:urlString];
+    user.gender         = SAPNilIfNSNull(result[kSAPGenderKey]);
+    NSString *urlString = SAPNilIfNSNull(result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]);
+    user.largeImageURL  = SAPNilIfNSNull([NSURL URLWithString:urlString]);
 }
 
 @end

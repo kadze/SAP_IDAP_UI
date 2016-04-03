@@ -12,6 +12,8 @@
 
 #import "SAPGraphStringConstants.h"
 
+#import "SAPNilVsNSNullSubstituteMacro.h"
+
 @implementation SAPUserContext
 
 #pragma mark -
@@ -51,11 +53,11 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.userId = result[kSAPIDKey];
-    user.firstName = result[kSAPFirstNameKey];
-    user.lastName = result[kSAPLastNameKey];
-    NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-    user.imageURL = [NSURL URLWithString:urlString];
+    user.userId =       SAPNilIfNSNull(result[kSAPIDKey]);
+    user.firstName =    SAPNilIfNSNull(result[kSAPFirstNameKey]);
+    user.lastName =     SAPNilIfNSNull(result[kSAPLastNameKey]);
+    NSString *urlString = SAPNilIfNSNull(result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]);
+    user.imageURL =     SAPNilIfNSNull([NSURL URLWithString:urlString]);
 }
 
 @end

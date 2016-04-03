@@ -15,6 +15,8 @@
 
 #import "SAPGraphStringConstants.h"
 
+#import "SAPNilVsNSNullSubstituteMacro.h"
+
 @implementation SAPUserFriendsContext
 
 #pragma mark -
@@ -77,11 +79,11 @@
     [friends performBlockWithoutNotification:^{
         for (id friendElement in friendElements) {
             SAPUser *user = [SAPUser new];
-            user.userId = friendElement[kSAPIDKey];
-            user.firstName = friendElement[kSAPFirstNameKey];
-            user.lastName = friendElement[kSAPLastNameKey];
-            NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-            user.imageURL = [NSURL URLWithString:urlString];
+            user.userId         = SAPNilIfNSNull(friendElement[kSAPIDKey]);
+            user.firstName      = SAPNilIfNSNull(friendElement[kSAPFirstNameKey]);
+            user.lastName       = SAPNilIfNSNull(friendElement[kSAPLastNameKey]);
+            NSString *urlString = SAPNilIfNSNull(friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey]);
+            user.imageURL       = SAPNilIfNSNull([NSURL URLWithString:urlString]);
             
             [friends addObject:user];
         }

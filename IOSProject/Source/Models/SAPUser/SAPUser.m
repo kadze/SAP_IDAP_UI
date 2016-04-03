@@ -16,6 +16,7 @@
 #import "NSFileManager+SAPExtensions.h"
 
 #import "SAPOwnershipMacro.h"
+#import "SAPNilVsNSNullSubstituteMacro.h"
 
 //properties names for NSCoding
 static NSString * const kSAPUserIDKey        = @"userId";
@@ -94,7 +95,8 @@ static NSString * const kSAPFriendsKey       = @"friends";
     
     //single object properties
     for (NSString *key in [[self encodingDictionary] allKeys]) {
-        [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
+        [self setValue:SAPNilIfNSNull([aDecoder decodeObjectForKey:key])
+                forKey:key];
     }
     
     [self decodeFriendsWithCoder:aDecoder];
