@@ -24,17 +24,17 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.friend = nil;
+    self.user = nil;
 }
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setFriend:(SAPUser *)friend {
-    if (_friend != friend) {
-        [_friend removeObserver:self];
-        _friend = friend;
-        [_friend addObserver:self];
+- (void)setUser:(SAPUser *)user {
+    if (_user != user) {
+        [_user removeObserver:self];
+        _user = user;
+        [_user addObserver:self];
     }
 }
 
@@ -44,7 +44,7 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.friend];
+    SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.user];
     self.context = context;
 }
 

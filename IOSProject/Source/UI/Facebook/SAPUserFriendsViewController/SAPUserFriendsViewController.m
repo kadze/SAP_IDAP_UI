@@ -71,7 +71,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SAPUser *friend = self.items[indexPath.row];
     SAPUserDetailViewController *controller = [SAPUserDetailViewController new];
-    controller.friend = friend;
+    controller.user = friend;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
