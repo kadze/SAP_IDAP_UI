@@ -66,7 +66,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
         SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
         controller.user = user;
         
-        [self.navigationController pushViewController:controller animated:YES];
+        [self.navigationController pushViewController:controller animated:NO];
     }
 }
 
