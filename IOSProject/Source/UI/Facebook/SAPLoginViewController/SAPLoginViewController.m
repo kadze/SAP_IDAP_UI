@@ -15,7 +15,6 @@
 #import "SAPUserFriendsViewController.h"
 #import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
-#import "SAPUserContext.h"
 
 #import "SAPModelObserver.h"
 
@@ -57,33 +56,41 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark View Lifecycle
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     
+    FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
+    if (accessToken) {
+        SAPUser *user = [SAPUser new];
+        user.userId = accessToken.userID;
+        
+        SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
+        controller.user = user;
+        
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 #pragma mark -
 #pragma mark Interface Handling
 
 - (IBAction)onLogin:(id)sender {
-    FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
     SAPUser *user = self.user;
-    if (accessToken) {
-        user.userId = accessToken.userID;
-        self.context = [SAPUserContext contextWithModel:self.user];
-    } else {
-        SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:user];
-        context.controller = self;
-        self.context = context;
-    }
+    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:user];
+    context.controller = self;
+    self.context = context;
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)updateViewControllerWithModel:(id)model {
-    SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
-    controller.user = self.user;
-    //new user so as to remove self from observer of old user. Not nil because init self with user, not nil.
+    SAPUser *user = self.user;
     self.user = [SAPUser new];
+    //new user so as to remove self from observer of the old user. Not nil because init self with user, not nil.
+    
+    SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
+    controller.user = user;
+    
     [self.navigationController pushViewController:controller animated:YES];
 }
 

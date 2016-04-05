@@ -12,6 +12,7 @@
 #import "SAPUser.h"
 #import "SAPUserFriendsView.h"
 #import "SAPUserCell.h"
+#import "SAPUserContext.h"
 #import "SAPUserFriendsContext.h"
 #import "SAPUserDetailViewController.h"
 
@@ -24,12 +25,6 @@
 #import "SAPViewControllerMacro.h"
 
 SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, mainView);
-
-@interface SAPUserFriendsViewController ()
-
-- (void)reloadView;
-
-@end
 
 @implementation SAPUserFriendsViewController
 
@@ -52,8 +47,11 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 - (void)setUser:(SAPUser *)user {
     if (_user != user) {
+        [_user removeObserver:self];
         _user = user;
+        [_user addObserver:self];
         
+        self.context = [SAPUserContext contextWithModel:user];
         self.items = user.friends;
     }
 }
@@ -79,13 +77,6 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 #pragma mark Public
 
 - (void)updateViewControllerWithModel:(id)model {
-    [self reloadView];
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (void)reloadView {
     [self.mainView.tableView reloadData];
 }
 
