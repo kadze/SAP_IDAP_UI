@@ -23,7 +23,15 @@
 
 #import "SAPDispatch.h"
 
+static NSString * const kSAPBackBarButtonTitle = @"Log out";
+
 SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView);
+
+@interface SAPLoginViewController ()
+
+- (void)customiseBackBarButton;
+
+@end
 
 @implementation SAPLoginViewController
 
@@ -68,6 +76,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
         
         [self.navigationController pushViewController:controller animated:NO];
     }
+    
+    [self customiseBackBarButton];
 }
 
 #pragma mark -
@@ -92,6 +102,16 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
     controller.user = user;
     
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)customiseBackBarButton {
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:kSAPBackBarButtonTitle
+                                                               style:UIBarButtonItemStylePlain
+                                                              target:nil action:nil];
+    self.navigationItem.backBarButtonItem = button;
 }
 
 @end
