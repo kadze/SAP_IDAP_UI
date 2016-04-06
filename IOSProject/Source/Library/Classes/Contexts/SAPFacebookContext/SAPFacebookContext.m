@@ -93,15 +93,19 @@
         model.state = kSAPModelStateWillLoad;
     }
 
+    [self continueLoading];
+}
+
+- (void)cancel {
+    self.connection = nil;
+}
+
+- (void)continueLoading {
     SAPWeakify(self);
     SAPDispatchAsyncOnDefaultQueue(^{
         SAPStrongifyAndReturnIfNil(self);
         [self performBackgroundExecution];
     });
-}
-
-- (void)cancel {
-    self.connection = nil;
 }
 
 - (id)cachedResult {

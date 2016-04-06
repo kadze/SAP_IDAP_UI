@@ -14,6 +14,7 @@
 #import "SAPUserCell.h"
 #import "SAPUserContext.h"
 #import "SAPUserFriendsContext.h"
+#import "SAPUserDetailContext.h"
 #import "SAPUserDetailViewController.h"
 
 #import "UINib+SAPextensions.h"
@@ -53,6 +54,8 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
         
         self.context = [SAPUserContext contextWithModel:user];
         self.items = user.friends;
+        
+        self.detailContext = [SAPUserDetailContext contextWithModel:user];
     }
 }
 
@@ -61,6 +64,14 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
     context.user = self.user;
     
     return context;
+}
+
+- (void)setDetailContext:(SAPUserDetailContext *)context{
+    if (_detailContext != context) {
+        [_detailContext cancel];
+        _detailContext = context;
+        [context continueLoading];
+    }
 }
 
 #pragma mark -
@@ -78,6 +89,9 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 - (void)updateViewControllerWithModel:(id)model {
     [self.mainView.tableView reloadData];
+    if (model == self.user) {
+        self.mainView.model = model;
+    }
 }
 
 @end

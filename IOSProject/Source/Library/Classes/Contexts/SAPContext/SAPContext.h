@@ -20,5 +20,6 @@
 //this methods should be overriden in subclasses
 - (void)execute;
 - (void)cancel;
+- (void)continueLoading;
 
 @end

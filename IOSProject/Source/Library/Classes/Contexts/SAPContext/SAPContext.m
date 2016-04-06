@@ -38,4 +38,8 @@
     
 }
 
+- (void)continueLoading {
+    
+}
+
 @end

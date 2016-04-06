@@ -8,8 +8,38 @@
 
 #import "SAPUserFriendsView.h"
 
-#import "SAPUsers.h"
+#import <UIKit/UILabel.h>
+
+#import "SAPUser.h"
+#import "SAPImageView.h"
+
+@interface SAPUserFriendsView ()
+
+- (void)fillWithModel:(SAPUser *)model;
+
+@end
 
 @implementation SAPUserFriendsView
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setModel:(SAPUser *)model {
+    if (_model != model) {
+        _model = model;
+        
+        [self fillWithModel:model];
+    }
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)fillWithModel:(SAPUser *)model {
+    self.imageView.imageModel = model.largeImageModel;
+    self.firstNameLabel.text = model.firstName;
+    self.lastNameLabel.text = model.lastName;
+    self.genderLabel.text = model.gender;
+}
 
 @end

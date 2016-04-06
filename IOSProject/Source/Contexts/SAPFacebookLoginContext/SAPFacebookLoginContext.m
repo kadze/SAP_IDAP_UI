@@ -72,9 +72,9 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         [user setState:kSAPModelStateDidFailLoading withObject:error];
                                     }
                                 } else {
-                                    [user performBlockWithoutNotification:^{
-                                        user.state = kSAPModelStateUnloaded;
-                                    }];
+//                                    [user performBlockWithoutNotification:^{
+//                                        user.state = kSAPModelStateUnloaded;
+//                                    }];
                                 
                                     [self loadUser];
                                 }
@@ -85,7 +85,8 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 - (void)loadUser {
     SAPContext *context = [SAPUserContext contextWithModel:self.model];
     self.userContext = context;
-    [context execute];
+//    [context execute];
+    [context continueLoading];
 }
 
 @end
