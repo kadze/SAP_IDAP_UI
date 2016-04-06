@@ -38,15 +38,16 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init {
-    self = [super init];
-    self.user = [SAPUser new];
-    
-    return self;
-}
-
 - (void)dealloc {
     self.user = nil;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.user = [SAPUser new];
+    [self customiseBackBarButton];
+    
+    return self;
 }
 
 #pragma mark -
@@ -76,8 +77,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
         
         [self.navigationController pushViewController:controller animated:NO];
     }
-    
-    [self customiseBackBarButton];
 }
 
 #pragma mark -
