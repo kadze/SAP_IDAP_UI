@@ -44,7 +44,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.user = [SAPUser new];
     [self customiseBackBarButton];
     
     return self;
@@ -83,8 +82,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark Interface Handling
 
 - (IBAction)onLogin:(id)sender {
-    SAPUser *user = self.user;
-    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:user];
+    self.user = [SAPUser new];
+    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
     context.controller = self;
     self.context = context;
 }
@@ -94,9 +93,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 
 - (void)updateViewControllerWithModel:(id)model {
     SAPUser *user = self.user;
-    self.user = [SAPUser new];
-    //new user so as to remove self from observer of the old user. Not nil because init self with user, not nil.
-    
+    self.user = nil;
     SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
     controller.user = user;
     
