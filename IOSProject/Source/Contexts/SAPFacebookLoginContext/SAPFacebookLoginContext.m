@@ -34,22 +34,12 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 #pragma mark -
 #pragma mark Public
 
-- (void)execute {
-    SAPModel *user = self.model;
-    
-    NSUInteger state = user.state;
-    if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
-        [user notifyObserversWithSelector:[user selectorForState:state]];
-        
-        return;
-    }
-    
+- (void)stateUnsafeLoad {
     SAPWeakify(self);
     SAPDispatchSyncOnMainQueue(^{
         SAPStrongify(self);
         [self login];
     });
-    
 }
 
 #pragma mark -
@@ -57,8 +47,6 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 
 - (void)login {
     SAPModel *user = self.model;
-    
-    user.state = kSAPModelStateWillLoad;
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     SAPLoginViewController *controller = self.controller;
@@ -72,10 +60,6 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                                         [user setState:kSAPModelStateDidFailLoading withObject:error];
                                     }
                                 } else {
-//                                    [user performBlockWithoutNotification:^{
-//                                        user.state = kSAPModelStateUnloaded;
-//                                    }];
-                                
                                     [self loadUser];
                                 }
                             }
@@ -85,8 +69,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 - (void)loadUser {
     SAPContext *context = [SAPUserContext contextWithModel:self.model];
     self.userContext = context;
-//    [context execute];
-    [context continueLoading];
+    [context stateUnsafeLoad];
 }
 
 @end

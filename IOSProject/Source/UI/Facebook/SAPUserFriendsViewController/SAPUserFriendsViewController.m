@@ -70,7 +70,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
     if (_detailContext != context) {
         [_detailContext cancel];
         _detailContext = context;
-        [context continueLoading];
+        [context stateUnsafeLoad];
     }
 }
 

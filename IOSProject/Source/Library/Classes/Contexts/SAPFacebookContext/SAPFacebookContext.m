@@ -80,27 +80,11 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)execute {
-    SAPModel *model = self.model;
-    @synchronized (model) {
-        NSUInteger state = model.state;
-        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
-            [model notifyObserversWithSelector:[model selectorForState:state]];
-            
-            return;
-        }
-        
-        model.state = kSAPModelStateWillLoad;
-    }
-
-    [self continueLoading];
-}
-
 - (void)cancel {
     self.connection = nil;
 }
 
-- (void)continueLoading {
+- (void)stateUnsafeLoad {
     SAPWeakify(self);
     SAPDispatchAsyncOnDefaultQueue(^{
         SAPStrongifyAndReturnIfNil(self);

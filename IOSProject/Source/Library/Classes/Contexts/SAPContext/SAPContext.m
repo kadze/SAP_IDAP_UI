@@ -8,6 +8,8 @@
 
 #import "SAPContext.h"
 
+#import "SAPModel.h"
+
 @implementation SAPContext
 
 #pragma mark -
@@ -31,14 +33,30 @@
 #pragma mark Public
 
 - (void)execute {
+    SAPModel *model = self.model;
+    @synchronized (model) {
+        NSUInteger state = model.state;
+        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
+            [model notifyObserversWithSelector:[model selectorForState:state]];
+            
+            return;
+        }
+        
+        model.state = kSAPModelStateWillLoad;
+    }
     
+    [self stateUnsafeLoad];
 }
 
 - (void)cancel {
     
 }
 
-- (void)continueLoading {
+- (void)load {
+    
+}
+
+- (void)stateUnsafeLoad {
     
 }
 
