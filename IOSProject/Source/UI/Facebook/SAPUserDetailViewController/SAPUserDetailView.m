@@ -13,7 +13,7 @@
 #import "SAPImageView.h"
 
 @interface SAPUserDetailView ()
-- (void)fillWithModel:(SAPUser *)model;
+- (void)fillWithModel:(SAPUser *)user;
 
 @end
 
@@ -33,11 +33,11 @@
 #pragma mark -
 #pragma mark Private
 
-- (void)fillWithModel:(SAPUser *)model {
-    self.imageView.imageModel = model.largeImageModel;
-    self.firstNameLabel.text = model.firstName;
-    self.lastNameLabel.text = model.lastName;
-    self.genderLabel.text = model.gender;
+- (void)fillWithModel:(SAPUser *)user {
+    self.imageView.imageModel = user.largeImageModel;
+    self.firstNameLabel.text = user.firstName;
+    self.lastNameLabel.text = user.lastName;
+    self.genderLabel.text = user.gender;
 }
 
 @end
