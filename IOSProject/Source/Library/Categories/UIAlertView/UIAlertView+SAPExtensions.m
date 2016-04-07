@@ -9,7 +9,7 @@
 #import "UIAlertView+SAPExtensions.h"
 
 static NSString * const kSAPCancelButtonTitle = @"OK";
-static NSString * const kSAPErrorTitle = @"Error!";
+static NSString * const kSAPErrorTitle        = @"Error!";
 
 @implementation UIAlertView (SAPExtensions)
 

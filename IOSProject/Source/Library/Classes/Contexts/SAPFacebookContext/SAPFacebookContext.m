@@ -18,12 +18,12 @@
 
 @interface SAPFacebookContext ()
 @property (nonatomic, readonly) FBSDKGraphRequestHandler completionHandler;
-
-@property (nonatomic, readonly) FBSDKGraphRequest *graphRequest;
+@property (nonatomic, readonly) FBSDKGraphRequest        *graphRequest;
 
 @end
 
 @implementation SAPFacebookContext
+
 @dynamic graphRequest;
 @dynamic completionHandler;
 

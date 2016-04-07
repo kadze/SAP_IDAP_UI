@@ -29,6 +29,7 @@
 @end
 
 @implementation SAPArrayViewController
+
 @dynamic itemsContext;
 @dynamic tableView;
 
