@@ -11,20 +11,11 @@
 #import <Foundation/NSFileManager.h>
 
 #import "SAPUser.h"
-#import "SAPAppDelegate.h"
 #import "SAPUserFriendsContext.h"
-
-#import "NSObject+SAPExtensions.h"
 
 #import "SAPOwnershipMacro.h"
 
-#import "SAPDispatch.h"
-
-static NSString * const kSAPObjectsKey      = @"objects";
-static NSString * const kSAPPlistName       = @"users.plist";
-
 @interface SAPUsers ()
-
 @property (nonatomic, strong) SAPUserFriendsContext *context;
 
 - (void)fillWithUsers:(NSArray *)users;
@@ -38,7 +29,6 @@ static NSString * const kSAPPlistName       = @"users.plist";
 #pragma mark Public
 
 - (void)performBackgroundLoading {
-//    sleep(3);
     [self fillWithUsers:[self loadUsers]];
     @synchronized(self) {
         self.state = kSAPModelStateDidFinishLoading;
@@ -59,13 +49,11 @@ static NSString * const kSAPPlistName       = @"users.plist";
 }
 
 - (NSArray *)loadUsers {
-    NSArray *objects = nil;
     if (self.cached) {
-        objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+        return [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
     }
     
-    return objects;
+    return nil;
 }
-
 
 @end
