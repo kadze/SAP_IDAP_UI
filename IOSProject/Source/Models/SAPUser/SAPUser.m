@@ -42,6 +42,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
 @implementation SAPUser
 
 @dynamic imageModel;
+@dynamic largeImageModel;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
