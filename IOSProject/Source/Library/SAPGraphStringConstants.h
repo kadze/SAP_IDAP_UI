@@ -6,23 +6,25 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-static NSString * const kSAPDataKey = @"data";
-static NSString * const kSAPFieldsKey = @"fields";
+#define SAPNSStringConst(name, value) static NSString * const name = value
 
-static NSString * const kSAPUserGraphPath = @"me";
+SAPNSStringConst(kSAPDataKey, @"data");
+SAPNSStringConst(kSAPFieldsKey, @"fields");
 
-static NSString * const kSAPFriendsKey = @"friends";
+SAPNSStringConst(kSAPUserGraphPath, @"me");
 
-static NSString * const kSAPIDKey = @"id";
-static NSString * const kSAPFirstNameKey = @"first_name";
-static NSString * const kSAPLastNameKey = @"last_name";
-static NSString * const kSAPGenderKey = @"gender";
+SAPNSStringConst(kSAPFriendsKey, @"friends");
 
-static NSString * const kSAPPictureKey = @"picture";
-static NSString * const kSAPLargePictureKey = @"picture.type(large)";
-static NSString * const kSAPSmallPictureKey = @"picture.type(small)";
-static NSString * const kSAPNormalPictureKey = @"picture.type(normal)";
-static NSString * const kSAPAlbumPictureKey = @"picture.type(album)";
-static NSString * const kSAPSquarePictureKey = @"picture.type(square)";
+SAPNSStringConst(kSAPIDKey, @"id");
+SAPNSStringConst(kSAPFirstNameKey, @"first_name");
+SAPNSStringConst(kSAPLastNameKey, @"last_name");
+SAPNSStringConst(kSAPGenderKey, @"gender");
 
-static NSString * const kSAPUrlKey = @"url";
+SAPNSStringConst(kSAPPictureKey, @"picture");
+SAPNSStringConst(kSAPLargePictureKey, @"picture.type(large)");
+SAPNSStringConst(kSAPSmallPictureKey, @"picture.type(small)");
+SAPNSStringConst(kSAPNormalPictureKey, @"picture.type(normal)");
+SAPNSStringConst(kSAPAlbumPictureKey, @"picture.type(album)");
+SAPNSStringConst(kSAPSquarePictureKey, @"picture.type(square)");
+
+SAPNSStringConst(kSAPUrlKey, @"url");
