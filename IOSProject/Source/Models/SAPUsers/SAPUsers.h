@@ -6,12 +6,8 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "SAPArrayModel.h"
 
-#import "SAPCacheableModel.h"
-
-@interface SAPUsers : SAPArrayModel <SAPCacheableModel>
+@interface SAPUsers : SAPArrayModel
 
 @end
