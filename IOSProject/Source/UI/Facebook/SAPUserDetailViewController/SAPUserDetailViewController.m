@@ -35,17 +35,10 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
         [_user removeObserver:self];
         _user = user;
         [_user addObserver:self];
+        
+        SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.user];
+        self.context = context;
     }
-}
-
-#pragma mark-
-#pragma mark View Lifecycle
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.user];
-    self.context = context;
 }
 
 #pragma mark -
