@@ -41,7 +41,6 @@
     if (_connection != connection) {
         [_connection cancel];
         _connection = connection;
-        [connection start];
     }
 }
 
@@ -114,7 +113,7 @@
 - (void)performBackgroundExecution {
     SAPWeakify(self);
     SAPDispatchAsyncOnMainQueue(^{
-        SAPStrongify(self);
+        SAPStrongifyAndReturnIfNil(self);
         self.connection = [self.graphRequest startWithCompletionHandler:self.completionHandler];
     });
 }
