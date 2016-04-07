@@ -15,6 +15,8 @@
 #import "NSObject+SAPJSONObject.h"
 #import "NSDictionary+SAPJSONDictionary.h"
 
+#import "SAPNilToNSNullMacro.h"
+
 #import "SAPGraphStringConstants.h"
 
 @implementation SAPUserContext
@@ -41,12 +43,12 @@
     SAPUser *model = self.model;
     if (model.cached) {
         SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
-        result = @{kSAPIDKey : cachedModel.userId,
-                   kSAPFirstNameKey : cachedModel.firstName,
-                   kSAPLastNameKey : cachedModel.lastName,
+        result = @{kSAPIDKey : SAPNSNullIfNil(cachedModel.userId),
+                   kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
+                   kSAPLastNameKey : SAPNSNullIfNil(cachedModel.lastName),
                    kSAPPictureKey : @{
                            kSAPDataKey : @{
-                                   kSAPUrlKey : cachedModel.imageURL.absoluteString}
+                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.imageURL.absoluteString)}
                            }
                    };
     }
@@ -56,11 +58,11 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
-    user.userId         = result[kSAPIDKey];
-    user.firstName      = result[kSAPFirstNameKey];
-    user.lastName       = result[kSAPLastNameKey];
+    user.userId = result[kSAPIDKey];
+    user.firstName = result[kSAPFirstNameKey];
+    user.lastName = result[kSAPLastNameKey];
     NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-    user.imageURL       = [NSURL URLWithString:urlString];
+    user.imageURL = [NSURL URLWithString:urlString];
 }
 
 @end
