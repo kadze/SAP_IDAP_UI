@@ -16,7 +16,7 @@
 #import "NSFileManager+SAPExtensions.h"
 
 #import "SAPOwnershipMacro.h"
-#import "SAPNilVsNSNullSubstituteMacro.h"
+#import "SAPNilToNSNullMacro.h"
 
 //properties names for NSCoding
 static NSString * const kSAPUserIDKey        = @"userId";

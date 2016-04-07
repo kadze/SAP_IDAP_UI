@@ -19,7 +19,7 @@
 
 #import "SAPGraphStringConstants.h"
 
-#import "SAPNilVsNSNullSubstituteMacro.h"
+#import "SAPNilToNSNullMacro.h"
 
 @implementation SAPUserDetailContext
 

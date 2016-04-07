@@ -16,9 +16,9 @@
 + (instancetype)contextWithModel:(id)model;
 
 - (instancetype)initWithModel:(id)model;
+- (void)execute;
 
 //this methods should be overriden in subclasses
-- (void)execute;
 - (void)cancel;
 - (void)stateUnsafeLoad;
 
