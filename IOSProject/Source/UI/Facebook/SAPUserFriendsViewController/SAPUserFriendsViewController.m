@@ -15,6 +15,7 @@
 #import "SAPUserContext.h"
 #import "SAPUserFriendsContext.h"
 #import "SAPUserDetailContext.h"
+#import "SAPCompositeUserContext.h"
 #import "SAPUserDetailViewController.h"
 
 #import "UINib+SAPextensions.h"
@@ -52,10 +53,8 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
         _user = user;
         [_user addObserver:self];
         
-        self.context = [SAPUserContext contextWithModel:user];
+        self.context = [SAPCompositeUserContext contextWithModel:user];
         self.items = user.friends;
-        
-        self.detailContext = [SAPUserDetailContext contextWithModel:user];
     }
 }
 
@@ -64,14 +63,6 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
     context.user = self.user;
     
     return context;
-}
-
-- (void)setDetailContext:(SAPUserDetailContext *)context{
-    if (_detailContext != context) {
-        [_detailContext cancel];
-        _detailContext = context;
-        [context stateUnsafeLoad];
-    }
 }
 
 #pragma mark -
@@ -88,9 +79,10 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 #pragma mark Public
 
 - (void)updateViewControllerWithModel:(id)model {
-    [self.mainView.tableView reloadData];
     if (model == self.user) {
         self.mainView.model = model;
+    } else if (model == self.items) {
+        [self.mainView.tableView reloadData];
     }
 }
 

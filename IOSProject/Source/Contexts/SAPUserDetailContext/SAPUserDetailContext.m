@@ -10,8 +10,6 @@
 
 #import "SAPUser.h"
 
-#import "SAPDispatch.h"
-
 #import "NSNull+SAPJSONNull.h"
 #import "NSArray+SAPJSONArray.h"
 #import "NSObject+SAPJSONObject.h"
