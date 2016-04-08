@@ -54,7 +54,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
         [_user addObserver:self];
         
         self.context = [SAPCompositeUserContext contextWithModel:user];
-        self.items = user.friends;
+        //self.items = user.friends;
     }
 }
 
@@ -80,7 +80,9 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 - (void)updateViewControllerWithModel:(id)model {
     if (model == self.user) {
-        self.mainView.model = model;
+        SAPUserFriendsView *mainView = self.mainView;
+        mainView.model = nil;
+        mainView.model = model;
     } else if (model == self.items) {
         [self.mainView.tableView reloadData];
     }

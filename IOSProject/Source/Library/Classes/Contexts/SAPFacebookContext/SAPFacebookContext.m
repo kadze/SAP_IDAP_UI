@@ -84,6 +84,10 @@
 }
 
 - (void)stateUnsafeLoad {
+    @synchronized (self.model) {
+        [self.model setState:kSAPModelStateWillLoad];
+    }
+    
     SAPWeakify(self);
     SAPDispatchAsyncOnDefaultQueue(^{
         SAPStrongifyAndReturnIfNil(self);
