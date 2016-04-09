@@ -12,7 +12,6 @@
 
 #import "SAPModel.h"
 #import "SAPLoginViewController.h"
-#import "SAPUserContext.h"
 
 #import "SAPOwnershipMacro.h"
 
@@ -25,7 +24,6 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 @property (nonatomic, strong) SAPContext *userContext;
 
 - (void)login;
-- (void)loadUser;
 
 @end
 
@@ -46,7 +44,7 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
 #pragma mark Private
 
 - (void)login {
-    SAPModel *user = self.model;
+    SAPModel *model = self.model;
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     SAPLoginViewController *controller = self.controller;
@@ -56,20 +54,15 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 SAPStrongifyAndReturnIfNil(self);
                                 if (error || result.isCancelled) {
-                                    @synchronized (user) {
-                                        [user setState:kSAPModelStateDidFailLoading withObject:error];
+                                    @synchronized (model) {
+                                        [model setState:kSAPModelStateDidFailLoading withObject:error];
                                     }
                                 } else {
-                                    [self loadUser];
+                                    model.state = kSAPModelStateDidFinishLoading;
+                                    [controller finishLogin];
                                 }
                             }
      ];
-}
-
-- (void)loadUser {
-    SAPContext *context = [SAPUserContext contextWithModel:self.model];
-    self.userContext = context;
-    [context stateUnsafeLoad];
 }
 
 @end

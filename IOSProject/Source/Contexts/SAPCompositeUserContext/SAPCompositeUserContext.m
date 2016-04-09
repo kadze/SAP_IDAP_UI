@@ -27,7 +27,7 @@
     SAPUser *user = self.model;
     self.userDetailContext = [SAPUserDetailContext contextWithModel:user];
     [self.userDetailContext execute];
-    self.userFriendsContext = [SAPUserFriendscontext contextWithModel:user.friends];
+    self.userFriendsContext = [SAPUserFriendsContext contextWithModel:user.friends];
     [self.userFriendsContext execute];
 }
 

@@ -15,4 +15,6 @@
 
 - (IBAction)onLogin:(id)sender;
 
+- (void)finishLogin;
+
 @end

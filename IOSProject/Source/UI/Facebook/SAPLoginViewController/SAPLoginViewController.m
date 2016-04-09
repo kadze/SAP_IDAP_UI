@@ -65,7 +65,24 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self finishLogin];
+}
+
+#pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onLogin:(id)sender {
+    SAPUser *notifier = [SAPUser new];
+    self.user = notifier;
+    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:notifier];
+    context.controller = self;
+    self.context = context;
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)finishLogin {
     FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
     if (accessToken) {
         SAPUser *user = [SAPUser new];
@@ -76,28 +93,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
         
         [self.navigationController pushViewController:controller animated:NO];
     }
-}
-
-#pragma mark -
-#pragma mark Interface Handling
-
-- (IBAction)onLogin:(id)sender {
-    self.user = [SAPUser new];
-    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.user];
-    context.controller = self;
-    self.context = context;
-}
-
-#pragma mark -
-#pragma mark Public
-
-- (void)updateViewControllerWithModel:(id)model {
-    SAPUser *user = self.user;
-    self.user = nil;
-    SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
-    controller.user = user;
-    
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark -
