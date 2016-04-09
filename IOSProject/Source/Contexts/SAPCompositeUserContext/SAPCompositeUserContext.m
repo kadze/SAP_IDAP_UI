@@ -9,16 +9,12 @@
 #import "SAPCompositeUserContext.h"
 
 #import "SAPUser.h"
-#import "SAPUserContext.h"
 #import "SAPUserDetailContext.h"
-
-#import "SAPOwnershipMacro.h"
-
-#import "SAPDispatch.h"
+#import "SAPUserFriendsContext.h"
 
 @interface SAPCompositeUserContext ()
-@property (nonatomic, strong) SAPUserContext          *userContext;
-@property (nonatomic, strong) SAPUserDetailContext    *userDetailContext;
+@property (nonatomic, strong) SAPUserDetailContext  *userDetailContext;
+@property (nonatomic, strong) SAPUserFriendsContext *userFriendsContext;
 
 @end
 
@@ -27,27 +23,12 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)stateUnsafeLoad {
-    SAPWeakify(self);
-    SAPDispatchAsyncOnDefaultQueue(^{
-        SAPStrongifyAndReturnIfNil(self);
-        SAPUser *user = self.model;
-        [user addObserver:self];
-        
-        self.userContext = [SAPUserContext contextWithModel:user];
-        [self.userContext stateUnsafeLoad];
-    });
-}
-
-#pragma mark -
-#pragma mark SAPModelObserver
-
-- (void)modelDidFinishLoading:(id)model {
-    SAPDispatchAsyncOnMainQueue(^{
-        [model removeObserver:self];
-        self.userDetailContext = [SAPUserDetailContext contextWithModel:model];
-        [self.userDetailContext stateUnsafeLoad];
-    });
+- (void)execute {
+    SAPUser *user = self.model;
+    self.userDetailContext = [SAPUserDetailContext contextWithModel:user];
+    [self.userDetailContext execute];
+    self.userFriendsContext = [SAPUserFriendscontext contextWithModel:user.friends];
+    [self.userFriendsContext execute];
 }
 
 @end
