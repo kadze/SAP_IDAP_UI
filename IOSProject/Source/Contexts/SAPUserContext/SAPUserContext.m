@@ -25,7 +25,9 @@
 #pragma mark Public
 
 - (NSString *)graphRequestPath {
-    return kSAPUserGraphPath;
+    SAPUser *user = self.model;
+    
+    return user.userId;
 }
 
 - (NSDictionary *)graphRequestParameters {
