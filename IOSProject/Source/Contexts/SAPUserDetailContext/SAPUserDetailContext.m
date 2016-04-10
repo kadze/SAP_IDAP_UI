@@ -31,10 +31,15 @@
 }
 
 - (NSDictionary *)graphRequestParameters {
-    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@{%@}",
+    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@,%@,%@{%@},%@{%@}",
+                                 kSAPFirstNameKey,
+                                 kSAPLastNameKey,
                                  kSAPGenderKey,
-                                 kSAPLargePictureKey,
-                                 kSAPUrlKey];
+                                 kSAPSmallPictureWithAliasKey,
+                                 kSAPUrlKey,
+                                 kSAPLargePictureWithAliasKey,
+                                 kSAPUrlKey
+                                 ];
     
     return @{kSAPFieldsKey : fieldsParameter};
 }
@@ -45,7 +50,7 @@
     if (model.cached) {
         SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
         id cachedModelUrl = cachedModel.largeImageURL.absoluteString;
-        cachedModelUrl = (!cachedModelUrl) ? [NSNull new ]: cachedModelUrl;
+        cachedModelUrl = (!cachedModelUrl) ? [NSNull new]: cachedModelUrl;
         result = @{kSAPIDKey        : SAPNSNullIfNil(cachedModel.userId),
                    kSAPGenderKey    : SAPNSNullIfNil(cachedModel.gender),
                    kSAPPictureKey   : @{
@@ -60,9 +65,14 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
+    user.userId = result[kSAPIDKey];
+    user.firstName = result[kSAPFirstNameKey];
+    user.lastName = result[kSAPLastNameKey];
     user.gender = result[kSAPGenderKey];
-    NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+    NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.largeImageURL = [NSURL URLWithString:urlString];
+    urlString = result[kSAPSmallPictureAliasKey][kSAPDataKey][kSAPUrlKey];
+    user.imageURL = [NSURL URLWithString:urlString];
 }
 
 @end
