@@ -104,6 +104,13 @@ didChangeWithModel:(SAPCollectionChangeModel *)changeModel
 }
 
 #pragma mark -
+#pragma mark Public
+
+- (void)updateViewControllerWithModel:(id)model {
+    [self.tableView reloadData];
+}
+
+#pragma mark -
 #pragma mark Private
 
 - (id)cellClass {
