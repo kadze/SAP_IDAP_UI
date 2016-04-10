@@ -27,9 +27,9 @@
 - (void)setModel:(SAPUser *)model {
     if (_model != model) {
         _model = model;
-        
-        [self fillWithModel:model];
     }
+    
+    [self fillWithModel:model];
 }
 
 #pragma mark -
