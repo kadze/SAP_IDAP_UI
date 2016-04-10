@@ -13,6 +13,8 @@
 
 #import "UIAlertView+SAPExtensions.h"
 
+#import "SAPContextSetterMacro.h"
+
 #import "SAPDispatch.h"
 
 @implementation SAPViewController
@@ -29,13 +31,7 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setContext:(SAPContext *)context{
-    if (_context != context) {
-        [_context cancel];
-        _context = context;
-        [context execute];
-    }
-}
+SAPContextSetter(SAPContext, _context, setContext);
 
 #pragma mark -
 #pragma mark SAPModelObserver

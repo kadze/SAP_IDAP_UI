@@ -6,8 +6,11 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#ifndef SAPContextSetterMacro_h
-#define SAPContextSetterMacro_h
-
-
-#endif /* SAPContextSetterMacro_h */
+#define SAPContextSetter(contextClassName, ivar, setterName) \
+- (void)setterName:(contextClassName *)context{ \
+    if (ivar != context) { \
+        [ivar cancel]; \
+        ivar = context; \
+        [context execute]; \
+    } \
+}

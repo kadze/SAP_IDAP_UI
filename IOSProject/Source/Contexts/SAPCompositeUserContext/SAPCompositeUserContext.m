@@ -12,6 +12,8 @@
 #import "SAPUserDetailContext.h"
 #import "SAPUserFriendsContext.h"
 
+#import "SAPContextSetterMacro.h"
+
 @interface SAPCompositeUserContext ()
 @property (nonatomic, strong) SAPUserDetailContext  *userDetailContext;
 @property (nonatomic, strong) SAPUserFriendsContext *userFriendsContext;
@@ -21,14 +23,26 @@
 @implementation SAPCompositeUserContext
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.userDetailContext = nil;
+    self.userFriendsContext = nil;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+SAPContextSetter(SAPUserDetailContext, _userDetailContext, setUserDetailContext);
+SAPContextSetter(SAPUserFriendsContext, _userFriendsContext, setUserFriendsContext)
+
+#pragma mark -
 #pragma mark Public
 
 - (void)execute {
     SAPUser *user = self.model;
     self.userDetailContext = [SAPUserDetailContext contextWithModel:user];
-    [self.userDetailContext execute];
-    self.userFriendsContext = [SAPUserFriendsContext contextWithModel:user.friends];
-    [self.userFriendsContext execute];
+    self.userFriendsContext = [SAPUserFriendsContext contextWithUser:user];
 }
 
 @end
