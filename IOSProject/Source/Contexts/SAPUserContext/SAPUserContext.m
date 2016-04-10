@@ -34,7 +34,7 @@
     NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@,%@{%@}",
                                  kSAPFirstNameKey,
                                  kSAPLastNameKey,
-                                 kSAPPictureKey,
+                                 kSAPSmallPictureWithAliasKey,
                                  kSAPUrlKey];
     
     return @{kSAPFieldsKey : fieldsParameter};
@@ -63,7 +63,7 @@
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
-    NSString *urlString = result[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+    NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.imageURL = [NSURL URLWithString:urlString];
 }
 
