@@ -83,11 +83,7 @@
     self.connection = nil;
 }
 
-- (void)stateUnsafeLoad {
-    @synchronized (self.model) {
-        [self.model setState:kSAPModelStateWillLoad];
-    }
-    
+- (void)stateUnsafeLoad {    
     SAPWeakify(self);
     SAPDispatchAsyncOnDefaultQueue(^{
         SAPStrongifyAndReturnIfNil(self);
