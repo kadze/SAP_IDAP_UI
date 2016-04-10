@@ -12,17 +12,8 @@
 #import "SAPUser.h"
 #import "SAPUserFriendsView.h"
 #import "SAPUserCell.h"
-#import "SAPUserContext.h"
-#import "SAPUserFriendsContext.h"
-#import "SAPUserDetailContext.h"
 #import "SAPCompositeUserContext.h"
 #import "SAPUserDetailViewController.h"
-
-#import "UINib+SAPextensions.h"
-#import "UITableView+SAPExtensions.h"
-#import "UITableView+SAPCollectionChangeModel.h"
-
-#import "SAPDispatch.h"
 
 #import "SAPViewControllerMacro.h"
 
@@ -53,15 +44,16 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
         _user = user;
         [_user addObserver:self];
         
-        self.context = [SAPCompositeUserContext contextWithModel:user];
-        //self.items = user.friends;
+        self.items = user.friends;
     }
 }
 
-- (SAPUserFriendsContext *)itemsContext {
-    SAPUserFriendsContext *context = [SAPUserFriendsContext new];
-    context.user = self.user;
-    
+- (UITableView *)tableView {
+    return self.mainView.tableView;
+}
+
+- (SAPContext *)itemsContext {
+    SAPCompositeUserContext *context = [SAPCompositeUserContext contextWithModel:self.user];
     return context;
 }
 
@@ -79,12 +71,10 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 #pragma mark Public
 
 - (void)updateViewControllerWithModel:(id)model {
+    [super updateViewControllerWithModel:model];
     if (model == self.user) {
         SAPUserFriendsView *mainView = self.mainView;
-        mainView.model = nil;
         mainView.model = model;
-    } else if (model == self.items) {
-        [self.mainView.tableView reloadData];
     }
 }
 
