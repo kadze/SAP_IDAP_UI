@@ -101,7 +101,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 - (void)customiseBackBarButton {
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:kSAPBackBarButtonTitle
                                                                style:UIBarButtonItemStylePlain
-                                                              target:nil action:nil];
+                                                              target:nil
+                                                              action:nil];
     self.navigationItem.backBarButtonItem = button;
 }
 
