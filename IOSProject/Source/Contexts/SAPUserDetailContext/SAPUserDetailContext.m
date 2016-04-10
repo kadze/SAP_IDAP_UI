@@ -30,14 +30,14 @@
     return user.userId;
 }
 
-//- (NSDictionary *)graphRequestParameters {
-//    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@{%@}",
-//                                 kSAPGenderKey,
-//                                 kSAPLargePictureKey,
-//                                 kSAPUrlKey];
-//    
-//    return @{kSAPFieldsKey : fieldsParameter};
-//}
+- (NSDictionary *)graphRequestParameters {
+    NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@{%@}",
+                                 kSAPGenderKey,
+                                 kSAPLargePictureKey,
+                                 kSAPUrlKey];
+    
+    return @{kSAPFieldsKey : fieldsParameter};
+}
 
 - (NSDictionary *)cachedResult {
     NSDictionary *result = nil;

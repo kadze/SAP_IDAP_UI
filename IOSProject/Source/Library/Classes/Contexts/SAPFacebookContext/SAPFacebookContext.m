@@ -41,7 +41,6 @@
     if (_connection != connection) {
         [_connection cancel];
         _connection = connection;
-        [connection start];
     }
 }
 
@@ -119,8 +118,7 @@
     SAPWeakify(self);
     SAPDispatchAsyncOnMainQueue(^{
         SAPStrongifyAndReturnIfNil(self);
-        FBSDKGraphRequestConnection *connection = [FBSDKGraphRequestConnection new];
-//        self.connection = [self.graphRequest startWithCompletionHandler:self.completionHandler];
+        self.connection = [self.graphRequest startWithCompletionHandler:self.completionHandler];
     });
 }
 
