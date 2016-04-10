@@ -81,7 +81,7 @@
                                             kSAPLastNameKey : friend.lastName,
                                             kSAPPictureKey : @{
                                                     kSAPDataKey : @{
-                                                            kSAPUrlKey : friend.imageURL.absoluteString
+                                                            kSAPUrlKey : friend.smallImageURL.absoluteString
                                                             }
                                                     }
                                             };
@@ -103,7 +103,7 @@
             user.firstName      = friendElement[kSAPFirstNameKey];
             user.lastName       = friendElement[kSAPLastNameKey];
             NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-            user.imageURL       = [NSURL URLWithString:urlString];
+            user.smallImageURL  = [NSURL URLWithString:urlString];
             
             [friends addObject:user];
         }

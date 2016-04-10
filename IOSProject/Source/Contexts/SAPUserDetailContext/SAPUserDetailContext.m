@@ -72,7 +72,7 @@
     NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.largeImageURL = [NSURL URLWithString:urlString];
     urlString = result[kSAPSmallPictureAliasKey][kSAPDataKey][kSAPUrlKey];
-    user.imageURL = [NSURL URLWithString:urlString];
+    user.smallImageURL = [NSURL URLWithString:urlString];
 }
 
 @end

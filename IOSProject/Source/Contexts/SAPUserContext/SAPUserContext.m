@@ -50,7 +50,7 @@
                    kSAPLastNameKey : SAPNSNullIfNil(cachedModel.lastName),
                    kSAPPictureKey : @{
                            kSAPDataKey : @{
-                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.imageURL.absoluteString)}
+                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL.absoluteString)}
                            }
                    };
     }
@@ -63,8 +63,8 @@
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
-    NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
-    user.imageURL = [NSURL URLWithString:urlString];
+    NSString *urlString = result[kSAPSmallPictureAliasKey][kSAPDataKey][kSAPUrlKey];
+    user.smallImageURL = [NSURL URLWithString:urlString];
 }
 
 @end

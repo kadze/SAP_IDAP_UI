@@ -41,7 +41,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
 
 @implementation SAPUser
 
-@dynamic imageModel;
+@dynamic smallImageModel;
 @dynamic largeImageModel;
 
 #pragma mark -
@@ -64,8 +64,8 @@ static NSString * const kSAPFriendsKey       = @"friends";
 #pragma mark -
 #pragma mark Accessors
 
-- (SAPImageModel *)imageModel {
-    return [SAPImageModel imageWithUrl:self.imageURL];
+- (SAPImageModel *)smallImageModel {
+    return [SAPImageModel imageWithUrl:self.smallImageURL];
 }
 
 - (SAPImageModel *)largeImageModel {
@@ -160,7 +160,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
     return @{kSAPUserIDKey        : ((!self.userId) ? null : self.userId),
              kSAPFirstNameKey     : ((!self.firstName) ? null : self.firstName),
              kSAPLastNameKey      : ((!self.lastName) ? null : self.lastName),
-             kSAPImageURLKey      : ((!self.imageURL) ? null : self.imageURL),
+             kSAPImageURLKey      : ((!self.smallImageURL) ? null : self.smallImageURL),
              kSAPLagreImageUrlKey : ((!self.largeImageURL) ? null : self.largeImageURL),
              kSAPGenderKey        : ((!self.gender) ? null : self.gender)};
 }
