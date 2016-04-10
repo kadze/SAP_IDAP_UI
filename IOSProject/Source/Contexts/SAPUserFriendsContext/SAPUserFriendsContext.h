@@ -13,4 +13,6 @@
 @interface SAPUserFriendsContext : SAPFacebookContext;
 @property (nonatomic, strong) SAPUser *user;
 
++ (instancetype)contextWithUser:(SAPUser *)user;
+
 @end

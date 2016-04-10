@@ -23,6 +23,23 @@
 @implementation SAPUserFriendsContext
 
 #pragma mark -
+#pragma mark Initializations And Deallocations
+
+- (instancetype)initWithUser:(SAPUser *)user {
+    self = [super init];
+    self.user = user;
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)contextWithUser:(SAPUser *)user {
+    return [[self alloc] initWithUser:user];
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setUser:(SAPUser *)user {
