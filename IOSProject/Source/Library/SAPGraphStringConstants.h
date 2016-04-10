@@ -27,4 +27,16 @@ SAPNSStringConst(kSAPNormalPictureKey, @"picture.type(normal)");
 SAPNSStringConst(kSAPAlbumPictureKey, @"picture.type(album)");
 SAPNSStringConst(kSAPSquarePictureKey, @"picture.type(square)");
 
+SAPNSStringConst(kSAPLargePictureWithAliasKey, @"picture.type(large).as(picture_large)");
+SAPNSStringConst(kSAPSmallPictureWithAliasKey, @"picture.type(small).as(picture_small)");
+SAPNSStringConst(kSAPNormalPictureWithAliasKey, @"picture.type(normal).as(picture_normal)");
+SAPNSStringConst(kSAPAlbumPictureWithAliasKey, @"picture.type(album).as(picture_album)");
+SAPNSStringConst(kSAPSquarePictureWithAliasKey, @"picture.type(square).as(picture_square)");
+
+SAPNSStringConst(kSAPLargePictureAliasKey, @"picture_large");
+SAPNSStringConst(kSAPSmallPictureAliasKey, @"picture_small");
+SAPNSStringConst(kSAPNormalPictureAliasKey, @"picture_normal");
+SAPNSStringConst(kSAPAlbumPictureAliasKey, @"picture_album");
+SAPNSStringConst(kSAPSquarePictureAliasKey, @"picture_square");
+
 SAPNSStringConst(kSAPUrlKey, @"url");
