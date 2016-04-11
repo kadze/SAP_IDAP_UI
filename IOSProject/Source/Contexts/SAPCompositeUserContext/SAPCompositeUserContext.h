@@ -10,11 +10,6 @@
 
 #import "SAPModelObserver.h"
 
-@class SAPUserContext;
-@class SAPUserDetailContext;
-
 @interface SAPCompositeUserContext : SAPContext <SAPModelObserver>
-@property (nonatomic, readonly) SAPUserContext          *userContext;
-@property (nonatomic, readonly) SAPUserDetailContext    *userDetailContext;
 
 @end
