@@ -14,6 +14,7 @@
 #import "SAPImageModel.h"
 
 #import "NSFileManager+SAPExtensions.h"
+#import "NSNull+SAPJSONNull.h"
 
 #import "SAPOwnershipMacro.h"
 #import "SAPNilToNSNullMacro.h"
@@ -22,9 +23,9 @@
 static NSString * const kSAPUserIDKey        = @"userId";
 static NSString * const kSAPFirstNameKey     = @"firstName";
 static NSString * const kSAPLastNameKey      = @"lastName";
-static NSString * const kSAPImageURLKey      = @"imageURL";
-static NSString * const kSAPGenderKey        = @"gender";
+static NSString * const kSAPSmallImageURLKey = @"smallImageURL";
 static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
+static NSString * const kSAPGenderKey        = @"gender";
 static NSString * const kSAPFriendsKey       = @"friends";
 
 @interface SAPUser ()
@@ -96,7 +97,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
     
     //single object properties
     for (NSString *key in [[self encodingDictionary] allKeys]) {
-        [self setValue:SAPNilIfNSNull([aDecoder decodeObjectForKey:key])
+        [self setValue:[[aDecoder decodeObjectForKey:key] JSONRepresentation]
                 forKey:key];
     }
     
@@ -156,13 +157,12 @@ static NSString * const kSAPFriendsKey       = @"friends";
 }
 
 - (NSDictionary *)encodingDictionary {
-    NSNull *null = [NSNull null];
-    return @{kSAPUserIDKey        : ((!self.userId) ? null : self.userId),
-             kSAPFirstNameKey     : ((!self.firstName) ? null : self.firstName),
-             kSAPLastNameKey      : ((!self.lastName) ? null : self.lastName),
-             kSAPImageURLKey      : ((!self.smallImageURL) ? null : self.smallImageURL),
-             kSAPLagreImageUrlKey : ((!self.largeImageURL) ? null : self.largeImageURL),
-             kSAPGenderKey        : ((!self.gender) ? null : self.gender)};
+    return @{kSAPUserIDKey        : SAPNSNullIfNil(self.userId),
+             kSAPFirstNameKey     : SAPNSNullIfNil(self.firstName),
+             kSAPLastNameKey      : SAPNSNullIfNil(self.lastName),
+             kSAPSmallImageURLKey : SAPNSNullIfNil(self.smallImageURL),
+             kSAPLagreImageUrlKey : SAPNSNullIfNil(self.largeImageURL),
+             kSAPGenderKey        : SAPNSNullIfNil(self.gender)};
 }
 
 - (void)decodeFriendsWithCoder:(NSCoder *)aDecoder {
