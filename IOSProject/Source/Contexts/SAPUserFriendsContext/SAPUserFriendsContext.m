@@ -61,7 +61,7 @@
                                  kSAPFriendsKey,
                                  kSAPFirstNameKey,
                                  kSAPLastNameKey,
-                                 kSAPPictureKey,
+                                 kSAPSquarePictureKey,
                                  kSAPUrlKey];
     
     return @{kSAPFieldsKey : fieldsParameter};

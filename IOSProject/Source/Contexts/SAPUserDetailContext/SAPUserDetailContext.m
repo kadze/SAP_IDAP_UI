@@ -35,9 +35,9 @@
                                  kSAPFirstNameKey,
                                  kSAPLastNameKey,
                                  kSAPGenderKey,
-                                 kSAPSmallPictureWithAliasKey,
+                                 kSAPSquarePictureWithAliasKey,
                                  kSAPUrlKey,
-                                 kSAPLargePictureWithAliasKey,
+                                 kSAPLargeSquarePictureWithAliasKey,
                                  kSAPUrlKey
                                  ];
     
@@ -71,7 +71,7 @@
     user.gender = result[kSAPGenderKey];
     NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.largeImageURL = [NSURL URLWithString:urlString];
-    urlString = result[kSAPSmallPictureAliasKey][kSAPDataKey][kSAPUrlKey];
+    urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.smallImageURL = [NSURL URLWithString:urlString];
 }
 
