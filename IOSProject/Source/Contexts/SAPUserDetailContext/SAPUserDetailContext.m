@@ -52,11 +52,17 @@
         id cachedModelUrl = cachedModel.largeImageURL.absoluteString;
         cachedModelUrl = (!cachedModelUrl) ? [NSNull new]: cachedModelUrl;
         result = @{kSAPIDKey        : SAPNSNullIfNil(cachedModel.userId),
-                   kSAPGenderKey    : SAPNSNullIfNil(cachedModel.gender),
-                   kSAPPictureKey   : @{
-                           kSAPDataKey : @{
-                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL.absoluteString)}
-                           }
+                   kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
+                   kSAPLastNameKey  : SAPNSNullIfNil(cachedModel.lastName),
+                   kSAPLargePictureAliasKey : @{
+                                    kSAPDataKey : @{
+                                            kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL.absoluteString)}
+                                                },
+                   kSAPSquarePictureAliasKey : @{
+                                     kSAPDataKey : @{
+                                             kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL.absoluteString)}
+                                                },
+                   kSAPGenderKey    : SAPNSNullIfNil(cachedModel.gender)
                    };
     }
     
