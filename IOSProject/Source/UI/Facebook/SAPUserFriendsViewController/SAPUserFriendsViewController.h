@@ -9,9 +9,8 @@
 #import "SAPArrayViewController.h"
 
 @class SAPUser;
-@class SAPCompositeUserContext;
 
 @interface SAPUserFriendsViewController : SAPArrayViewController
-@property (nonatomic, strong) SAPUser                  *user;
+@property (nonatomic, strong) SAPUser *user;
 
 @end
