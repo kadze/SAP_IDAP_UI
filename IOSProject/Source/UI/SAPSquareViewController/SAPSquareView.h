@@ -6,7 +6,9 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UILabel.h>
+#import <UIKit/UIButton.h>
+#import <UIKit/UIView.h>
 
 typedef NS_ENUM (NSUInteger, SAPSquarePosition) {
     kSAPSquarePositionTopLeft,
@@ -22,6 +24,7 @@ typedef void(^SAPVoidBlock)(void);
 @property (nonatomic, strong) IBOutlet UILabel  *squareLabel;
 @property (nonatomic, strong) IBOutlet UIButton *moveButton;
 @property (nonatomic, strong) IBOutlet UIButton *animateButton;
+
 @property (nonatomic, assign)           BOOL    loopedMoving;
 @property (nonatomic, assign, readonly) BOOL    animating;
 @property (nonatomic, assign) SAPSquarePosition squarePosition;

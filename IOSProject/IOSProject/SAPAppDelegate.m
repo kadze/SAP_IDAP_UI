@@ -8,11 +8,16 @@
 
 #import "SAPAppDelegate.h"
 
-#import "SAPSquareViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-#import "UIWindow+SAPExtentions.h"
+#import "SAPLoginViewController.h"
+#import "SAPUsersViewController.h"
+#import "SAPUsers.h"
+
+#import "UIWindow+SAPExtensions.h"
 
 @interface SAPAppDelegate ()
+@property (nonatomic, retain) SAPUsers *users;
 
 @end
 
@@ -24,12 +29,17 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    SAPSquareViewController *controller = [SAPSquareViewController new];
-    window.rootViewController = controller;
+    SAPLoginViewController *controller = [SAPLoginViewController new];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    window.rootViewController = navigationController;
     
     [window makeKeyAndVisible];
     
-    return YES;
+    //facebook
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -45,11 +55,21 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     
 }
 
+- (BOOL)        application:(UIApplication *)application
+                    openURL:(NSURL *)url
+          sourceApplication:(NSString *)sourceApplication
+                 annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation
+            ];
+}
 @end

@@ -8,7 +8,7 @@
 
 #import "SAPSquareView.h"
 
-#import "CGGeometry+SAPExtentions.h"
+#import "CGGeometry+SAPextensions.h"
 
 #import "SAPOwnershipMacro.h"
 #import "SAPClangMacro.h"
@@ -23,9 +23,13 @@ static NSString * const kSAPButtonTitleStart = @"Start";
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
+<<<<<<< HEAD
 
 - (void)setStartStopButtonColor:(UIColor *)color title:(NSString *)title;
 - (void)updateStartStopButtonAppearance;
+=======
+- (void)updateAnimateButtonAppearance;
+>>>>>>> feature/task5
 
 @end
 
@@ -71,17 +75,15 @@ static NSString * const kSAPButtonTitleStart = @"Start";
     if (_loopedMoving != loopedMoving) {
         _loopedMoving = loopedMoving;
         
+<<<<<<< HEAD
         [self updateStartStopButtonAppearance];
+=======
+        [self updateAnimateButtonAppearance];
+>>>>>>> feature/task5
         if (loopedMoving) {
             [self moveToNextPosition];
         }
     }
-}
-
-- (void)setStartStopButtonColor:(UIColor *)color title:(NSString *)title {
-    UIButton *animateButton = self.animateButton;
-    animateButton.backgroundColor = color;
-    [animateButton setTitle:title forState:UIControlStateNormal];
 }
 
 #pragma mark -
@@ -133,11 +135,19 @@ static NSString * const kSAPButtonTitleStart = @"Start";
     return (squarePosition + 1) % kSAPSquarePositionsCount;
 }
 
+<<<<<<< HEAD
 - (void)updateStartStopButtonAppearance {
     UIColor *color = self.loopedMoving ? [UIColor redColor] : [UIColor greenColor];
     NSString *title = self.loopedMoving ? kSAPButtonTitleStop : kSAPButtonTitleStart;
+=======
+- (void)updateAnimateButtonAppearance {
+    BOOL loopedMoving = self.loopedMoving;
+    UIButton *animateButton = self.animateButton;
+>>>>>>> feature/task5
     
-    [self setStartStopButtonColor:color title:title];
+    animateButton.backgroundColor = loopedMoving ? [UIColor redColor] : [UIColor greenColor];
+    [animateButton setTitle:(loopedMoving ? kSAPButtonTitleStop : kSAPButtonTitleStart)
+                   forState:UIControlStateNormal];
 }
 
 @end
