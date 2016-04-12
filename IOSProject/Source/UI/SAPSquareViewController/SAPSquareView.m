@@ -23,13 +23,13 @@ static NSString * const kSAPButtonTitleStart = @"Start";
 
 - (CGRect)squareFrameWithSquarePosition:(SAPSquarePosition)squarePosition;
 - (SAPSquarePosition)nextPositionWithSquarePosition:(SAPSquarePosition)squarePosition;
-<<<<<<< HEAD
-
-- (void)setStartStopButtonColor:(UIColor *)color title:(NSString *)title;
-- (void)updateStartStopButtonAppearance;
-=======
+//<<<<<<< HEAD
+//
+//- (void)setStartStopButtonColor:(UIColor *)color title:(NSString *)title;
+//- (void)updateStartStopButtonAppearance;
+//=======
 - (void)updateAnimateButtonAppearance;
->>>>>>> feature/task5
+//>>>>>>> feature/task5
 
 @end
 
@@ -75,11 +75,11 @@ static NSString * const kSAPButtonTitleStart = @"Start";
     if (_loopedMoving != loopedMoving) {
         _loopedMoving = loopedMoving;
         
-<<<<<<< HEAD
-        [self updateStartStopButtonAppearance];
-=======
+//<<<<<<< HEAD
+//        [self updateStartStopButtonAppearance];
+//=======
         [self updateAnimateButtonAppearance];
->>>>>>> feature/task5
+//>>>>>>> feature/task5
         if (loopedMoving) {
             [self moveToNextPosition];
         }
@@ -135,15 +135,15 @@ static NSString * const kSAPButtonTitleStart = @"Start";
     return (squarePosition + 1) % kSAPSquarePositionsCount;
 }
 
-<<<<<<< HEAD
-- (void)updateStartStopButtonAppearance {
-    UIColor *color = self.loopedMoving ? [UIColor redColor] : [UIColor greenColor];
-    NSString *title = self.loopedMoving ? kSAPButtonTitleStop : kSAPButtonTitleStart;
-=======
+//<<<<<<< HEAD
+//- (void)updateStartStopButtonAppearance {
+//    UIColor *color = self.loopedMoving ? [UIColor redColor] : [UIColor greenColor];
+//    NSString *title = self.loopedMoving ? kSAPButtonTitleStop : kSAPButtonTitleStart;
+//=======
 - (void)updateAnimateButtonAppearance {
     BOOL loopedMoving = self.loopedMoving;
     UIButton *animateButton = self.animateButton;
->>>>>>> feature/task5
+//>>>>>>> feature/task5
     
     animateButton.backgroundColor = loopedMoving ? [UIColor redColor] : [UIColor greenColor];
     [animateButton setTitle:(loopedMoving ? kSAPButtonTitleStop : kSAPButtonTitleStart)
