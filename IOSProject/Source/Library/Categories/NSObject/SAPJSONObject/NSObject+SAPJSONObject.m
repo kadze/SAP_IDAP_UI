@@ -11,7 +11,7 @@
 @implementation NSObject (SAPJSONObject)
 
 - (instancetype)JSONRepresentation {
-    return self;
+    return nil;
 }
 
 @end
