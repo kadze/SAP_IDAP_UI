@@ -71,12 +71,15 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
+    
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
     user.gender = result[kSAPGenderKey];
+    
     NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.largeImageURL = [NSURL URLWithString:urlString];
+    
     urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.smallImageURL = [NSURL URLWithString:urlString];
 }

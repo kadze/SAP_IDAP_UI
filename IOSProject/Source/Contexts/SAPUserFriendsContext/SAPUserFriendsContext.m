@@ -85,8 +85,10 @@
                                                             }
                                                     }
                                             };
+            
             [friendElements addObject:friendElement];
         }
+        
         result = @{kSAPFriendsKey : @{kSAPDataKey : [friendElements copy]}};
     }
     
@@ -99,11 +101,13 @@
     [friends performBlockWithoutNotification:^{
         for (id friendElement in friendElements) {
             SAPUser *user = [SAPUser new];
-            user.userId         = friendElement[kSAPIDKey];
-            user.firstName      = friendElement[kSAPFirstNameKey];
-            user.lastName       = friendElement[kSAPLastNameKey];
+            
+            user.userId = friendElement[kSAPIDKey];
+            user.firstName = friendElement[kSAPFirstNameKey];
+            user.lastName = friendElement[kSAPLastNameKey];
+            
             NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-            user.smallImageURL  = [NSURL URLWithString:urlString];
+            user.smallImageURL = [NSURL URLWithString:urlString];
             
             [friends addObject:user];
         }

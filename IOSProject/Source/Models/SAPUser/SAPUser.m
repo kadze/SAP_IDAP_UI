@@ -23,9 +23,11 @@
 static NSString * const kSAPUserIDKey        = @"userId";
 static NSString * const kSAPFirstNameKey     = @"firstName";
 static NSString * const kSAPLastNameKey      = @"lastName";
+static NSString * const kSAPGenderKey        = @"gender";
+
 static NSString * const kSAPSmallImageURLKey = @"smallImageURL";
 static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
-static NSString * const kSAPGenderKey        = @"gender";
+
 static NSString * const kSAPFriendsKey       = @"friends";
 
 @interface SAPUser ()

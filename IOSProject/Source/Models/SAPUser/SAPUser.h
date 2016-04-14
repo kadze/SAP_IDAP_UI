@@ -17,11 +17,14 @@
 @property (nonatomic, copy)     NSString         *userId;
 @property (nonatomic, copy)     NSString         *firstName;
 @property (nonatomic, copy)     NSString         *lastName;
+@property (nonatomic, copy)     NSString         *gender;
+
 @property (nonatomic, readonly) SAPImageModel    *smallImageModel;
 @property (nonatomic, copy)     NSURL            *smallImageURL;
+
 @property (nonatomic, readonly) SAPImageModel    *largeImageModel;
 @property (nonatomic, copy)     NSURL            *largeImageURL;
-@property (nonatomic, copy)     NSString         *gender;
+
 @property (nonatomic, readonly) SAPUsers         *friends;
 
 //method uses init chain!
