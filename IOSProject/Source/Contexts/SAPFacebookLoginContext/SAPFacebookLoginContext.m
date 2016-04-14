@@ -54,12 +54,9 @@ static NSString * const kSAPUserFriendsPermission = @"user_friends";
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                 SAPStrongifyAndReturnIfNil(self);
                                 if (error || result.isCancelled) {
-                                    @synchronized (model) {
-                                        [model setState:kSAPModelStateDidFailLoading withObject:error];
-                                    }
+                                    [model setState:kSAPModelStateDidFailLoading withObject:error];
                                 } else {
                                     model.state = kSAPModelStateDidFinishLoading;
-                                    [controller finishLogin];
                                 }
                             }
      ];

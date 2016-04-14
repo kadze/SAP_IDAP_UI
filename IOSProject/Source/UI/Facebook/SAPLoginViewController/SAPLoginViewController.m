@@ -89,6 +89,10 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
     }
 }
 
+- (void)updateViewControllerWithModel:(id)model {
+    [self finishLogin];
+}
+
 #pragma mark -
 #pragma mark Private
 
