@@ -21,31 +21,15 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 @implementation SAPUserDetailViewController
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    self.user = nil;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setUser:(SAPUser *)user {
-    if (_user != user) {
-        [_user removeObserver:self];
-        _user = user;
-        [_user addObserver:self];
-        
-        SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.user];
-        self.context = context;
-    }
-}
-
-#pragma mark -
 #pragma mark Public
 
 - (void)updateViewControllerWithModel:(id)model {
     self.mainView.model = model;
+}
+
+- (void)finishModelSetting {
+    SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.model];
+    self.context = context;
 }
 
 @end
