@@ -34,7 +34,7 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 }
 
 - (void)finishModelSetting {
-    self.context = [self modelContext];
+    self.context = self.modelContext;
 }
 
 @end
