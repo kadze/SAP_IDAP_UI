@@ -22,13 +22,6 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 @implementation SAPUserFriendsViewController
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    self.user = nil;
-}
-
-#pragma mark -
 #pragma mark Class Methods
 
 + (Class)cellClass {
@@ -38,23 +31,12 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(SAPUser *)user {
-    if (_user != user) {
-        [_user removeObserver:self];
-        _user = user;
-        [_user addObserver:self];
-        
-        self.items = user.friends;
-    }
-}
-
 - (UITableView *)tableView {
     return self.mainView.tableView;
 }
 
 - (SAPContext *)itemsContext {
-    SAPCompositeUserContext *context = [SAPCompositeUserContext contextWithModel:self.user];
-    return context;
+    return [SAPCompositeUserContext contextWithModel:self.model];
 }
 
 #pragma mark -
@@ -72,10 +54,15 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 - (void)updateViewControllerWithModel:(id)model {
     [super updateViewControllerWithModel:model];
-    if (model == self.user) {
+    if (model == self.model) {
         SAPUserFriendsView *mainView = self.mainView;
         mainView.model = model;
     }
+}
+
+- (void)finishModelSetting {
+    SAPUser *model = self.model;
+    self.items = model.friends;
 }
 
 @end

@@ -89,7 +89,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
         user.userId = accessToken.userID;
         
         SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
-        controller.user = user;
+        controller.model = user;
         
         [self.navigationController pushViewController:controller animated:NO];
     }
