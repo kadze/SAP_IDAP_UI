@@ -56,7 +56,9 @@
         _items = items;
         [_items addObserver:self];
         
-        self.context = self.itemsContext;
+        if (items) {
+            self.context = self.itemsContext;
+        }
     }
 }
 
