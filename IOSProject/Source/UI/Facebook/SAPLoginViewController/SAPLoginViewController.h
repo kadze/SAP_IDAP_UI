@@ -11,7 +11,6 @@
 @class SAPUser;
 
 @interface SAPLoginViewController : SAPViewController
-@property (nonatomic, strong) SAPUser *user;
 
 - (IBAction)onLogin:(id)sender;
 

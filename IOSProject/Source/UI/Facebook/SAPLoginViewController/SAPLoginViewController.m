@@ -35,12 +35,10 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 
 @implementation SAPLoginViewController
 
+@dynamic modelContext;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    self.user = nil;
-}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -52,12 +50,11 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(SAPUser *)user {
-    if (_user != user) {
-        [_user removeObserver:self];
-        _user = user;
-        [_user addObserver:self];
-    }
+- (SAPContext *)modelContext {
+    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:self.model];
+    context.controller = self;
+    
+    return context;
 }
 
 #pragma mark-
@@ -72,11 +69,8 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark Interface Handling
 
 - (IBAction)onLogin:(id)sender {
-    SAPUser *notifier = [SAPUser new];
-    self.user = notifier;
-    SAPFacebookLoginContext *context = [SAPFacebookLoginContext contextWithModel:notifier];
-    context.controller = self;
-    self.context = context;
+    self.model = [SAPModel new];
+    self.context = self.modelContext;
 }
 
 #pragma mark -
