@@ -21,6 +21,7 @@
 @implementation SAPViewController
 
 @dynamic mainView;
+@dynamic modelContext;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -43,6 +44,10 @@ SAPContextSetter(SAPContext, _context, setContext);
         
         [self finishModelSetting];
     }
+}
+
+- (SAPContext *)modelContext {
+    return nil;
 }
 
 #pragma mark -
