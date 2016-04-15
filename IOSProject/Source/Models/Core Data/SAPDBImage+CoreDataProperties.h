@@ -12,9 +12,9 @@
 #import "SAPDBImage.h"
 
 @interface SAPDBImage (CoreDataProperties)
-@property (nonatomic, strong) NSString  *path;
-@property (nonatomic, strong) NSString  *size;
-@property (nonatomic, strong) NSSet     *user;
+@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSString *size;
+@property (nonatomic, strong) NSSet    *user;
 
 @end
 
@@ -26,4 +26,3 @@
 - (void)removeUser:(NSSet *)values;
 
 @end
-

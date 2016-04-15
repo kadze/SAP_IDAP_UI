@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-#import "SAPDBImage+CoreDataProperties.h"
-
 @class SAPDBUser;
 
 @interface SAPDBImage : NSManagedObject
@@ -19,3 +17,4 @@
 
 @end
 
+#import "SAPDBImage+CoreDataProperties.h"

@@ -14,10 +14,10 @@
 @implementation SAPDBUser (CoreDataProperties)
 
 @dynamic firstName;
+@dynamic gender;
 @dynamic lastName;
 @dynamic userId;
-@dynamic gender;
-@dynamic images;
 @dynamic friends;
+@dynamic images;
 
 @end
