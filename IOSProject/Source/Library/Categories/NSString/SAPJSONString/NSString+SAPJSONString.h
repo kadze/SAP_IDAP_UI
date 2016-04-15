@@ -1,8 +1,8 @@
 //
-//  NSDictionary+SAPJSONDictionary.h
+//  NSString+SAPJSONString.h
 //  IOSProject
 //
-//  Created by SAP on 4/3/16.
+//  Created by Andrey on 4/15/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 
 #import "SAPJSONRepresentable.h"
 
-@interface NSDictionary (SAPJSONDictionary) <SAPJSONRepresentable>
+@interface NSString (SAPJSONString) <SAPJSONRepresentable>
 
 @end

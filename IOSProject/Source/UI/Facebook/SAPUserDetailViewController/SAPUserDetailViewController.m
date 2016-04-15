@@ -9,10 +9,7 @@
 #import "SAPUserDetailViewController.h"
 
 #import "SAPUserDetailView.h"
-#import "SAPUser.h"
 #import "SAPUserDetailContext.h"
-
-#import "SAPDispatch.h"
 
 #import "SAPViewControllerMacro.h"
 
@@ -20,25 +17,13 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 
 @implementation SAPUserDetailViewController
 
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    self.user = nil;
-}
+@dynamic modelContext;
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(SAPUser *)user {
-    if (_user != user) {
-        [_user removeObserver:self];
-        _user = user;
-        [_user addObserver:self];
-        
-        SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:self.user];
-        self.context = context;
-    }
+- (SAPContext *)modelContext {
+    return [SAPUserDetailContext contextWithModel:self.model];
 }
 
 #pragma mark -
@@ -46,6 +31,10 @@ SAPViewControllerBaseViewProperty(SAPUserDetailViewController, SAPUserDetailView
 
 - (void)updateViewControllerWithModel:(id)model {
     self.mainView.model = model;
+}
+
+- (void)finishModelSetting {
+    self.context = self.modelContext;
 }
 
 @end

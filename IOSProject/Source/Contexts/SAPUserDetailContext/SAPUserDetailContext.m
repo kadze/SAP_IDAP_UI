@@ -10,10 +10,7 @@
 
 #import "SAPUser.h"
 
-#import "NSNull+SAPJSONNull.h"
-#import "NSArray+SAPJSONArray.h"
-#import "NSObject+SAPJSONObject.h"
-#import "NSDictionary+SAPJSONDictionary.h"
+#import "SAPJSONRepresentation.h"
 
 #import "SAPGraphStringConstants.h"
 
@@ -49,18 +46,16 @@
     SAPUser *model = self.model;
     if (model.cached) {
         SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
-        id cachedModelUrl = cachedModel.largeImageURL.absoluteString;
-        cachedModelUrl = (!cachedModelUrl) ? [NSNull new]: cachedModelUrl;
         result = @{kSAPIDKey        : SAPNSNullIfNil(cachedModel.userId),
                    kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
                    kSAPLastNameKey  : SAPNSNullIfNil(cachedModel.lastName),
                    kSAPLargePictureAliasKey : @{
                                     kSAPDataKey : @{
-                                            kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL.absoluteString)}
+                                            kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL)}
                                                 },
                    kSAPSquarePictureAliasKey : @{
                                      kSAPDataKey : @{
-                                             kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL.absoluteString)}
+                                             kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
                                                 },
                    kSAPGenderKey    : SAPNSNullIfNil(cachedModel.gender)
                    };
@@ -71,12 +66,15 @@
 
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
+    
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
     user.gender = result[kSAPGenderKey];
+    
     NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.largeImageURL = [NSURL URLWithString:urlString];
+    
     urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.smallImageURL = [NSURL URLWithString:urlString];
 }

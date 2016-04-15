@@ -10,11 +10,12 @@
 #import <Foundation/NSObject.h>
 #import <UIKit/UIApplication.h>
 
+#import "SAPJSONRepresentation.h"
+
 #import "SAPUsers.h"
 #import "SAPImageModel.h"
 
 #import "NSFileManager+SAPExtensions.h"
-#import "NSNull+SAPJSONNull.h"
 
 #import "SAPOwnershipMacro.h"
 #import "SAPNilToNSNullMacro.h"
@@ -23,9 +24,11 @@
 static NSString * const kSAPUserIDKey        = @"userId";
 static NSString * const kSAPFirstNameKey     = @"firstName";
 static NSString * const kSAPLastNameKey      = @"lastName";
+static NSString * const kSAPGenderKey        = @"gender";
+
 static NSString * const kSAPSmallImageURLKey = @"smallImageURL";
 static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
-static NSString * const kSAPGenderKey        = @"gender";
+
 static NSString * const kSAPFriendsKey       = @"friends";
 
 @interface SAPUser ()
@@ -78,7 +81,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     //single object properties
-    NSDictionary *encodingDictionary = [self encodingDictionary];
+    NSDictionary *encodingDictionary = [[self encodingDictionary] JSONRepresentation];
     for (NSString *key in encodingDictionary.allKeys) {
         [aCoder encodeObject:[encodingDictionary objectForKey:key] forKey:key];
     }
@@ -97,7 +100,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
     
     //single object properties
     for (NSString *key in [[self encodingDictionary] allKeys]) {
-        [self setValue:[[aDecoder decodeObjectForKey:key] JSONRepresentation]
+        [self setValue:[aDecoder decodeObjectForKey:key]
                 forKey:key];
     }
     
@@ -131,6 +134,15 @@ static NSString * const kSAPFriendsKey       = @"friends";
     [NSKeyedArchiver archiveRootObject:self toFile:self.path];
 }
 
+- (void)cleanCache {
+    if (self.cached) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];
+    }
+    
+    for (SAPUser *friend in self.friends.objects) {
+        [friend cleanCache];
+    }
+}
 
 #pragma mark -
 #pragma mark Private

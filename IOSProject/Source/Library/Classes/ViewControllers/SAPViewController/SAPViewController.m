@@ -10,28 +10,55 @@
 
 #import "SAPView.h"
 #import "SAPContext.h"
+#import "SAPModel.h"
 
 #import "UIAlertView+SAPExtensions.h"
 
-#import "SAPContextSetterMacro.h"
+#import "SAPSetters.h"
 
 #import "SAPDispatch.h"
 
 @implementation SAPViewController
 
 @dynamic mainView;
+@dynamic modelContext;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
     self.context = nil;
+    self.model = nil;
 }
 
 #pragma mark -
 #pragma mark Accessors
 
-SAPContextSetter(SAPContext, _context, setContext);
+- (void)setContext:(SAPContext *)context {
+    SAPSetContext(&_context, context);
+}
+
+- (void)setModel:(SAPModel *)model {
+    if (_model != model) {
+        [_model removeObserver:self];
+        _model = model;
+        [_model addObserver:self];
+        
+        [self finishModelSetting];
+    }
+}
+
+- (SAPContext *)modelContext {
+    return nil;
+}
+
+#pragma mark-
+#pragma mark View Lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.model = self.model;
+}
 
 #pragma mark -
 #pragma mark SAPModelObserver
@@ -68,6 +95,10 @@ SAPContextSetter(SAPContext, _context, setContext);
 #pragma mark Public
 
 - (void)updateViewControllerWithModel:(id)model {
+    
+}
+
+- (void)finishModelSetting {
     
 }
 

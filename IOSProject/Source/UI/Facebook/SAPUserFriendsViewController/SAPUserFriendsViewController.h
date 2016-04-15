@@ -11,6 +11,5 @@
 @class SAPUser;
 
 @interface SAPUserFriendsViewController : SAPArrayViewController
-@property (nonatomic, strong) SAPUser *user;
 
 @end

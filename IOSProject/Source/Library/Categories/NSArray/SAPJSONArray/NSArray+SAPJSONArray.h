@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (SAPJSONArray)
+#import "SAPJSONRepresentable.h"
 
-- (instancetype)JSONRepresentation;
+@interface NSArray (SAPJSONArray) <SAPJSONRepresentable>
 
 @end

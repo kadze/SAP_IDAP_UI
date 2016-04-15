@@ -8,6 +8,8 @@
 
 #import "SAPUserFriendsViewController.h"
 
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 #import "SAPUsers.h"
 #import "SAPUser.h"
 #import "SAPUserFriendsView.h"
@@ -17,16 +19,20 @@
 
 #import "SAPViewControllerMacro.h"
 
+#import "SAPDispatch.h"
+
+static NSString * const kSAPLeftBarButtonTitle = @"Log out";
+
 SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, mainView);
 
+@interface SAPUserFriendsViewController ()
+
+- (void)onLogout;
+- (void)customizeLeftBarButton;
+
+@end
+
 @implementation SAPUserFriendsViewController
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    self.user = nil;
-}
 
 #pragma mark -
 #pragma mark Class Methods
@@ -36,25 +42,24 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 }
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Initializations and Deallocations
 
-- (void)setUser:(SAPUser *)user {
-    if (_user != user) {
-        [_user removeObserver:self];
-        _user = user;
-        [_user addObserver:self];
-        
-        self.items = user.friends;
-    }
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    [self customizeLeftBarButton];
+    
+    return self;
 }
+
+#pragma mark -
+#pragma mark Accessors
 
 - (UITableView *)tableView {
     return self.mainView.tableView;
 }
 
 - (SAPContext *)itemsContext {
-    SAPCompositeUserContext *context = [SAPCompositeUserContext contextWithModel:self.user];
-    return context;
+    return [SAPCompositeUserContext contextWithModel:self.model];
 }
 
 #pragma mark -
@@ -63,7 +68,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SAPUser *friend = self.items[indexPath.row];
     SAPUserDetailViewController *controller = [SAPUserDetailViewController new];
-    controller.user = friend;
+    controller.model = friend;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -72,10 +77,37 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 - (void)updateViewControllerWithModel:(id)model {
     [super updateViewControllerWithModel:model];
-    if (model == self.user) {
+    if (model == self.model) {
         SAPUserFriendsView *mainView = self.mainView;
         mainView.model = model;
     }
+}
+
+- (void)finishModelSetting {
+    SAPUser *model = self.model;
+    self.items = model.friends;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)customizeLeftBarButton {
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:kSAPLeftBarButtonTitle
+                                                               style:UIBarButtonItemStylePlain
+                                                              target:self
+                                                              action:@selector(onLogout)];
+    self.navigationItem.leftBarButtonItem = button;
+}
+
+- (void)onLogout {
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logOut];
+    SAPUser *user = self.model;
+    SAPDispatchAsyncOnDefaultQueue(^{
+        [user cleanCache];
+    });
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -12,7 +12,7 @@
 #import "SAPUserDetailContext.h"
 #import "SAPUserFriendsContext.h"
 
-#import "SAPContextSetterMacro.h"
+#import "SAPSetters.h"
 
 @interface SAPCompositeUserContext ()
 @property (nonatomic, strong) SAPUserDetailContext  *userDetailContext;
@@ -33,8 +33,13 @@
 #pragma mark -
 #pragma mark Accessors
 
-SAPContextSetter(SAPUserDetailContext, _userDetailContext, setUserDetailContext);
-SAPContextSetter(SAPUserFriendsContext, _userFriendsContext, setUserFriendsContext)
+- (void)setUserDetailContext:(SAPUserDetailContext *)userDetailContext {
+    SAPSetContext(&_userDetailContext, userDetailContext);
+}
+
+-(void)setUserFriendsContext:(SAPUserFriendsContext *)userFriendsContext {
+    SAPSetContext(&_userFriendsContext, userFriendsContext);
+}
 
 #pragma mark -
 #pragma mark Public

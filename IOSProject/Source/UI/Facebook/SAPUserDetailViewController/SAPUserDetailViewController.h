@@ -11,6 +11,5 @@
 @class SAPUser;
 
 @interface SAPUserDetailViewController : SAPViewController
-@property (nonatomic, strong) SAPUser *user;
 
 @end
