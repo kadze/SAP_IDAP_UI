@@ -66,6 +66,8 @@
                     return;
                 }
             }
+        } else {
+            [self cleanCacheInBackground];
         }
         
         [self fillModelWithResult:result];
@@ -83,7 +85,7 @@
     self.connection = nil;
 }
 
-- (void)stateUnsafeLoad {    
+- (void)stateUnsafeLoad {
     SAPWeakify(self);
     SAPDispatchAsyncOnDefaultQueue(^{
         SAPStrongifyAndReturnIfNil(self);
@@ -91,8 +93,20 @@
     });
 }
 
+- (void)cleanCacheInBackground {
+    SAPWeakify(self);
+    SAPDispatchAsyncOnDefaultQueue(^{
+        SAPStrongifyAndReturnIfNil(self);
+        [self cleanCache];
+    });
+}
+
 - (id)cachedResult {
     return nil;
+}
+
+- (void)cleanCache {
+    
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
