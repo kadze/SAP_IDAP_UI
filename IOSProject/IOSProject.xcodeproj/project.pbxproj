@@ -49,6 +49,7 @@
 		2ED4B59C1C99DD5B001670F6 /* SAPLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B5981C99DD5B001670F6 /* SAPLoginView.m */; };
 		2ED4B59D1C99DD5B001670F6 /* SAPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4B59A1C99DD5B001670F6 /* SAPLoginViewController.m */; };
 		2ED4B59E1C99DD5B001670F6 /* SAPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4B59B1C99DD5B001670F6 /* SAPLoginViewController.xib */; };
+		55FAFB141CC16F7E006110C3 /* SAPSetters.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FAFB131CC16F7E006110C3 /* SAPSetters.m */; };
 		55FCB1681CC070F900E7D0F4 /* NSString+SAPJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FCB1671CC070F900E7D0F4 /* NSString+SAPJSONString.m */; };
 		55FCB16C1CC07DB800E7D0F4 /* NSURL+SAPJSONURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FCB16B1CC07DB800E7D0F4 /* NSURL+SAPJSONURL.m */; };
 		55FCB1701CC0900F00E7D0F4 /* NSNumber+SAPJSONNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FCB16F1CC0900F00E7D0F4 /* NSNumber+SAPJSONNumber.m */; };
@@ -196,6 +197,8 @@
 		2ED4B5991C99DD5B001670F6 /* SAPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPLoginViewController.h; sourceTree = "<group>"; };
 		2ED4B59A1C99DD5B001670F6 /* SAPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SAPLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2ED4B59B1C99DD5B001670F6 /* SAPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPLoginViewController.xib; sourceTree = "<group>"; };
+		55FAFB121CC16F7E006110C3 /* SAPSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPSetters.h; sourceTree = "<group>"; };
+		55FAFB131CC16F7E006110C3 /* SAPSetters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPSetters.m; sourceTree = "<group>"; };
 		55FCB1661CC070F900E7D0F4 /* NSString+SAPJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SAPJSONString.h"; sourceTree = "<group>"; };
 		55FCB1671CC070F900E7D0F4 /* NSString+SAPJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPJSONString.m"; sourceTree = "<group>"; };
 		55FCB16A1CC07DB800E7D0F4 /* NSURL+SAPJSONURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+SAPJSONURL.h"; sourceTree = "<group>"; };
@@ -702,6 +705,15 @@
 			path = Facebook/SAPLoginViewController;
 			sourceTree = "<group>";
 		};
+		55FAFB111CC16F54006110C3 /* SAPSetters */ = {
+			isa = PBXGroup;
+			children = (
+				55FAFB121CC16F7E006110C3 /* SAPSetters.h */,
+				55FAFB131CC16F7E006110C3 /* SAPSetters.m */,
+			);
+			path = SAPSetters;
+			sourceTree = "<group>";
+		};
 		55FCB1651CC070CE00E7D0F4 /* SAPJSONString */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,6 +822,7 @@
 			isa = PBXGroup;
 			children = (
 				CA4B3F961C7F352000440914 /* SAPDispatch */,
+				55FAFB111CC16F54006110C3 /* SAPSetters */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -1346,6 +1359,7 @@
 				55FCB1681CC070F900E7D0F4 /* NSString+SAPJSONString.m in Sources */,
 				CA4B3F881C7E352D00440914 /* SAPUserCell.m in Sources */,
 				CA4B3F3E1C74C9F600440914 /* NSIndexPath+SAPExtensions.m in Sources */,
+				55FAFB141CC16F7E006110C3 /* SAPSetters.m in Sources */,
 				2E424A711CAC41970089CECC /* SAPCollectionChangeModel+UITableView.m in Sources */,
 				2E424A2C1CA57A4B0089CECC /* SAPUserFriendsViewController.m in Sources */,
 				CA634C081C69C3FC00DAED4E /* SAPUsersViewController.m in Sources */,
