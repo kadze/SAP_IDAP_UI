@@ -15,6 +15,7 @@
 #import "SAPUserFriendsViewController.h"
 #import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
+#import "SAPUserDetailContext.h"
 
 #import "SAPModelObserver.h"
 
@@ -74,14 +75,23 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 }
 
 #pragma mark -
+#pragma mark UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if (viewController == self) {
+        [self onLogout];
+    }
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (void)finishLogin {
-    FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
-    if (accessToken) {
-        SAPUser *user = [SAPUser new];
-        user.userId = accessToken.userID;
-        
+    SAPUser *user = [self currentTokenIDUser];
+    if (user) {
         SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
         controller.model = user;
         
@@ -102,6 +112,29 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
                                                               target:nil
                                                               action:nil];
     self.navigationItem.backBarButtonItem = button;
+}
+
+- (void)onLogout {
+    SAPUser *user = [self currentTokenIDUser];
+    if (user) {
+        SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:user];
+        [context cleanCacheInBackground];
+        
+        FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+        [loginManager logOut];
+    }
+}
+
+- (SAPUser *)currentTokenIDUser {
+    SAPUser *result = nil;
+    FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
+    if (accessToken) {
+        SAPUser *user = [SAPUser new];
+        user.userId = accessToken.userID;
+        result = user;
+    }
+    
+    return result;
 }
 
 @end
