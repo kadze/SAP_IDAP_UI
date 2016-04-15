@@ -199,6 +199,7 @@
 		2ED4B59B1C99DD5B001670F6 /* SAPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPLoginViewController.xib; sourceTree = "<group>"; };
 		55FAFB121CC16F7E006110C3 /* SAPSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPSetters.h; sourceTree = "<group>"; };
 		55FAFB131CC16F7E006110C3 /* SAPSetters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPSetters.m; sourceTree = "<group>"; };
+		55FAFB151CC1911B006110C3 /* IDPStudyPlan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IDPStudyPlan; sourceTree = "<group>"; };
 		55FCB1661CC070F900E7D0F4 /* NSString+SAPJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SAPJSONString.h"; sourceTree = "<group>"; };
 		55FCB1671CC070F900E7D0F4 /* NSString+SAPJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SAPJSONString.m"; sourceTree = "<group>"; };
 		55FCB16A1CC07DB800E7D0F4 /* NSURL+SAPJSONURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+SAPJSONURL.h"; sourceTree = "<group>"; };
@@ -1009,6 +1010,7 @@
 			children = (
 				CA634BE51C68A18300DAED4E /* Images */,
 				CAC421A51C5A2364004E4F1E /* Assets.xcassets */,
+				55FAFB151CC1911B006110C3 /* IDPStudyPlan */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
