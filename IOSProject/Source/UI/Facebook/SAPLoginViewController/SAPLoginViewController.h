@@ -6,11 +6,13 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
+#import <UIKit/UINavigationController.h>
+
 #import "SAPViewController.h"
 
 @class SAPUser;
 
-@interface SAPLoginViewController : SAPViewController
+@interface SAPLoginViewController : SAPViewController <UINavigationControllerDelegate>
 
 - (IBAction)onLogin:(id)sender;
 
