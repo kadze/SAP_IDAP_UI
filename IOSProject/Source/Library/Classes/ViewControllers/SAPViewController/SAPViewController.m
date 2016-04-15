@@ -14,7 +14,7 @@
 
 #import "UIAlertView+SAPExtensions.h"
 
-#import "SAPContextSetterMacro.h"
+#import "SAPSetters.h"
 
 #import "SAPDispatch.h"
 
@@ -34,7 +34,9 @@
 #pragma mark -
 #pragma mark Accessors
 
-SAPContextSetter(SAPContext, _context, setContext);
+- (void)setContext:(SAPContext *)context {
+    SAPSetContext(&_context, context);
+}
 
 - (void)setModel:(SAPModel *)model {
     if (_model != model) {
