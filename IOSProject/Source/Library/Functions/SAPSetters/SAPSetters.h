@@ -6,8 +6,7 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@class SAPContext;
 
-@interface SAPSetters : NSObject
-
-@end
+extern
+void SAPSetContext(SAPContext *__strong* context, id value);

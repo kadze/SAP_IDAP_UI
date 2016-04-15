@@ -8,6 +8,16 @@
 
 #import "SAPSetters.h"
 
-@implementation SAPSetters
+#import "SAPContext.h"
 
-@end
+#pragma mark -
+#pragma mark Public Implementations
+
+void SAPSetContext(SAPContext *__strong* context, id value) {
+    if (*context != value) {
+        [*context cancel];
+        *context = value;
+        [*context execute];
+    }
+}
+
