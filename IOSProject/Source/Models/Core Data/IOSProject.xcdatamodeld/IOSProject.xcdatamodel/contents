@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="SAPDBImage" representedClassName="SAPDBImage" syncable="YES">
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBUser" inverseName="images" inverseEntity="SAPDBUser" syncable="YES"/>
+    </entity>
+    <entity name="SAPDBUser" representedClassName="SAPDBUser" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="userId" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBUser" inverseName="friends" inverseEntity="SAPDBUser" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBImage" inverseName="user" inverseEntity="SAPDBImage" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SAPDBUser" positionX="-108" positionY="-162" width="128" height="133"/>
+        <element name="SAPDBImage" positionX="133" positionY="-18" width="128" height="88"/>
+    </elements>
+</model>
