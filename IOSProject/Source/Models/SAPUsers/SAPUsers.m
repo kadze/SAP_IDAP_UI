@@ -8,6 +8,17 @@
 
 #import "SAPUsers.h"
 
+#import "SAPUser.h"
+
 @implementation SAPUsers
+
+#pragma mark -
+#pragma mark SAPCacheableModel
+
+- (void)cleanCache {
+    for (SAPUser *user in self.objects) {
+        [user cleanCache];
+    }
+}
 
 @end

@@ -64,13 +64,6 @@
     return [result JSONRepresentation];
 }
 
-- (void)cleanCache {
-    SAPUser *user = self.model;
-    if (user.cached) {
-        [[NSFileManager defaultManager] removeItemAtPath:user.path error:nil];
-    }
-}
-
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
     

@@ -8,6 +8,8 @@
 
 #import "SAPArrayModel.h"
 
-@interface SAPUsers : SAPArrayModel
+#import "SAPCacheableModel.h"
+
+@interface SAPUsers : SAPArrayModel <SAPCacheableModel>
 
 @end

@@ -8,8 +8,6 @@
 
 #import "SAPContext.h"
 
-#import "SAPModelObserver.h"
-
-@interface SAPCompositeUserContext : SAPContext <SAPModelObserver>
+@interface SAPCompositeUserContext : SAPContext
 
 @end

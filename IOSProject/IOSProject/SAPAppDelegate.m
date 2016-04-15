@@ -32,7 +32,6 @@
     SAPLoginViewController *controller = [SAPLoginViewController new];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    navigationController.delegate = controller;
     
     window.rootViewController = navigationController;
     

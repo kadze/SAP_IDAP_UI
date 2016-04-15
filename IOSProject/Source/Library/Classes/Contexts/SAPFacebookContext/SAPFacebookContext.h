@@ -18,7 +18,6 @@
 - (NSDictionary *)graphRequestParameters;
 
 - (id)cachedResult;
-- (void)cleanCache;
 - (void)fillModelWithResult:(NSDictionary *)result;
 
 @end

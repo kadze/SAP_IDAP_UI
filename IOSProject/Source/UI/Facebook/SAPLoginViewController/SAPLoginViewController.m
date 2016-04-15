@@ -15,38 +15,21 @@
 #import "SAPUserFriendsViewController.h"
 #import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
-#import "SAPUserDetailContext.h"
-
-#import "SAPModelObserver.h"
 
 #import "SAPViewControllerMacro.h"
-#import "SAPOwnershipMacro.h"
-
-#import "SAPDispatch.h"
-
-static NSString * const kSAPBackBarButtonTitle = @"Log out";
 
 SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView);
 
 @interface SAPLoginViewController ()
 
-- (void)customiseBackBarButton;
+- (void)finishLogin;
+- (SAPUser *)currentTokenIDUser;
 
 @end
 
 @implementation SAPLoginViewController
 
 @dynamic modelContext;
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    [self customiseBackBarButton];
-    
-    return self;
-}
 
 #pragma mark -
 #pragma mark Accessors
@@ -75,29 +58,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 }
 
 #pragma mark -
-#pragma mark UINavigationControllerDelegate
-
-- (void)navigationController:(UINavigationController *)navigationController
-      willShowViewController:(UIViewController *)viewController
-                    animated:(BOOL)animated
-{
-    if (viewController == self) {
-        [self onLogout];
-    }
-}
-
-#pragma mark -
 #pragma mark Public
-
-- (void)finishLogin {
-    SAPUser *user = [self currentTokenIDUser];
-    if (user) {
-        SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
-        controller.model = user;
-        
-        [self.navigationController pushViewController:controller animated:NO];
-    }
-}
 
 - (void)updateViewControllerWithModel:(id)model {
     [self finishLogin];
@@ -105,25 +66,6 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 
 #pragma mark -
 #pragma mark Private
-
-- (void)customiseBackBarButton {
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:kSAPBackBarButtonTitle
-                                                               style:UIBarButtonItemStylePlain
-                                                              target:nil
-                                                              action:nil];
-    self.navigationItem.backBarButtonItem = button;
-}
-
-- (void)onLogout {
-    SAPUser *user = [self currentTokenIDUser];
-    if (user) {
-        SAPUserDetailContext *context = [SAPUserDetailContext contextWithModel:user];
-        [context cleanCacheInBackground];
-        
-        FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-        [loginManager logOut];
-    }
-}
 
 - (SAPUser *)currentTokenIDUser {
     SAPUser *result = nil;
@@ -135,6 +77,16 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
     }
     
     return result;
+}
+
+- (void)finishLogin {
+    SAPUser *user = [self currentTokenIDUser];
+    if (user) {
+        SAPUserFriendsViewController *controller = [SAPUserFriendsViewController new];
+        controller.model = user;
+        
+        [self.navigationController pushViewController:controller animated:NO];
+    }
 }
 
 @end

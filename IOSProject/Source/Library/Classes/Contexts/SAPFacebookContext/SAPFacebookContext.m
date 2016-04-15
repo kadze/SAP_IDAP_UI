@@ -12,6 +12,8 @@
 
 #import "UIAlertView+SAPExtensions.h"
 
+#import "SAPCacheableModel.h"
+
 #import "SAPOwnershipMacro.h"
 
 #import "SAPDispatch.h"
@@ -20,6 +22,8 @@
 @property (nonatomic, readonly) FBSDKGraphRequestHandler completionHandler;
 @property (nonatomic, readonly) FBSDKGraphRequest        *graphRequest;
 
+- (void)performBackgroundExecution;
+    
 @end
 
 @implementation SAPFacebookContext
@@ -53,7 +57,7 @@
     SAPWeakify(self);
     return ^(FBSDKGraphRequestConnection *connection, NSDictionary *result, NSError *error) {
         SAPStrongifyAndReturnIfNil(self);
-        SAPModel *model = self.model;
+        SAPModel<SAPCacheableModel> *model = self.model;
         
         if (error) {
             NSDictionary *cachedResult = [self cachedResult];
@@ -66,11 +70,13 @@
                     return;
                 }
             }
-        } else {
-            [self cleanCacheInBackground];
         }
         
         [self fillModelWithResult:result];
+        
+        if (!error) {
+            [self cleanCacheInBackground];
+        }
         
         @synchronized (model) {
             model.state = kSAPModelStateDidFinishLoading;
@@ -94,19 +100,16 @@
 }
 
 - (void)cleanCacheInBackground {
-    SAPWeakify(self);
-    SAPDispatchAsyncOnDefaultQueue(^{
-        SAPStrongifyAndReturnIfNil(self);
-        [self cleanCache];
-    });
+    SAPModel<SAPCacheableModel> *model = self.model;
+    if ([model respondsToSelector:@selector(cleanCache)]) {
+        SAPDispatchAsyncOnDefaultQueue(^{
+            [model cleanCache];
+        });
+    }
 }
 
 - (id)cachedResult {
     return nil;
-}
-
-- (void)cleanCache {
-    
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {

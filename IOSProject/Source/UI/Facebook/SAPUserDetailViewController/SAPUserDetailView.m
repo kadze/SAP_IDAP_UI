@@ -13,6 +13,7 @@
 #import "SAPImageView.h"
 
 @interface SAPUserDetailView ()
+
 - (void)fillWithModel:(SAPUser *)user;
 
 @end

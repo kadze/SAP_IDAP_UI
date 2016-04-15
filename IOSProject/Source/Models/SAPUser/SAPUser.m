@@ -134,6 +134,15 @@ static NSString * const kSAPFriendsKey       = @"friends";
     [NSKeyedArchiver archiveRootObject:self toFile:self.path];
 }
 
+- (void)cleanCache {
+    if (self.cached) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];
+    }
+    
+    for (SAPUser *friend in self.friends.objects) {
+        [friend cleanCache];
+    }
+}
 
 #pragma mark -
 #pragma mark Private

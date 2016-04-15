@@ -8,6 +8,8 @@
 
 #import "SAPUserFriendsViewController.h"
 
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 #import "SAPUsers.h"
 #import "SAPUser.h"
 #import "SAPUserFriendsView.h"
@@ -17,7 +19,18 @@
 
 #import "SAPViewControllerMacro.h"
 
+#import "SAPDispatch.h"
+
+static NSString * const kSAPLeftBarButtonTitle = @"Log out";
+
 SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, mainView);
+
+@interface SAPUserFriendsViewController ()
+
+- (void)onLogout;
+- (void)customizeLeftBarButton;
+
+@end
 
 @implementation SAPUserFriendsViewController
 
@@ -26,6 +39,16 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 + (Class)cellClass {
     return [SAPUserCell class];
+}
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    [self customizeLeftBarButton];
+    
+    return self;
 }
 
 #pragma mark -
@@ -63,6 +86,28 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 - (void)finishModelSetting {
     SAPUser *model = self.model;
     self.items = model.friends;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)customizeLeftBarButton {
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:kSAPLeftBarButtonTitle
+                                                               style:UIBarButtonItemStylePlain
+                                                              target:self
+                                                              action:@selector(onLogout)];
+    self.navigationItem.leftBarButtonItem = button;
+}
+
+- (void)onLogout {
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logOut];
+    SAPUser *user = self.model;
+    SAPDispatchAsyncOnDefaultQueue(^{
+        [user cleanCache];
+    });
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
