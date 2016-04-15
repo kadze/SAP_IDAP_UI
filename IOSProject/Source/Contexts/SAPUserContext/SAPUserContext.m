@@ -10,10 +10,7 @@
 
 #import "SAPUser.h"
 
-#import "NSNull+SAPJSONNull.h"
-#import "NSArray+SAPJSONArray.h"
-#import "NSObject+SAPJSONObject.h"
-#import "NSDictionary+SAPJSONDictionary.h"
+#import "SAPJSONRepresentation.h"
 
 #import "SAPNilToNSNullMacro.h"
 
@@ -50,7 +47,7 @@
                    kSAPLastNameKey : SAPNSNullIfNil(cachedModel.lastName),
                    kSAPPictureKey : @{
                            kSAPDataKey : @{
-                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL.absoluteString)}
+                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
                            }
                    };
     }

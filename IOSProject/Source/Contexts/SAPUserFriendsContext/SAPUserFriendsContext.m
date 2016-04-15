@@ -13,12 +13,11 @@
 #import "SAPUser.h"
 #import "SAPUsers.h"
 
-#import "NSNull+SAPJSONNull.h"
-#import "NSArray+SAPJSONArray.h"
-#import "NSObject+SAPJSONObject.h"
-#import "NSDictionary+SAPJSONDictionary.h"
+#import "SAPJSONRepresentation.h"
 
 #import "SAPGraphStringConstants.h"
+
+#import "SAPNilToNSNullMacro.h"
 
 @implementation SAPUserFriendsContext
 
@@ -76,12 +75,12 @@
         NSMutableArray *friendElements = [NSMutableArray new];
         
         for (SAPUser *friend in cachedUser.friends.objects) {
-            NSDictionary *friendElement = @{kSAPIDKey : friend.userId,
-                                            kSAPFirstNameKey : friend.firstName,
-                                            kSAPLastNameKey : friend.lastName,
+            NSDictionary *friendElement = @{kSAPIDKey : SAPNSNullIfNil(friend.userId),
+                                            kSAPFirstNameKey : SAPNSNullIfNil(friend.firstName),
+                                            kSAPLastNameKey : SAPNSNullIfNil(friend.lastName),
                                             kSAPPictureKey : @{
                                                     kSAPDataKey : @{
-                                                            kSAPUrlKey : friend.smallImageURL.absoluteString
+                                                            kSAPUrlKey : SAPNSNullIfNil(friend.smallImageURL)
                                                             }
                                                     }
                                             };

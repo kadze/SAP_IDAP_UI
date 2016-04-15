@@ -10,10 +10,7 @@
 
 #import "SAPUser.h"
 
-#import "NSNull+SAPJSONNull.h"
-#import "NSArray+SAPJSONArray.h"
-#import "NSObject+SAPJSONObject.h"
-#import "NSDictionary+SAPJSONDictionary.h"
+#import "SAPJSONRepresentation.h"
 
 #import "SAPGraphStringConstants.h"
 
@@ -49,24 +46,29 @@
     SAPUser *model = self.model;
     if (model.cached) {
         SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
-        id cachedModelUrl = cachedModel.largeImageURL.absoluteString;
-        cachedModelUrl = (!cachedModelUrl) ? [NSNull new]: cachedModelUrl;
         result = @{kSAPIDKey        : SAPNSNullIfNil(cachedModel.userId),
                    kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
                    kSAPLastNameKey  : SAPNSNullIfNil(cachedModel.lastName),
                    kSAPLargePictureAliasKey : @{
                                     kSAPDataKey : @{
-                                            kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL.absoluteString)}
+                                            kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL)}
                                                 },
                    kSAPSquarePictureAliasKey : @{
                                      kSAPDataKey : @{
-                                             kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL.absoluteString)}
+                                             kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
                                                 },
                    kSAPGenderKey    : SAPNSNullIfNil(cachedModel.gender)
                    };
     }
     
     return [result JSONRepresentation];
+}
+
+- (void)cleanCache {
+    SAPUser *user = self.model;
+    if (user.cached) {
+        [[NSFileManager defaultManager] removeItemAtPath:user.path error:nil];
+    }
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
