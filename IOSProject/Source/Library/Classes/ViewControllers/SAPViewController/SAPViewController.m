@@ -52,6 +52,14 @@
     return nil;
 }
 
+#pragma mark-
+#pragma mark View Lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.model = self.model;
+}
+
 #pragma mark -
 #pragma mark SAPModelObserver
 
