@@ -77,5 +77,9 @@
     
 }
 
+- (void)performSynchronousBlock:(void(^)(void))block {
+    block();
+}
+
 @end
 

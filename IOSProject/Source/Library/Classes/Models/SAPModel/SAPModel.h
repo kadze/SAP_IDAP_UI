@@ -25,6 +25,8 @@ typedef NS_ENUM (NSUInteger, SAPModelState) {
 
 - (void)load;
 
+- (void)performSynchronousBlock:(void(^)(void))block;
+
 //this method should be overriden in subclasses
 - (void)performBackgroundLoading;
 
