@@ -1,5 +1,5 @@
 //
-//  NSNumber+SAPJSONNumber.h
+//  NSURL+SAPJSONURL.h
 //  IOSProject
 //
 //  Created by Andrey on 4/15/16.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SAPJSONRepresentable.h"
+#import "SAPJSONRepresentation.h"
 
-@interface NSNumber (SAPJSONNumber) <SAPJSONRepresentable>
+@interface NSURL (SAPJSONURL) <SAPJSONRepresentation>
 
 @end

@@ -1,5 +1,5 @@
 //
-//  NSDictionary+SAPJSONDictionary.h
+//  NSObject+SAPJSONObject.h
 //  IOSProject
 //
 //  Created by SAP on 4/3/16.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SAPJSONRepresentable.h"
+#import "SAPJSONRepresentation.h"
 
-@interface NSDictionary (SAPJSONDictionary) <SAPJSONRepresentable>
+@interface NSObject (SAPJSONObject) <SAPJSONRepresentation>
 
 @end

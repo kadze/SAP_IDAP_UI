@@ -10,7 +10,7 @@
 #import <Foundation/NSObject.h>
 #import <UIKit/UIApplication.h>
 
-#import "SAPJSONRepresentation.h"
+#import "SAPJSONRepresentationImports.h"
 
 #import "SAPUsers.h"
 #import "SAPImageModel.h"

@@ -1,5 +1,5 @@
 //
-//  SAPJSONRepresentable.h
+//  SAPJSONRepresentation.h
 //  IOSProject
 //
 //  Created by Andrey on 4/15/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SAPJSONRepresentable <NSObject>
+@protocol SAPJSONRepresentation <NSObject>
 @optional
 - (id)JSONRepresentation;
 

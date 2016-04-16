@@ -1,5 +1,5 @@
 //
-//  NSNull+SAPJSONNull.h
+//  NSArray+SAPJSONArray.h
 //  IOSProject
 //
 //  Created by SAP on 4/3/16.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SAPJSONRepresentable.h"
+#import "SAPJSONRepresentation.h"
 
-@interface NSNull (SAPJSONNull) <SAPJSONRepresentable>
+@interface NSArray (SAPJSONArray) <SAPJSONRepresentation>
 
 @end

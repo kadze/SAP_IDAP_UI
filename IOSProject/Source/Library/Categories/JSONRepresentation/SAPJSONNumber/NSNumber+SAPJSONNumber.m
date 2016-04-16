@@ -10,8 +10,8 @@
 
 @implementation NSNumber (SAPJSONNumber)
 
-- (NSString *)JSONRepresentation {
-    return self.stringValue;
+- (instancetype)JSONRepresentation {
+    return self;
 }
 
 @end

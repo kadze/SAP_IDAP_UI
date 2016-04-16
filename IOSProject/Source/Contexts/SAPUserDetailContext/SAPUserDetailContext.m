@@ -10,7 +10,7 @@
 
 #import "SAPUser.h"
 
-#import "SAPJSONRepresentation.h"
+#import "SAPJSONRepresentationImports.h"
 
 #import "SAPGraphStringConstants.h"
 
