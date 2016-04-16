@@ -34,11 +34,11 @@
 #pragma mark Accessors
 
 - (void)setUserDetailContext:(SAPUserDetailContext *)userDetailContext {
-    SAPSetContext(&_userDetailContext, userDetailContext);
+    SAPContextIvarSetValue(&_userDetailContext, userDetailContext);
 }
 
 -(void)setUserFriendsContext:(SAPUserFriendsContext *)userFriendsContext {
-    SAPSetContext(&_userFriendsContext, userFriendsContext);
+    SAPContextIvarSetValue(&_userFriendsContext, userFriendsContext);
 }
 
 #pragma mark -

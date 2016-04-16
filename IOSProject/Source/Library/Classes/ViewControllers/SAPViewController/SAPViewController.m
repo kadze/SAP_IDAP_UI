@@ -35,7 +35,7 @@
 #pragma mark Accessors
 
 - (void)setContext:(SAPContext *)context {
-    SAPSetContext(&_context, context);
+    SAPContextIvarSetValue(&_context, context);
 }
 
 - (void)setModel:(SAPModel *)model {

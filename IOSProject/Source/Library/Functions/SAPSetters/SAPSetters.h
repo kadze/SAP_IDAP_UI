@@ -9,4 +9,4 @@
 @class SAPContext;
 
 extern
-void SAPSetContext(SAPContext *__strong* context, id value);
+void SAPContextIvarSetValue(SAPContext *__strong * ivar, id value);

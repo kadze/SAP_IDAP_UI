@@ -13,11 +13,11 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-void SAPSetContext(SAPContext *__strong* context, id value) {
-    if (*context != value) {
-        [*context cancel];
-        *context = value;
-        [*context execute];
+void SAPContextIvarSetValue(SAPContext *__strong *ivar, id value) {
+    if (*ivar != value) {
+        [*ivar cancel];
+        *ivar = value;
+        [*ivar execute];
     }
 }
 
