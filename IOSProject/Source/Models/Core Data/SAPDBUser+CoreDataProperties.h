@@ -23,13 +23,13 @@
 
 @interface SAPDBUser (CoreDataGeneratedAccessors)
 
-- (void)addFriendsObject:(SAPDBUser *)value;
-- (void)removeFriendsObject:(SAPDBUser *)value;
+- (void)addFriend:(SAPDBUser *)value;
+- (void)removeFriend:(SAPDBUser *)value;
 - (void)addFriends:(NSSet *)values;
 - (void)removeFriends:(NSSet *)values;
 
-- (void)addImagesObject:(SAPDBImage *)value;
-- (void)removeImagesObject:(SAPDBImage *)value;
+- (void)addImage:(SAPDBImage *)value;
+- (void)removeImage:(SAPDBImage *)value;
 - (void)addImages:(NSSet *)values;
 - (void)removeImages:(NSSet *)values;
 

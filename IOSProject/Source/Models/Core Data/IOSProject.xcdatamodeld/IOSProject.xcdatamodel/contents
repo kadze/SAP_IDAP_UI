@@ -3,7 +3,7 @@
     <entity name="SAPDBImage" representedClassName="SAPDBImage" syncable="YES">
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBUser" inverseName="images" inverseEntity="SAPDBUser" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBUser" inverseName="images" inverseEntity="SAPDBUser" syncable="YES"/>
     </entity>
     <entity name="SAPDBUser" representedClassName="SAPDBUser" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -11,10 +11,10 @@
         <attribute name="lastName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="userId" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBUser" inverseName="friends" inverseEntity="SAPDBUser" syncable="YES"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBImage" inverseName="user" inverseEntity="SAPDBImage" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPDBImage" inverseName="users" inverseEntity="SAPDBImage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SAPDBUser" positionX="-108" positionY="-162" width="128" height="133"/>
         <element name="SAPDBImage" positionX="133" positionY="-18" width="128" height="88"/>
+        <element name="SAPDBUser" positionX="-108" positionY="-162" width="128" height="133"/>
     </elements>
 </model>

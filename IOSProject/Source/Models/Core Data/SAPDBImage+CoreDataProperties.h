@@ -14,15 +14,15 @@
 @interface SAPDBImage (CoreDataProperties)
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, strong) NSString *size;
-@property (nonatomic, strong) NSSet    *user;
+@property (nonatomic, strong) NSSet    *users;
 
 @end
 
 @interface SAPDBImage (CoreDataGeneratedAccessors)
 
-- (void)addUserObject:(SAPDBUser *)value;
-- (void)removeUserObject:(SAPDBUser *)value;
-- (void)addUser:(NSSet *)values;
-- (void)removeUser:(NSSet *)values;
+- (void)addUser:(SAPDBUser *)value;
+- (void)removeUser:(SAPDBUser *)value;
+- (void)addUsers:(NSSet *)values;
+- (void)removeUsers:(NSSet *)values;
 
 @end

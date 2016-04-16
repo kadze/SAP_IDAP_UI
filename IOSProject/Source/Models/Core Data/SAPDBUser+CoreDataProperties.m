@@ -11,6 +11,8 @@
 
 #import "SAPDBUser+CoreDataProperties.h"
 
+#import "NSManagedObject+SAPExtensions.h"
+
 @implementation SAPDBUser (CoreDataProperties)
 
 @dynamic firstName;
@@ -19,5 +21,24 @@
 @dynamic userId;
 @dynamic friends;
 @dynamic images;
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)addFriend:(SAPDBUser *)value {
+    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(friends))];
+}
+
+- (void)removeFriend:(SAPDBUser *)value {
+    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(friends))];
+}
+
+- (void)addImage:(SAPDBImage *)value {
+    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
+}
+
+- (void)removeImage:(SAPDBImage *)value {
+    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
+}
 
 @end

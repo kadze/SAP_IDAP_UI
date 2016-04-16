@@ -11,10 +11,23 @@
 
 #import "SAPDBImage+CoreDataProperties.h"
 
+#import "NSManagedObject+SAPExtensions.h"
+
 @implementation SAPDBImage (CoreDataProperties)
 
 @dynamic path;
 @dynamic size;
-@dynamic user;
+@dynamic users;
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)addUser:(SAPDBUser *)value {
+    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(users))];
+}
+
+- (void)removeUser:(SAPDBUser *)value {
+    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(users))];
+}
 
 @end
