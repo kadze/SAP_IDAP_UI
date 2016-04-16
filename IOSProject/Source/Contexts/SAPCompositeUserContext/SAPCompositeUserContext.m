@@ -46,6 +46,7 @@
 
 - (void)execute {
     SAPUser *user = self.model;
+    
     self.userDetailContext = [SAPUserDetailContext contextWithModel:user];
     self.userFriendsContext = [SAPUserFriendsContext contextWithUser:user];
 }

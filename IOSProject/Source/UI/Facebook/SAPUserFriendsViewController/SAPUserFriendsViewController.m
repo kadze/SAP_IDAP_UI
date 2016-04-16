@@ -18,6 +18,7 @@
 #import "SAPUserDetailViewController.h"
 
 #import "SAPViewControllerMacro.h"
+#import "SAPOwnershipMacro.h"
 
 #import "SAPDispatch.h"
 
@@ -66,9 +67,8 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SAPUser *friend = self.items[indexPath.row];
     SAPUserDetailViewController *controller = [SAPUserDetailViewController new];
-    controller.model = friend;
+    controller.model = self.items[indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -100,14 +100,24 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 }
 
 - (void)onLogout {
+    self.mainView.loadingViewVisible = YES;
+    
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
     [loginManager logOut];
-    SAPUser *user = self.model;
-    SAPDispatchAsyncOnDefaultQueue(^{
-        [user cleanCache];
-    });
     
-    [self.navigationController popViewControllerAnimated:YES];
+    SAPWeakify(self);
+    SAPDispatchAsyncOnDefaultQueue(^{
+        SAPStrongifyAndReturnIfNil(self);
+        [self.model cleanCache];
+        
+        SAPWeakify(self);
+        SAPDispatchAsyncOnMainQueue(^{
+            SAPStrongifyAndReturnIfNil(self);
+            self.mainView.loadingViewVisible = NO;
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    });
 }
 
 @end
