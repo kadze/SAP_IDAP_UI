@@ -45,7 +45,7 @@
         result = @{kSAPIDKey : SAPNSNullIfNil(cachedModel.userId),
                    kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
                    kSAPLastNameKey : SAPNSNullIfNil(cachedModel.lastName),
-                   kSAPPictureKey : @{
+                   kSAPSquarePictureAliasKey : @{
                            kSAPDataKey : @{
                                    kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
                            }

@@ -21,12 +21,6 @@
 #pragma mark -
 #pragma mark Public
 
-- (NSString *)graphRequestPath {
-    SAPUser *user = self.model;
-    
-    return user.userId;
-}
-
 - (NSDictionary *)graphRequestParameters {
     NSString *fieldsParameter = [NSString stringWithFormat:@"%@,%@,%@,%@{%@},%@{%@}",
                                  kSAPFirstNameKey,
@@ -42,41 +36,37 @@
 }
 
 - (NSDictionary *)cachedResult {
-    NSDictionary *result = nil;
+    NSMutableDictionary *result = nil;
+    
+    NSDictionary *superResult = [super cachedResult];
+    
+    [result addEntriesFromDictionary:superResult];
+    
     SAPUser *model = self.model;
     if (model.cached) {
         SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
-        result = @{kSAPIDKey        : SAPNSNullIfNil(cachedModel.userId),
-                   kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
-                   kSAPLastNameKey  : SAPNSNullIfNil(cachedModel.lastName),
-                   kSAPLargePictureAliasKey : @{
-                                    kSAPDataKey : @{
-                                            kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL)}
-                                                },
-                   kSAPSquarePictureAliasKey : @{
-                                     kSAPDataKey : @{
-                                             kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
-                                                },
-                   kSAPGenderKey    : SAPNSNullIfNil(cachedModel.gender)
-                   };
+        NSDictionary *additionalResult = @{kSAPLargePictureAliasKey : @{
+                                                   kSAPDataKey : @{
+                                                           kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL)}
+                                                   },
+                                           kSAPGenderKey            : SAPNSNullIfNil(cachedModel.gender)
+                                           };
+        
+        [result addEntriesFromDictionary:additionalResult];
     }
-    
+        
     return [result JSONRepresentation];
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
+    [super fillModelWithResult:result];
+    
     SAPUser *user = self.model;
     
-    user.userId = result[kSAPIDKey];
-    user.firstName = result[kSAPFirstNameKey];
-    user.lastName = result[kSAPLastNameKey];
     user.gender = result[kSAPGenderKey];
     
     NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
     user.largeImageURL = [NSURL URLWithString:urlString];
-    
-    urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
-    user.smallImageURL = [NSURL URLWithString:urlString];
 }
 
 @end
