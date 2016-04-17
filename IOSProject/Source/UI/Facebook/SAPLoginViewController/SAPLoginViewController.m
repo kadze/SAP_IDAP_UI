@@ -46,6 +46,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self finishLogin];
 }
 

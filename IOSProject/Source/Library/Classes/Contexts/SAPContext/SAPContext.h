@@ -17,6 +17,7 @@
 
 - (instancetype)initWithModel:(id)model;
 - (void)execute;
+- (BOOL)shouldLoadWithState:(NSInteger)state;
 
 //this methods should be overriden in subclasses
 - (void)cancel;

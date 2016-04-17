@@ -36,7 +36,7 @@
     SAPModel *model = self.model;
     @synchronized (model) {
         NSUInteger state = model.state;
-        if (kSAPModelStateDidFinishLoading == state || kSAPModelStateWillLoad == state) {
+        if (![self shouldLoadWithState:state]) {
             [model notifyObserversWithSelector:[model selectorForState:state]];
             
             return;
@@ -46,6 +46,10 @@
     }
     
     [self stateUnsafeLoad];
+}
+
+- (BOOL)shouldLoadWithState:(NSInteger)state {
+    return state == kSAPModelStateUnloaded;
 }
 
 - (void)cancel {
