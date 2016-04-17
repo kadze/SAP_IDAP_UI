@@ -19,21 +19,25 @@
 
 #import "SAPOwnershipMacro.h"
 #import "SAPNilToNSNullMacro.h"
+#import "sAPDispatchOnceMacro.h"
 
 //properties names for NSCoding
-static NSString * const kSAPUserIDKey        = @"userId";
-static NSString * const kSAPFirstNameKey     = @"firstName";
-static NSString * const kSAPLastNameKey      = @"lastName";
-static NSString * const kSAPGenderKey        = @"gender";
+static NSString * const kSAPUserIDKey           = @"userId";
+static NSString * const kSAPFirstNameKey        = @"firstName";
+static NSString * const kSAPLastNameKey         = @"lastName";
+static NSString * const kSAPGenderKey           = @"gender";
 
-static NSString * const kSAPSmallImageURLKey = @"smallImageURL";
-static NSString * const kSAPLagreImageUrlKey = @"largeImageURL";
+static NSString * const kSAPSmallImageURLKey    = @"smallImageURL";
+static NSString * const kSAPLagreImageUrlKey    = @"largeImageURL";
 
-static NSString * const kSAPFriendsKey       = @"friends";
+static NSString * const kSAPFriendsKey          = @"friends";
+
+static NSString * const kSAPUsersDirectoryName  = @"users";
 
 @interface SAPUser ()
-@property (nonatomic, strong) SAPUsers  *friends;
-@property (nonatomic, strong) id        applicationObserver;
+@property (nonatomic, strong) SAPUsers      *friends;
+@property (nonatomic, strong) id            applicationObserver;
+@property (nonatomic, readonly) NSString    *usersCachePath;
 
 - (void)startObserving;
 - (void)stopObserving;
@@ -76,6 +80,21 @@ static NSString * const kSAPFriendsKey       = @"friends";
     return [SAPImageModel imageWithUrl:self.largeImageURL];
 }
 
+- (NSString *)usersCachePath {
+    static NSString *path = nil;
+    path = [[NSFileManager appStatePath] stringByAppendingPathComponent:kSAPUsersDirectoryName];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path]) {
+        [fileManager createDirectoryAtPath:path
+               withIntermediateDirectories:YES
+                                attributes:nil
+                                     error:nil];
+    }
+    
+    return path;
+}
+
 #pragma mark -
 #pragma mark NSCoding
 
@@ -113,7 +132,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
 #pragma mark SAPCacheableModel
 
 - (NSString *)path {
-    return [[NSFileManager appStatePath] stringByAppendingPathComponent:self.userId];
+    return [[self usersCachePath] stringByAppendingPathComponent:self.userId];
 }
 
 - (BOOL)cached {
@@ -136,11 +155,7 @@ static NSString * const kSAPFriendsKey       = @"friends";
 
 - (void)cleanCache {
     if (self.cached) {
-        [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];
-    }
-    
-    for (SAPUser *friend in self.friends.objects) {
-        [friend cleanCache];
+        [[NSFileManager defaultManager] removeItemAtPath:self.usersCachePath error:nil];
     }
 }
 

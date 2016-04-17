@@ -27,7 +27,9 @@
 
 @property (nonatomic, readonly) SAPUsers         *friends;
 
-//method uses init chain!
+//this method uses init chain!
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
+
+- (NSString *)usersCachePath;
 
 @end
