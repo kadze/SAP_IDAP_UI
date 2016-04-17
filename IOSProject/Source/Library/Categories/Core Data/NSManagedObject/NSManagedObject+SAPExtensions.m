@@ -32,10 +32,10 @@
 #pragma mark -
 #pragma mark Private
 
--       (void)handleCustomValue:(id)value
-             inMutableSetForKey:(NSString *)key
-                withSetMutation:(NSKeyValueSetMutationKind)mutation
-                   withSelector:(SEL)selector
+- (void)    handleCustomValue:(id)value
+           inMutableSetForKey:(NSString *)key
+              withSetMutation:(NSKeyValueSetMutationKind)mutation
+                 withSelector:(SEL)selector
 {
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:key
@@ -46,6 +46,7 @@
     SAPClangDiagnosticPushOption("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
     [primitiveSet performSelector:selector withObject:changedObjects];
     SAPClangDiagnosticPopOption
+    
     [self didChangeValueForKey:key
                withSetMutation:mutation
                   usingObjects:changedObjects];
