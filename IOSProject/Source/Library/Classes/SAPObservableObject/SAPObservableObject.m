@@ -27,15 +27,18 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)init {
+    return [self initWithTarget:nil];
+}
+
+- (instancetype)initWithTarget:(id)target {
     self = [super init];
-    if (self) {
-        self.mutableObservers = [NSMutableSet set];
-        self.notificationEnabled = YES;
-    }
+    
+    self.mutableObservers = [NSMutableSet set];
+    self.notificationEnabled = YES;
+    self.target = target;
     
     return self;
 }
-
 #pragma mark -
 #pragma mark Accessors
 
@@ -63,6 +66,10 @@
             [self notifyObserversWithSelector:selector withObject:object];
         }
     }
+}
+
+- (id)target {
+    return _target ? _target :self;
 }
 
 #pragma mark -
@@ -110,7 +117,7 @@
             id observer = reference.target;
             if ([observer respondsToSelector:selector]) {
                 SAPClangDiagnosticPushOption("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
-                [observer performSelector:selector withObject:self withObject:object];
+                [observer performSelector:selector withObject:self.target withObject:object];
                 SAPClangDiagnosticPopOption
             }
         }

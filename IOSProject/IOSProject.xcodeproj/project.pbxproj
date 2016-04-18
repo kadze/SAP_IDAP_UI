@@ -46,6 +46,7 @@
 		2ED4B59E1C99DD5B001670F6 /* SAPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4B59B1C99DD5B001670F6 /* SAPLoginViewController.xib */; };
 		55C0768C1CC43EB300A7DC0D /* NSManagedObject+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C076891CC43EB300A7DC0D /* NSManagedObject+SAPExtensions.m */; };
 		55C076901CC43F6F00A7DC0D /* SAPUserDetailContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0768F1CC43F6F00A7DC0D /* SAPUserDetailContext.m */; };
+		55EA7E121CC584FF0036CB8B /* SAPManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EA7E111CC584FF0036CB8B /* SAPManagedObject.m */; };
 		55F5335A1CC2FD4D00089F64 /* NSArray+SAPJSONArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F533471CC2FD4D00089F64 /* NSArray+SAPJSONArray.m */; };
 		55F5335B1CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5334A1CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.m */; };
 		55F5335C1CC2FD4D00089F64 /* NSNull+SAPJSONNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5334D1CC2FD4D00089F64 /* NSNull+SAPJSONNull.m */; };
@@ -197,6 +198,8 @@
 		55C076891CC43EB300A7DC0D /* NSManagedObject+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+SAPExtensions.m"; sourceTree = "<group>"; };
 		55C0768E1CC43F6F00A7DC0D /* SAPUserDetailContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserDetailContext.h; sourceTree = "<group>"; };
 		55C0768F1CC43F6F00A7DC0D /* SAPUserDetailContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserDetailContext.m; sourceTree = "<group>"; };
+		55EA7E101CC584FF0036CB8B /* SAPManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPManagedObject.h; sourceTree = "<group>"; };
+		55EA7E111CC584FF0036CB8B /* SAPManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPManagedObject.m; sourceTree = "<group>"; };
 		55F533461CC2FD4D00089F64 /* NSArray+SAPJSONArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SAPJSONArray.h"; sourceTree = "<group>"; };
 		55F533471CC2FD4D00089F64 /* NSArray+SAPJSONArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SAPJSONArray.m"; sourceTree = "<group>"; };
 		55F533491CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SAPJSONDictionary.h"; sourceTree = "<group>"; };
@@ -799,14 +802,16 @@
 			isa = PBXGroup;
 			children = (
 				55FAFB181CC191E3006110C3 /* IOSProject.xcdatamodeld */,
-				55FAFB331CC1A3B0006110C3 /* SAPDBUser+CoreDataProperties.h */,
-				55FAFB341CC1A3B0006110C3 /* SAPDBUser+CoreDataProperties.m */,
 				55FAFB351CC1A3B0006110C3 /* SAPDBUser.h */,
 				55FAFB361CC1A3B0006110C3 /* SAPDBUser.m */,
+				55FAFB331CC1A3B0006110C3 /* SAPDBUser+CoreDataProperties.h */,
+				55FAFB341CC1A3B0006110C3 /* SAPDBUser+CoreDataProperties.m */,
 				55FAFB391CC1A3B0006110C3 /* SAPDBImage.h */,
 				55FAFB3A1CC1A3B0006110C3 /* SAPDBImage.m */,
 				55FAFB371CC1A3B0006110C3 /* SAPDBImage+CoreDataProperties.h */,
 				55FAFB381CC1A3B0006110C3 /* SAPDBImage+CoreDataProperties.m */,
+				55EA7E101CC584FF0036CB8B /* SAPManagedObject.h */,
+				55EA7E111CC584FF0036CB8B /* SAPManagedObject.m */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -1489,6 +1494,7 @@
 				2E424A931CAC41C10089CECC /* SAPView.m in Sources */,
 				55FAFB3C1CC1A3B0006110C3 /* SAPDBUser.m in Sources */,
 				2E424A351CA58A140089CECC /* SAPUserFriendsContext.m in Sources */,
+				55EA7E121CC584FF0036CB8B /* SAPManagedObject.m in Sources */,
 				2E424A731CAC41970089CECC /* UITableView+SAPCollectionChangeModel.m in Sources */,
 				2E424A921CAC41C10089CECC /* SAPTableViewCell.m in Sources */,
 				55F5335F1CC2FD4D00089F64 /* NSString+SAPJSONString.m in Sources */,

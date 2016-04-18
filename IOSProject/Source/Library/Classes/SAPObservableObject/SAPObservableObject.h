@@ -11,7 +11,10 @@
 @interface SAPObservableObject : NSObject
 @property (nonatomic, assign)   NSUInteger  state;
 @property (nonatomic, readonly) NSArray     *observers;
+@property (nonatomic, strong)   id          target;
 
+- (instancetype)initWithTarget:(id)target;
+    
 - (void)addObserver:(id)observer;
 - (void)removeObserver:(id)observer;
 - (void)removeObserversFromArray:(NSArray *)array;
