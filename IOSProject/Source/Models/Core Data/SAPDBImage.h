@@ -13,8 +13,6 @@
 
 @interface SAPDBImage : NSManagedObject
 
-// Insert code here to declare functionality of your managed object subclass
-
 @end
 
 #import "SAPDBImage+CoreDataProperties.h"

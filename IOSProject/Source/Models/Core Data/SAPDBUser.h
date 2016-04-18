@@ -13,8 +13,6 @@
 
 @interface SAPDBUser : NSManagedObject
 
-// Insert code here to declare functionality of your managed object subclass
-
 @end
 
 #import "SAPDBUser+CoreDataProperties.h"
