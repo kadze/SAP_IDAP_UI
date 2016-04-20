@@ -12,12 +12,18 @@
 
 #import "SAPUser.h"
 #import "SAPUsers.h"
+#import "SAPCoreDataController.h"
 
 #import "SAPJSONRepresentationImports.h"
 
 #import "SAPGraphStringConstants.h"
 
 #import "SAPNilToNSNullMacro.h"
+
+@interface SAPUserFriendsContext ()
+@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
+
+@end
 
 @implementation SAPUserFriendsContext
 
@@ -44,6 +50,8 @@
 - (void)setUser:(SAPUser *)user {
     if (_user != user) {
         _user = user;
+        
+        self.userManagedObjectID = user.objectID;
         self.model = user.friends;
     }
 }
@@ -52,7 +60,12 @@
 #pragma mark Public
 
 - (NSString *)graphRequestPath {
-    return self.user.userId;
+    //restore managedObject in other thread
+    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
+    
+    return user.userId;
 }
 
 - (NSDictionary *)graphRequestParameters {
@@ -68,28 +81,28 @@
 
 - (NSDictionary *)cachedResult {
     NSDictionary *result = nil;
-    SAPUser *user = self.user;
-    if (user.cached) {
-        SAPUser *cachedUser = [NSKeyedUnarchiver unarchiveObjectWithFile:user.path];
-        
-        NSMutableArray *friendElements = [NSMutableArray new];
-        
-        for (SAPUser *friend in cachedUser.friends.objects) {
-            NSDictionary *friendElement = @{kSAPIDKey : SAPNSNullIfNil(friend.userId),
-                                            kSAPFirstNameKey : SAPNSNullIfNil(friend.firstName),
-                                            kSAPLastNameKey : SAPNSNullIfNil(friend.lastName),
-                                            kSAPPictureKey : @{
-                                                    kSAPDataKey : @{
-                                                            kSAPUrlKey : SAPNSNullIfNil(friend.smallImageURL)
-                                                            }
-                                                    }
-                                            };
-            
-            [friendElements addObject:friendElement];
-        }
-        
-        result = @{kSAPFriendsKey : @{kSAPDataKey : [friendElements copy]}};
-    }
+//    SAPUser *user = self.user;
+//    if (user.cached) {
+//        SAPUser *cachedUser = [NSKeyedUnarchiver unarchiveObjectWithFile:user.path];
+//        
+//        NSMutableArray *friendElements = [NSMutableArray new];
+//        
+//        for (SAPUser *friend in cachedUser.friends.objects) {
+//            NSDictionary *friendElement = @{kSAPIDKey : SAPNSNullIfNil(friend.userId),
+//                                            kSAPFirstNameKey : SAPNSNullIfNil(friend.firstName),
+//                                            kSAPLastNameKey : SAPNSNullIfNil(friend.lastName),
+//                                            kSAPPictureKey : @{
+//                                                    kSAPDataKey : @{
+//                                                            kSAPUrlKey : SAPNSNullIfNil(friend.smallImageURL)
+//                                                            }
+//                                                    }
+//                                            };
+//            
+//            [friendElements addObject:friendElement];
+//        }
+//        
+//        result = @{kSAPFriendsKey : @{kSAPDataKey : [friendElements copy]}};
+//    }
     
     return [result JSONRepresentation];
 }
@@ -106,7 +119,7 @@
             user.lastName = friendElement[kSAPLastNameKey];
             
             NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-            user.smallImageURL = [NSURL URLWithString:urlString];
+//            user.smallImageURL = [NSURL URLWithString:urlString];
             
             [friends addObject:user];
         }

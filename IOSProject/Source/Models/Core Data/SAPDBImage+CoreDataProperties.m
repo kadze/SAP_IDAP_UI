@@ -22,11 +22,11 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)addUser:(SAPDBUser *)value {
+- (void)addUser:(SAPUser *)value {
     [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(users))];
 }
 
-- (void)removeUser:(SAPDBUser *)value {
+- (void)removeUser:(SAPUser *)value {
     [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(users))];
 }
 

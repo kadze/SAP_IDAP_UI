@@ -6,7 +6,7 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPUser.h"
+#import "SAPUser1.h"
 #import <Foundation/NSObject.h>
 #import <UIKit/UIApplication.h>
 
@@ -34,7 +34,7 @@ static NSString * const kSAPFriendsKey          = @"friends";
 
 static NSString * const kSAPUsersDirectoryName  = @"users";
 
-@interface SAPUser ()
+@interface SAPUser1 ()
 @property (nonatomic, strong) SAPUsers      *friends;
 @property (nonatomic, strong) id            applicationObserver;
 @property (nonatomic, readonly) NSString    *usersCachePath;
@@ -47,7 +47,7 @@ static NSString * const kSAPUsersDirectoryName  = @"users";
 
 @end
 
-@implementation SAPUser
+@implementation SAPUser1
 
 @dynamic smallImageModel;
 @dynamic largeImageModel;
@@ -107,7 +107,7 @@ static NSString * const kSAPUsersDirectoryName  = @"users";
     
     //friends IDs
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.friends.count];
-    for (SAPUser *friend in self.friends.objects) {
+    for (SAPUser1 *friend in self.friends.objects) {
         [array addObject:friend.userId];
     };
     
@@ -197,7 +197,7 @@ static NSString * const kSAPUsersDirectoryName  = @"users";
     
     SAPUsers *friends = [SAPUsers new];
     for (NSString *userId in friendsIDs) {
-        SAPUser *friend = [SAPUser new];
+        SAPUser1 *friend = [SAPUser1 new];
         friend.userId = userId;
         if (friend.cached) {
             friend = [NSKeyedUnarchiver unarchiveObjectWithFile:friend.path];

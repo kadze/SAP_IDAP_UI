@@ -20,8 +20,8 @@
 
 @interface SAPDBImage (CoreDataGeneratedAccessors)
 
-- (void)addUser:(SAPDBUser *)value;
-- (void)removeUser:(SAPDBUser *)value;
+- (void)addUser:(SAPUser *)value;
+- (void)removeUser:(SAPUser *)value;
 - (void)addUsers:(NSSet *)values;
 - (void)removeUsers:(NSSet *)values;
 

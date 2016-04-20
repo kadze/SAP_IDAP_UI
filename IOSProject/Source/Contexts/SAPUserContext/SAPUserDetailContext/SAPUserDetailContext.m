@@ -39,22 +39,21 @@
     NSMutableDictionary *result = nil;
     
     NSDictionary *superResult = [super cachedResult];
-    
+
     [result addEntriesFromDictionary:superResult];
-    
-    SAPUser *model = self.model;
-    if (model.cached) {
-        SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
-        NSDictionary *additionalResult = @{kSAPLargePictureAliasKey : @{
-                                                   kSAPDataKey : @{
-                                                           kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL)}
-                                                   },
+
+    SAPUser *cachedModel = self.model;
+        NSDictionary *additionalResult = @{
+//                                           kSAPLargePictureAliasKey : @{
+//                                                   kSAPDataKey : @{
+//                                                           kSAPUrlKey : SAPNSNullIfNil(cachedModel.largeImageURL)}
+//                                                   },
                                            kSAPGenderKey            : SAPNSNullIfNil(cachedModel.gender)
                                            };
         
         [result addEntriesFromDictionary:additionalResult];
-    }
-        
+//    }
+
     return [result JSONRepresentation];
 }
 
@@ -65,8 +64,8 @@
     
     user.gender = result[kSAPGenderKey];
     
-    NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
-    user.largeImageURL = [NSURL URLWithString:urlString];
+//    NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
+//    user.largeImageURL = [NSURL URLWithString:urlString];
 }
 
 @end

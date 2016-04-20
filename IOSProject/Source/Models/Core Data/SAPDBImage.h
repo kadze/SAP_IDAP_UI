@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SAPDBUser;
+@class SAPUser;
 
 @interface SAPDBImage : NSManagedObject
 

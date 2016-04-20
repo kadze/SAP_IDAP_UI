@@ -8,7 +8,12 @@
 
 #import "SAPManagedObject.h"
 
+#import <CoreData/CoreData.h>
+
+#import "SAPCoreDataController.h"
 #import "SAPObservableObject.h"
+
+#import "UIAlertView+SAPExtensions.h"
 
 @interface SAPManagedObject ()
 @property (nonatomic, strong) SAPObservableObject *observableObject;
@@ -33,5 +38,30 @@
     
     return [super forwardingTargetForSelector:aSelector];
 }
+
+//- (instancetype)cachedObject {
+//    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+//    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+//    
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([self class])];
+//    NSPredicate *predicate = [self predicate];
+//    request.predicate = predicate;
+//    
+//    NSError *error = nil;
+//    NSArray *results = [managedObjectContext executeFetchRequest:request error:&error];
+//    if (!results) {
+//        [UIAlertView showWithError:error];
+//    }
+//    
+//    if (results.count > 0) {
+//        return results.firstObject;
+//    }
+//    
+//    return nil;
+//}
+//
+//- (NSPredicate *)predicate {
+//    return nil;
+//}
 
 @end

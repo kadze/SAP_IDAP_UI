@@ -13,7 +13,7 @@
 @class SAPImageModel;
 @class SAPUsers;
 
-@interface SAPUser : SAPModel <NSCoding, SAPCacheableModel>
+@interface SAPUser1 : SAPModel <NSCoding, SAPCacheableModel>
 @property (nonatomic, copy)     NSString         *userId;
 @property (nonatomic, copy)     NSString         *firstName;
 @property (nonatomic, copy)     NSString         *lastName;

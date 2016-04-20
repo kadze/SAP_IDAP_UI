@@ -38,11 +38,12 @@
     SAPContextIvarSetValue(&_context, context);
 }
 
-- (void)setModel:(SAPModel *)model {
+- (void)setModel:(id)model {
     if (_model != model) {
         [_model removeObserver:self];
         _model = model;
-        [_model addObserver:self];
+#warning doesn't work forwarding
+//        [_model addObserver:self];
         
         [self finishModelSetting];
     }

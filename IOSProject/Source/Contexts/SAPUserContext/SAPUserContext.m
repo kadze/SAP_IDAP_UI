@@ -39,19 +39,18 @@
 
 - (NSDictionary *)cachedResult {
     NSDictionary *result = nil;
-    SAPUser *model = self.model;
-    if (model.cached) {
-        SAPUser *cachedModel = [NSKeyedUnarchiver unarchiveObjectWithFile:model.path];
+    SAPUser *cachedModel = self.model;
         result = @{kSAPIDKey : SAPNSNullIfNil(cachedModel.userId),
                    kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
-                   kSAPLastNameKey : SAPNSNullIfNil(cachedModel.lastName),
-                   kSAPSquarePictureAliasKey : @{
-                           kSAPDataKey : @{
-                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
-                           }
+                   kSAPLastNameKey : SAPNSNullIfNil(cachedModel.lastName)
+                   //,
+//                   kSAPSquarePictureAliasKey : @{
+//                           kSAPDataKey : @{
+//                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
+//                           }
                    };
-    }
-    
+//    }
+
     return [result JSONRepresentation];
 }
 
@@ -63,7 +62,7 @@
     user.lastName = result[kSAPLastNameKey];
     
     NSString *urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
-    user.smallImageURL = [NSURL URLWithString:urlString];
+//    user.smallImageURL = [NSURL URLWithString:urlString];
 }
 
 @end

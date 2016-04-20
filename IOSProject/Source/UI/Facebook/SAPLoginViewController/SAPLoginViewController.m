@@ -11,10 +11,16 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKAccessToken.h>
 
+#import <CoreData/CoreData.h>
+
 #import "SAPLoginView.h"
 #import "SAPUserFriendsViewController.h"
 #import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
+
+#import "SAPCoreDataController.h"
+
+#import "UIAlertView+SAPExtensions.h"
 
 #import "SAPViewControllerMacro.h"
 
@@ -69,15 +75,38 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark Private
 
 - (SAPUser *)currentTokenIDUser {
-    SAPUser *result = nil;
+    SAPUser *user = nil;
     FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
     if (accessToken) {
-        SAPUser *user = [SAPUser new];
-        user.userId = accessToken.userID;
-        result = user;
+        NSString *tokenUserID = accessToken.userID;
+        NSString *entityName = NSStringFromClass([SAPUser class]);
+        NSError *error = nil;
+        
+        SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+        NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+        
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", tokenUserID];
+        request.predicate = predicate;
+        NSArray *results = [managedObjectContext executeFetchRequest:request error:&error];
+        if (!results) {
+            [UIAlertView showWithError:error];
+        }
+        
+        if (results.count == 0) {
+            user = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:managedObjectContext];
+            user.userId = tokenUserID;
+            
+            if (![managedObjectContext save:&error]) {
+                [UIAlertView showWithError:error];
+            }
+            
+        } else {
+            user = results.firstObject;
+        }
     }
     
-    return result;
+    return user;
 }
 
 - (void)finishLogin {

@@ -9,11 +9,11 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "SAPDBUser+CoreDataProperties.h"
+#import "SAPUser+CoreDataProperties.h"
 
 #import "NSManagedObject+SAPExtensions.h"
 
-@implementation SAPDBUser (CoreDataProperties)
+@implementation SAPUser (CoreDataProperties)
 
 @dynamic firstName;
 @dynamic gender;
@@ -25,20 +25,20 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)addFriend:(SAPDBUser *)value {
+- (void)addFriend:(SAPUser *)value {
     [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(friends))];
 }
 
-- (void)removeFriend:(SAPDBUser *)value {
+- (void)removeFriend:(SAPUser *)value {
     [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(friends))];
 }
 
-- (void)addImage:(SAPDBImage *)value {
-    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
-}
-
-- (void)removeImage:(SAPDBImage *)value {
-    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
-}
+//- (void)addImage:(SAPDBImage *)value {
+//    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
+//}
+//
+//- (void)removeImage:(SAPDBImage *)value {
+//    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
+//}
 
 @end

@@ -35,7 +35,7 @@
 #pragma mark Private
 
 - (void)fillWithModel:(SAPUser *)user {
-    self.imageView.imageModel = user.largeImageModel;
+//    self.imageView.imageModel = user.largeImageModel;
     self.firstNameLabel.text = user.firstName;
     self.lastNameLabel.text = user.lastName;
     self.genderLabel.text = user.gender;

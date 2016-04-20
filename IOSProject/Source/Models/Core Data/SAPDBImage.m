@@ -7,7 +7,7 @@
 //
 
 #import "SAPDBImage.h"
-#import "SAPDBUser.h"
+#import "SAPUser.h"
 
 @implementation SAPDBImage
 

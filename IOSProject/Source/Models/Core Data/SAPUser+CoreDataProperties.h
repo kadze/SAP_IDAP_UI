@@ -9,9 +9,9 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "SAPDBUser.h"
+#import "SAPUser.h"
 
-@interface SAPDBUser (CoreDataProperties)
+@interface SAPUser (CoreDataProperties)
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *lastName;
@@ -21,17 +21,17 @@
 
 @end
 
-@interface SAPDBUser (CoreDataGeneratedAccessors)
+@interface SAPUser (CoreDataGeneratedAccessors)
 
-- (void)addFriend:(SAPDBUser *)value;
-- (void)removeFriend:(SAPDBUser *)value;
+- (void)addFriend:(SAPUser *)value;
+- (void)removeFriend:(SAPUser *)value;
 - (void)addFriends:(NSSet *)values;
 - (void)removeFriends:(NSSet *)values;
-
-- (void)addImage:(SAPDBImage *)value;
-- (void)removeImage:(SAPDBImage *)value;
-- (void)addImages:(NSSet *)values;
-- (void)removeImages:(NSSet *)values;
+//
+//- (void)addImage:(SAPDBImage *)value;
+//- (void)removeImage:(SAPDBImage *)value;
+//- (void)addImages:(NSSet *)values;
+//- (void)removeImages:(NSSet *)values;
 
 @end
 
