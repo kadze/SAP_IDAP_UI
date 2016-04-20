@@ -19,18 +19,18 @@
 @dynamic gender;
 @dynamic lastName;
 @dynamic userId;
-@dynamic friends;
+@dynamic dbFriends;
 @dynamic images;
 
 #pragma mark -
 #pragma mark Accessors
 
 - (void)addFriend:(SAPUser *)value {
-    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(friends))];
+    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
 }
 
 - (void)removeFriend:(SAPUser *)value {
-    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(friends))];
+    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
 }
 
 //- (void)addImage:(SAPDBImage *)value {

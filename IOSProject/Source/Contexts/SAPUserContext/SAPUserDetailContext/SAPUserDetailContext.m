@@ -9,6 +9,7 @@
 #import "SAPUserDetailContext.h"
 
 #import "SAPUser.h"
+#import "SAPCoreDataController.h"
 
 #import "SAPJSONRepresentationImports.h"
 
@@ -16,7 +17,14 @@
 
 #import "SAPNilToNSNullMacro.h"
 
+@interface SAPUserDetailContext ()
+@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
+
+@end
+
 @implementation SAPUserDetailContext
+
+@synthesize userManagedObjectID = _userManagedObjectID;
 
 #pragma mark -
 #pragma mark Public
@@ -60,12 +68,17 @@
 - (void)fillModelWithResult:(NSDictionary *)result {
     [super fillModelWithResult:result];
     
-    SAPUser *user = self.model;
+//    SAPUser *user = self.model;
+    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
     
     user.gender = result[kSAPGenderKey];
     
 //    NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
 //    user.largeImageURL = [NSURL URLWithString:urlString];
+    NSError *error = nil;
+    [managedObjectContext save:&error];
 }
 
 @end

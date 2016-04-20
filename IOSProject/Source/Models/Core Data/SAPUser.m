@@ -12,52 +12,42 @@
 #import "SAPModel.h"
 #import "SAPDBImage.h"
 
+#import "NSManagedObject+SAPExtensions.h"
+
 @interface SAPUser ()
-@property (nonatomic, strong) SAPModel *model;
 @property (nonatomic, strong) SAPUsers *friends;
 
 @end
 
 @implementation SAPUser
 
-@synthesize model = _model;
 @synthesize friends = _friends;
 
 @dynamic userId;
 @dynamic firstName;
-@dynamic gender;
 @dynamic lastName;
+@dynamic gender;
+//@dynamic dbFriends;
+
+#pragma mark -
+#pragma mark Accessors
+
+//- (void)addFriend:(SAPUser *)value {
+//    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
+//}
+//
+//- (void)removeFriend:(SAPUser *)value {
+//    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
+//}
 
 #pragma mark -
 #pragma mark Public
 
 - (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    self.model = [[SAPModel alloc] initWithTarget:self];
     self.friends = [SAPUsers new];
     
     return self;
-}
-
-
-#pragma mark -
-#pragma mark Message Forwarding
-
-- (id)forwardingTargetForSelector:(SEL)aSelector {
-    id model = self.model;
-    if ([model respondsToSelector:aSelector]) {
-        return model;
-    }
-    
-    return [super forwardingTargetForSelector:aSelector];
-}
-
-- (void)addObserver:(id)observer {
-    [self.model addObserver:observer];
-}
-
-- (void)removeObserver:(id)observer {
-    [self.model removeObserver:observer];
 }
 
 @end

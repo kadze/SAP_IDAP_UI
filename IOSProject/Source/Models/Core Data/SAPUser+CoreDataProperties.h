@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *userId;
-@property (nonatomic, strong) NSSet    *friends;
+@property (nonatomic, strong) NSSet    *dbFriends;
 @property (nonatomic, strong) NSSet    *images;
 
 @end
@@ -25,8 +25,8 @@
 
 - (void)addFriend:(SAPUser *)value;
 - (void)removeFriend:(SAPUser *)value;
-- (void)addFriends:(NSSet *)values;
-- (void)removeFriends:(NSSet *)values;
+- (void)addDbFriends:(NSSet *)values;
+- (void)removeDbFriends:(NSSet *)values;
 //
 //- (void)addImage:(SAPDBImage *)value;
 //- (void)removeImage:(SAPDBImage *)value;

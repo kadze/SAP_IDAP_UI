@@ -16,10 +16,12 @@
 @class SAPUsers;
 
 @interface SAPUser : SAPManagedObject
-@property (nonatomic, copy)     NSString         *userId;
-@property (nonatomic, copy)     NSString         *firstName;
-@property (nonatomic, copy)     NSString         *lastName;
-@property (nonatomic, copy)     NSString         *gender;
+@property (nonatomic, copy)     NSString        *userId;
+@property (nonatomic, copy)     NSString        *firstName;
+@property (nonatomic, copy)     NSString        *lastName;
+@property (nonatomic, copy)     NSString        *gender;
+//@property (nonatomic, strong)   NSSet           *dbFriends;
+
 
 //@property (nonatomic, readonly) SAPImageModel    *smallImageModel;
 //@property (nonatomic, copy)     NSURL            *smallImageURL;
@@ -29,9 +31,15 @@
 //
 @property (nonatomic, readonly) SAPUsers         *friends;
 
-- (void)addObserver:(id)observer;
-- (void)removeObserver:(id)observer;
-
 @end
+
+//@interface SAPUser (CoreDataGeneratedAccessors)
+//
+//- (void)addFriend:(SAPUser *)value;
+//- (void)removeFriend:(SAPUser *)value;
+//- (void)addDbFriends:(NSSet *)values;
+//- (void)removeDbFriends:(NSSet *)values;
+//
+//@end
 
 //#import "SAPDBUser+CoreDataProperties.h"

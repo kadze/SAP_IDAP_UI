@@ -9,6 +9,7 @@
 #import "SAPUserContext.h"
 
 #import "SAPUser.h"
+#import "SAPCoreDataController.h"
 
 #import "SAPJSONRepresentationImports.h"
 
@@ -16,13 +17,30 @@
 
 #import "SAPGraphStringConstants.h"
 
+@interface SAPUserContext ()
+@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
+
+@end
+
 @implementation SAPUserContext
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setModel:(SAPUser *)model {
+    [super setModel:model];
+    
+    self.userManagedObjectID = model.objectID;
+}
 
 #pragma mark -
 #pragma mark Public
 
 - (NSString *)graphRequestPath {
-    SAPUser *user = self.model;
+    //restore managedObject in other thread
+    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
     
     return user.userId;
 }
@@ -55,14 +73,19 @@
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
-    SAPUser *user = self.model;
+//    SAPUser *user = self.model;
+    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
     
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
     
-    NSString *urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
+//    NSString *urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
 //    user.smallImageURL = [NSURL URLWithString:urlString];
+    NSError *error = nil;
+    [managedObjectContext save:&error];
 }
 
 @end

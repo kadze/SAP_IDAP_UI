@@ -11,57 +11,46 @@
 #import <CoreData/CoreData.h>
 
 #import "SAPCoreDataController.h"
-#import "SAPObservableObject.h"
+#import "SAPModel.h"
 
 #import "UIAlertView+SAPExtensions.h"
 
 @interface SAPManagedObject ()
-@property (nonatomic, strong) SAPObservableObject *observableObject;
+@property (nonatomic, strong) SAPModel *model;
 
 @end
 
 @implementation SAPManagedObject
-@synthesize observableObject = _observableObject;
+@synthesize model = _model;
 
 - (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    self.observableObject = [[SAPObservableObject alloc] initWithTarget:self];
+    
+    SAPModel *model = [[SAPModel alloc] initWithTarget:self];
+    model.state = kSAPModelStateUnloaded;
+    self.model = model;
     
     return self;
 }
 
+#pragma mark -
+#pragma mark Message Forwarding
+
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    id observableObject = self.observableObject;
-    if ([observableObject respondsToSelector:aSelector]) {
-        return observableObject;
+    id model = self.model;
+    if ([model respondsToSelector:aSelector]) {
+        return model;
     }
     
     return [super forwardingTargetForSelector:aSelector];
 }
 
-//- (instancetype)cachedObject {
-//    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
-//    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
-//    
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([self class])];
-//    NSPredicate *predicate = [self predicate];
-//    request.predicate = predicate;
-//    
-//    NSError *error = nil;
-//    NSArray *results = [managedObjectContext executeFetchRequest:request error:&error];
-//    if (!results) {
-//        [UIAlertView showWithError:error];
-//    }
-//    
-//    if (results.count > 0) {
-//        return results.firstObject;
-//    }
-//    
-//    return nil;
-//}
-//
-//- (NSPredicate *)predicate {
-//    return nil;
-//}
+- (void)addObserver:(id)observer {
+    [self.model addObserver:observer];
+}
+
+- (void)removeObserver:(id)observer {
+    [self.model removeObserver:observer];
+}
 
 @end

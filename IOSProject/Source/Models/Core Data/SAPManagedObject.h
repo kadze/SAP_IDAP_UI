@@ -10,4 +10,7 @@
 
 @interface SAPManagedObject : NSManagedObject
 
+- (void)addObserver:(id)observer;
+- (void)removeObserver:(id)observer;
+
 @end

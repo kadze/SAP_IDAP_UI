@@ -16,6 +16,7 @@
 #import "SAPUserCell.h"
 #import "SAPCompositeUserContext.h"
 #import "SAPUserDetailViewController.h"
+#import "SAPCoreDataController.h"
 
 #import "SAPViewControllerMacro.h"
 #import "SAPOwnershipMacro.h"
@@ -27,6 +28,7 @@ static NSString * const kSAPLeftBarButtonTitle = @"Log out";
 SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, mainView);
 
 @interface SAPUserFriendsViewController ()
+@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
 
 - (void)onLogout;
 - (void)customizeLeftBarButton;
@@ -78,14 +80,20 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 - (void)updateViewControllerWithModel:(id)model {
     [super updateViewControllerWithModel:model];
     if (model == self.model) {
+        
+        SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+        NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+        model = [managedObjectContext objectWithID:self.userManagedObjectID];
+        
         SAPUserFriendsView *mainView = self.mainView;
         mainView.model = model;
     }
 }
 
 - (void)finishModelSetting {
-    SAPUser *model = self.model;
-    self.items = model.friends;
+    SAPUser *user = self.model;
+    self.items = user.friends;
+    self.userManagedObjectID = user.objectID;
 }
 
 #pragma mark -
