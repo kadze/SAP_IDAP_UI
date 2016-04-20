@@ -29,6 +29,9 @@
 //
 @property (nonatomic, readonly) SAPUsers         *friends;
 
+- (void)addObserver:(id)observer;
+- (void)removeObserver:(id)observer;
+
 @end
 
 //#import "SAPDBUser+CoreDataProperties.h"

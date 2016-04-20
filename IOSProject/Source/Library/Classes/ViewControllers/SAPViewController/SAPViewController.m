@@ -42,8 +42,7 @@
     if (_model != model) {
         [_model removeObserver:self];
         _model = model;
-#warning doesn't work forwarding
-//        [_model addObserver:self];
+        [_model addObserver:self];
         
         [self finishModelSetting];
     }

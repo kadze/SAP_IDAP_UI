@@ -23,10 +23,10 @@
 @synthesize model = _model;
 @synthesize friends = _friends;
 
+@dynamic userId;
 @dynamic firstName;
 @dynamic gender;
 @dynamic lastName;
-@dynamic userId;
 
 #pragma mark -
 #pragma mark Public
@@ -39,6 +39,10 @@
     return self;
 }
 
+
+#pragma mark -
+#pragma mark Message Forwarding
+
 - (id)forwardingTargetForSelector:(SEL)aSelector {
     id model = self.model;
     if ([model respondsToSelector:aSelector]) {
@@ -46,6 +50,14 @@
     }
     
     return [super forwardingTargetForSelector:aSelector];
+}
+
+- (void)addObserver:(id)observer {
+    [self.model addObserver:observer];
+}
+
+- (void)removeObserver:(id)observer {
+    [self.model removeObserver:observer];
 }
 
 @end
