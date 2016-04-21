@@ -83,7 +83,9 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
         NSString *entityName = NSStringFromClass([SAPUser class]);
         NSError *error = nil;
         
-        SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+        static SAPCoreDataController *controller = nil;
+        
+        controller = [[SAPCoreDataController alloc] init];
         NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
         
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];

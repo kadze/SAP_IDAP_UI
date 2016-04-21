@@ -9,7 +9,6 @@
 #import "SAPUserContext.h"
 
 #import "SAPUser.h"
-#import "SAPCoreDataController.h"
 
 #import "SAPJSONRepresentationImports.h"
 
@@ -37,14 +36,8 @@
 #pragma mark Public
 
 - (NSString *)graphRequestPath {
-    //restore managedObject in other thread
-//    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
-//    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
-//    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
-//    
-//    return user.userId;
-    
     SAPUser *user = self.model;
+    
     return user.userId;
 }
 
@@ -78,23 +71,12 @@
 - (void)fillModelWithResult:(NSDictionary *)result {
     SAPUser *user = self.model;
     
-    /*
-    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
-    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
-    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
-    */
-    
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
     
 //    NSString *urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
 //    user.smallImageURL = [NSURL URLWithString:urlString];
-    
-    /*
-    NSError *error = nil;
-    [managedObjectContext save:&error];
-     */
 }
 
 @end

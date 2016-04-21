@@ -16,7 +16,6 @@
 #import "SAPUserCell.h"
 #import "SAPCompositeUserContext.h"
 #import "SAPUserDetailViewController.h"
-#import "SAPCoreDataController.h"
 
 #import "SAPViewControllerMacro.h"
 #import "SAPOwnershipMacro.h"
@@ -79,12 +78,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 
 - (void)updateViewControllerWithModel:(id)model {
     [super updateViewControllerWithModel:model];
-    if (model == self.model) {
-        
-        SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
-        NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
-        model = [managedObjectContext objectWithID:self.userManagedObjectID];
-        
+    if (model == self.model) {        
         SAPUserFriendsView *mainView = self.mainView;
         mainView.model = model;
     }

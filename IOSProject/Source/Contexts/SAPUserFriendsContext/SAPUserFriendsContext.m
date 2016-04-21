@@ -60,15 +60,7 @@
 #pragma mark Public
 
 - (NSString *)graphRequestPath {
-//    //restore managedObject in other thread
-//    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
-//    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
-//    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
-//    
-//    return user.userId;
-    
-    NSString *result = self.user.userId;
-    return result;
+    return self.user.userId;
 }
 
 - (NSDictionary *)graphRequestParameters {
@@ -111,15 +103,12 @@
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
-//    SAPUsers *friends = self.model;
+    SAPUsers *friends = self.model;
     NSArray *friendElements = result[kSAPFriendsKey][kSAPDataKey];
 
     SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
     NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
     NSString *entityName = NSStringFromClass([SAPUser class]);
-    
-    SAPUser *modelUser = [managedObjectContext objectWithID:self.userManagedObjectID];
-    SAPUsers *friends = modelUser.friends;
     
     [friends performBlockWithoutNotification:^{
         for (id friendElement in friendElements) {
@@ -132,9 +121,8 @@
 //            NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
 //            user.smallImageURL = [NSURL URLWithString:urlString];
             
-//            [friends addObject:user];
-            int a = friends.count;
-            [modelUser addFriend:user];
+            [friends addObject:user];
+//            [modelUser addFriend:user];
         }
     }];
     
