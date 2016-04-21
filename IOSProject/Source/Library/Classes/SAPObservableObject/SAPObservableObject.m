@@ -75,7 +75,7 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)addObserver:(id)observer {
+- (void)addObserverObject:(id)observer {
     @synchronized(self) {
         [self.mutableObservers addObject:[[SAPAssignReference alloc] initWithTarget:observer]];
     }
@@ -98,7 +98,7 @@
 - (void)addObserversFromArray:(NSArray *)array {
     @synchronized(self) {
         for (id observer in array) {
-            [self addObserver:observer];
+            [self addObserverObject:observer];
         }
     }
 }

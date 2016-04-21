@@ -8,9 +8,6 @@
 
 #import "SAPManagedObject.h"
 
-#import <CoreData/CoreData.h>
-
-#import "SAPCoreDataController.h"
 #import "SAPModel.h"
 
 #import "UIAlertView+SAPExtensions.h"
@@ -43,14 +40,6 @@
     }
     
     return [super forwardingTargetForSelector:aSelector];
-}
-
-- (void)addObserver:(id)observer {
-    [self.model addObserver:observer];
-}
-
-- (void)removeObserver:(id)observer {
-    [self.model removeObserver:observer];
 }
 
 @end

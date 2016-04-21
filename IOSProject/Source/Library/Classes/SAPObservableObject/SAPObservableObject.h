@@ -15,7 +15,7 @@
 
 - (instancetype)initWithTarget:(id)target;
     
-- (void)addObserver:(id)observer;
+- (void)addObserverObject:(id)observer;
 - (void)removeObserver:(id)observer;
 - (void)removeObserversFromArray:(NSArray *)array;
 - (void)addObserversFromArray:(NSArray *)array;

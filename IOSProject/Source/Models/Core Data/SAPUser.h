@@ -41,5 +41,3 @@
 - (void)removeDbFriends:(NSSet *)values;
 
 @end
-
-//#import "SAPDBUser+CoreDataProperties.h"
