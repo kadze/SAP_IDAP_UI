@@ -38,10 +38,13 @@
 
 - (NSString *)graphRequestPath {
     //restore managedObject in other thread
-    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
-    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
-    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
+//    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
+//    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+//    SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
+//    
+//    return user.userId;
     
+    SAPUser *user = self.model;
     return user.userId;
 }
 
@@ -73,10 +76,13 @@
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
-//    SAPUser *user = self.model;
+    SAPUser *user = self.model;
+    
+    /*
     SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
     NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
     SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
+    */
     
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
@@ -84,8 +90,11 @@
     
 //    NSString *urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
 //    user.smallImageURL = [NSURL URLWithString:urlString];
+    
+    /*
     NSError *error = nil;
     [managedObjectContext save:&error];
+     */
 }
 
 @end

@@ -17,6 +17,7 @@
 #import "SAPUserFriendsViewController.h"
 #import "SAPUser.h"
 #import "SAPFacebookLoginContext.h"
+#import "SAPModel.h"
 
 #import "SAPCoreDataController.h"
 

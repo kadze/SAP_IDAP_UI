@@ -68,17 +68,22 @@
 - (void)fillModelWithResult:(NSDictionary *)result {
     [super fillModelWithResult:result];
     
-//    SAPUser *user = self.model;
+    SAPUser *user = self.model;
+/*
     SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
     NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
     SAPUser *user = [managedObjectContext objectWithID:self.userManagedObjectID];
-    
+  */
     user.gender = result[kSAPGenderKey];
     
 //    NSString *urlString = result[kSAPLargePictureAliasKey][kSAPDataKey][kSAPUrlKey];
 //    user.largeImageURL = [NSURL URLWithString:urlString];
+    
+    
+    /*
     NSError *error = nil;
     [managedObjectContext save:&error];
+     */
 }
 
 @end

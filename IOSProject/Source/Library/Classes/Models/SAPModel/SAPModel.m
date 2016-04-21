@@ -66,8 +66,10 @@
         }
         
         self.state = kSAPModelStateWillLoad;
-        
+
+        SAPWeakify(self);
         SAPDispatchAsyncOnDefaultQueue(^{
+            SAPStrongifyAndReturnIfNil(self);
             [self performBackgroundLoading];
         });        
     }

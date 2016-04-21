@@ -10,7 +10,7 @@
 
 #import "SAPUsers.h"
 #import "SAPModel.h"
-#import "SAPDBImage.h"
+//#import "SAPDBImage.h"
 
 #import "NSManagedObject+SAPExtensions.h"
 
@@ -27,18 +27,19 @@
 @dynamic firstName;
 @dynamic lastName;
 @dynamic gender;
-//@dynamic dbFriends;
+@dynamic dbFriends;
 
 #pragma mark -
 #pragma mark Accessors
 
-//- (void)addFriend:(SAPUser *)value {
-//    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
-//}
-//
-//- (void)removeFriend:(SAPUser *)value {
-//    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
-//}
+- (void)addFriend:(SAPUser *)value {
+    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
+    [self.friends addObject:value];
+}
+
+- (void)removeFriend:(SAPUser *)value {
+    [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
+}
 
 #pragma mark -
 #pragma mark Public

@@ -100,12 +100,12 @@
 }
 
 - (void)cleanCacheInBackground {
-    SAPModel<SAPCacheableModel> *model = self.model;
-    if ([model respondsToSelector:@selector(cleanCache)]) {
-        SAPDispatchAsyncOnDefaultQueue(^{
-            [model cleanCache];
-        });
-    }
+//    SAPModel<SAPCacheableModel> *model = self.model;
+//    if ([model respondsToSelector:@selector(cleanCache)]) {
+//        SAPDispatchAsyncOnDefaultQueue(^{
+//            [model cleanCache];
+//        });
+//    }
 }
 
 - (id)cachedResult {

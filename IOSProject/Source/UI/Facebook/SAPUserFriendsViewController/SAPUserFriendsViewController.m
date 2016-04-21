@@ -116,7 +116,7 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
     SAPWeakify(self);
     SAPDispatchAsyncOnDefaultQueue(^{
         SAPStrongifyAndReturnIfNil(self);
-        [self.model cleanCache];
+//        [self.model cleanCache];
         
         SAPWeakify(self);
         SAPDispatchAsyncOnMainQueue(^{

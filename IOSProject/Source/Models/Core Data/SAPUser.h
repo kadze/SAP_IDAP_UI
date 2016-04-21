@@ -10,17 +10,17 @@
 #import <CoreData/CoreData.h>
 
 #import "SAPManagedObject.h"
-#import "SAPImageModel.h"
+//#import "SAPImageModel.h"
 
 //@class SAPDBImage;
 @class SAPUsers;
 
 @interface SAPUser : SAPManagedObject
-@property (nonatomic, copy)     NSString        *userId;
-@property (nonatomic, copy)     NSString        *firstName;
-@property (nonatomic, copy)     NSString        *lastName;
-@property (nonatomic, copy)     NSString        *gender;
-//@property (nonatomic, strong)   NSSet           *dbFriends;
+@property (nonatomic, strong)   NSString        *userId;
+@property (nonatomic, strong)   NSString        *firstName;
+@property (nonatomic, strong)   NSString        *lastName;
+@property (nonatomic, strong)   NSString        *gender;
+@property (nonatomic, strong)   NSSet           *dbFriends;
 
 
 //@property (nonatomic, readonly) SAPImageModel    *smallImageModel;
@@ -33,13 +33,13 @@
 
 @end
 
-//@interface SAPUser (CoreDataGeneratedAccessors)
-//
-//- (void)addFriend:(SAPUser *)value;
-//- (void)removeFriend:(SAPUser *)value;
-//- (void)addDbFriends:(NSSet *)values;
-//- (void)removeDbFriends:(NSSet *)values;
-//
-//@end
+@interface SAPUser (CoreDataGeneratedAccessors)
+
+- (void)addFriend:(SAPUser *)value;
+- (void)removeFriend:(SAPUser *)value;
+- (void)addDbFriends:(NSSet *)values;
+- (void)removeDbFriends:(NSSet *)values;
+
+@end
 
 //#import "SAPDBUser+CoreDataProperties.h"
