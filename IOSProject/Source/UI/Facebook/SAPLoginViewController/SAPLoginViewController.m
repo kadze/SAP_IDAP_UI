@@ -83,10 +83,7 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
         NSString *entityName = NSStringFromClass([SAPUser class]);
         NSError *error = nil;
         
-        static SAPCoreDataController *controller = nil;
-        
-        controller = [[SAPCoreDataController alloc] init];
-        NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+        NSManagedObjectContext *managedObjectContext = [SAPCoreDataController sharedManagedObjectContext];
         
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", tokenUserID];

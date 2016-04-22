@@ -99,8 +99,7 @@
 - (void)fillModelWithResult:(NSDictionary *)result {
     NSArray *friendElements = result[kSAPFriendsKey][kSAPDataKey];
 
-    SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
-    NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
+    NSManagedObjectContext *managedObjectContext = [SAPCoreDataController sharedManagedObjectContext];
     NSString *entityName = NSStringFromClass([SAPUser class]);
     
     SAPUser *user = self.user;
@@ -117,9 +116,6 @@
         
         [user addFriend:friend];
     }
-
-    NSError *error = nil;
-    [managedObjectContext save:&error];
 }
 
 @end
