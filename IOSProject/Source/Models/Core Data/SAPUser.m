@@ -46,7 +46,8 @@
 
 - (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    self.friends = [SAPUsers new];
+    self.friends = [[SAPUsers alloc] initWithFetchedResultsControllerForContext:(NSManagedObjectContext *)context
+                                                                         entity:(NSEntityDescription *)entity];
     
     return self;
 }
