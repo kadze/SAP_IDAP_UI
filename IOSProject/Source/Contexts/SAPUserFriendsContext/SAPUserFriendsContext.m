@@ -97,29 +97,27 @@
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
-    SAPUsers *friends = self.model;
     NSArray *friendElements = result[kSAPFriendsKey][kSAPDataKey];
 
     SAPCoreDataController *controller = [[SAPCoreDataController alloc] init];
     NSManagedObjectContext *managedObjectContext = controller.managedObjectContext;
     NSString *entityName = NSStringFromClass([SAPUser class]);
     
-    [friends performBlockWithoutNotification:^{
-        for (id friendElement in friendElements) {
-            SAPUser *user = [NSEntityDescription insertNewObjectForEntityForName:entityName
-                                                          inManagedObjectContext:managedObjectContext];
-            user.userId = friendElement[kSAPIDKey];
-            user.firstName = friendElement[kSAPFirstNameKey];
-            user.lastName = friendElement[kSAPLastNameKey];
-            
-//            NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-//            user.smallImageURL = [NSURL URLWithString:urlString];
-            
-            [friends addObject:user];
-//            [modelUser addFriend:user];
-        }
-    }];
+    SAPUser *user = self.user;
     
+    for (id friendElement in friendElements) {
+        SAPUser *friend = [NSEntityDescription insertNewObjectForEntityForName:entityName
+                                                      inManagedObjectContext:managedObjectContext];
+        friend.userId = friendElement[kSAPIDKey];
+        friend.firstName = friendElement[kSAPFirstNameKey];
+        friend.lastName = friendElement[kSAPLastNameKey];
+        
+//        NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+//        user.smallImageURL = [NSURL URLWithString:urlString];
+        
+        [user addFriend:friend];
+    }
+
     NSError *error = nil;
     [managedObjectContext save:&error];
 }
