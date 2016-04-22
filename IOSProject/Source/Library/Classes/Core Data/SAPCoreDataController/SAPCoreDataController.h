@@ -13,6 +13,9 @@
 @interface SAPCoreDataController : NSObject
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
++ (instancetype)sharedController;
++ (NSManagedObjectContext *)sharedManagedObjectContext;
+
 - (void)initializeCoreData;
 
 @end

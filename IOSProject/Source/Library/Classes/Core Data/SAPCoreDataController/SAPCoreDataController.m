@@ -12,6 +12,8 @@
 
 #import "UIAlertView+SAPExtensions.h"
 
+#import "SAPDispatchOnceMacro.h"
+
 static NSString * const kSAPMomResource = @"IOSProject";
 static NSString * const kSAPMomExtension = @"momd";
 static NSString * const kSAPErrorLocalizedDescription = @"Error initializing Managed Object Model";
@@ -28,6 +30,23 @@ static NSString * const kSAPDatabaseFileName = @"Users.sqlite";
     [self initializeCoreData];
     
     return self;
+}
+
+#pragma mark -
+#pragma Class methods
+
++ (instancetype)sharedController {
+    static SAPCoreDataController *sharedCoreDataController = nil;
+    
+    SAPDispatchOnce(^{
+        sharedCoreDataController = [self new];
+    });
+    
+    return sharedCoreDataController;
+}
+
++ (NSManagedObjectContext *)sharedManagedObjectContext {
+    return [[self sharedController] managedObjectContext];
 }
 
 #pragma mark -
