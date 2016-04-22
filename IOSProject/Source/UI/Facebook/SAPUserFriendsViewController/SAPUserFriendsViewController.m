@@ -27,7 +27,6 @@ static NSString * const kSAPLeftBarButtonTitle = @"Log out";
 SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsView, mainView);
 
 @interface SAPUserFriendsViewController ()
-@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
 
 - (void)onLogout;
 - (void)customizeLeftBarButton;
@@ -87,7 +86,6 @@ SAPViewControllerBaseViewProperty(SAPUserFriendsViewController, SAPUserFriendsVi
 - (void)finishModelSetting {
     SAPUser *user = self.model;
     self.items = user.friends;
-    self.userManagedObjectID = user.objectID;
 }
 
 #pragma mark -

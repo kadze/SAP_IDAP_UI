@@ -16,14 +16,7 @@
 
 #import "SAPNilToNSNullMacro.h"
 
-@interface SAPUserDetailContext ()
-@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
-
-@end
-
 @implementation SAPUserDetailContext
-
-@synthesize userManagedObjectID = _userManagedObjectID;
 
 #pragma mark -
 #pragma mark Public

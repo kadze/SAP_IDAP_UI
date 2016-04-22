@@ -8,9 +8,6 @@
 
 #import "SAPFacebookContext.h"
 
-@class NSManagedObjectID;
-
 @interface SAPUserContext : SAPFacebookContext
-@property (nonatomic, readonly) NSManagedObjectID *userManagedObjectID;
 
 @end

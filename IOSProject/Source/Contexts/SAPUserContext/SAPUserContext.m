@@ -16,21 +16,7 @@
 
 #import "SAPGraphStringConstants.h"
 
-@interface SAPUserContext ()
-@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
-
-@end
-
 @implementation SAPUserContext
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setModel:(SAPUser *)model {
-    [super setModel:model];
-    
-    self.userManagedObjectID = model.objectID;
-}
 
 #pragma mark -
 #pragma mark Public

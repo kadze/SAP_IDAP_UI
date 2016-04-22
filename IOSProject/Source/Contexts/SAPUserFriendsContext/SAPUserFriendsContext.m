@@ -20,11 +20,6 @@
 
 #import "SAPNilToNSNullMacro.h"
 
-@interface SAPUserFriendsContext ()
-@property (nonatomic, strong) NSManagedObjectID *userManagedObjectID;
-
-@end
-
 @implementation SAPUserFriendsContext
 
 #pragma mark -
@@ -51,7 +46,6 @@
     if (_user != user) {
         _user = user;
         
-        self.userManagedObjectID = user.objectID;
         self.model = user.friends;
     }
 }
