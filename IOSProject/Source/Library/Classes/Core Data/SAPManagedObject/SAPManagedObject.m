@@ -20,6 +20,9 @@
 @implementation SAPManagedObject
 @synthesize model = _model;
 
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
 - (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
     

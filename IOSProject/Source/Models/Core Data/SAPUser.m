@@ -30,6 +30,17 @@
 @dynamic dbFriends;
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
+    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
+    self.friends = [[SAPUsers alloc] initWithFetchedResultsControllerForContext:(NSManagedObjectContext *)context
+                                                                         entity:(NSEntityDescription *)entity];
+    
+    return self;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)addFriend:(SAPUser *)value {
@@ -39,17 +50,6 @@
 
 - (void)removeFriend:(SAPUser *)value {
     [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
-}
-
-#pragma mark -
-#pragma mark Public
-
-- (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
-    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    self.friends = [[SAPUsers alloc] initWithFetchedResultsControllerForContext:(NSManagedObjectContext *)context
-                                                                         entity:(NSEntityDescription *)entity];
-    
-    return self;
 }
 
 @end

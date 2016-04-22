@@ -13,11 +13,21 @@
 #import "UIAlertView+SAPExtensions.h"
 
 #import "SAPDispatchOnceMacro.h"
+#import "SAPOwnershipMacro.h"
 
 static NSString * const kSAPMomResource = @"IOSProject";
 static NSString * const kSAPMomExtension = @"momd";
 static NSString * const kSAPErrorLocalizedDescription = @"Error initializing Managed Object Model";
 static NSString * const kSAPDatabaseFileName = @"Users.sqlite";
+
+@interface SAPCoreDataController ()
+@property (nonatomic, strong) id  applicationObserver;
+
+- (void)startObserving;
+- (void)stopObserving;
+- (void)saveManagedObjectContext;
+
+@end
 
 @implementation SAPCoreDataController
 
@@ -29,7 +39,13 @@ static NSString * const kSAPDatabaseFileName = @"Users.sqlite";
     
     [self initializeCoreData];
     
+    [self startObserving];
+    
     return self;
+}
+
+- (void)dealloc {
+    [self stopObserving];
 }
 
 #pragma mark -
@@ -83,6 +99,38 @@ static NSString * const kSAPDatabaseFileName = @"Users.sqlite";
                                                        URL:storeURL
                                                    options:nil
                                                      error:&error];
+    if (error) {
+        [UIAlertView showWithError:error];
+    }
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)startObserving {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    SAPWeakify(self);
+    self.applicationObserver = [center addObserverForName:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil
+                                                    queue:queue
+                                               usingBlock:^(NSNotification * note) {
+                                                   SAPStrongify(self);
+                                                   [self saveManagedObjectContext];
+                                               }
+                                ];
+}
+
+- (void)stopObserving {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self.applicationObserver
+                      name:UIApplicationDidEnterBackgroundNotification
+                    object:nil];
+}
+
+- (void)saveManagedObjectContext {
+    NSError *error = nil;
+    [self.managedObjectContext save:&error];
     if (error) {
         [UIAlertView showWithError:error];
     }

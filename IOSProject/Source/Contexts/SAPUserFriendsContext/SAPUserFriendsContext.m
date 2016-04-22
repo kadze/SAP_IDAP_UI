@@ -106,7 +106,7 @@
     
     for (id friendElement in friendElements) {
         SAPUser *friend = [NSEntityDescription insertNewObjectForEntityForName:entityName
-                                                      inManagedObjectContext:managedObjectContext];
+                                                        inManagedObjectContext:managedObjectContext];
         friend.userId = friendElement[kSAPIDKey];
         friend.firstName = friendElement[kSAPFirstNameKey];
         friend.lastName = friendElement[kSAPLastNameKey];

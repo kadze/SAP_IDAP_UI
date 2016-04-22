@@ -22,7 +22,6 @@
 @property (nonatomic, strong)   NSString        *gender;
 @property (nonatomic, strong)   NSSet           *dbFriends;
 
-
 //@property (nonatomic, readonly) SAPImageModel    *smallImageModel;
 //@property (nonatomic, copy)     NSURL            *smallImageURL;
 //
