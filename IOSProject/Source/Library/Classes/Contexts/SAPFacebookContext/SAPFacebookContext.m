@@ -9,6 +9,7 @@
 #import "SAPFacebookContext.h"
 
 #import "SAPModel.h"
+#import "SAPCoreDataController.h"
 
 #import "UIAlertView+SAPExtensions.h"
 
@@ -75,7 +76,7 @@
         [self fillModelWithResult:result];
         
         if (!error) {
-            [self cleanCacheInBackground];
+            [self saveCache];
         }
         
         @synchronized (model) {
@@ -110,6 +111,10 @@
 
 - (id)cachedResult {
     return nil;
+}
+
+- (void)saveCache {
+    
 }
 
 - (void)fillModelWithResult:(NSDictionary *)result {
