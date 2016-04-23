@@ -68,53 +68,42 @@
     return @{kSAPFieldsKey : fieldsParameter};
 }
 
-- (NSDictionary *)cachedResult {
-    NSDictionary *result = nil;
-//    SAPUser *user = self.user;
-//    if (user.cached) {
-//        SAPUser *cachedUser = [NSKeyedUnarchiver unarchiveObjectWithFile:user.path];
-//        
-//        NSMutableArray *friendElements = [NSMutableArray new];
-//        
-//        for (SAPUser *friend in cachedUser.friends.objects) {
-//            NSDictionary *friendElement = @{kSAPIDKey : SAPNSNullIfNil(friend.userId),
-//                                            kSAPFirstNameKey : SAPNSNullIfNil(friend.firstName),
-//                                            kSAPLastNameKey : SAPNSNullIfNil(friend.lastName),
-//                                            kSAPPictureKey : @{
-//                                                    kSAPDataKey : @{
-//                                                            kSAPUrlKey : SAPNSNullIfNil(friend.smallImageURL)
-//                                                            }
-//                                                    }
-//                                            };
-//            
-//            [friendElements addObject:friendElement];
-//        }
-//        
-//        result = @{kSAPFriendsKey : @{kSAPDataKey : [friendElements copy]}};
-//    }
-    
-    return [result JSONRepresentation];
+- (id)cachedResult {
+    return self.user.dbFriends;
 }
 
-- (void)fillModelWithResult:(NSDictionary *)result {
-    NSArray *friendElements = result[kSAPFriendsKey][kSAPDataKey];
-
-    NSManagedObjectContext *managedObjectContext = [SAPCoreDataController sharedManagedObjectContext];
-    NSString *entityName = NSStringFromClass([SAPUser class]);
-    
+- (void)fillModelWithResult:(id)result {
     SAPUser *user = self.user;
+    NSSet *cachedFriends = user.dbFriends;
     
-    for (id friendElement in friendElements) {
-        SAPUser *friend = [NSEntityDescription insertNewObjectForEntityForName:entityName
-                                                        inManagedObjectContext:managedObjectContext];
-        friend.userId = friendElement[kSAPIDKey];
-        friend.firstName = friendElement[kSAPFirstNameKey];
-        friend.lastName = friendElement[kSAPLastNameKey];
+    if (result == cachedFriends) {
+        SAPUsers *friends = user.friends;
         
-//        NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-//        user.smallImageURL = [NSURL URLWithString:urlString];
+        for (SAPUser *friend in cachedFriends) {
+            [friends addObject:friend];
+        }
+    } else {
+        NSArray *friendElements = result[kSAPFriendsKey][kSAPDataKey];
         
-        [user addFriend:friend];
+        NSManagedObjectContext *managedObjectContext = [SAPCoreDataController sharedManagedObjectContext];
+        NSString *entityName = NSStringFromClass([SAPUser class]);
+        
+        //remove old friends
+        [user removeDbFriends:user.dbFriends];
+        
+        //fill with new friends
+        for (id friendElement in friendElements) {
+            SAPUser *friend = [NSEntityDescription insertNewObjectForEntityForName:entityName
+                                                            inManagedObjectContext:managedObjectContext];
+            friend.userId = friendElement[kSAPIDKey];
+            friend.firstName = friendElement[kSAPFirstNameKey];
+            friend.lastName = friendElement[kSAPLastNameKey];
+            
+            //        NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
+            //        user.smallImageURL = [NSURL URLWithString:urlString];
+            
+            [user addFriend:friend];
+        }
     }
 }
 

@@ -9,6 +9,7 @@
 #import "SAPUserContext.h"
 
 #import "SAPUser.h"
+#import "SAPCoreDataController.h"
 
 #import "SAPJSONRepresentationImports.h"
 
@@ -37,25 +38,20 @@
     return @{kSAPFieldsKey : fieldsParameter};
 }
 
-- (NSDictionary *)cachedResult {
-    NSDictionary *result = nil;
-    SAPUser *cachedModel = self.model;
-        result = @{kSAPIDKey : SAPNSNullIfNil(cachedModel.userId),
-                   kSAPFirstNameKey : SAPNSNullIfNil(cachedModel.firstName),
-                   kSAPLastNameKey : SAPNSNullIfNil(cachedModel.lastName)
-                   //,
-//                   kSAPSquarePictureAliasKey : @{
-//                           kSAPDataKey : @{
-//                                   kSAPUrlKey : SAPNSNullIfNil(cachedModel.smallImageURL)}
-//                           }
-                   };
-//    }
-
-    return [result JSONRepresentation];
+- (id)cachedResult {
+   return self.model;
 }
 
-- (void)fillModelWithResult:(NSDictionary *)result {
+- (void)saveCache {   
+    [SAPCoreDataController saveSharedMahagedObjectContext];
+}
+
+- (void)fillModelWithResult:(id)result {
     SAPUser *user = self.model;
+    
+    if (result == user) {
+        return;
+    }
     
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
