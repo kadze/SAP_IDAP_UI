@@ -15,7 +15,9 @@
 
 + (instancetype)sharedController;
 + (NSManagedObjectContext *)sharedManagedObjectContext;
++ (void)saveSharedMahagedObjectContext;
 
 - (void)initializeCoreData;
+- (void)saveManagedObjectContext;
 
 @end

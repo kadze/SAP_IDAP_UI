@@ -65,6 +65,10 @@ static NSString * const kSAPDatabaseFileName = @"Users.sqlite";
     return [[self sharedController] managedObjectContext];
 }
 
++ (void)saveSharedMahagedObjectContext {
+    [[self sharedController] saveManagedObjectContext];
+}
+
 #pragma mark -
 #pragma mark Public
 
