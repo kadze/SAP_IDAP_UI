@@ -98,9 +98,7 @@
             friend.userId = friendElement[kSAPIDKey];
             friend.firstName = friendElement[kSAPFirstNameKey];
             friend.lastName = friendElement[kSAPLastNameKey];
-            
-            //        NSString *urlString = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
-            //        user.smallImageURL = [NSURL URLWithString:urlString];
+            friend.smallImagePath = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
             
             [user addFriend:friend];
         }

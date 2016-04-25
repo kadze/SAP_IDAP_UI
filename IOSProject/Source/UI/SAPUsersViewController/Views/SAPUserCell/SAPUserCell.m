@@ -34,7 +34,7 @@
 
 - (void)fillWithModel:(SAPUser *)model {
     self.label.text = [NSString stringWithFormat:@"%@ %@", model.firstName, model.lastName];
-//    self.userImageView.imageModel = model.smallImageModel;
+    self.userImageView.imageModel = model.smallImageModel;
 }
 
 @end

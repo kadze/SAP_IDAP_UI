@@ -3,11 +3,13 @@
     <entity name="SAPUser" representedClassName="SAPUser" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="largeImagePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="smallImagePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userId" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="dbFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SAPUser" inverseName="dbFriends" inverseEntity="SAPUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SAPUser" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="SAPUser" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

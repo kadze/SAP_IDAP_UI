@@ -28,6 +28,13 @@
 @dynamic lastName;
 @dynamic gender;
 @dynamic dbFriends;
+@dynamic smallImagePath;
+@dynamic largeImagePath;
+
+@dynamic smallImageURL;
+@dynamic largeImageURL;
+@dynamic smallImageModel;
+@dynamic largeImageModel;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -50,6 +57,22 @@
 
 - (void)removeFriend:(SAPUser *)value {
     [self removeCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(dbFriends))];
+}
+
+- (SAPImageModel *)smallImageModel {
+    return [SAPImageModel imageWithUrl:self.smallImageURL];
+}
+
+- (SAPImageModel *)largeImageModel {
+    return [SAPImageModel imageWithUrl:self.largeImageURL];
+}
+
+- (NSURL *)smallImageURL {
+    return [NSURL URLWithString:self.smallImagePath];
+}
+
+- (NSURL *)largeImageURL {
+    return [NSURL URLWithString:self.largeImagePath];
 }
 
 @end

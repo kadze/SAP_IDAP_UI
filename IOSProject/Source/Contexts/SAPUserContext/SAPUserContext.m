@@ -56,9 +56,7 @@
     user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
-    
-//    NSString *urlString = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
-//    user.smallImageURL = [NSURL URLWithString:urlString];
+    user.smallImagePath = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
 }
 
 @end

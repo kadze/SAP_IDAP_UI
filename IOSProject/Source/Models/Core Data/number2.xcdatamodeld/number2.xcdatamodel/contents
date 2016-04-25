@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Employee" representedClassName="Employee" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <fetchedProperty name="images" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Image"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="Image" representedClassName="Image" syncable="YES"/>
+    <elements>
+        <element name="Employee" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Image" positionX="-18" positionY="45" width="128" height="45"/>
+    </elements>
+</model>
