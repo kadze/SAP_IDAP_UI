@@ -54,7 +54,7 @@
 #pragma mark Public
 
 - (NSString *)graphRequestPath {
-    return self.user.userId;
+    return self.user.iD;
 }
 
 - (NSDictionary *)graphRequestParameters {
@@ -99,7 +99,7 @@
         for (id friendElement in friendElements) {
             SAPUser *friend = [NSEntityDescription insertNewObjectForEntityForName:entityName
                                                             inManagedObjectContext:managedObjectContext];
-            friend.userId = friendElement[kSAPIDKey];
+            friend.iD = friendElement[kSAPIDKey];
             friend.firstName = friendElement[kSAPFirstNameKey];
             friend.lastName = friendElement[kSAPLastNameKey];
             friend.smallImagePath = friendElement[kSAPPictureKey][kSAPDataKey][kSAPUrlKey];
