@@ -47,6 +47,7 @@
 		55C0768C1CC43EB300A7DC0D /* NSManagedObject+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C076891CC43EB300A7DC0D /* NSManagedObject+SAPExtensions.m */; };
 		55C076901CC43F6F00A7DC0D /* SAPUserDetailContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0768F1CC43F6F00A7DC0D /* SAPUserDetailContext.m */; };
 		55EE2DA41CCDA5E8007A942C /* SAPCoreDataArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EE2DA31CCDA5E8007A942C /* SAPCoreDataArrayModel.m */; };
+		55EE2DA81CCDAD49007A942C /* SAPIdentifiableManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EE2DA71CCDAD49007A942C /* SAPIdentifiableManagedObject.m */; };
 		55F5335A1CC2FD4D00089F64 /* NSArray+SAPJSONArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F533471CC2FD4D00089F64 /* NSArray+SAPJSONArray.m */; };
 		55F5335B1CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5334A1CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.m */; };
 		55F5335C1CC2FD4D00089F64 /* NSNull+SAPJSONNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5334D1CC2FD4D00089F64 /* NSNull+SAPJSONNull.m */; };
@@ -200,6 +201,8 @@
 		55EE2D9F1CCD9B3D007A942C /* SAPObservableObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPObservableObjectProtocol.h; sourceTree = "<group>"; };
 		55EE2DA21CCDA5E8007A942C /* SAPCoreDataArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPCoreDataArrayModel.h; sourceTree = "<group>"; };
 		55EE2DA31CCDA5E8007A942C /* SAPCoreDataArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPCoreDataArrayModel.m; sourceTree = "<group>"; };
+		55EE2DA61CCDAD49007A942C /* SAPIdentifiableManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPIdentifiableManagedObject.h; sourceTree = "<group>"; };
+		55EE2DA71CCDAD49007A942C /* SAPIdentifiableManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPIdentifiableManagedObject.m; sourceTree = "<group>"; };
 		55F533461CC2FD4D00089F64 /* NSArray+SAPJSONArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SAPJSONArray.h"; sourceTree = "<group>"; };
 		55F533471CC2FD4D00089F64 /* NSArray+SAPJSONArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SAPJSONArray.m"; sourceTree = "<group>"; };
 		55F533491CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SAPJSONDictionary.h"; sourceTree = "<group>"; };
@@ -714,6 +717,15 @@
 			path = SAPCoreDataArrayModel;
 			sourceTree = "<group>";
 		};
+		55EE2DA51CCDAD17007A942C /* SAPIdentifiableManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				55EE2DA61CCDAD49007A942C /* SAPIdentifiableManagedObject.h */,
+				55EE2DA71CCDAD49007A942C /* SAPIdentifiableManagedObject.m */,
+			);
+			path = SAPIdentifiableManagedObject;
+			sourceTree = "<group>";
+		};
 		55F533441CC2FD4D00089F64 /* JSONRepresentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +835,7 @@
 		55F619AE1CCAB77F00FA9C98 /* SAPManagedObject */ = {
 			isa = PBXGroup;
 			children = (
+				55EE2DA51CCDAD17007A942C /* SAPIdentifiableManagedObject */,
 				55F619AF1CCAB77F00FA9C98 /* SAPManagedObject.h */,
 				55F619B01CCAB77F00FA9C98 /* SAPManagedObject.m */,
 			);
@@ -1461,6 +1474,7 @@
 				2E424A151CA54A030089CECC /* SAPUsers.m in Sources */,
 				CAC421CB1C5A4905004E4F1E /* SAPSquareViewController.m in Sources */,
 				CA4B3F881C7E352D00440914 /* SAPUserCell.m in Sources */,
+				55EE2DA81CCDAD49007A942C /* SAPIdentifiableManagedObject.m in Sources */,
 				CA4B3F3E1C74C9F600440914 /* NSIndexPath+SAPExtensions.m in Sources */,
 				55FAFB141CC16F7E006110C3 /* SAPSetters.m in Sources */,
 				2E424A711CAC41970089CECC /* SAPCollectionChangeModel+UITableView.m in Sources */,
