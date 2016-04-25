@@ -196,6 +196,8 @@
 		55C076891CC43EB300A7DC0D /* NSManagedObject+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+SAPExtensions.m"; sourceTree = "<group>"; };
 		55C0768E1CC43F6F00A7DC0D /* SAPUserDetailContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserDetailContext.h; sourceTree = "<group>"; };
 		55C0768F1CC43F6F00A7DC0D /* SAPUserDetailContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserDetailContext.m; sourceTree = "<group>"; };
+		55EE2D9E1CCD9B18007A942C /* SAPModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPModelProtocol.h; sourceTree = "<group>"; };
+		55EE2D9F1CCD9B3D007A942C /* SAPObservableObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPObservableObjectProtocol.h; sourceTree = "<group>"; };
 		55F533461CC2FD4D00089F64 /* NSArray+SAPJSONArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SAPJSONArray.h"; sourceTree = "<group>"; };
 		55F533471CC2FD4D00089F64 /* NSArray+SAPJSONArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SAPJSONArray.m"; sourceTree = "<group>"; };
 		55F533491CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SAPJSONDictionary.h"; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				2E424A671CAC41970089CECC /* SAPCacheableModel.h */,
 				2E424A681CAC41970089CECC /* SAPModel.h */,
 				2E424A691CAC41970089CECC /* SAPModel.m */,
+				55EE2D9E1CCD9B18007A942C /* SAPModelProtocol.h */,
 				2E424A6A1CAC41970089CECC /* SAPModelObserver.h */,
 			);
 			path = SAPModel;
@@ -990,6 +993,7 @@
 				CA634BF11C68D14500DAED4E /* SAPReference */,
 				CA634BEA1C68D0BD00DAED4E /* SAPObservableObject.h */,
 				CA634BEB1C68D0BD00DAED4E /* SAPObservableObject.m */,
+				55EE2D9F1CCD9B3D007A942C /* SAPObservableObjectProtocol.h */,
 			);
 			path = SAPObservableObject;
 			sourceTree = "<group>";

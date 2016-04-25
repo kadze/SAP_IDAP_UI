@@ -12,10 +12,12 @@
 #import "SAPManagedObject.h"
 #import "SAPImageModel.h"
 
+#import "SAPModelProtocol.h"
+
 //@class SAPDBImage;
 @class SAPUsers;
 
-@interface SAPUser : SAPManagedObject
+@interface SAPUser : SAPManagedObject <SAPModelProtocol>
 //managed object model properties
 @property (nonatomic, strong)   NSString        *userId;
 @property (nonatomic, strong)   NSString        *firstName;
