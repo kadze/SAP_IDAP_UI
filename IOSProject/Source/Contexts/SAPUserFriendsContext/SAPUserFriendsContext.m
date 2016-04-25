@@ -72,6 +72,10 @@
     return self.user.dbFriends;
 }
 
+- (void)saveCache {
+    [SAPCoreDataController saveSharedMahagedObjectContext];
+}
+
 - (void)fillModelWithResult:(id)result {
     SAPUser *user = self.user;
     NSSet *cachedFriends = user.dbFriends;
