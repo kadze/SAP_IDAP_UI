@@ -11,8 +11,6 @@
 @interface SAPFacebookContext : SAPContext
 @property (nonatomic, strong) FBSDKGraphRequestConnection *connection;
 
-- (void)cleanCacheInBackground;
-
 //this methods should be overriden in subclasses
 - (NSString *)graphRequestPath;
 - (NSDictionary *)graphRequestParameters;
