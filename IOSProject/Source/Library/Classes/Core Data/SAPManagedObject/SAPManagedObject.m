@@ -37,7 +37,7 @@
 #pragma mark Message Forwarding
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    id model = self.model;
+    SAPModel *model = self.model;
     if ([model respondsToSelector:aSelector]) {
         return model;
     }

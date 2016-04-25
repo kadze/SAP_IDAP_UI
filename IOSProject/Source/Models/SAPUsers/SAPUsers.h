@@ -6,16 +6,8 @@
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
-#import "SAPArrayModel.h"
+#import "SAPCoreDataArrayModel.h"
 
-#import <CoreData/NSFetchedResultsController.h>
-
-#import "SAPCacheableModel.h"
-
-@interface SAPUsers : SAPArrayModel <SAPCacheableModel, NSFetchedResultsControllerDelegate>
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-
-- (instancetype)initWithFetchedResultsControllerForContext:(NSManagedObjectContext *)context
-                                                    entity:(NSEntityDescription *)entity;
+@interface SAPUsers : SAPCoreDataArrayModel
 
 @end
