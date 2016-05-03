@@ -14,7 +14,6 @@
 
 #import "SAPModelProtocol.h"
 
-//@class SAPDBImage;
 @class SAPUsers;
 
 @interface SAPUser : SAPIdentifiableManagedObject <SAPModelProtocol>

@@ -19,5 +19,4 @@ static NSString * const kSAPDescriptorKey = @"firstName";
     return @[[NSSortDescriptor sortDescriptorWithKey:kSAPDescriptorKey ascending:YES]];
 }
 
-
 @end
