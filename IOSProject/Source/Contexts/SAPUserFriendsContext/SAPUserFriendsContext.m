@@ -10,7 +10,6 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-#import "SAPUser.h"
 #import "SAPUsers.h"
 #import "SAPCoreDataController.h"
 
@@ -18,37 +17,7 @@
 
 #import "SAPGraphStringConstants.h"
 
-#import "SAPNilToNSNullMacro.h"
-
 @implementation SAPUserFriendsContext
-
-#pragma mark -
-#pragma mark Initializations And Deallocations
-
-- (instancetype)initWithUser:(SAPUser *)user {
-    self = [super init];
-    self.user = user;
-    
-    return self;
-}
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (instancetype)contextWithUser:(SAPUser *)user {
-    return [[self alloc] initWithUser:user];
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setUser:(SAPUser *)user {
-    if (_user != user) {
-        _user = user;
-        
-        self.model = user.friends;
-    }
-}
 
 #pragma mark -
 #pragma mark Public

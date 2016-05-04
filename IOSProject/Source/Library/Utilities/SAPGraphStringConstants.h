@@ -14,6 +14,8 @@ SAPNSStringConst(kSAPFieldsKey, @"fields");
 SAPNSStringConst(kSAPUserGraphPath, @"me");
 
 SAPNSStringConst(kSAPFriendsKey, @"friends");
+SAPNSStringConst(kSAPAlbumsKey, @"albums");
+SAPNSStringConst(kSAPPhotosKey, @"photos");
 
 SAPNSStringConst(kSAPIDKey, @"id");
 SAPNSStringConst(kSAPFirstNameKey, @"first_name");

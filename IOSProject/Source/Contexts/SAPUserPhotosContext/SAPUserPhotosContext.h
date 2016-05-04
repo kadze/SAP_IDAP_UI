@@ -1,8 +1,8 @@
 //
-//  SAPUserFriendsContext.h
+//  SAPUserPhotosContext.h
 //  IOSProject
 //
-//  Created by SAP on 3/16/16.
+//  Created by Andrey on 5/3/16.
 //  Copyright © 2016 SAP. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 
 #import "SAPUserCollectionContext.h"
 
-@interface SAPUserFriendsContext : SAPUserCollectionContext;
+@interface SAPUserPhotosContext : SAPUserCollectionContext
 
 @end

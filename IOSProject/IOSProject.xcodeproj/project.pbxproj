@@ -50,6 +50,8 @@
 		55EE2DA81CCDAD49007A942C /* SAPIdentifiableManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EE2DA71CCDAD49007A942C /* SAPIdentifiableManagedObject.m */; };
 		55F351261CD8777200414FF9 /* SAPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F351211CD8777200414FF9 /* SAPUser.m */; };
 		55F351271CD8777200414FF9 /* SAPUserPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F351231CD8777200414FF9 /* SAPUserPhoto.m */; };
+		55F3512C1CD89D0600414FF9 /* SAPUserPhotosContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F3512B1CD89D0600414FF9 /* SAPUserPhotosContext.m */; };
+		55F351301CD8A01400414FF9 /* SAPUserCollectionContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F3512F1CD8A01400414FF9 /* SAPUserCollectionContext.m */; };
 		55F5335A1CC2FD4D00089F64 /* NSArray+SAPJSONArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F533471CC2FD4D00089F64 /* NSArray+SAPJSONArray.m */; };
 		55F5335B1CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5334A1CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.m */; };
 		55F5335C1CC2FD4D00089F64 /* NSNull+SAPJSONNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5334D1CC2FD4D00089F64 /* NSNull+SAPJSONNull.m */; };
@@ -208,6 +210,10 @@
 		55F351211CD8777200414FF9 /* SAPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUser.m; sourceTree = "<group>"; };
 		55F351221CD8777200414FF9 /* SAPUserPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserPhoto.h; sourceTree = "<group>"; };
 		55F351231CD8777200414FF9 /* SAPUserPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserPhoto.m; sourceTree = "<group>"; };
+		55F3512A1CD89D0600414FF9 /* SAPUserPhotosContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserPhotosContext.h; sourceTree = "<group>"; };
+		55F3512B1CD89D0600414FF9 /* SAPUserPhotosContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserPhotosContext.m; sourceTree = "<group>"; };
+		55F3512E1CD8A01400414FF9 /* SAPUserCollectionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPUserCollectionContext.h; sourceTree = "<group>"; };
+		55F3512F1CD8A01400414FF9 /* SAPUserCollectionContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPUserCollectionContext.m; sourceTree = "<group>"; };
 		55F533461CC2FD4D00089F64 /* NSArray+SAPJSONArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SAPJSONArray.h"; sourceTree = "<group>"; };
 		55F533471CC2FD4D00089F64 /* NSArray+SAPJSONArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SAPJSONArray.m"; sourceTree = "<group>"; };
 		55F533491CC2FD4D00089F64 /* NSDictionary+SAPJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SAPJSONDictionary.h"; sourceTree = "<group>"; };
@@ -336,7 +342,9 @@
 			children = (
 				2E4249FC1CA198980089CECC /* SAPFacebookLoginContext */,
 				2E424A391CAAC0C90089CECC /* SAPUserContext */,
+				55F3512D1CD89FFA00414FF9 /* SAPUserCollectionContext */,
 				2E424A321CA58A140089CECC /* SAPUserFriendsContext */,
+				55F351291CD89CE200414FF9 /* SAPUserPhotosContext */,
 				2E424AB21CB6C3B70089CECC /* SAPCompositeUserContext */,
 			);
 			path = Contexts;
@@ -720,6 +728,24 @@
 				55EE2DA71CCDAD49007A942C /* SAPIdentifiableManagedObject.m */,
 			);
 			path = SAPIdentifiableManagedObject;
+			sourceTree = "<group>";
+		};
+		55F351291CD89CE200414FF9 /* SAPUserPhotosContext */ = {
+			isa = PBXGroup;
+			children = (
+				55F3512A1CD89D0600414FF9 /* SAPUserPhotosContext.h */,
+				55F3512B1CD89D0600414FF9 /* SAPUserPhotosContext.m */,
+			);
+			path = SAPUserPhotosContext;
+			sourceTree = "<group>";
+		};
+		55F3512D1CD89FFA00414FF9 /* SAPUserCollectionContext */ = {
+			isa = PBXGroup;
+			children = (
+				55F3512E1CD8A01400414FF9 /* SAPUserCollectionContext.h */,
+				55F3512F1CD8A01400414FF9 /* SAPUserCollectionContext.m */,
+			);
+			path = SAPUserCollectionContext;
 			sourceTree = "<group>";
 		};
 		55F533441CC2FD4D00089F64 /* JSONRepresentation */ = {
@@ -1492,9 +1518,11 @@
 				CAC421B01C5A2364004E4F1E /* main.m in Sources */,
 				2E424AB51CB6C41B0089CECC /* SAPCompositeUserContext.m in Sources */,
 				CA634C071C69C3FC00DAED4E /* SAPUsersView.m in Sources */,
+				55F3512C1CD89D0600414FF9 /* SAPUserPhotosContext.m in Sources */,
 				CA634BEF1C68D0BD00DAED4E /* SAPObservableObject.m in Sources */,
 				55F351271CD8777200414FF9 /* SAPUserPhoto.m in Sources */,
 				55F5335E1CC2FD4D00089F64 /* NSObject+SAPJSONObject.m in Sources */,
+				55F351301CD8A01400414FF9 /* SAPUserCollectionContext.m in Sources */,
 				2E424A6D1CAC41970089CECC /* SAPCollectionChangeIndexModel+UITableView.m in Sources */,
 				55EE2DA41CCDA5E8007A942C /* SAPCoreDataArrayModel.m in Sources */,
 				BECC6AD11C5A907500F96AC9 /* SAPAppDelegate.m in Sources */,
