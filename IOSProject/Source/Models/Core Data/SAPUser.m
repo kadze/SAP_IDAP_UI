@@ -23,6 +23,7 @@
 
 @synthesize friends = _friends;
 
+@dynamic userId;
 @dynamic firstName;
 @dynamic lastName;
 @dynamic gender;

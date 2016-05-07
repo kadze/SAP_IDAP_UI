@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-#import "SAPIdentifiableManagedObject.h"
+#import "SAPManagedObject.h"
 #import "SAPImageModel.h"
 
 #import "SAPModelProtocol.h"
@@ -17,8 +17,9 @@
 //@class SAPDBImage;
 @class SAPUsers;
 
-@interface SAPUser : SAPIdentifiableManagedObject <SAPModelProtocol>
+@interface SAPUser : SAPManagedObject <SAPModelProtocol>
 //managed object model properties
+@property (nonatomic, strong)   NSString        *userId;
 @property (nonatomic, strong)   NSString        *firstName;
 @property (nonatomic, strong)   NSString        *lastName;
 @property (nonatomic, strong)   NSString        *gender;

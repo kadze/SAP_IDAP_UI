@@ -76,15 +76,37 @@ SAPViewControllerBaseViewProperty(SAPLoginViewController, SAPLoginView, mainView
 #pragma mark Private
 
 - (SAPUser *)currentTokenIDUser {
+    SAPUser *user = nil;
     FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
     if (accessToken) {
         NSString *tokenUserID = accessToken.userID;
         NSString *entityName = NSStringFromClass([SAPUser class]);
+        NSError *error = nil;
         
-        return [SAPIdentifiableManagedObject managedObjectWithID:tokenUserID entityName:entityName];
+        NSManagedObjectContext *managedObjectContext = [SAPCoreDataController sharedManagedObjectContext];
+        
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", tokenUserID];
+        request.predicate = predicate;
+        NSArray *results = [managedObjectContext executeFetchRequest:request error:&error];
+        if (!results) {
+            [UIAlertView showWithError:error];
+        }
+        
+        if (results.count == 0) {
+            user = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:managedObjectContext];
+            user.userId = tokenUserID;
+            
+            if (![managedObjectContext save:&error]) {
+                [UIAlertView showWithError:error];
+            }
+            
+        } else {
+            user = results.firstObject;
+        }
     }
     
-    return nil;
+    return user;
 }
 
 - (void)finishLogin {

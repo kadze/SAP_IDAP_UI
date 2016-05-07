@@ -25,7 +25,7 @@
 - (NSString *)graphRequestPath {
     SAPUser *user = self.model;
     
-    return user.iD;
+    return user.userId;
 }
 
 - (NSDictionary *)graphRequestParameters {
@@ -53,7 +53,7 @@
         return;
     }
     
-    user.iD = result[kSAPIDKey];
+    user.userId = result[kSAPIDKey];
     user.firstName = result[kSAPFirstNameKey];
     user.lastName = result[kSAPLastNameKey];
     user.smallImagePath = result[kSAPSquarePictureAliasKey][kSAPDataKey][kSAPUrlKey];
